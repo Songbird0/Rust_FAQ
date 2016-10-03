@@ -595,6 +595,12 @@ div.code_avec_lignes{padding:13px 0px 13px 10px;}
 .erlang_comment4{color:navy}
 .erlang_literal1{color:#2a00ff}
 .erlang_literal2{color:teal}
+.exalgo_literal1 {color: red;}
+.exalgo_keyword1 {color: #0000ff;}
+.exalgo_keyword2 {color: #0080ff;}
+.exalgo_keyword3 {color: #339933;}
+.exalgo_comment1 {color: #888888;}
+.exalgo_digit {color: red;}
 .factor_keyword1{color:#7f0055}
 .factor_keyword2{color:#03f}
 .factor_keyword3{color:#3066ac}
@@ -2052,6 +2058,12 @@ div.code_avec_lignes{padding:13px 0px 13px 10px;}
 .text_comment4{color:navy}
 .text_literal1{color:#2a00ff}
 .text_literal2{color:teal}
+.toml_literal1 {color: red;}
+.toml_literal2 {color: #2a00ff;}
+.toml_literal3 {color: navy;}
+.toml_keyword1 {color: teal;}
+.toml_comment1 {color: #3f7f5f;}
+.toml_digit {color: red;}
 .tpl_keyword1{color:#7f0055}
 .tpl_keyword2{color:#03f}
 .tpl_keyword3{color:#3066ac}
@@ -2116,6 +2128,7 @@ div.code_avec_lignes{padding:13px 0px 13px 10px;}
 .typescript_comment4{color:navy}
 .typescript_literal1{color:#2a00ff}
 .typescript_literal2{color:teal}
+.typescript_literal3{color: #cc00ff}
 .typoscript_keyword1{color:#7f0055}
 .typoscript_keyword2{color:#03f}
 .typoscript_keyword3{color:#3066ac}

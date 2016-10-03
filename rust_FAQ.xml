@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.6 du KitOOoDVP le 26/09/2016 02:39:28-->
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 03/10/2016 14:25:09-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -719,8 +719,65 @@ Hello</code>
 				</section>
 				<section id="I-A-40">
 					<title>Qu'est-ce que la destructuration&#160;?</title>
+					<paragraph>Avec Rust, il est possible d'effectuer une «&#160;destructuration&#160;» sur certains types de données, mais qu'est-ce que cela signifie exactement&#160;?</paragraph>
+					<paragraph>Grâce au pattern matching, il est possible de créer, donc, des «&#160;modèles&#160;» pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.</paragraph>
+					<paragraph>Une destrucuration peut se faire sur&#160;:</paragraph>
+					<paragraph>Les listes, les tuples&#160;;</paragraph>
+					<paragraph>Les énumérations&#160;;</paragraph>
+					<paragraph>Les structures&#160;;</paragraph>
+					<paragraph>Les pointeurs et références.</paragraph>
 				</section>
 				<section id="I-A-41">
+					<title>Comment effectuer une destructuration sur une liste&#160;?</title>
+					<rich-imgtext type="info">
+						<paragraph>Ce n'est pas encore possible. (<b>version</b> 1.11.1)</paragraph>
+						<paragraph>Pour isoler une valeur comme nous allons le faire avec un tuple, ce n'est pas possible sans s'attirer les foudres du compilateur.</paragraph>
+						<paragraph>La fonctionnalité étant, pour le moment, à l'état expérimental, elle n'est pas tolérée par le compilateur pour une utilisation courante.</paragraph>
+						<paragraph>Nous ne parlerons donc ici que de la déstructuration des tuples.</paragraph>
+					</rich-imgtext>
+					<paragraph>Pour isoler une valeur contenu dans un tuple, il faut d'abord écrire son modèle pour savoir où le chercher.</paragraph>
+					<paragraph>Par exemple, en assumant que nous cherchons une suite de chiffres dans un ordre croissant, il est simple de déterminer si cette suite est dans le bon ordre ou non.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Déstructuration tuple">    let foo = ("one", "two", "three");
+    let bar = ("two", "one", "three"); 
+    
+    match bar
+    {
+        ("one", x, "three") =>
+        {
+            if x == "two"
+            {
+                println!("tout est en ordre !");
+            }
+        },
+        _ => println!("on dirait qu'il y a un problème dans votre tuple..."),
+    }</code>
+					<paragraph>Lorsque vous construisez un modèle de ce type, gardez bien en tête que la valeur la plus à gauche représentera toujours la première valeur du tuple, et celle plus à droite représentera toujours la dernière valeur du tuple.</paragraph>
+					<paragraph>Rien ne vous empêche donc de faire ceci&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Isolation de plusieurs valeurs">    let foo = ("one", "two", "three");
+    let bar = ("two", "one", "three"); 
+    
+    match foo
+    {
+        ("one", x, y) =>
+        {
+            if (x, y) == ("two", "three") //on surveille plusieurs valeurs
+            {
+                println!("tout est en ordre !");
+            }
+        },
+        _ => println!("on dirait qu'il y a un problème dans votre tuple..."),
+    }</code>
+				</section>
+				<section id="I-A-42">
+					<title>Comment effectuer une destructuration sur une énumération ?</title>
+				</section>
+				<section id="I-A-43">
+					<title>Comment effectuer une destructuration sur une structure ?</title>
+				</section>
+				<section id="I-A-44">
+					<title>Comment effectuer une destructuration sur des pointeurs et/ou références&#160;?</title>
+				</section>
+				<section id="I-A-45">
 					<title>Comment comparer deux objets d'une structure personnalisée avec Rust&#160;?</title>
 					<paragraph>La bibliothèque standard de Rust propose un(e) trait/ interface nommé(e) <i>PartialEq</i> composée de deux fonctions&#160;:</paragraph>
 					<liste type="1">
@@ -777,8 +834,69 @@ fn main()
     }
 }</code>
 				</section>
-				<section id="I-A-42">
+				<section id="I-A-46">
 					<title>Je n'arrive pas à utiliser les macros importées par ma bibliothèque&#160;! Pourquoi&#160;?</title>
+					<paragraph>Il se pourrait que vous ayez omis d'utiliser une annotation&#160;: <inline langage="rust">#[macro_use]</inline></paragraph>
+					<paragraph>Cette dernière permet d'exporter toutes les macros qui doivent être publiques pour être utilisées à l'exterieur de la bibliothèque.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Exportation des macros">#[macro_use]
+extern crate votre_lib;
+
+fn main() -> ()
+{
+ votre_macro!();
+}</code>
+					<paragraph>Si vous ne parvenez toujours pas à les utiliser, il est possible que vous ayez omis l'annotation <inline langage="rust">#[macro_export]</inline> dans les modules comportant vos macros.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Préparation de l'exportation des macros">// dans le fichier lib.rs
+#[macro_use]//bien préciser que ce module utilise des macros
+pub mod votre_conteneur
+{
+    #[macro_export]
+    macro_rules! foo
+    {
+        () => ();
+    }
+    #[macro_export]
+    macro_rules! bar
+    {
+        () => ();
+    }
+    #[macro_export]
+    macro_rules! baz
+    {
+        () => ();
+    }
+}</code>
+					<paragraph>Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez clairement l'erreur que le compilateur vous renvoi dans votre post.</paragraph>
+				</section>
+				<section id="I-A-47">
+					<title>A quoi servent les mot-clés if let&#160;?</title>
+					<paragraph>La combinaison des deux mot-clés permet d'assigner, de manière concise, du contenu à une variable.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Assignation avec if let">fn main() -> ()
+{
+    let foo : Option&lt;String> = Some("Hello world!".to_string());
+    let mut bar : bool = false;
+    
+    if let Some(content) = foo // si la variable foo contient quelque chose...
+    {
+        bar = true;
+    }
+    else
+    {
+        println!("foo's content is None");
+    }
+}</code>
+					<paragraph>C'est un moyen simple et efficace d'assigner du contenu sans passer par le pattern matching.</paragraph>
+				</section>
+				<section id="I-A-48">
+					<title>A quoi servent les mot-clés while let&#160;?</title>
+					<paragraph>La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (while let peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)</paragraph>
+					<paragraph>
+						<font color="#0000ff">[Exemple de la documentation officielle]</font>
+					</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Cas d'utilisation de while let">let mut v = vec![1, 3, 5, 7, 11];
+while let Some(x) = v.pop() {
+    println!("{}", x);
+}</code>
 				</section>
 			</section>
 			<section id="I-B">
@@ -888,12 +1006,12 @@ fn main()
 							<paragraph>Cette Q/R abordant un concept propre au langage Rust, certains points pourraient encore vous paraître obscures après votre lecture. Si c'est le cas, vous pouvez vous reporter directement à la section, dédiée à ce sujet, de la <link href="https://doc.rust-lang.org/book/ownership.html" langue="En" target="_blank" title="Ouvrir un nouvel onglet">documentation officielle</link> du langage.</paragraph>
 						</rich-imgtext>
 						<paragraph>Il est courant de devoir partager une ressource entre plusieurs pointeurs pour effectuer diverses tâches.</paragraph>
-						<paragraph>Toutefois, plus une ressource est sollicitée, plus il y a de chance qu'elle soit <i>désynchronisée</i> à un moment ou un autre. (c'est encore plus fréquent lorsque cette dernière est sollicitée par plusieurs fils d'exécution)</paragraph>
+						<paragraph>Toutefois, plus une ressource est sollicitée, plus il y a de chance qu'elle soit <i>désynchronisée/invalidée</i> à un moment ou un autre. (c'est encore plus fréquent lorsque cette dernière est sollicitée par plusieurs fils d'exécution)</paragraph>
 						<paragraph>Rust remédie à ce problème grâce au «&#160;borrow checking&#160;», un système d'emprunts créant en quelque sorte des <i>mutex</i> chargés de limiter l'accès à une ressource et ainsi éviter les risques d'écritures simultanées.</paragraph>
 						<paragraph>Le borrow checker fera respecter ces trois règles (que vous pouvez retrouver dans la documentation officielle)&#160;:</paragraph>
 						<liste type="1">
 							<element>Une (ou plusieurs) variable  peut emprunter la ressource en lecture. (référence immuable)</element>
-							<element>Un seul, et <b>seulement un</b>, pointeur peut disposer d'un accès en écriture sur la ressource.</element>
+							<element>Un, et <b>seulement un</b>, pointeur peut disposer d'un accès en écriture sur la ressource.</element>
 							<element>Vous ne pouvez pas accéder à la ressource en lecture et en écriture en même temps, exemple&#160;:</element>
 						</liste>
 						<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Emprunt interdit">fn main() 
@@ -973,6 +1091,9 @@ fn main()
 							<link href="https://doc.rust-lang.org/book/lifetimes.html" target="_blank">La section dédiée du livre</link>
 						</paragraph>
 					</section>
+					<section id="I-B-1-e">
+						<title>Comment étendre un trait sur un autre trait&#160;?</title>
+					</section>
 				</section>
 			</section>
 			<section id="I-C">
@@ -1007,8 +1128,7 @@ fn main()
 					<paragraph>Pour compiler votre projet, vous devez vous trouver à la racine de ce dernier.</paragraph>
 					<paragraph>Une fois que c'est fait, il vous suffit de lancer la commande suivante&#160;:</paragraph>
 					<paragraph>
-						<inline langage="rust">$ cargo build
-</inline>
+						<inline langage="rust">$ cargo build</inline>
 					</paragraph>
 					<rich-imgtext type="info">
 						<paragraph>Par défaut, cargo compile votre projet en mode «&#160;debug&#160;», empêchant le compilateur d'effectuer des optimisations trop agressives.</paragraph>
@@ -1168,6 +1288,15 @@ mod oo_tests
 					<title>Comment créer ses benchmarks avec Cargo&#160;?</title>
 					<paragraph>WIP</paragraph>
 				</section>
+			</section>
+			<section id="I-D">
+				<title>Gestion des erreurs</title>
+			</section>
+			<section id="I-E">
+				<title>Meta-données</title>
+			</section>
+			<section id="I-F">
+				<title>I/O</title>
 			</section>
 		</section>
 	</summary>

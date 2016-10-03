@@ -135,8 +135,14 @@
 				<li><a class="summaryIndent2" href="#LI-A-38">I-A-38. Comment comparer deux objets avec Rust ?</a></li>
 				<li><a class="summaryIndent2" href="#LI-A-39">I-A-39. Qu'est-ce que le shadowing ?</a></li>
 				<li><a class="summaryIndent2" href="#LI-A-40">I-A-40. Qu'est-ce que la destructuration ?</a></li>
-				<li><a class="summaryIndent2" href="#LI-A-41">I-A-41. Comment comparer deux objets d'une structure personnalisée avec Rust ?</a></li>
-				<li><a class="summaryIndent2" href="#LI-A-42">I-A-42. Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-41">I-A-41. Comment effectuer une destructuration sur une liste ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-42">I-A-42. Comment effectuer une destructuration sur une énumération ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-43">I-A-43. Comment effectuer une destructuration sur une structure ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-44">I-A-44. Comment effectuer une destructuration sur des pointeurs et/ou références ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-45">I-A-45. Comment comparer deux objets d'une structure personnalisée avec Rust ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-46">I-A-46. Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-47">I-A-47. A quoi servent les mot-clés if let ?</a></li>
+				<li><a class="summaryIndent2" href="#LI-A-48">I-A-48. A quoi servent les mot-clés while let ?</a></li>
 			</ul></li>
 			<li><a class="summaryIndent1" href="#LI-B">I-B. Mécaniques et philosophies</a><ul class="nav-sommaire-ul IndentationI-B">
 				
@@ -146,6 +152,7 @@
 					<li><a class="summaryIndent3" href="#LI-B-1-b">I-B-1-b. Qu'est-ce que « l'ownership » ?</a></li>
 					<li><a class="summaryIndent3" href="#LI-B-1-c">I-B-1-c. Qu'est-ce que le concept de « borrowing » ?</a></li>
 					<li><a class="summaryIndent3" href="#LI-B-1-d">I-B-1-d. Qu'est-ce que le concept de « lifetime » ?</a></li>
+					<li><a class="summaryIndent3" href="#LI-B-1-e">I-B-1-e. Comment étendre un trait sur un autre trait ?</a></li>
 				</ul></li>
 			</ul></li>
 			<li><a class="summaryIndent1" href="#LI-C">I-C. Outils de build</a><ul class="nav-sommaire-ul IndentationI-C">
@@ -161,6 +168,9 @@
 				<li><a class="summaryIndent2" href="#LI-C-9">I-C-9. Comment mettre à jour mes bibliothèques ?</a></li>
 				<li><a class="summaryIndent2" href="#LI-C-10">I-C-10. Comment créer ses benchmarks avec Cargo ?</a></li>
 			</ul></li>
+			<li><a class="summaryIndent1" href="#LI-D">I-D. Gestion des erreurs</a></li>
+			<li><a class="summaryIndent1" href="#LI-E">I-E. Meta-données</a></li>
+			<li><a class="summaryIndent1" href="#LI-F">I-F. I/O</a></li>
 		</ul></li>
 	</ul></nav>
 
@@ -1009,9 +1019,78 @@ Hello
 				
 		<h3 class="TitreSection2" id="LI-A-40">I-A-40. Qu'est-ce que la destructuration ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
 					
+					<p>Avec Rust, il est possible d'effectuer une « destructuration » sur certains types de données, mais qu'est-ce que cela signifie exactement ?</p>
+					<p>Grâce au pattern matching, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.</p>
+					<p>Une destrucuration peut se faire sur :</p>
+					<p>Les listes, les tuples ;</p>
+					<p>Les énumérations ;</p>
+					<p>Les structures ;</p>
+					<p>Les pointeurs et références.</p>
 				</div>
 				
-		<h3 class="TitreSection2" id="LI-A-41">I-A-41. Comment comparer deux objets d'une structure personnalisée avec Rust ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+		<h3 class="TitreSection2" id="LI-A-41">I-A-41. Comment effectuer une destructuration sur une liste ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+					
+					<div class="imgtext-info">
+						<p>Ce n'est pas encore possible. (<b>version</b> 1.11.1)</p>
+						<p>Pour isoler une valeur comme nous allons le faire avec un tuple, ce n'est pas possible sans s'attirer les foudres du compilateur.</p>
+						<p>La fonctionnalité étant, pour le moment, à l'état expérimental, elle n'est pas tolérée par le compilateur pour une utilisation courante.</p>
+						<p>Nous ne parlerons donc ici que de la déstructuration des tuples.</p>
+					</div>
+					<p>Pour isoler une valeur contenu dans un tuple, il faut d'abord écrire son modèle pour savoir où le chercher.</p>
+					<p>Par exemple, en assumant que nous cherchons une suite de chiffres dans un ordre croissant, il est simple de déterminer si cette suite est dans le bon ordre ou non.</p>
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e3801">Déstructuration tuple<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e3801" href="#contenuCoded0e3801" onclick="CacherMontreCode('contenuCoded0e3801', 'IdTitreCode-d0e3801'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e3801');
+							showCode.style.visibility = "visible";
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e3801" onclick="selectionCode('contenuCoded0e3801');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e3801">    <code class="rust_keyword1">let</code> foo = (<code class="rust_literal1">"</code><code class="rust_literal1">one</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">two</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">three</code><code class="rust_literal1">"</code>);
+    <code class="rust_keyword1">let</code> bar = (<code class="rust_literal1">"</code><code class="rust_literal1">two</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">one</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">three</code><code class="rust_literal1">"</code>); 
+    
+    <code class="rust_keyword1">match</code> bar
+    {
+        (<code class="rust_literal1">"</code><code class="rust_literal1">one</code><code class="rust_literal1">"</code>, x, <code class="rust_literal1">"</code><code class="rust_literal1">three</code><code class="rust_literal1">"</code>) =&gt;
+        {
+            <code class="rust_keyword1">if</code> x == <code class="rust_literal1">"</code><code class="rust_literal1">two</code><code class="rust_literal1">"</code>
+            {
+                <code class="rust_function">println</code><code class="rust_function">!</code>(<code class="rust_literal1">"</code><code class="rust_literal1">tout</code><code class="rust_literal1"> </code><code class="rust_literal1">est</code><code class="rust_literal1"> </code><code class="rust_literal1">en</code><code class="rust_literal1"> </code><code class="rust_literal1">ordre</code><code class="rust_literal1"> </code><code class="rust_literal1">!</code><code class="rust_literal1">"</code>);
+            }
+        },
+        _ =&gt; <code class="rust_function">println</code><code class="rust_function">!</code>(<code class="rust_literal1">"</code><code class="rust_literal1">on</code><code class="rust_literal1"> </code><code class="rust_literal1">dirait</code><code class="rust_literal1"> </code><code class="rust_literal1">qu</code><code class="rust_literal1">'</code><code class="rust_literal1">il</code><code class="rust_literal1"> </code><code class="rust_literal1">y</code><code class="rust_literal1"> </code><code class="rust_literal1">a</code><code class="rust_literal1"> </code><code class="rust_literal1">un</code><code class="rust_literal1"> </code><code class="rust_literal1">problème</code><code class="rust_literal1"> </code><code class="rust_literal1">dans</code><code class="rust_literal1"> </code><code class="rust_literal1">votre</code><code class="rust_literal1"> </code><code class="rust_literal1">tuple</code><code class="rust_literal1">.</code><code class="rust_literal1">.</code><code class="rust_literal1">.</code><code class="rust_literal1">"</code>),
+    }
+</code></pre></div></div>
+					<p>Lorsque vous construisez un modèle de ce type, gardez bien en tête que la valeur la plus à gauche représentera toujours la première valeur du tuple, et celle plus à droite représentera toujours la dernière valeur du tuple.</p>
+					<p>Rien ne vous empêche donc de faire ceci :</p>
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4010">Isolation de plusieurs valeurs<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4010" href="#contenuCoded0e4010" onclick="CacherMontreCode('contenuCoded0e4010', 'IdTitreCode-d0e4010'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e4010');
+							showCode.style.visibility = "visible";
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4010" onclick="selectionCode('contenuCoded0e4010');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4010">    <code class="rust_keyword1">let</code> foo = (<code class="rust_literal1">"</code><code class="rust_literal1">one</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">two</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">three</code><code class="rust_literal1">"</code>);
+    <code class="rust_keyword1">let</code> bar = (<code class="rust_literal1">"</code><code class="rust_literal1">two</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">one</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">three</code><code class="rust_literal1">"</code>); 
+    
+    <code class="rust_keyword1">match</code> foo
+    {
+        (<code class="rust_literal1">"</code><code class="rust_literal1">one</code><code class="rust_literal1">"</code>, x, y) =&gt;
+        {
+            <code class="rust_keyword1">if</code> (x, y) == (<code class="rust_literal1">"</code><code class="rust_literal1">two</code><code class="rust_literal1">"</code>, <code class="rust_literal1">"</code><code class="rust_literal1">three</code><code class="rust_literal1">"</code>) <code class="rust_comment1">//</code><code class="rust_comment1">on</code><code class="rust_comment1"> </code><code class="rust_comment1">surveille</code><code class="rust_comment1"> </code><code class="rust_comment1">plusieurs</code><code class="rust_comment1"> </code><code class="rust_comment1">valeurs</code>
+            {
+                <code class="rust_function">println</code><code class="rust_function">!</code>(<code class="rust_literal1">"</code><code class="rust_literal1">tout</code><code class="rust_literal1"> </code><code class="rust_literal1">est</code><code class="rust_literal1"> </code><code class="rust_literal1">en</code><code class="rust_literal1"> </code><code class="rust_literal1">ordre</code><code class="rust_literal1"> </code><code class="rust_literal1">!</code><code class="rust_literal1">"</code>);
+            }
+        },
+        _ =&gt; <code class="rust_function">println</code><code class="rust_function">!</code>(<code class="rust_literal1">"</code><code class="rust_literal1">on</code><code class="rust_literal1"> </code><code class="rust_literal1">dirait</code><code class="rust_literal1"> </code><code class="rust_literal1">qu</code><code class="rust_literal1">'</code><code class="rust_literal1">il</code><code class="rust_literal1"> </code><code class="rust_literal1">y</code><code class="rust_literal1"> </code><code class="rust_literal1">a</code><code class="rust_literal1"> </code><code class="rust_literal1">un</code><code class="rust_literal1"> </code><code class="rust_literal1">problème</code><code class="rust_literal1"> </code><code class="rust_literal1">dans</code><code class="rust_literal1"> </code><code class="rust_literal1">votre</code><code class="rust_literal1"> </code><code class="rust_literal1">tuple</code><code class="rust_literal1">.</code><code class="rust_literal1">.</code><code class="rust_literal1">.</code><code class="rust_literal1">"</code>),
+    }
+</code></pre></div></div>
+				</div>
+				
+		<h3 class="TitreSection2" id="LI-A-42">I-A-42. Comment effectuer une destructuration sur une énumération ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+					
+				</div>
+				
+		<h3 class="TitreSection2" id="LI-A-43">I-A-43. Comment effectuer une destructuration sur une structure ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+					
+				</div>
+				
+		<h3 class="TitreSection2" id="LI-A-44">I-A-44. Comment effectuer une destructuration sur des pointeurs et/ou références ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+					
+				</div>
+				
+		<h3 class="TitreSection2" id="LI-A-45">I-A-45. Comment comparer deux objets d'une structure personnalisée avec Rust ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
 					
 					<p>La bibliothèque standard de Rust propose un(e) trait/ interface nommé(e) <span class="italique">PartialEq</span> composée de deux fonctions :</p>
 					<ol type="1">
@@ -1026,10 +1105,10 @@ Hello
 						<p>Comme il est stipulé dans la documentation officielle, vous n'êtes pas forcé d'implémenter les deux fonctions : <span class="italique">fn</span> <span class="italique">ne()</span> étant simplement le contraire de <span class="italique">fn eq()</span> et vice versa, il serait redondant de les implémenter dans la même structure.</p>
 					</div>
 					<p>Ci-dessous figure un exemple complet d'implémentation :</p>
-					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e3801">Implémentation du trait PartialEq<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e3801" href="#contenuCoded0e3801" onclick="CacherMontreCode('contenuCoded0e3801', 'IdTitreCode-d0e3801'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e3801');
+					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e4299">Implémentation du trait PartialEq<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4299" href="#contenuCoded0e4299" onclick="CacherMontreCode('contenuCoded0e4299', 'IdTitreCode-d0e4299'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e4299');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e3801" onclick="selectionCode('contenuCoded0e3801');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/>17.<br/>18.<br/>19.<br/>20.<br/>21.<br/>22.<br/>23.<br/>24.<br/>25.<br/>26.<br/>27.<br/>28.<br/>29.<br/>30.<br/>31.<br/>32.<br/>33.<br/>34.<br/>35.<br/>36.<br/>37.<br/>38.<br/>39.<br/>40.<br/>41.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e3801"><code class="rust_keyword1">struct</code> Spartan&lt;<code class="rust_literal2">'a</code>&gt;
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4299" onclick="selectionCode('contenuCoded0e4299');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/>17.<br/>18.<br/>19.<br/>20.<br/>21.<br/>22.<br/>23.<br/>24.<br/>25.<br/>26.<br/>27.<br/>28.<br/>29.<br/>30.<br/>31.<br/>32.<br/>33.<br/>34.<br/>35.<br/>36.<br/>37.<br/>38.<br/>39.<br/>40.<br/>41.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4299"><code class="rust_keyword1">struct</code> Spartan&lt;<code class="rust_literal2">'a</code>&gt;
 {
 
     sid: i32, 
@@ -1073,8 +1152,87 @@ Hello
 </code></pre></div></div>
 				</div>
 				
-		<h3 class="TitreSection2" id="LI-A-42">I-A-42. Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+		<h3 class="TitreSection2" id="LI-A-46">I-A-46. Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
 					
+					<p>Il se pourrait que vous ayez omis d'utiliser une annotation : <span class="codeinline"><code class="rust_literal3">#[</code><code class="rust_literal3">macro_use</code><code class="rust_literal3">]</code></span></p>
+					<p>Cette dernière permet d'exporter toutes les macros qui doivent être publiques pour être utilisées à l'exterieur de la bibliothèque.</p>
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4565">Exportation des macros<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4565" href="#contenuCoded0e4565" onclick="CacherMontreCode('contenuCoded0e4565', 'IdTitreCode-d0e4565'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e4565');
+							showCode.style.visibility = "visible";
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4565" onclick="selectionCode('contenuCoded0e4565');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4565"><code class="rust_literal3">#[</code><code class="rust_literal3">macro_use</code><code class="rust_literal3">]</code>
+<code class="rust_keyword1">extern</code> <code class="rust_keyword1">crate</code> votre_lib;
+
+<code class="rust_keyword1">fn</code> main() -&gt; ()
+{
+ <code class="rust_function">votre_macro</code><code class="rust_function">!</code>();
+}
+</code></pre></div></div>
+					<p>Si vous ne parvenez toujours pas à les utiliser, il est possible que vous ayez omis l'annotation <span class="codeinline"><code class="rust_literal3">#[</code><code class="rust_literal3">macro_export</code><code class="rust_literal3">]</code></span> dans les modules comportant vos macros.</p>
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4614">Préparation de l'exportation des macros<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4614" href="#contenuCoded0e4614" onclick="CacherMontreCode('contenuCoded0e4614', 'IdTitreCode-d0e4614'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e4614');
+							showCode.style.visibility = "visible";
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4614" onclick="selectionCode('contenuCoded0e4614');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/>17.<br/>18.<br/>19.<br/>20.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4614"><code class="rust_comment1">//</code><code class="rust_comment1"> </code><code class="rust_comment1">dans</code><code class="rust_comment1"> </code><code class="rust_comment1">le</code><code class="rust_comment1"> </code><code class="rust_comment1">fichier</code><code class="rust_comment1"> </code><code class="rust_comment1">lib.rs</code>
+<code class="rust_literal3">#[</code><code class="rust_literal3">macro_use</code><code class="rust_literal3">]</code><code class="rust_comment1">//</code><code class="rust_comment1">bien</code><code class="rust_comment1"> </code><code class="rust_comment1">préciser</code><code class="rust_comment1"> </code><code class="rust_comment1">que</code><code class="rust_comment1"> </code><code class="rust_comment1">ce</code><code class="rust_comment1"> </code><code class="rust_comment1">module</code><code class="rust_comment1"> </code><code class="rust_comment1">utilise</code><code class="rust_comment1"> </code><code class="rust_comment1">des</code><code class="rust_comment1"> </code><code class="rust_comment1">macros</code>
+<code class="rust_keyword1">pub</code> <code class="rust_keyword1">mod</code> votre_conteneur
+{
+    <code class="rust_literal3">#[</code><code class="rust_literal3">macro_export</code><code class="rust_literal3">]</code>
+    <code class="rust_function">macro_rules</code><code class="rust_function">!</code> foo
+    {
+        () =&gt; ();
+    }
+    <code class="rust_literal3">#[</code><code class="rust_literal3">macro_export</code><code class="rust_literal3">]</code>
+    <code class="rust_function">macro_rules</code><code class="rust_function">!</code> bar
+    {
+        () =&gt; ();
+    }
+    <code class="rust_literal3">#[</code><code class="rust_literal3">macro_export</code><code class="rust_literal3">]</code>
+    <code class="rust_function">macro_rules</code><code class="rust_function">!</code> baz
+    {
+        () =&gt; ();
+    }
+}
+</code></pre></div></div>
+					<p>Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez clairement l'erreur que le compilateur vous renvoi dans votre post.</p>
+				</div>
+				
+		<h3 class="TitreSection2" id="LI-A-47">I-A-47. A quoi servent les mot-clés if let ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+					
+					<p>La combinaison des deux mot-clés permet d'assigner, de manière concise, du contenu à une variable.</p>
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4779">Assignation avec if let<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4779" href="#contenuCoded0e4779" onclick="CacherMontreCode('contenuCoded0e4779', 'IdTitreCode-d0e4779'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e4779');
+							showCode.style.visibility = "visible";
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4779" onclick="selectionCode('contenuCoded0e4779');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4779"><code class="rust_keyword1">fn</code> main() -&gt; ()
+{
+    <code class="rust_keyword1">let</code> foo : <code class="rust_keyword3">Option</code>&lt;String&gt; = <code class="rust_keyword2">Some</code>(<code class="rust_literal1">"</code><code class="rust_literal1">Hello</code><code class="rust_literal1"> </code><code class="rust_literal1">world</code><code class="rust_literal1">!</code><code class="rust_literal1">"</code>.to_string());
+    <code class="rust_keyword1">let</code> <code class="rust_keyword4">mut</code> bar : bool = <code class="rust_keyword2">false</code>;
+    
+    <code class="rust_keyword1">if</code> <code class="rust_keyword1">let</code> <code class="rust_keyword2">Some</code>(content) = foo <code class="rust_comment1">//</code><code class="rust_comment1"> </code><code class="rust_comment1">si</code><code class="rust_comment1"> </code><code class="rust_comment1">la</code><code class="rust_comment1"> </code><code class="rust_comment1">variable</code><code class="rust_comment1"> </code><code class="rust_comment1">foo</code><code class="rust_comment1"> </code><code class="rust_comment1">contient</code><code class="rust_comment1"> </code><code class="rust_comment1">quelque</code><code class="rust_comment1"> </code><code class="rust_comment1">chose...</code>
+    {
+        bar = <code class="rust_keyword2">true</code>;
+    }
+    <code class="rust_keyword1">else</code>
+    {
+        <code class="rust_function">println</code><code class="rust_function">!</code>(<code class="rust_literal1">"</code><code class="rust_literal1">foo</code><code class="rust_literal1">'</code><code class="rust_literal1">s</code><code class="rust_literal1"> </code><code class="rust_literal1">content</code><code class="rust_literal1"> </code><code class="rust_literal1">is</code><code class="rust_literal1"> </code><code class="rust_literal1">None</code><code class="rust_literal1">"</code>);
+    }
+}
+</code></pre></div></div>
+					<p>C'est un moyen simple et efficace d'assigner du contenu sans passer par le pattern matching.</p>
+				</div>
+				
+		<h3 class="TitreSection2" id="LI-A-48">I-A-48. A quoi servent les mot-clés while let ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h3><div class="BlocSection2">
+					
+					<p>La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (while let peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)</p>
+					<p>
+						<span style="color:#0000ff;">[Exemple de la documentation officielle]</span>
+					</p>
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4945">Cas d'utilisation de while let<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4945" href="#contenuCoded0e4945" onclick="CacherMontreCode('contenuCoded0e4945', 'IdTitreCode-d0e4945'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e4945');
+							showCode.style.visibility = "visible";
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4945" onclick="selectionCode('contenuCoded0e4945');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4945"><code class="rust_keyword1">let</code> <code class="rust_keyword4">mut</code> v = <code class="rust_function">vec</code><code class="rust_function">!</code>[<code class="rust_digit">1</code>, <code class="rust_digit">3</code>, <code class="rust_digit">5</code>, <code class="rust_digit">7</code>, <code class="rust_digit">11</code>];
+<code class="rust_keyword1">while</code> <code class="rust_keyword1">let</code> <code class="rust_keyword2">Some</code>(x) = v.pop() {
+    <code class="rust_function">println</code><code class="rust_function">!</code>(<code class="rust_literal1">"</code><code class="rust_literal4">{}</code><code class="rust_literal1">"</code>, x);
+}
+</code></pre></div></div>
 				</div>
 			</div>
 			
@@ -1114,10 +1272,10 @@ Hello
 						<p>Rust est muni d'un système « d'appartenance » qui permet d'écarter les conflits les plus communs lorsqu'une ressource est utilisée à plusieurs endroits.</p>
 						<p>Bien que ce dernier soit très pratique, il demande d'avoir une certaine rigueur quant à la déclaration de nos ressources, sans quoi vous risqueriez de vous attirer les foudres du compilateur.</p>
 						<p>Pour cela, voici un exemple d'erreur typique lorsque l'on débute sans réellement connaître les tâches effectuées par le « ramasse-miette » :</p>
-						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4134">Transfert par copie<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4134" href="#contenuCoded0e4134" onclick="CacherMontreCode('contenuCoded0e4134', 'IdTitreCode-d0e4134'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e4134');
+						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5083">Transfert par copie<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5083" href="#contenuCoded0e5083" onclick="CacherMontreCode('contenuCoded0e5083', 'IdTitreCode-d0e5083'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e5083');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4134" onclick="selectionCode('contenuCoded0e4134');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4134"><code class="rust_keyword1">fn</code> main()
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5083" onclick="selectionCode('contenuCoded0e5083');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5083"><code class="rust_keyword1">fn</code> main()
 {
     <code class="rust_keyword1">let</code> foo : String = String::from(<code class="rust_literal1">"</code><code class="rust_literal1">Hello</code><code class="rust_literal1"> </code><code class="rust_literal1">world</code><code class="rust_literal1">!</code><code class="rust_literal1">"</code>);
     <code class="rust_keyword1">let</code> bar : String = foo;
@@ -1125,7 +1283,7 @@ Hello
 }
 </code></pre></div></div>
 						<p>Renvoyant une erreur de ce style :</p>
-						<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e4204">Message d'erreur<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e4204" onclick="selectionCode('contenuCoded0e4204');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4204">error: <code class="rust_keyword1">use</code> of moved value: `foo`
+						<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e5153">Message d'erreur<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e5153" onclick="selectionCode('contenuCoded0e5153');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5153">error: <code class="rust_keyword1">use</code> of moved value: `foo`
 </code></pre></div></div>
 						<p>C'est un exemple simple, mais qui (dans nos débuts) peut être une véritable plaie : on ne comprend pas d'où vient l'erreur - tout est syntaxiquement correct, mais le compilateur n'a pas l'air satisfait.</p>
 						<p>C'est simple :</p>
@@ -1136,7 +1294,7 @@ Hello
 							<p>Lorsque la ressource est dite « déplacée » ce n'est pas l'objet lui-même qu'il l'est, rien n'est recréé lors de cette destruction de pointeurs. On se contente ici de « binder » (rattacher) la référence de l'objet à un nouveau pointeur : il n'y a donc pas d'effets de bord indésirables. (temps de création, consommation CPU)</p>
 						</div>
 						<p>Pour remédier au problème, il aurait simplement suffit de copier <span class="italique">bar</span> de cette manière :</p>
-						<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e4265">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e4265" onclick="selectionCode('contenuCoded0e4265');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4265"><code class="rust_keyword1">fn</code> main()
+						<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e5214">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e5214" onclick="selectionCode('contenuCoded0e5214');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5214"><code class="rust_keyword1">fn</code> main()
 {
     <code class="rust_keyword1">let</code> foo : String = String::from(<code class="rust_literal1">"</code><code class="rust_literal1">Hello</code><code class="rust_literal1"> </code><code class="rust_literal1">world</code><code class="rust_literal1">!</code><code class="rust_literal1">"</code>);
     <code class="rust_keyword1">let</code> bar : String = foo;
@@ -1149,7 +1307,7 @@ Hello
 							<p>Cette règle ne s'applique qu'aux ressources dynamiques ; Etant prompt à être référencé à plusieurs endroits en même temps, <span class="italique">Rust s'assure de toujours fournir la référence la plus récente de la ressource</span>.</p>
 						</div>
 						<p>Vous pouvez très bien écrire ceci :</p>
-						<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e4328">contre-exemple<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e4328" onclick="selectionCode('contenuCoded0e4328');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4328"><code class="rust_keyword1">fn</code> main()
+						<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e5277">contre-exemple<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e5277" onclick="selectionCode('contenuCoded0e5277');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5277"><code class="rust_keyword1">fn</code> main()
 {
     <code class="rust_keyword1">let</code> foo = <code class="rust_digit">42</code>;
     <code class="rust_keyword1">let</code> bar = foo;
@@ -1166,10 +1324,10 @@ Hello
 							<p>Si la ressource en question a été créée dynamiquement, elle sera systématiquement détruite lorsque la fonction aura terminé de s'exécuter ; Sinon, elle devient simplement inaccessible pour le restant du programme.</p>
 						</div>
 						<p>Exemple :</p>
-						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4388">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4388" href="#contenuCoded0e4388" onclick="CacherMontreCode('contenuCoded0e4388', 'IdTitreCode-d0e4388'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e4388');
+						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5337">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5337" href="#contenuCoded0e5337" onclick="CacherMontreCode('contenuCoded0e5337', 'IdTitreCode-d0e5337'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e5337');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4388" onclick="selectionCode('contenuCoded0e4388');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4388"><code class="rust_keyword1">fn</code> my_func(my_string: String)
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5337" onclick="selectionCode('contenuCoded0e5337');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5337"><code class="rust_keyword1">fn</code> my_func(my_string: String)
 {
     <code class="rust_keyword1">let</code> chars = my_string.chars();
     <code class="rust_keyword1">for</code> letter <code class="rust_keyword1">in</code> chars 
@@ -1200,18 +1358,18 @@ Hello
 							<p>Cette Q/R abordant un concept propre au langage Rust, certains points pourraient encore vous paraître obscures après votre lecture. Si c'est le cas, vous pouvez vous reporter directement à la section, dédiée à ce sujet, de la <a class=" tooltip blue-tooltip lienArticle En" href="https://doc.rust-lang.org/book/ownership.html" target="_blank">documentation officielle<span>Ouvrir un nouvel onglet</span></a> du langage.</p>
 						</div>
 						<p>Il est courant de devoir partager une ressource entre plusieurs pointeurs pour effectuer diverses tâches.</p>
-						<p>Toutefois, plus une ressource est sollicitée, plus il y a de chance qu'elle soit <span class="italique">désynchronisée</span> à un moment ou un autre. (c'est encore plus fréquent lorsque cette dernière est sollicitée par plusieurs fils d'exécution)</p>
+						<p>Toutefois, plus une ressource est sollicitée, plus il y a de chance qu'elle soit <span class="italique">désynchronisée/invalidée</span> à un moment ou un autre. (c'est encore plus fréquent lorsque cette dernière est sollicitée par plusieurs fils d'exécution)</p>
 						<p>Rust remédie à ce problème grâce au « borrow checking », un système d'emprunts créant en quelque sorte des <span class="italique">mutex</span> chargés de limiter l'accès à une ressource et ainsi éviter les risques d'écritures simultanées.</p>
 						<p>Le borrow checker fera respecter ces trois règles (que vous pouvez retrouver dans la documentation officielle) :</p>
 						<ol type="1">
 							<li>Une (ou plusieurs) variable  peut emprunter la ressource en lecture. (référence immuable)</li>
-							<li>Un seul, et <b>seulement un</b>, pointeur peut disposer d'un accès en écriture sur la ressource.</li>
+							<li>Un, et <b>seulement un</b>, pointeur peut disposer d'un accès en écriture sur la ressource.</li>
 							<li>Vous ne pouvez pas accéder à la ressource en lecture et en écriture en même temps, exemple :</li>
 						</ol>
-						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4568">Emprunt interdit<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4568" href="#contenuCoded0e4568" onclick="CacherMontreCode('contenuCoded0e4568', 'IdTitreCode-d0e4568'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e4568');
+						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5517">Emprunt interdit<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5517" href="#contenuCoded0e5517" onclick="CacherMontreCode('contenuCoded0e5517', 'IdTitreCode-d0e5517'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e5517');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4568" onclick="selectionCode('contenuCoded0e4568');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4568"><code class="rust_keyword1">fn</code> main() 
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5517" onclick="selectionCode('contenuCoded0e5517');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5517"><code class="rust_keyword1">fn</code> main() 
 {
     <code class="rust_keyword1">let</code> <code class="rust_keyword4">mut</code> foo = <code class="rust_digit">117</code>;
     <code class="rust_keyword1">let</code> bar = <code class="rust_operator">&amp;</code><code class="rust_keyword4">mut</code> foo;
@@ -1220,10 +1378,10 @@ Hello
 }
 </code></pre></div></div>
 						<p>Ou :</p>
-						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4621">Deux accès en écriture<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4621" href="#contenuCoded0e4621" onclick="CacherMontreCode('contenuCoded0e4621', 'IdTitreCode-d0e4621'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e4621');
+						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5570">Deux accès en écriture<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5570" href="#contenuCoded0e5570" onclick="CacherMontreCode('contenuCoded0e5570', 'IdTitreCode-d0e5570'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e5570');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4621" onclick="selectionCode('contenuCoded0e4621');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4621"><code class="rust_keyword1">fn</code> main() 
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5570" onclick="selectionCode('contenuCoded0e5570');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5570"><code class="rust_keyword1">fn</code> main() 
 {
     <code class="rust_keyword1">let</code> <code class="rust_keyword4">mut</code> foo = <code class="rust_digit">117</code>;
     <code class="rust_keyword1">let</code> bar = <code class="rust_operator">&amp;</code><code class="rust_keyword4">mut</code> foo;
@@ -1243,10 +1401,10 @@ Hello
 						<p>Comme tous langages (sauf exception que nous pourrions ignorer), Rust dispose d'un système de durée de vie.</p>
 						<p>Toutefois, il fait preuve d'une grande rigourosité quant à la destruction des ressources dynamiques et à « l'isolement » des ressources statiques après utilisation.</p>
 						<p>Voici un exemple :</p>
-						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4701">Démonstration des scopes<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4701" href="#contenuCoded0e4701" onclick="CacherMontreCode('contenuCoded0e4701', 'IdTitreCode-d0e4701'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e4701');
+						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5650">Démonstration des scopes<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5650" href="#contenuCoded0e5650" onclick="CacherMontreCode('contenuCoded0e5650', 'IdTitreCode-d0e5650'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e5650');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4701" onclick="selectionCode('contenuCoded0e4701');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4701"><code class="rust_keyword1">fn</code> main()
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5650" onclick="selectionCode('contenuCoded0e5650');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5650"><code class="rust_keyword1">fn</code> main()
 {
     <code class="rust_keyword1">let</code> <code class="rust_keyword4">mut</code> foo : String = <code class="rust_literal1">"</code><code class="rust_literal1">Hello</code><code class="rust_literal1"> </code><code class="rust_literal1">world</code><code class="rust_literal1">!</code><code class="rust_literal1">"</code>.to_string(); <code class="rust_comment1">//</code><code class="rust_comment1">Le</code><code class="rust_comment1"> </code><code class="rust_comment1">scope</code><code class="rust_comment1"> </code><code class="rust_comment1">A</code><code class="rust_comment1"> </code><code class="rust_comment1">commence</code><code class="rust_comment1"> </code><code class="rust_comment1">ici</code>
     <code class="rust_keyword1">let</code> bar : String = <code class="rust_literal1">"</code><code class="rust_literal1">Goodbye</code><code class="rust_literal1">,</code><code class="rust_literal1"> </code><code class="rust_literal1">friend</code><code class="rust_literal1"> </code><code class="rust_literal1">!</code><code class="rust_literal1">"</code>.to_string();<code class="rust_comment1">//</code><code class="rust_comment1">Le</code><code class="rust_comment1"> </code><code class="rust_comment1">scope</code><code class="rust_comment1"> </code><code class="rust_comment1">B</code><code class="rust_comment1"> </code><code class="rust_comment1">commence</code><code class="rust_comment1"> </code><code class="rust_comment1">ici</code>
@@ -1262,10 +1420,10 @@ Hello
 						<p>Les références n'échappent pas à la règle, elles aussi ont des durées vie bien déterminées ; En règle générale, il n'est pas utile (voire interdit) au développeur d'expliciter les tags qui permettent au compilateur de « suivre » chaque référence durant son utilisation.</p>
 						<p>Cependant, lorsque l'une d'elles est passée en paramètre à une fonction, il peut parfois être nécessaire de tagger celles qui survivront au moins à l'exécution de la fonction. (ne serait-ce que par souci de clareté)</p>
 						<p>Voici un exemple qui pourrait vous épauler : (attention à bien lire les commentaires)</p>
-						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e4892">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e4892" href="#contenuCoded0e4892" onclick="CacherMontreCode('contenuCoded0e4892', 'IdTitreCode-d0e4892'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e4892');
+						<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5841">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5841" href="#contenuCoded0e5841" onclick="CacherMontreCode('contenuCoded0e5841', 'IdTitreCode-d0e5841'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e5841');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e4892" onclick="selectionCode('contenuCoded0e4892');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/>17.<br/>18.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e4892"><code class="rust_keyword1">fn</code> foo(phrase: <code class="rust_operator">&amp;</code>str) -&gt; () <code class="rust_comment1">//</code><code class="rust_comment1">aucune</code><code class="rust_comment1"> </code><code class="rust_comment1">référence</code><code class="rust_comment1"> </code><code class="rust_comment1">ne</code><code class="rust_comment1"> </code><code class="rust_comment1">survi,</code><code class="rust_comment1"> </code><code class="rust_comment1">donc</code><code class="rust_comment1"> </code><code class="rust_comment1">pas</code><code class="rust_comment1"> </code><code class="rust_comment1">la</code><code class="rust_comment1"> </code><code class="rust_comment1">peine</code><code class="rust_comment1"> </code><code class="rust_comment1">de</code><code class="rust_comment1"> </code><code class="rust_comment1">l'annoter</code>
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5841" onclick="selectionCode('contenuCoded0e5841');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/>17.<br/>18.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5841"><code class="rust_keyword1">fn</code> foo(phrase: <code class="rust_operator">&amp;</code>str) -&gt; () <code class="rust_comment1">//</code><code class="rust_comment1">aucune</code><code class="rust_comment1"> </code><code class="rust_comment1">référence</code><code class="rust_comment1"> </code><code class="rust_comment1">ne</code><code class="rust_comment1"> </code><code class="rust_comment1">survi,</code><code class="rust_comment1"> </code><code class="rust_comment1">donc</code><code class="rust_comment1"> </code><code class="rust_comment1">pas</code><code class="rust_comment1"> </code><code class="rust_comment1">la</code><code class="rust_comment1"> </code><code class="rust_comment1">peine</code><code class="rust_comment1"> </code><code class="rust_comment1">de</code><code class="rust_comment1"> </code><code class="rust_comment1">l'annoter</code>
 {
     <code class="rust_function">println</code><code class="rust_function">!</code>(<code class="rust_literal1">"</code><code class="rust_literal4">{}</code><code class="rust_literal1">"</code>, <code class="rust_operator">&amp;</code>phrase);
 }
@@ -1301,6 +1459,10 @@ Hello
 						<p>
 							<a class="lienArticle https" href="https://doc.rust-lang.org/book/lifetimes.html" target="_blank">La section dédiée du livre</a>
 						</p>
+					</div>
+					
+		<h4 class="TitreSection3" id="LI-B-1-e">I-B-1-e. Comment étendre un trait sur un autre trait ?<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h4><div class="BlocSection3">
+						
 					</div>
 				</div>
 			</div>
@@ -1411,10 +1573,10 @@ Hello
 						<b>Avant votre première publication</b>
 					</p>
 					<p>Premièrement, vous allez avoir besoin d'un compte sur crates.io pour recevoir un « token » (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte Github. Ensuite, rendez-vous dans vos options de compte, et lancez la commande $ cargo login suivi de votre token.</p>
-					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5590">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5590" href="#contenuCoded0e5590" onclick="CacherMontreCode('contenuCoded0e5590', 'IdTitreCode-d0e5590'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e5590');
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e6545">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e6545" href="#contenuCoded0e6545" onclick="CacherMontreCode('contenuCoded0e6545', 'IdTitreCode-d0e6545'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e6545');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5590" onclick="selectionCode('contenuCoded0e5590');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5590">$ cargo login abcdefghijklmnopqrstuvwxyz012345
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e6545" onclick="selectionCode('contenuCoded0e6545');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e6545">$ cargo login abcdefghijklmnopqrstuvwxyz012345
 </code></pre></div></div>
 					<p>Cette commande va informer Cargo que vous détenez un token provenant de l'API du site. (il est enregistré dans le chemin suivant : ~/.cargo/config.)</p>
 					<p>Ce token doit rester secret et ne devrait être partagé avec personne. Si vous le perdez d'une quelconque manière, régénérez-le immédiatement.</p>
@@ -1426,13 +1588,13 @@ Hello
 						<b>Empaqueter le projet</b>
 					</p>
 					<p>La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande cargo package. Votre projet sera donc empaqueter sous la format *.crate et se trouvera dans le répertoire target/package/.</p>
-					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e5618">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e5618" onclick="selectionCode('contenuCoded0e5618');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5618">$ cargo package
+					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e6573">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e6573" onclick="selectionCode('contenuCoded0e6573');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e6573">$ cargo package
 </code></pre></div></div>
 					<p>En plus de cela, la commande package est capable de vérifier l'intégrité de votre projet en dépaquetant votre *.crate et le recompiler. Si la phase de vérification se passe sans problème, rien ne devrait être affiché dans votre terminal. </p>
 					<p>Toutefois, si vous souhaitez désactiver cette vérification avant l'envoi, il vous suffit d'ajouter le flag --no-verify.</p>
 					<p>Cargo va ignorer automatiquement tous les fichiers ignorés par votre système de versionning, mais si vous voulez spécifier un type de fichiers en particulier, vous pouvez utiliser le mot-clé exclude dans votre manifest :</p>
 					<p>[Exemple tiré de la <a class="lienArticle simple" href="http://doc.crates.io/crates-io.html">documentation officielle</a> de l'outil]</p>
-					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e5637">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e5637" onclick="selectionCode('contenuCoded0e5637');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5637">[package]
+					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e6592">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e6592" onclick="selectionCode('contenuCoded0e6592');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e6592">[package]
 # ...
 exclude = [
     "public/assets/*",
@@ -1441,7 +1603,7 @@ exclude = [
 </code></pre></div></div>
 					<p>La syntaxe de chaque élément dans ce tableau est ce que glob accepte. Si vous souhaitez créer une whitelist au lieu d'une blacklist, vous pouvez utiliser le mot-clé include.</p>
 					<p>[Exemple tiré de la <a class="lienArticle simple" href="http://doc.crates.io/crates-io.html">documentation officielle</a> de l'outil]</p>
-					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e5665">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e5665" onclick="selectionCode('contenuCoded0e5665');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5665">[package]
+					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e6620">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e6620" onclick="selectionCode('contenuCoded0e6620');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e6620">[package]
 # ...
 include = [
     "**/*.rs",
@@ -1449,7 +1611,7 @@ include = [
 ]
 </code></pre></div></div>
 					<p>Maintenant que nous avons un fichier *.crate prêt à y aller, il peut être uploadé sur crates.io grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet !</p>
-					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e5687">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e5687" onclick="selectionCode('contenuCoded0e5687');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5687">$ cargo publish
+					<div class="code_et_titre"><div class="titre_des_codes" id="IdTitreCode-d0e6642">&nbsp;<div class="selectionner_code"><span class="selectionner_code LienSelectionne" id="code-d0e6642" onclick="selectionCode('contenuCoded0e6642');">S&eacute;lectionnez</span></div></div><div style="overflow:auto;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e6642">$ cargo publish
 </code></pre></div></div>
 					<p>Si vous venez à oublier de lancer la commande cargo package, cargo publish le fera à votre place et vérifiera l'intégrité de votre projet avant de lancer l'étape de publication.</p>
 					<div class="imgtext-info">
@@ -1464,10 +1626,10 @@ include = [
 					
 					<p>Pour lancer un test avec cargo, il vous faudra utiliser l'attribut <span class="codeinline"><code class="rust_literal3">#[</code><code class="rust_literal3">test</code><code class="rust_literal3">]</code></span> et, évidemment, la commande <span class="codeinline"><code class="rust_function">$</code> cargo test</span>.</p>
 					<p>Voici un exemple simple de tests :</p>
-					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e5737">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e5737" href="#contenuCoded0e5737" onclick="CacherMontreCode('contenuCoded0e5737', 'IdTitreCode-d0e5737'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
-							var showCode = document.getElementById('showCoded0e5737');
+					<div class="code_et_titre"><div class="titre_des_codes radius_titre_des_codes_seul" id="IdTitreCode-d0e6692">&nbsp;<div class="selectionner_code"><span class="dissimuler_code"><a id="showCoded0e6692" href="#contenuCoded0e6692" onclick="CacherMontreCode('contenuCoded0e6692', 'IdTitreCode-d0e6692'); return false;" title="Cacher/Montrer" class="lien_dissimuler_code"><img src="./images/kit-hide.png" alt="Cacher"/></a><script type="text/javascript">
+							var showCode = document.getElementById('showCoded0e6692');
 							showCode.style.visibility = "visible";
-							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e5737" onclick="selectionCode('contenuCoded0e5737');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/>17.<br/>18.<br/>19.<br/>20.<br/>21.<br/>22.<br/>23.<br/>24.<br/>25.<br/>26.<br/>27.<br/>28.<br/>29.<br/>30.<br/>31.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e5737"><code class="rust_literal3">#[</code><code class="rust_literal3">cfg</code><code class="rust_literal3">(</code><code class="rust_literal3">test</code><code class="rust_literal3">)</code><code class="rust_literal3">]</code>
+							</script></span><span class="selectionner_code LienSelectionne" id="code-d0e6692" onclick="selectionCode('contenuCoded0e6692');">S&eacute;lectionnez</span></div></div><div style="display:none;" class="code_avec_lignes"><div class="numeros_lignes">1.<br/>2.<br/>3.<br/>4.<br/>5.<br/>6.<br/>7.<br/>8.<br/>9.<br/>10.<br/>11.<br/>12.<br/>13.<br/>14.<br/>15.<br/>16.<br/>17.<br/>18.<br/>19.<br/>20.<br/>21.<br/>22.<br/>23.<br/>24.<br/>25.<br/>26.<br/>27.<br/>28.<br/>29.<br/>30.<br/>31.<br/></div><pre class="code_uniquement" style="margin: 0"><code class="contenuCode" id="contenuCoded0e6692"><code class="rust_literal3">#[</code><code class="rust_literal3">cfg</code><code class="rust_literal3">(</code><code class="rust_literal3">test</code><code class="rust_literal3">)</code><code class="rust_literal3">]</code>
 <code class="rust_keyword1">mod</code> oo_tests
 {
     <code class="rust_keyword1">struct</code> Alice;
@@ -1519,6 +1681,18 @@ include = [
 					
 					<p>WIP</p>
 				</div>
+			</div>
+			
+		<h2 class="TitreSection1" id="LI-D">I-D. Gestion des erreurs<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+				
+			</div>
+			
+		<h2 class="TitreSection1" id="LI-E">I-E. Meta-données<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+				
+			</div>
+			
+		<h2 class="TitreSection1" id="LI-F">I-F. I/O<a class="HautPage" href="#" title="Haut de page">&#9650;</a></h2><div class="BlocSection1">
+				
 			</div>
 		</div>
 	</section><section class="articleBody"><p>Vous avez aimé ce tutoriel ? Alors partagez-le en cliquant sur les boutons suivants : <?php echo DoBookMarks("Rust FAQ",'http://NomDomaine.developpez.com/tutoriels/XXX/YYY/'); ?></p></section><section class="SectionNoteBasPage articleBody"><hr class="hr-separation clear"/><div class="UneNoteBasDePage"><div class="NumerotationNoteBasPage"><a class="noteBasPage" id="noteBasPage1" href="#signetNoteBasPage1">(1)</a></div><div class="ContenuUneNoteBasPage"><span class="italique"><b>25 septembre 2016</b></span></div></div><hr class="hr-separation clear"/></section><p class="licence"><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.fr"><img alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png"/></a><br/>Le contenu de cet article est rédigé par Songbird_ et est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.fr"> Licence Creative Commons Attribution - Pas d'Utilisation Commerciale 3.0 non transposé</a>.<br/>Les logos Developpez.com, en-tête, pied de page, css, et look &amp; feel de l'article sont Copyright © 2016 Developpez.com.</p></section>
