@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.7 du KitOOoDVP le 09/10/2016 16:36:25-->
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 09/10/2016 16:43:59-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -172,7 +172,7 @@
 					<paragraph>Il dispose d'un aspect de la POO, de prime abord, assez primitif&#160;; Rust permet toutefois de bénéficier du polymorphisme grâce aux «&#160;traits&#160;» qui pourraient être comparées aux interfaces Java/C#.</paragraph>
 					<paragraph>Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures&#160;: comme il serait possible de le faire avec des classes.</paragraph>
 					<rich-imgtext type="info">
-						<paragraph>Il est tout à fait possible de faire hériter plusieurs traits entre-eux, en revance.</paragraph>
+						<paragraph>Il est tout à fait possible de faire hériter plusieurs traits entre-eux, en revanche.</paragraph>
 					</rich-imgtext>
 					<paragraph>Voir aussi&#160;: <link href="#LII-A-9" title="Qu'est-ce qu'un «&#160;trait&#160;»&#160;?">Qu'est-ce qu'un «&#160;trait&#160;»&#160;?</link></paragraph>
 				</section>
@@ -1043,7 +1043,7 @@ while let Some(x) = v.pop() {
 					<section id="II-B-1-a">
 						<title>Le développeur doit-il gérer la mémoire seul&#160;?</title>
 						<paragraph>Cette FAQ dispose de trois Q/R abordant trois concepts distincts (mais se complétant) gravitant autour de la gestion de la mémoire avec le langage Rust.</paragraph>
-						<paragraph>Par souci de concision, les Q/R ci-dessous ne retiennent que l'essentiel que chaque concepts&#160;:</paragraph>
+						<paragraph>Par souci de concision, les Q/R ci-dessous ne retiennent que l'essentiel de chaque concepts&#160;:</paragraph>
 						<liste type="1">
 							<element>
 								<link href="#LII-B-1-b" title="Qu'est-ce que «&#160;l'ownership&#160;»&#160;?">Qu'est-ce que «&#160;l'ownership&#160;»&#160;?</link>
