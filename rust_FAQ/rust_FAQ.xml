@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 09/10/2016 13:28:20-->
+	<!--En-tête d'article-->
+	<entete>
+		<rubrique>89</rubrique>
+		<meta>
+			<description>Cette FAQ est très certainement destinée à être modifée. Si vous parvenez à débusquer une erreur dans les Q/R proposées, vous pouvez la reporter.</description>
+			<keywords/>
+		</meta>
+		<titre>
+			<page>FAQ du langage Rust</page>
+			<article>Rust FAQ</article>
+		</titre>
+		<date>2016-08-23</date>
+		<miseajour>2016-08-23</miseajour>
+		<extratag/>
+		<google-analytics/>
+		<licauteur>Songbird_</licauteur>
+		<lictype>10</lictype>
+		<licannee>2016</licannee>
+		<serveur>identifiant-http</serveur>
+		<chemin>tutoriels/XXX/YYY</chemin>
+		<urlhttp>http://NomDomaine.developpez.com/tutoriels/XXX/YYY/</urlhttp>
+		<pdf>
+			<sautDePageAvantSection>0</sautDePageAvantSection>
+			<notesBasPage>FinDocument</notesBasPage>
+		</pdf>
+		<microsofttraduction/>
+	</entete>
+	<lecteur>
+		<!--Niveau de l'article-->
+		<niveau type="1"/>
+	</lecteur>
+	<!--Descriptions des auteurs-->
+	<authorDescriptions>
+		<authorDescription name="Songbird_" role="auteur">
+			<fullname>Songbird_</fullname>
+			<url>http://www.developpez.net/forums/u897329/songbird_/</url>
+			<blog>http://www.developpez.net/forums/blogs/897329-songbird_/</blog>
+			<google-plus>https://plus.google.com/u/0/107675631188664643635</google-plus>
+		</authorDescription>
+	</authorDescriptions>
+	<!--Résumé très bref de l'article affiché dans le cadre bleu en tête de page-->
+	<synopsis>
+		<paragraph>Cette FAQ est très certainement destinée à être modifée. Si vous parvenez à débusquer une erreur dans les Q/R proposées, reportez-la au responsable de la rubrique ou à un mainteneur de la FAQ, s'il vous plaît.</paragraph>
+		<paragraph><b>Note&#160;</b>: Il se pourrait qu'il y ait quelques confusions dans les Q/R - un deuxième passage sera fait quand une grande majorité des Q/R auront été écrites.</paragraph>
+	</synopsis>
+	<summary>
+		<section id="I">
+			<title>Langage</title>
+			<section id="I-A">
+				<title>Questions générales</title>
+				<section id="I-A-1">
+					<title>Comment déclarer une variable&#160;?</title>
+					<paragraph>La déclaration d'une variable en Rust se fait par le biais du mot-clé <i>let</i>, permettant ainsi de différencier une assignation d'une expression.</paragraph>
+					<paragraph>Vous pouvez bien entendu déclarer et initialiser plusieurs variables en même temps de cette manière&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1" titre="Assignation multiple">fn main() 
+{
+    let (foo, bar, baz) = (117, 42, "Hello world!");
+}</code>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-3" title="Rust possède-t-il un typage dynamique&#160;?">Rust possède-t-il un typage dynamique&#160;?</link></paragraph>
+				</section>
+				<section id="I-A-2">
+					<title>Comment assigner un objet par référence&#160;?</title>
+					<paragraph>Il existe deux façons de faire&#160;:</paragraph>
+					<liste type="1">
+						<element>Préciser par le biais du caractère &amp;. (C-style)</element>
+						<element>En utilisant le mot-clé ref comme ceci&#160;:</element>
+					</liste>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn main() 
+{
+    let foo = 117i32;
+    let ref bar = foo;
+    let baz = &amp;foo; //idem
+}</code>
+				</section>
+				<section id="I-A-3">
+					<title>Rust possède-t-il un typage dynamique&#160;?</title>
+					<paragraph>Non.</paragraph>
+					<paragraph>Bien qu'il en donne l'air grâce à une syntaxe très aérée, Rust dispose d'un typage statique mais «&#160;optionnel&#160;» pour le développeur si il désire faire abstraction des types, mais il perdra, en toute logique, l'avantage de choisir la quantité de mémoire que sa ressource consommera.</paragraph>
+					<paragraph>Vous ne pouvez, par exemple, pas faire ceci&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1">fn main() 
+{
+    let mut foo = 1;
+    foo = " Hello world !";
+}</code>
+					<paragraph>Le type ayant été fixé par la première donnée, il n'est plus possible de changer en cours de route.</paragraph>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-4" title="Comment typer ses données/variables&#160;?">Comment typer ses données/variables</link>&#160;?</paragraph>
+				</section>
+				<section id="I-A-4">
+					<title>Comment typer ses données/variables&#160;?</title>
+					<paragraph>Pour les types primitifs, il existe deux manières de typer une variable&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1" titre="Les différentes manières de typer">fn main() 
+{
+    let foo : i32 = 117;
+}</code>
+					<paragraph>Ou&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Les différentes manières de typer">fn main() 
+{
+    let bar = 117i32;
+}</code>
+				</section>
+				<section id="I-A-5">
+					<title>Quelle est la différence entre &amp;str et String&#160;?</title>
+					<paragraph>Du point de vue des packages, <i>String</i> se trouve dans le package <i>std::string</i> et <i>&amp;str</i> dans le package std.</paragraph>
+					<paragraph>Du point de vue des types, <i>String</i> est un wrapper de <i>&amp;str</i> et ce dernier est tout simplement l'alias représentant le type primitif des chaînes de caractères.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn main() 
+{
+    let foo : &amp;str = "Hello world!"; //ça fonctionne
+    let bar : String = foo; //erreur
+    let baz : String = String::from(foo); //Ok !
+}</code>
+				</section>
+				<section id="I-A-6">
+					<title>Comment créer une chaîne de caractères&#160;?</title>
+					<paragraph>La question pourrait paraître évidente dans d'autres langages, toutefois, après avoir écrit quelque chose de ce style&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1" titre="Créer une chaîne de caractères">fn main() 
+{
+    let foo : String = "Hello world!";
+}</code>
+					<paragraph>Le compilateur vous a renvoyé cette erreur&#160;:</paragraph>
+					<code dissimulable="0" langage="texinfo" titre="Message d'erreur">  |>
+4 |>    let foo : String = "Hello world!";
+  |>                       ^^^^^^^^^^^^^^ expected struct `std::string::String`, found &amp;-ptr</code>
+					<paragraph>Il se trouve que la structure <i>String</i> est un wrapper.</paragraph>
+					<paragraph>Vous vous retrouvez donc à typer votre variable pour accueillir une instance de la structure <i>String</i> alors que vous créez une chaîne de caractères primitive.</paragraph>
+					<paragraph>Pour remédier au problème (si vous souhaitez malgré tout utiliser le wrapper), vous pouvez convertir une chaîne de caractères de type <i><b>&amp;str</b></i> grâce à la fonction <i><b>String::from()</b></i>&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn main()
+{
+    let foo : String = String::from("Hello world!");
+    //ou
+    let foo : &amp;str = "Hello world!";
+}</code>
+				</section>
+				<section id="I-A-7">
+					<title>Quelle version de Rust est recommandée&#160;?</title>
+					<paragraph>Actuellement<noteBasPage><i><b>25 septembre 2016</b></i></noteBasPage>, la version stable la plus récente est la <b>1.11.0</b>.</paragraph>
+					<paragraph>Mais vous pouvez toutefois utiliser une version un peu plus vieille.</paragraph>
+					<paragraph>Pour cette Q/R, la version de Rust sur mon poste était  la <b>1.9.0</b>.</paragraph>
+					<rich-imgtext type="info">
+						<paragraph>Gardez tout de même à l'esprit que si vous n'avez pas encore entrepris des projets qui vous tiennent à cœur avec Rust, il va de soit de se tourner vers la dernière version en date pour bénéficier des derniers ajouts/corrections.</paragraph>
+					</rich-imgtext>
+					<rich-imgtext type="warning">
+						<paragraph>La 1.9.0 comporte un bogue concernant les tests unitaires.</paragraph>
+					</rich-imgtext>
+					<paragraph>Voir aussi&#160;: <link href="https://www.rust-lang.org/en-US/" langue="En" target="_blank" title="Ouvrir un nouvel onglet">Page officielle du langage Rust</link></paragraph>
+				</section>
+				<section id="I-A-8">
+					<title>Rust est-il orienté objet&#160;?</title>
+					<paragraph>Rust hérite des structures du <i>C</i>, elles n'incluent donc pas l'encapsulation des données comme nous pourrions l'imaginer avec une classe.</paragraph>
+					<paragraph>Il dispose d'un aspect de la POO, de prime abord, assez primitif&#160;; Rust permet toutefois de bénéficier du polymorphisme grâce aux «&#160;traits&#160;» qui pourraient être comparées aux interfaces Java/C#.</paragraph>
+					<paragraph>Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures&#160;: comme il serait possible de le faire avec des classes.</paragraph>
+					<rich-imgtext type="info">
+						<paragraph>Il est tout à fait possible de faire hériter plusieurs traits entre-eux, en revance.</paragraph>
+					</rich-imgtext>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-9" title="Qu'est-ce qu'un «&#160;trait&#160;»&#160;?">Qu'est-ce qu'un «&#160;trait&#160;»&#160;?</link></paragraph>
+				</section>
+				<section id="I-A-9">
+					<title>Qu'est-ce qu'un «&#160;trait&#160;»&#160;?</title>
+					<paragraph>Un trait pourrait être comparé aux interfaces que l'on peut retrouver dans la plupart des langages orientés objet. (Java, C#&#8230;)</paragraph>
+					<paragraph>Les traits vous permettent de déclarer des fonctions abstraites/virtuelles pour ensuite les implémenter au sein d'une structure grâce au mot-clé <i>impl</i> comme ceci&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">trait Greeter
+{
+    fn greetings(&amp;self);
+}
+
+struct Person;
+
+impl Greeter for Person
+{
+    fn greetings(&amp;self)
+    {
+        println!("Hello, my friends!");
+    }
+}
+
+fn main()
+{
+    let person = Person;
+    person.greetings();
+}</code>
+				</section>
+				<section id="I-A-10">
+					<title>Rust supporte-t-il la surchage des fonctions&#160;?</title>
+					<paragraph>Rust ne supporte pas la surcharge des fonctions.</paragraph>
+					<paragraph>Le langage repose sur le «&#160;Builder Pattern&#160;» qui consiste à concevoir des «&#160;fabriques/factories&#160;» chargées de générer l'objet désiré.</paragraph>
+					<paragraph>Vous pouvez retrouver quelques explications à propos de ce design pattern <link href="https://doc.rust-lang.org/book/method-syntax.html#builder-pattern" langue="En" target="_blank">ici</link> ou encore <link href="https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception)#Exemple" langue="Fr" target="_blank" title="Ouvrir un nouvel onglet">ici</link>.</paragraph>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-11" title="Comment déclarer des paramètres optionnels&#160;?">Comment déclarer des paramètres optionnels</link>&#160;?</paragraph>
+				</section>
+				<section id="I-A-11">
+					<title>Comment déclarer des paramètres optionnels&#160;?</title>
+					<paragraph>Il n'est pas possible de déclarer des paramètres optionnels avec Rust dans sa version actuelle.</paragraph>
+					<paragraph>Le langage repose sur le «&#160;Builder Pattern&#160;» qui consiste à concevoir des «&#160;fabriques/factories&#160;» chargées de générer l'objet désiré.</paragraph>
+					<paragraph>Vous pouvez retrouver quelques explications à propos de ce design pattern <link href="https://doc.rust-lang.org/book/method-syntax.html#builder-pattern" langue="En" target="_blank">ici</link> ou encore <link href="https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception)" langue="Fr" target="_blank" title="Ouvrir un nouvel onglet">ici</link>.</paragraph>
+				</section>
+				<section id="I-A-12">
+					<title>Comment créer un tableau&#160;?</title>
+					<paragraph>Un tableau dans sa forme la plus primitive se déclare comme ceci&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1" titre="Déclaration d'un tableau d'entiers">let foo : [i32; 10] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</code>
+					<paragraph><b>Note&#160;</b>: la taille du tableau doit être explicite, sous peine de recevoir une erreur de la part du compilateur.</paragraph>
+				</section>
+				<section id="I-A-13">
+					<title>A quoi sert le mot-clé super&#160;?</title>
+					<paragraph>Contrairement à ce que l'on pourrait croire, le mot-clé super ne représente pas une référence vers l'instance courante d'une classe mère, mais représente seulement le «&#160;scope&#160;» supérieur. (dans un module)</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé super">mod mon_module
+{
+    pub fn ma_fonction()
+    {
+        println!("Scope supérieur");
+    }
+    pub mod fils
+    {
+        pub fn fonction_enfant()
+        {
+            super::ma_fonction();
+        }
+    }
+    pub mod fille
+    {
+        pub fn fonction_enfant()
+        {
+            super::ma_fonction();
+        }
+    }
+}
+
+fn main()
+{
+    mon_module::fils::fonction_enfant();
+    mon_module::fille::fonction_enfant();
+}</code>
+				</section>
+				<section id="I-A-14">
+					<title>A quoi sert le mot-clé self&#160;?</title>
+					<paragraph>Le mot-clé self renvoie à une copie (ou la référence(&amp;self)) de l'instance courante.</paragraph>
+					<paragraph>Il est souvent rencontré&#160;: </paragraph>
+					<liste>
+						<element>lorsqu'une fonction virtuelle/abstraite est implémentée au sein d'une structure,</element>
+						<element>lorsque le développeur doit utiliser une fonction dans le module courant, </element>
+						<element>&#8230;</element>
+					</liste>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé self">trait My_Trait
+{
+    fn my_func(&amp;self);
+}
+
+mod My_Mod
+{
+    fn foo()
+    {
+        self::bar();
+    }
+    
+    fn bar()
+    {
+    
+    }
+}</code>
+				</section>
+				<section id="I-A-15">
+					<title>A quoi sert le mot-clé use&#160;?</title>
+					<paragraph>Le mot-clé use permet de raccourcir le «&#160;chemin&#160;» des dépendences du programme, vous évitant ainsi d'expliciter les dépendences de chacune de vos ressources.</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé use">extern crate mon_package&#160;;
+
+use mon_package::mon_module::ma_fonction&#160;;
+
+fn main()
+{
+    ma_fonction()&#160;;
+}</code>
+					<paragraph>Autrement dit, toute structure composée de différentes ressources peut être exploitée par le mot-clé use.</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé use sur une énumération">enum MonEnum
+{
+    Arg1,
+    Arg2,
+}
+
+fn main()
+{
+    use MonEnum::{Arg1};
+    let instance = Arg1; //plus la peine d'expliciter d'où provient l'instance Arg1 comme ceci:
+    // let instance = MonEnum::Arg1;
+}</code>
+				</section>
+				<section id="I-A-16">
+					<title>A quoi sert le mot-clé pub&#160;?</title>
+					<paragraph>Le mot-clé pub peut être utilisé dans <i>trois</i> contextes différents&#160;:</paragraph>
+					<liste type="1">
+						<element>Au sein [et sur] des modules&#160;;</element>
+						<element>Au sein [et sur] des traits&#160;;</element>
+						<element>Au sein [et sur] des structures.</element>
+					</liste>
+					<paragraph>Dans un premier temps, qu'il soit utilisé sur des modules, traits, ou structures, il aura toujours la même fonction&#160;: rendre publique l'objet concerné.</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="1" langage="text" showLines="1" startLine="1" titre="Structure du projet">&#9500;&#9472;&#9472; Cargo.lock
+&#9500;&#9472;&#9472; Cargo.toml
+&#9500;&#9472;&#9472; src
+&#9474;&#160;&#160; &#9500;&#9472;&#9472; lib.rs
+&#9474;&#160;&#160; &#9492;&#9472;&#9472; main.rs
+&#9492;&#9472;&#9472; target
+    &#9492;&#9472;&#9472; debug
+        &#9500;&#9472;&#9472; build
+        &#9500;&#9472;&#9472; deps
+        &#9500;&#9472;&#9472; examples
+        &#9500;&#9472;&#9472; libmon_projet.rlib
+        &#9500;&#9472;&#9472; mon_projet
+        &#9492;&#9472;&#9472; native</code>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Dans le fichier lib.rs">pub mod ma_lib //la module représentant ma bibliothèque
+{
+    pub mod mon_module //un module lambda
+    {
+        pub fn ma_fonction() //ma fonction
+        {
+            println!("Hi there !");
+        }
+    }
+}</code>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Dans le fichier main.rs">extern crate mon_projet;
+use mon_projet::ma_lib::mon_module::ma_fonction;
+fn main() 
+{
+    ma_fonction();
+}</code>
+					<paragraph>Renvoie&#160;:</paragraph>
+					<code dissimulable="1" langage="text" showLines="1" startLine="1" titre="Console">Hi there !</code>
+					<rich-imgtext type="idea">
+						<paragraph>Mais d'où provient «&#160;mon_projet&#160;»&#160;?</paragraph>
+					</rich-imgtext>
+					<paragraph>«&#160;mon_projet&#160;» est le nom porté par votre projet dans le manifest Cargo.toml.</paragraph>
+					<paragraph>Pour cet exemple, voici le manifest rédigé&#160;:</paragraph>
+					<code dissimulable="1" langage="toml" showLines="1" startLine="1" titre="Dans le manifest">[package]
+name = "mon_projet"
+version = "0.1.0"
+authors = ["Songbird0 &lt;chaacygg@gmail.com>"]
+
+[dependencies]</code>
+					<paragraph>
+						<b>Quid lorsque pub est utilisé au sein de ces structures&#160;?</b>
+					</paragraph>
+					<paragraph>Lorsque le mot-clé pub est utilisé au sein d'un trait ou d'une structure sur une fonction, cela rend cette dernière indépendante de l'instance d'un objet. (mais peut toujours être appelée par l'une d'elles)</paragraph>
+					<paragraph>Autrement dit, la fonction est statique.</paragraph>
+					<code langage="rust" showLines="1" startLine="1">struct A;
+
+impl A
+{
+    pub fn foo()
+    {
+        println!("Je suis statique !");
+    }
+    
+    pub fn new() -> A
+    {
+        return A;
+    }
+    
+    fn bar(&amp;self)
+    {
+        println!("Fonction non-statique");
+    }
+}
+
+fn main()
+{
+    let instance : A = A::new();
+    A::foo();
+    instance.bar();
+    //instance::bar() -> erreur
+}</code>
+				</section>
+				<section id="I-A-17">
+					<title>A quoi servent les mot-clés extern crate&#160;?</title>
+					<paragraph>Les mot-clés <i>extern crate</i> permettent d'importer un paquet entier de modules dans le fichier courant.</paragraph>
+					<paragraph>Le principe est simple, il vous suffit seulement de créer en premier lieu un projet en mode «&#160;bibliothèque&#160;» pour réunir tous les modules que vous créerez, de créer un fichier qui accueillera le point d'entrée de votre programme, puis d'importer votre paquet.</paragraph>
+					<paragraph>Bien entendu, si vous souhaitez importer un paquet qui n'est pas de vous, il vous faudra l'inscrire dans votre manifest.</paragraph>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<paragraph>Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R&#160;:  «&#160;<link href="#LI-A-16" title="A quoi sert le mot-clé pub&#160;?">A quoi sert le mot-clé pub&#160;?</link>&#160;»</paragraph>
+					<paragraph>
+						<link href="#LI-C-6" title="Comment installer de nouvelles bibliothèques&#160;?">Comment installer de nouvelles bibliothèques&#160;?</link>
+					</paragraph>
+				</section>
+				<section id="I-A-18">
+					<title>A quoi sert le mot-clé mod&#160;?</title>
+					<paragraph>Le mot-clé <inline langage="rust">mod</inline> vous permet de créer un module.</paragraph>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<paragraph>
+						<link href="#LI-A-19" title="A quoi sert un module&#160;?">A quoi sert un module&#160;?</link>
+					</paragraph>
+				</section>
+				<section id="I-A-19">
+					<title>A quoi sert un module&#160;?</title>
+					<paragraph>Il vous permet de réunir plusieurs objets (structures, traits, fonctions, d'autres modules&#8230;) dans un même fichier puis de les réutiliser à plusieurs endroits dans votre programme.</paragraph>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element>
+							<link href="#LI-A-16" title="A quoi sert le mot-clé pub&#160;?">A quoi sert le mot-clé pub&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-A-17" title="A quoi servent les mot-clés extern crate&#160;?">A quoi servent les mot-clés extern crate&#160;?</link>
+						</element>
+					</liste>
+				</section>
+				<section id="I-A-20">
+					<title>Comment créer un module&#160;?</title>
+					<paragraph>Voici comment créer un module&#160;:</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé mod">mod A
+{
+    fn votre_fonction(){}
+    fn une_autre_fonction(){}
+    mod B
+    {
+        struct C{}
+        trait D{}
+    }
+}</code>
+				</section>
+				<section id="I-A-21">
+					<title>A quoi sert le mot-clé type&#160;?</title>
+					<paragraph>Le mot-clé type permet de créer des alias et ainsi réduire la taille des types personnalisés (ou primitifs).</paragraph>
+					<paragraph>Voici un exemple&#160;:</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé type">struct VeryLongTypeName;
+
+impl VeryLongTypeName
+{
+    pub fn new() -> VeryLongTypeName
+    {
+        println!("In new function");
+        return VeryLongTypeName;
+    }
+}
+
+type ShortName = VeryLongTypeName;
+
+fn main()
+{
+    let foo = ShortName::new();
+}</code>
+					<rich-imgtext type="warning">
+						<paragraph>Les alias ne fonctionnent pas pour les «&#160;traits&#160;», si vous essayez de lier un alias à l'identifiant d'un trait, le compilateur vous renverra une erreur. (très explicite)</paragraph>
+					</rich-imgtext>
+					<paragraph>Liens&#160;:</paragraph>
+					<paragraph>Pour exécuter l'exemple de la Q/R, vous pouvez vous rendre <link href="https://is.gd/hPONv0" target="_blank" title="Rust Playground">ici</link>.</paragraph>
+					<paragraph>Retrouvez des explications <link href="http://stackoverflow.com/questions/29447920/what-is-the-rust-type-keyword" target="_blank" title="Post StackOverflow">ici</link>.</paragraph>
+					<paragraph><link href="http://rustbyexample.com/cast/alias.html" target="_blank" title="Rust by Example">Explications de la documentation officielle</link>.</paragraph>
+				</section>
+				<section id="I-A-22">
+					<title>A quoi sert le mot-clé loop&#160;?</title>
+					<paragraph>Le mot-clé loop est un sucre syntaxique qui permet de remplacer le fameux&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">while(true)
+{
+
+}</code>
+					<paragraph>Préférez donc cette syntaxe&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1">loop
+{
+
+}</code>
+					<paragraph>Liens&#160;:</paragraph>
+					<paragraph><link href="https://doc.rust-lang.org/book/loops.html#loop" target="_blank" title="Ancre vers le mot-clé loop">Documentation officielle</link>.</paragraph>
+				</section>
+				<section id="I-A-23">
+					<title>A quoi sert le mot-clé where&#160;?</title>
+					<paragraph>Le mot-clé where permet de filtrer les objets passés en paramètres dans une fonction génériques, par exemple&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé where">trait Soldier{}
+trait Citizen{}
+struct A;
+struct B;
+impl Soldier for A{}
+fn foo&lt;T>(test: T) -> T where T: Soldier
+{
+    return test;
+}
+fn main()
+{
+    let soldier : A = A;
+    let citizen : B = B;
+    foo(soldier);
+    foo(citizen); //error: the trait bound `B: Soldier` is not satisfied
+}</code>
+				</section>
+				<section id="I-A-24">
+					<title>A quoi sert le mot-clé unsafe&#160;?</title>
+					<paragraph>Le mot-clé <inline langage="rust">unsafe</inline> permet, comme son nom l'indique, de casser certaines règles natives de Rust pour effectuer des opérations «&#160;à risque&#160;».</paragraph>
+					<paragraph><inline langage="rust">unsafe</inline> peut être utilisé dans quatre contextes différents&#160;:</paragraph>
+					<paragraph>La déclaration d'une fonction&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1">unsafe fn dangerous_function() {}</code>
+					<paragraph>La création d'un nouveau scope&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1">fn main() &#8594; ()
+{
+    unsafe {/*dangerous scope*/}
+}</code>
+					<paragraph>La déclaration d'un trait&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1">unsafe trait Dangerous_trait{}</code>
+					<paragraph>L'implémentation d'un trait&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1">unsafe impl A for B&#160;{}</code>
+					<paragraph>En pratique, le mot-clé <inline langage="rust">unsafe</inline> permet une manipulation de la mémoire plus approfondie, plus directe, mais aussi plus compliquée, puisque le langage n'applique pas certaines règes.</paragraph>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<paragraph>
+						<link href="#LI-A-25" title="Quelles sont les règles non-appliquées dans ces contextes&#160;?">Quelles sont les règles non-appliquées dans ces contextes&#160;?</link>
+					</paragraph>
+					<paragraph>
+						<link href="#LI-A-26" title="Quels comportements sont considérés «&#160;non-sûrs&#160;» par Rust&#160;?">Quels comportements sont considérés «&#160;non-sûrs&#160;» par Rust&#160;?</link>
+					</paragraph>
+				</section>
+				<section id="I-A-25">
+					<title>Quelles sont les règles non-appliquées dans ces contextes&#160;?</title>
+					<paragraph>Trois règles, et seulement trois, sont brisées dans les blocs (et fonctions) unsafe&#160;:</paragraph>
+					<paragraph>L'accès et la modification d'une variable globale (statique) muable sont autorisés&#160;;</paragraph>
+					<paragraph>Il est possible de déréférencer un pointeur (non-nul, donc)&#160;;</paragraph>
+					<paragraph>Il est possible de faire à une fonction non-sûre.</paragraph>
+				</section>
+				<section id="I-A-26">
+					<title>Quels comportements sont considérés «&#160;non-sûrs&#160;» par Rust&#160;?</title>
+					<paragraph>Pour en retrouver une liste exhaustive, rendez-vous à la <link href="https://doc.rust-lang.org/book/unsafe.html#what-does-safe-mean" langue="En" target="_blank" title="Ouvrir un nouvel onglet">section dédiée</link>.</paragraph>
+				</section>
+				<section id="I-A-27">
+					<title>A quoi sert le mot-clé fn&#160;?</title>
+					<paragraph>En rust, pour déclarer une fonction, il faut utiliser le mot-clé fn&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1">fn ma_fonction()
+{
+
+}</code>
+				</section>
+				<section id="I-A-28">
+					<title>A quoi sert le mot-clé match&#160;?</title>
+					<paragraph>Le mot-clé <b>match</b> nous permet d'implémenter le <i>pattern</i> <i>matching</i>.</paragraph>
+					<paragraph>Ainsi, il est possible de comparer une entrée à plusieurs tokens constants et agir en conséquence. Le pattern matching est considéré comme un test <i>exhaustif</i>, car, quoi qu'il arrive, il fera en sorte de couvrir tous les cas de figure qu'on lui propose.</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Implémentation du pattern matching">    let foo : i32 = 117;
+    match foo
+    {
+        117 => println!("foo's value equals 117 !"),
+        _ => println!("You know nothing, John."), //s'éfforcera de trouver une réponse
+    }</code>
+					<paragraph>Jusqu'ici, il semblerait que le mot-clé match ne soit pas capable de faire preuve de plus de souplesse qu'un switch, ce qui est bien entendu le contraire&#160;!</paragraph>
+					<paragraph>Vous pouvez assigner le résultat de vos tests directement dans une variable sans avoir à l'écrire dans votre switch/match.</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Assignation automatique">fn main()
+{
+    let foo : i32 = 117;
+    let mut bar : String;
+    match foo
+    {
+        117 => println!("foo's value equals 117 !"),
+        _ => println!("You know nothing, John."),
+    }
+    
+    bar = match foo
+    {
+        117 => "It's ok !".to_string(),
+        _ => "foo isn't equals to 117".to_string(),
+    };
+    
+    println!("{}", &amp;bar);
+}</code>
+					<paragraph>Voir aussi&#160;: </paragraph>
+					<paragraph>Vous pouvez exécuter l'exemple <link href="https://is.gd/otk1eC" target="_blank">ici</link>.</paragraph>
+					<paragraph>Vous pouvez retrouver <link href="https://en.wikipedia.org/wiki/Pattern_matching" langue="En" target="_blank">une source</link> abordant le pattern matching. (avec plusieurs exemples)</paragraph>
+					<paragraph><link href="https://doc.rust-lang.org/book/match.html" langue="En" target="_blank">Partie de la documentation officielle abordant l'implémentation du pattern matching</link>.</paragraph>
+				</section>
+				<section id="I-A-29">
+					<title>A quoi sert le mot-clé ref&#160;?</title>
+					<paragraph>Le mot-clé ref est une alternative au caractère spécial '&amp;' pour expliciter le renvoie d'une référence d'un objet&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé ref">struct A&#160;;
+fn main()
+{
+    let foo&#160;: A = A&#160;;
+    let bar&#160;: &amp;A = &amp;foo&#160;; // ou let ref bar&#160;= foo&#160;;
+}</code>
+				</section>
+				<section id="I-A-30">
+					<title>A quoi sert le mot-clé mut&#160;?</title>
+					<paragraph>Le mot-clé <inline langage="rust">mut</inline> permet de rendre l'une de vos variable muables lors de sa déclaration.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation du mot-clé mut">let mut foo&#160;: i32 = 0&#160;;
+let bar&#160;: i32 = 1&#160;;
+foo = 1&#160;;
+bar = 2&#160;; //erreur</code>
+				</section>
+				<section id="I-A-31">
+					<title>Une erreur survient lorsque que je modifie le contenu de ma variable&#160;! Que faire&#160;?</title>
+					<paragraph>Il se peut que vous ayez omis la particularité de Rust&#160;: tout est immuable par défaut.</paragraph>
+					<paragraph>Pour permettre à une variable de modifier son contenu, il vous faudra utiliser le mot-clé <inline langage="rust">mut</inline>.</paragraph>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-30" title="A quoi sert le mot-clé mut&#160;?">A quoi sert le mot-clé mut&#160;?</link></paragraph>
+				</section>
+				<section id="I-A-32">
+					<title>Qu'est-ce qu'une macro&#160;?</title>
+					<paragraph>Une macro est ce que l'on peut appeler vulgairement&#160;: une fonction très puissante.</paragraph>
+					<paragraph>Grâce aux macros, nous pouvons capturer <i>plusieurs</i> groupes <i>d'expressions</i> et ainsi écrire les instructions désirées selon <i>chaque</i> cas.</paragraph>
+					<paragraph>En Rust, c'est ce qui se rapproche le plus de la <i>surcharge de méthodes</i> en Java.</paragraph>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-33" title="Comment utiliser une macro&#160;?">Comment utiliser une macro&#160;?</link></paragraph>
+				</section>
+				<section id="I-A-33">
+					<title>Comment utiliser une macro&#160;?</title>
+					<paragraph>Pour utiliser une macro, il faut d'abord la déclarer en utilisant le mot-clé <inline langage="rust">macro_rules!</inline>. </paragraph>
+					<rich-imgtext type="warning">
+						<paragraph><b>Attention</b>, il ne doit pas y avoir d'espace(s) entre<inline langage="rust">macro_rules</inline> et le point d'exclamation.</paragraph>
+					</rich-imgtext>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Déclaration d'une macro">macro_rules! foo
+{
+    () => ();
+}</code>
+					<paragraph>Toutes les macros (y compris celle présentée ici) respestent une règle très importante&#160;: elles doivent toutes capturer au moins une expression pour être valide et compilées. (en l'occurrence, la regex <inline langage="rust">() => ()&#160;;</inline>)</paragraph>
+					<paragraph>C'est donc cela, l'une des différences majeures entre une fonction/procédure et une macro&#160;: cette dernière est capable de capturer des expressions rationnelles, conserver en mémoire ce que désire le développeur, puis de les ré-utiliser dans le corps de l'une d'entre-elles.</paragraph>
+					<paragraph>Ces «&#160;super&#160;» fonctions demandent donc quelques notions liées aux expressions rationnelles pour vous permettre d'apprécier pleinement ce puissant mécanisme.</paragraph>
+					<paragraph>Voici un exemple très basique de macro&#160;:</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Exemple d'utilisation d'une macro">/// **Attention**:
+/// 
+///Cette macro n'utilise qu'un seul type de spécificateur, mais il en existe beaucoup d'autres.
+macro_rules! foo
+{
+    ($your_name:expr, $your_last_name:expr, $carriage_return: expr) =>
+    {
+        if $carriage_return == true
+        {
+            println!("My name's {} {}.", $your_name, $your_last_name); 
+        }
+        else { print!("My name's {} {}.", $your_name, $your_last_name); }
+    };
+    
+    ($your_name:expr, $your_last_name:expr) =>
+    {
+        foo!($your_name, $your_last_name, false);
+    };
+    
+    ($your_name:expr) =>
+    {
+        foo!($your_name, "", false);
+    };
+}
+
+fn main() -> ()
+{
+    foo!("Song", "Bird", true);
+    foo!("Song", "Bird"); //pas de retour à la ligne
+    foo!("Song"); //là non plus
+}</code>
+					<paragraph>Vous aurez certainement remarqué que les paramètres passés sont assez spéciaux&#160;; Au lieu d'avoir le nom de leur type après les deux points («&#160;:&#160;»), il est écrit <inline langage="rust">expr</inline>.</paragraph>
+					<paragraph>C'est ce que l'on appelle un «&#160;spécificateur&#160;»&#160;.</paragraph>
+					<paragraph>Liens&#160;:</paragraph>
+					<paragraph>
+						<link href="https://is.gd/nHfcEQ" target="_blank" title="Exemple d'utilisation d'une macro">Visionner le résultat de cet exemple.</link>
+					</paragraph>
+					<paragraph>
+						<link href="#LI-A-34" title="Que sont les spécificateurs&#160;?">Que sont les spécificateurs&#160;?</link>
+					</paragraph>
+				</section>
+				<section id="I-A-34">
+					<title>Que sont les spécificateurs&#160;?</title>
+				</section>
+				<section id="I-A-35">
+					<title>A quoi sert le mot-clé  usize&#160;?</title>
+					<paragraph>Le mot-clé <b>usize</b> permet de laisser le compilateur choisir la taille en mémoire d'un entier <i>non-signé</i>. (selon l'architecture de la machine sur laquelle le programme sera exécuté)</paragraph>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-36" title="A quoi sert le mot-clé isize&#160;? ">A quoi sert le mot-clé isize&#160;?</link></paragraph>
+				</section>
+				<section id="I-A-36">
+					<title>A quoi sert le mot-clé isize&#160;? </title>
+					<paragraph>Le mot-clé <b>isize</b> permet de laisser le compilateur choisir la taille en mémoire d'un entier <i>signé</i>. (selon l'architecture de la machine sur laquelle le programme sera exécuté)</paragraph>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-35" title="A quoi sert le mot-clé usize&#160;?">A quoi sert le mot-clé usize&#160;?</link></paragraph>
+				</section>
+				<section id="I-A-37">
+					<title>Existe-t-il des outils de build pour le langage Rust&#160;?</title>
+					<paragraph>Rust dispose d'un outil de développement multifonction nommé Cargo.</paragraph>
+					<paragraph>Cargo est en premier lieu un gestionnaire de paquets (qui vous permet donc de télécharger des modules Rust développés par d'autres programmeurs) mais vous épaule également dans la gestion, la construction de vos projets, la création de vos manifest, etc.</paragraph>
+					<paragraph>Un groupe de Q/R a été créé sur cette FAQ présentant une liste non-exhaustive de commandes supportées par Cargo suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil(<inline langage="batch">$ man cargo</inline>))&#160;:</paragraph>
+					<liste>
+						<element>
+							<link href="#LI-C-1" title="Comment créer un projet avec Cargo&#160;?">Comment créer un projet avec Cargo&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-2" title="Quel type de projet puis-je créer avec Cargo&#160;?">Quel type de projet puis-je créer avec Cargo&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-3" title="Comment compiler son projet&#160;?">Comment compiler son projet&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-4" title="Peut-on générer de la documentation avec Cargo&#160;?">Peut-on générer de la documentation avec Cargo&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-5" title="Où trouver de nouvelles bibliothèques&#160;?">Où trouver de nouvelles bibliothèques&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-6" title="Comment installer de nouvelles bibliothèques&#160;?">Comment installer de nouvelles bibliothèques&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-7" title="Comment publier sa bibliothèque faite-maison&#160;?">Comment publier sa bibliothèque faite-maison&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-8" title="Comment lancer des tests avec Cargo&#160;?">Comment lancer des tests avec Cargo&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-10" title="Comment créer ses benchmarks avec Cargo&#160;?">Comment créer ses benchmarks avec Cargo&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-C-9" title="Comment mettre à jour mes bibliothèques&#160;?">Comment mettre à jour mes bibliothèques&#160;?</link>
+						</element>
+					</liste>
+				</section>
+				<section id="I-A-38">
+					<title>Comment utiliser mes fonctions en dehors de mon module&#160;?</title>
+					<paragraph>Pour utiliser vos fonctions en dehors de votre module, il vous faudra utiliser le mot-clé pub.</paragraph>
+					<paragraph>Voir aussi&#160;: </paragraph>
+					<paragraph>
+						<link href="#LI-A-16" title="A quoi sert le mot-clé pub&#160;?">A quoi sert le mot-clé pub&#160;?</link>
+					</paragraph>
+					<paragraph>
+						<link href="#LI-A-17" title="A quoi servent les mot-clés extern crate&#160;?">A quoi servent les mot-clés extern crate&#160;?</link>
+					</paragraph>
+				</section>
+				<section id="I-A-39">
+					<title>Comment comparer deux objets avec Rust&#160;?</title>
+					<paragraph>Pour comparer deux objets avec Rust, vous pouvez utiliser la fonction eq()&#160; implémentée grâce au trait <i>PartialEq</i>.</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code langage="rust" showLines="1" startLine="1" titre="Utilisation de la fonction eq()">fn main()
+{
+    let foo = 0;
+    let bar = 0;
+    let baz = foo.eq(&amp;bar); //true
+    let bazz = 'Hello world&#160;!';
+    let bazzz = 'Hello world&#160;!'.to_string();
+    let bazzzz = bazz.eq(&amp;bazzz); //true
+}</code>
+					<paragraph>Voir aussi&#160;: <link href="#LI-A-45" title="Comment comparer deux objets d'une structure personnalisée avec Rust&#160;?">Comment comparer deux objets d'une structure personnalisée avec Rust&#160;?</link></paragraph>
+				</section>
+				<section id="I-A-40">
+					<title>Qu'est-ce que le shadowing&#160;?</title>
+					<paragraph>Le shadowing consiste à faire abstraction des identificateurs qui pourraient être identiques à ceux se trouvant dans un scope («&#160;champ&#160;») plus petit, ou étranger à celui des autres identificateurs dans l'absolu.</paragraph>
+					<paragraph>Exemple&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn main() -> ()
+{
+    let foo : &amp;str = "Hello";
+    {
+        let foo : &amp;str = "world!";
+        println!("{}", &amp;foo);
+    }
+    println!("{}", &amp;foo);
+}</code>
+					<paragraph>La première déclaration de foo a été «&#160;éclipsée&#160;» par celle se trouvant dans le deuxième scope. Lorsque cette dernière a été détruite (ou simplement mise hors d'accès, dans ce cas), la première déclaration de foo a été de nouveau opérationnelle.</paragraph>
+					<paragraph>Résultat&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Message sur la sortie standard">world!
+Hello</code>
+				</section>
+				<section id="I-A-41">
+					<title>Qu'est-ce que la destructuration&#160;?</title>
+					<paragraph>Avec Rust, il est possible d'effectuer une «&#160;destructuration&#160;» sur certains types de données, mais qu'est-ce que cela signifie exactement&#160;?</paragraph>
+					<paragraph>Grâce au pattern matching, il est possible de créer, donc, des «&#160;modèles&#160;» pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.</paragraph>
+					<paragraph>Une destrucuration peut se faire sur&#160;:</paragraph>
+					<paragraph>Les listes, les tuples&#160;;</paragraph>
+					<paragraph>Les énumérations&#160;;</paragraph>
+					<paragraph>Les structures.</paragraph>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element>
+							<link href="#LI-A-42" title="Comment effectuer une destructuration sur une liste&#160;?">Comment effectuer une destructuration sur une liste&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-A-43" title="Comment effectuer une destructuration sur une énumération ?">Comment effectuer une destructuration sur une énumération ?</link>
+						</element>
+						<element>
+							<link href="#LI-A-44" title="Comment effectuer une destructuration sur une structure ?">Comment effectuer une destructuration sur une structure ?</link>
+						</element>
+					</liste>
+				</section>
+				<section id="I-A-42">
+					<title>Comment effectuer une destructuration sur une liste&#160;?</title>
+					<rich-imgtext type="info">
+						<paragraph>Ce n'est pas encore possible. (<b>version</b> 1.11.1)</paragraph>
+						<paragraph>Pour isoler une valeur comme nous allons le faire avec un tuple, ce n'est pas possible sans s'attirer les foudres du compilateur.</paragraph>
+						<paragraph>La fonctionnalité étant, pour le moment, à l'état expérimental, elle n'est pas tolérée par le compilateur pour une utilisation courante.</paragraph>
+						<paragraph>Nous ne parlerons donc ici que de la déstructuration des tuples.</paragraph>
+					</rich-imgtext>
+					<paragraph>Pour isoler une valeur contenu dans un tuple, il faut d'abord écrire son modèle pour savoir où le chercher.</paragraph>
+					<paragraph>Par exemple, en assumant que nous cherchons une suite de chiffres dans un ordre croissant, il est simple de déterminer si cette suite est dans le bon ordre ou non.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Déstructuration tuple">    let foo = ("one", "two", "three");
+    let bar = ("two", "one", "three"); 
+    
+    match bar
+    {
+        ("one", x, "three") =>
+        {
+            if x == "two"
+            {
+                println!("tout est en ordre !");
+            }
+        },
+        _ => println!("on dirait qu'il y a un problème dans votre tuple..."),
+    }</code>
+					<paragraph>Lorsque vous construisez un modèle de ce type, gardez bien en tête que la valeur la plus à gauche représentera toujours la première valeur du tuple, et celle plus à droite représentera toujours la dernière valeur du tuple.</paragraph>
+					<paragraph>Rien ne vous empêche donc de faire ceci&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Isolation de plusieurs valeurs">    let foo = ("one", "two", "three");
+    let bar = ("two", "one", "three"); 
+    
+    match foo
+    {
+        ("one", x, y) =>
+        {
+            if (x, y) == ("two", "three") //on surveille plusieurs valeurs
+            {
+                println!("tout est en ordre !");
+            }
+        },
+        _ => println!("on dirait qu'il y a un problème dans votre tuple..."),
+    }</code>
+				</section>
+				<section id="I-A-43">
+					<title>Comment effectuer une destructuration sur une énumération ?</title>
+					<paragraph>Le pattern matching vous donne la possibilité de «&#160;décortiquer&#160;» une énumération, vous permettant ainsi d'effectuer des tests complets.</paragraph>
+					<paragraph>Voici un exemple&#160;:</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Utilisation du pattern matching sur une énumération">pub enum Enum
+{
+    One,
+    Two,
+    Three,
+    Four,
+}
+
+fn foo(arg: Enum) -> ()
+{
+    match arg
+    {
+        Enum::One => 
+        {
+            println!("One");
+        },
+        Enum::Two =>
+        {
+            println!("Two");
+        },
+        Enum::Three =>
+        {
+            println!("Three");
+        },
+        Enum::Four =>
+        {
+            println!("Four");
+        },
+    }
+}
+
+fn main()
+{
+    let (bar, baz, bazz, bazzz) = (Enum::One, Enum::Two, Enum::Three, Enum::Four);
+    
+    foo(bar);
+    foo(baz);
+    foo(bazz);
+    foo(bazzz);
+}</code>
+				</section>
+				<section id="I-A-44">
+					<title>Comment effectuer une destructuration sur une structure ?</title>
+					<paragraph>Tout d'abord, la question que nous pourrions nous poser est&#160;: en quoi consiste la destructuration sur une structure&#160;?</paragraph>
+					<paragraph>L'idée est d'isoler, encore une fois, les propriétés qui nous intéressent.</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Destructuration">struct A
+{
+    x: String,
+    y: String,
+    z: String,
+}
+
+fn main() -> ()
+{
+    let foo = A {
+                    x: "Hello".to_string(),
+                    y: " ".to_string(),
+                    z: "world!".to_string(),
+                };
+    let A {x: a, y: b, z: c} = foo; //on décortique les attributs de notre structure
+    println!("{}{}{}", a, b, c); //puis on les utilise dans de nouvelles variables
+}</code>
+					<paragraph>Vous souhaiteriez omettre un attribut&#160;? Pas de problèmes&#160;!</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Destructuration">    let foo = A {
+                    x: "Hello".to_string(),
+                    y: " ".to_string(),
+                    z: "world!".to_string(),
+                };
+    let A {x: a, y: b, ..} = foo; //on décortique les attributs de notre structure
+    println!("{}{}", a, b); //puis on les utilise dans de nouvelles variables</code>
+					<paragraph>Vous pouvez également isoler ce style d'opération dans un scope plus petit (empêchant l'utilisation des variables temporaires en dehors de ce dernier) comme ceci&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">    let foo = A {
+                    x: "Hello".to_string(),
+                    y: " ".to_string(),
+                    z: "world!".to_string(),
+                };
+    {
+        let A {x: a, y: b, z: c} = foo; //on décortique les attributs de notre structure
+        println!("{}{}{}", a, b, c); //puis on les utilise dans de nouvelles variables
+    }
+    
+    //a,b et c ne pourront plus être utilisés à partir d'ici</code>
+				</section>
+				<section id="I-A-45">
+					<title>Comment comparer deux objets d'une structure personnalisée avec Rust&#160;?</title>
+					<paragraph>La bibliothèque standard de Rust propose un(e) trait/ interface nommé(e) <i>PartialEq</i> composée de deux fonctions&#160;:</paragraph>
+					<liste type="1">
+						<element>
+							<i>fn eq(&amp;<b>self</b>, other&#160;: &amp;instance_de_la_meme_structure)&#160;;</i>
+						</element>
+						<element>
+							<i>fn ne(&amp;<b>self</b>, other&#160;: &amp;instance_de_la_meme_structure)&#160;;</i>
+						</element>
+					</liste>
+					<rich-imgtext type="warning">
+						<paragraph>Comme il est stipulé dans la documentation officielle, vous n'êtes pas forcé d'implémenter les deux fonctions&#160;: <i>fn</i> <i>ne()</i> étant simplement le contraire de <i>fn eq()</i> et vice versa, il serait redondant de les implémenter dans la même structure.</paragraph>
+					</rich-imgtext>
+					<paragraph>Ci-dessous figure un exemple complet d'implémentation&#160;:</paragraph>
+					<code dissimulable="0" langage="rust" showLines="1" startLine="1" titre="Implémentation du trait PartialEq">struct Spartan&lt;'a>
+{
+
+    sid: i32, 
+    name: &amp;'a str
+
+}
+
+impl&lt;'a> PartialEq for Spartan&lt;'a>
+{
+    fn eq(&amp;self, other: &amp;Spartan) -> bool
+    {
+        self.sid == other.sid
+    }
+}
+
+impl&lt;'a> Spartan&lt;'a>
+{
+    
+    pub fn new(sid: i32, name: &amp;str) -> Spartan
+    {
+        Spartan
+        {
+            sid: sid,
+            name: name,
+        }
+    }
+}
+fn main()
+{
+    let (foo , bar) = (Spartan::new(117, "John"), Spartan::new(062, "Jorge"));
+    
+    if foo == bar 
+    { 
+        println!("foo equals bar"); 
+    } 
+    else 
+    { 
+        println!("foo not equals bar"); 
+    }
+}</code>
+				</section>
+				<section id="I-A-46">
+					<title>Je n'arrive pas à utiliser les macros importées par ma bibliothèque&#160;! Pourquoi&#160;?</title>
+					<paragraph>Il se pourrait que vous ayez omis d'utiliser une annotation&#160;: <inline langage="rust">#[macro_use]</inline></paragraph>
+					<paragraph>Cette dernière permet d'exporter toutes les macros qui doivent être publiques pour être utilisées à l'exterieur de la bibliothèque.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Exportation des macros">#[macro_use]
+extern crate votre_lib;
+
+fn main() -> ()
+{
+ votre_macro!();
+}</code>
+					<paragraph>Si vous ne parvenez toujours pas à les utiliser, il est possible que vous ayez omis l'annotation <inline langage="rust">#[macro_export]</inline> dans les modules comportant vos macros.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Préparation de l'exportation des macros">// dans le fichier lib.rs
+#[macro_use]//bien préciser que ce module utilise des macros
+pub mod votre_conteneur
+{
+    #[macro_export]
+    macro_rules! foo
+    {
+        () => ();
+    }
+    #[macro_export]
+    macro_rules! bar
+    {
+        () => ();
+    }
+    #[macro_export]
+    macro_rules! baz
+    {
+        () => ();
+    }
+}</code>
+					<paragraph>Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez clairement l'erreur que le compilateur vous renvoi dans votre post.</paragraph>
+				</section>
+				<section id="I-A-47">
+					<title>A quoi servent les mot-clés if let&#160;?</title>
+					<paragraph>La combinaison des deux mot-clés permet d'assigner, de manière concise, du contenu à une variable.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Assignation avec if let">fn main() -> ()
+{
+    let foo : Option&lt;String> = Some("Hello world!".to_string());
+    let mut bar : bool = false;
+    
+    if let Some(content) = foo // si la variable foo contient quelque chose...
+    {
+        bar = true;
+    }
+    else
+    {
+        println!("foo's content is None");
+    }
+}</code>
+					<paragraph>C'est un moyen simple et efficace d'assigner du contenu sans passer par le pattern matching.</paragraph>
+				</section>
+				<section id="I-A-48">
+					<title>A quoi servent les mot-clés while let&#160;?</title>
+					<paragraph>La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (while let peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)</paragraph>
+					<paragraph>
+						<font color="#0000ff">[Exemple de la documentation officielle]</font>
+					</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Cas d'utilisation de while let">let mut v = vec![1, 3, 5, 7, 11];
+while let Some(x) = v.pop() {
+    println!("{}", x);
+}</code>
+				</section>
+			</section>
+			<section id="I-B">
+				<title>Mécaniques et philosophies</title>
+				<section id="I-B-1">
+					<title>Gestion de la mémoire</title>
+					<section id="I-B-1-a">
+						<title>Le développeur doit-il gérer la mémoire seul&#160;?</title>
+						<paragraph>Cette FAQ dispose de trois Q/R abordant trois concepts distincts (mais se complétant) gravitant autour de la gestion de la mémoire avec le langage Rust.</paragraph>
+						<paragraph>Par souci de concision, les Q/R ci-dessous ne retiennent que l'essentiel que chaque concepts&#160;:</paragraph>
+						<liste type="1">
+							<element>
+								<link href="#LI-B-1-b" title="Qu'est-ce que «&#160;l'ownership&#160;»&#160;?">Qu'est-ce que «&#160;l'ownership&#160;»&#160;?</link>
+							</element>
+							<element>
+								<link href="#LI-B-1-c" title="Qu'est-ce que le concept de «&#160;borrowing&#160;»&#160;?">Qu'est-ce que le concept de «&#160;borrowing&#160;»&#160;?</link>
+							</element>
+							<element>
+								<link href="#LI-B-1-d" title="Qu'est-ce que le concept de «&#160;lifetime&#160;»&#160;?">Qu'est-ce que le concept de «&#160;lifetime&#160;»&#160;?</link>
+							</element>
+						</liste>
+					</section>
+					<section id="I-B-1-b">
+						<title>Qu'est-ce que «&#160;l'ownership&#160;»&#160;?</title>
+						<rich-imgtext type="info">
+							<paragraph>Cette Q/R abordant un concept propre au langage Rust, certains points pourraient encore vous paraître obscures après votre lecture. Si c'est le cas, vous pouvez vous reporter directement à la section, dédiée à ce sujet, de la <link href="https://doc.rust-lang.org/book/ownership.html" langue="En" target="_blank" title="Ouvrir un nouvel onglet">documentation officielle</link> du langage.</paragraph>
+						</rich-imgtext>
+						<paragraph>Si l'on fait abstraction du contexte dans lequel est employé ce terme (en l'occurrence, la programmation), nous pourrions le traduire de cette façon&#160;: «&#160;propriété&#160;», «&#160;possession&#160;».</paragraph>
+						<paragraph>Nous verrons un peu plus bas que le fonctionnement de ce mécanisme n'est pas si étranger au sens littéral du terme.</paragraph>
+						<paragraph>
+							<b>Introduction</b>
+						</paragraph>
+						<paragraph>Rust est muni d'un système «&#160;d'appartenance&#160;» qui permet d'écarter les conflits les plus communs lorsqu'une ressource est utilisée à plusieurs endroits.</paragraph>
+						<paragraph>Bien que ce dernier soit très pratique, il demande d'avoir une certaine rigueur quant à la déclaration de nos ressources, sans quoi vous risqueriez de vous attirer les foudres du compilateur.</paragraph>
+						<paragraph>Pour cela, voici un exemple d'erreur typique lorsque l'on débute sans réellement connaître les tâches effectuées par le «&#160;ramasse-miette&#160;»&#160;:</paragraph>
+						<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Transfert par copie">fn main()
+{
+    let foo : String = String::from("Hello world!");
+    let bar : String = foo;
+    let baz : String = foo; //erreur la ressource a été «&#160;déplacée&#160;»
+}</code>
+						<paragraph>Renvoyant une erreur de ce style&#160;:</paragraph>
+						<code langage="rust" showLines="1" startLine="1" titre="Message d'erreur">error: use of moved value: `foo`</code>
+						<paragraph>C'est un exemple simple, mais qui (dans nos débuts) peut être une véritable plaie&#160;: on ne comprend pas d'où vient l'erreur - tout est syntaxiquement correct, mais le compilateur n'a pas l'air satisfait.</paragraph>
+						<paragraph>C'est simple&#160;:</paragraph>
+						<paragraph>La variable foo étant un pointeur contenant l'adresse mémoire d'un objet String, il est courant de dire qu'il possède «&#160;l'ownership&#160;», il est le seul à pouvoir utiliser cette ressource.</paragraph>
+						<paragraph>C'est en copiant les informations relatives à l'objet String (en «&#160;déplacant&#160;» ces informations dans une nouvelle variable, donc) que le <i>garbage</i> <i>collector</i> va faire son travail&#160;: détruire le pointeur <i>foo</i> pour attribuer «&#160;l'ownership&#160;» au nouveau pointeur de la ressource&#160;: <i>bar</i>.</paragraph>
+						<paragraph>C'est lorsque la variable <i>baz</i> essaie de copier les informations de <i>foo</i> que l'erreur survient&#160;: <i>foo</i> a déjà été détruit par le <i>garbage</i> <i>collector</i>.</paragraph>
+						<rich-imgtext type="info">
+							<paragraph>Lorsque la ressource est dite «&#160;déplacée&#160;» ce n'est pas l'objet lui-même qu'il l'est, rien n'est recréé lors de cette destruction de pointeurs. On se contente ici de «&#160;binder&#160;» (rattacher) la référence de l'objet à un nouveau pointeur&#160;: il n'y a donc pas d'effets de bord indésirables. (temps de création, consommation CPU)</paragraph>
+						</rich-imgtext>
+						<paragraph>Pour remédier au problème, il aurait simplement suffit de copier <i>bar</i> de cette manière&#160;:</paragraph>
+						<code langage="rust" showLines="1" startLine="1">fn main()
+{
+    let foo : String = String::from("Hello world!");
+    let bar : String = foo;
+    let baz : String = bar;
+}</code>
+						<paragraph>Tout est en règle, le compilateur ne râle plus, et si vous souhaitez afficher votre chaîne de caractères sur la sortie standard, rien ne vous en empêche&#160;!</paragraph>
+						<rich-imgtext type="warning">
+							<paragraph><b>Attention</b> cependant&#160;:</paragraph>
+							<paragraph>Cette règle ne s'applique qu'aux ressources dynamiques&#160;; Etant prompt à être référencé à plusieurs endroits en même temps, <i>Rust s'assure de toujours fournir la référence la plus récente de la ressource</i>.</paragraph>
+						</rich-imgtext>
+						<paragraph>Vous pouvez très bien écrire ceci&#160;:</paragraph>
+						<code langage="rust" showLines="1" startLine="1" titre="contre-exemple">fn main()
+{
+    let foo = 42;
+    let bar = foo;
+    let baz = foo;
+}</code>
+						<paragraph>La ressource (<i>foo</i>) étant statique, le problème de pointeur/référence périmés ne se pose pas.</paragraph>
+						<paragraph>
+							<b>Quid des fonctions&#160;?</b>
+						</paragraph>
+						<paragraph>Les fonctions obéissent aux mêmes règles que les pointeurs&#160;:</paragraph>
+						<paragraph>Lorsqu'une ressource est passée en paramètre par copie, la fonction «&#160;possède&#160;» la ressource, même lorsqu'elle a terminé de s'exécuter.</paragraph>
+						<rich-imgtext type="info">
+							<paragraph>Si la ressource en question a été créée dynamiquement, elle sera systématiquement détruite lorsque la fonction aura terminé de s'exécuter&#160;; Sinon, elle devient simplement inaccessible pour le restant du programme.</paragraph>
+						</rich-imgtext>
+						<paragraph>Exemple&#160;:</paragraph>
+						<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn my_func(my_string: String)
+{
+    let chars = my_string.chars();
+    for letter in chars 
+    {
+        println!("{}", &amp;letter);
+    }
+}
+fn main()
+{
+    let foo : String = String::from("The cake is a lie!");
+    my_func(foo);
+    
+    let chars = foo.chars(); //error
+    
+}</code>
+						<paragraph>Vous remarquerez donc ici que le pointeur <b>foo</b> a été détruit, la copie de la chaîne de caractères appartient désormais à la fonction.</paragraph>
+						<rich-imgtext type="warning">
+							<paragraph>Ne vous attardez pas sur le contenu de la fonction myfunc()&#160;;</paragraph>
+							<paragraph>Ce n'est qu'un exemple parmi tant d'autres, gardez simplement à l'esprit que si la ressource est passée en paramètre par copie, le pointeur vers cette dernière est détruit.</paragraph>
+						</rich-imgtext>
+						<paragraph>Voir aussi&#160;: <link href="#LI-B-1-c" title="Qu'est-ce que le concept de «&#160;borrowing&#160;»&#160;?">Qu'est-ce que le concept de «&#160;borrowing&#160;»&#160;?</link></paragraph>
+					</section>
+					<section id="I-B-1-c">
+						<title>Qu'est-ce que le concept de «&#160;borrowing&#160;»&#160;?</title>
+						<rich-imgtext type="info">
+							<paragraph>Cette Q/R abordant un concept propre au langage Rust, certains points pourraient encore vous paraître obscures après votre lecture. Si c'est le cas, vous pouvez vous reporter directement à la section, dédiée à ce sujet, de la <link href="https://doc.rust-lang.org/book/ownership.html" langue="En" target="_blank" title="Ouvrir un nouvel onglet">documentation officielle</link> du langage.</paragraph>
+						</rich-imgtext>
+						<paragraph>Il est courant de devoir partager une ressource entre plusieurs pointeurs pour effectuer diverses tâches.</paragraph>
+						<paragraph>Toutefois, plus une ressource est sollicitée, plus il y a de chance qu'elle soit <i>désynchronisée/invalidée</i> à un moment ou un autre. (c'est encore plus fréquent lorsque cette dernière est sollicitée par plusieurs fils d'exécution)</paragraph>
+						<paragraph>Rust remédie à ce problème grâce au «&#160;borrow checking&#160;», un système d'emprunts créant en quelque sorte des <i>mutex</i> chargés de limiter l'accès à une ressource et ainsi éviter les risques d'écritures simultanées.</paragraph>
+						<paragraph>Le borrow checker fera respecter ces trois règles (que vous pouvez retrouver dans la documentation officielle)&#160;:</paragraph>
+						<liste type="1">
+							<element>Une (ou plusieurs) variable  peut emprunter la ressource en lecture. (référence immuable)</element>
+							<element>Un, et <b>seulement un</b>, pointeur peut disposer d'un accès en écriture sur la ressource.</element>
+							<element>Vous ne pouvez pas accéder à la ressource en lecture et en écriture en même temps, exemple&#160;:</element>
+						</liste>
+						<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Emprunt interdit">fn main() 
+{
+    let mut foo = 117;
+    let bar = &amp;mut foo;
+    let baz = &amp;foo; //erreur
+
+}</code>
+						<paragraph>Ou&#160;:</paragraph>
+						<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Deux accès en écriture">fn main() 
+{
+    let mut foo = 117;
+    let bar = &amp;mut foo;
+    let baz = &amp;mut foo; //erreur
+}</code>
+					</section>
+					<section id="I-B-1-d">
+						<title>Qu'est-ce que le concept de «&#160;lifetime&#160;»&#160;?</title>
+						<rich-imgtext type="info">
+							<paragraph>Cette Q/R abordant un concept propre au langage Rust, certains points pourraient encore vous paraître obscures après votre lecture. Si c'est le cas, vous pouvez vous reporter directement à la section, dédiée à ce sujet, de la <link href="https://doc.rust-lang.org/book/ownership.html" langue="En" target="_blank" title="Ouvrir un nouvel onglet">documentation officielle</link> du langage.</paragraph>
+						</rich-imgtext>
+						<paragraph>
+							<b>Introduction</b>
+						</paragraph>
+						<paragraph>Comme tous langages (sauf exception que nous pourrions ignorer), Rust dispose d'un système de durée de vie.</paragraph>
+						<paragraph>Toutefois, il fait preuve d'une grande rigourosité quant à la destruction des ressources dynamiques et à «&#160;l'isolement&#160;» des ressources statiques après utilisation.</paragraph>
+						<paragraph>Voici un exemple&#160;:</paragraph>
+						<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Démonstration des scopes">fn main()
+{
+    let mut foo : String = "Hello world!".to_string(); //Le scope A commence ici
+    let bar : String = "Goodbye, friend !".to_string();//Le scope B commence ici
+    foo = bar;// bar détruit, le scope B s'arrête là
+    println!("{}", &amp;bar);
+} // Le Scope A s'arrête ici</code>
+						<paragraph>On remarque à la suite de cet exemple que le concept de «&#160;scope&#160;» (contexte) n'est pas à l'échelle d'une fonction, mais bien des variables, incitant le développeur à déclarer et initialiser sa ressource uniquement lorsqu'il en a besoin.</paragraph>
+						<paragraph>
+							<b>Quid des références&#160;? </b>
+						</paragraph>
+						<paragraph>Le concept de durée de vie dédiée aux références peut parfois dérouter, surtout lorsqu'il faut expliciter certains tags (représentants des durées de vie) au compilateur lorsqu'il nous l'impose et que l'on ne comprend pas bien pourquoi.</paragraph>
+						<paragraph>Les références n'échappent pas à la règle, elles aussi ont des durées vie bien déterminées&#160;; En règle générale, il n'est pas utile (voire interdit) au développeur d'expliciter les tags qui permettent au compilateur de «&#160;suivre&#160;» chaque référence durant son utilisation.</paragraph>
+						<paragraph>Cependant, lorsque l'une d'elles est passée en paramètre à une fonction, il peut parfois être nécessaire de tagger celles qui survivront au moins à l'exécution de la fonction. (ne serait-ce que par souci de clareté)</paragraph>
+						<paragraph>Voici un exemple qui pourrait vous épauler&#160;: (attention à bien lire les commentaires)</paragraph>
+						<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn foo(phrase: &amp;str) -> () //aucune référence ne survi, donc pas la peine de l'annoter
+{
+    println!("{}", &amp;phrase);
+}
+
+fn bar&lt;'a>(phrase: &amp;'a mut String, word: &amp;str) -> &amp;'a String //une référence va survivre il faut maintenant savoir laquelle
+{
+    phrase.push_str(word);
+    return phrase;
+}//La référence qui survivra sera donc «&#160;phrase&#160;», elle dispose donc de la durée de vie 'a.
+
+fn main()
+{
+  let mut baz  : String = "Hello ".to_string();
+  let word : &amp;str   = "world!";
+  let bazz = bar(&amp;mut baz, word); //ce que contient la varialbe bazz est intouchable
+  println!("{}", &amp;bazz); //nous affichons nos caractères sur la sortie standard
+}</code>
+						<paragraph>En revanche, ce n'est pas un cas commun, nous vous invitons donc à vous tourner vers la documentation officielle ou à expérimenter par vous-même.</paragraph>
+						<paragraph>
+							<b>Que faut-il retenir&#160;?</b>
+						</paragraph>
+						<paragraph>Pour faire simple, il faut retenir que&#160;:</paragraph>
+						<liste>
+							<element>Chaque variable créé un nouveau scope lors de sa déclaration&#160;;</element>
+							<element>Toutes variables retrouvées dans le scope d'une autre verra sa durée de vie plus courte que cette dernière&#160;;</element>
+							<element>A propos des références passées en paramètres, seules les références survivant au moins à la fin de l'exécution de la fonction devraient être annotées.</element>
+						</liste>
+						<paragraph>Voir aussi&#160;:</paragraph>
+						<paragraph>
+							<link href="https://doc.rust-lang.org/nomicon/lifetimes.html" target="_blank">Le Rustonomicon</link>
+						</paragraph>
+						<paragraph>
+							<link href="https://doc.rust-lang.org/book/lifetimes.html" target="_blank">La section dédiée du livre</link>
+						</paragraph>
+					</section>
+					<section id="I-B-1-e">
+						<title>Comment étendre un trait sur un autre trait&#160;?</title>
+					</section>
+				</section>
+			</section>
+			<section id="I-C">
+				<title>Outils de build</title>
+				<section id="I-C-1">
+					<title>Comment créer un projet avec Cargo&#160;?</title>
+					<paragraph>Pour créer un nouveau projet avec Cargo, vérifiez d'abord qu'il est <i>installé</i> sur votre machine&#160;:</paragraph>
+					<paragraph>
+						<inline langage="bash">$ cargo -V</inline>
+					</paragraph>
+					<paragraph>Puis&#160;:</paragraph>
+					<paragraph>
+						<inline langage="rust">$ cargo new nom_de_votre_repertoire</inline>
+					</paragraph>
+					<paragraph>Vous devriez voir se générer un dossier avec le nom assigné dans lequel se trouvera un répertoire nommé src et un manifest nommé <i>Cargo.toml</i>.</paragraph>
+				</section>
+				<section id="I-C-2">
+					<title>Quel type de projet puis-je créer avec Cargo&#160;?</title>
+					<paragraph>Lorsque vous lancez la commande de génération (telle qu'elle), votre projet est généré en mode «&#160;bibliothèque&#160;», et n'est donc pas destiné à être directement exécuté.</paragraph>
+					<paragraph>Si vous souhaitez générer un projet en mode «&#160;exécutable&#160;», il suffit de le préciser dans la commande&#160;:</paragraph>
+					<paragraph>
+						<inline langage="rust">$ cargo new folder_name  --bin</inline>
+					</paragraph>
+					<paragraph>Par défaut, le nom du répertoire racine sera également le nom de votre bibliothèque si elle devait être identifiée par d'autres utilisateurs dans le but de la télécharger. Si vous souhaitez lui attribuer un autre nom, vous pouvez également le spécifier dans la commande&#160;:</paragraph>
+					<paragraph>
+						<inline langage="rust">$ cargo new folder_name --name another_name  --bin</inline>
+					</paragraph>
+					<paragraph>Le manifest sera modifié en conséquence.</paragraph>
+				</section>
+				<section id="I-C-3">
+					<title>Comment compiler son projet&#160;?</title>
+					<paragraph>Pour compiler votre projet, vous devez vous trouver à la racine de ce dernier.</paragraph>
+					<paragraph>Une fois que c'est fait, il vous suffit de lancer la commande suivante&#160;:</paragraph>
+					<paragraph>
+						<inline langage="rust">$ cargo build</inline>
+					</paragraph>
+					<rich-imgtext type="info">
+						<paragraph>Par défaut, cargo compile votre projet en mode «&#160;debug&#160;», empêchant le compilateur d'effectuer des optimisations trop agressives.</paragraph>
+						<paragraph>Lorsque vous souhaiterez envoyer votre binaire en production, vous pouvez utiliser l'option «&#160;<inline langage="bash">--release</inline>&#160;» comme ceci&#160;:</paragraph>
+						<paragraph>
+							<inline langage="rust">$ cargo build --release </inline>
+						</paragraph>
+					</rich-imgtext>
+				</section>
+				<section id="I-C-4">
+					<title>Peut-on générer de la documentation avec Cargo&#160;?</title>
+					<paragraph>Bien sûr&#160;!</paragraph>
+					<paragraph>Il suffit de lancer la commande $ cargo doc à la racine de votre projet.</paragraph>
+					<paragraph>La documentation se trouvera dans le dossier <inline langage="bash">./target/doc/&#8230;</inline></paragraph>
+					<paragraph>
+						<b>Où est l'index de mon site&#160;?</b>
+					</paragraph>
+					<paragraph>Il se trouve dans le répertoire portant le nom de votre projet.</paragraph>
+					<rich-imgtext type="info">
+						<paragraph>Notez que si vous avez ajouté des dépendences à votre projet, cargo générera également la documentation de celles-ci. (assurant alors un site uniforme et complet)</paragraph>
+					</rich-imgtext>
+				</section>
+				<section id="I-C-5">
+					<title>Où trouver de nouvelles bibliothèques&#160;?</title>
+					<paragraph>Vous pouvez trouver d'autres bibliothèques sur le <link href="https://crates.io/crates">site officiel</link> de Cargo.</paragraph>
+					<paragraph>Voir aussi&#160;: <link href="#LI-C-6" title="Comment installer de nouvelles bibliothèques&#160;?">Comment installer de nouvelles bibliothèques&#160;?</link></paragraph>
+				</section>
+				<section id="I-C-6">
+					<title>Comment installer de nouvelles bibliothèques&#160;?</title>
+					<paragraph>Il y a deux manières de faire&#160;:</paragraph>
+					<liste type="1">
+						<element>Les télécharger à partir de <link href="https://crates.io/crates" target="_blank">crate.io</link>&#160;;</element>
+						<element>Les télécharger directement à partir de leur dépôt github.</element>
+					</liste>
+					<paragraph>C'est selon vos préférences. (et surtout selon la disponibilité de la ressource)</paragraph>
+					<paragraph>Donc pour la première façon, rien de plus simple&#160;:</paragraph>
+					<liste>
+						<element>Vous cherchez la bibliothèque que vous désirez sur le site&#160;;</element>
+						<element>Vous renseignez son nom dans votre manifest&#160;;</element>
+						<element>Compilez&#160;;</element>
+						<element>C'est prêt&#160;!</element>
+					</liste>
+					<paragraph>Pour la seconde&#160;:</paragraph>
+					<liste>
+						<element>Cherchez le dépôt github de la bibliothèque désirée&#160;;</element>
+						<element>Notez le nom que porte cette bibliothèque dans son manifest&#160;;</element>
+						<element>Puis ajoutez cette ligne dans vos dépendences&#160;: <inline langage="rust">lib_name = {git = "url du dépôt"&#160;}</inline>&#160;;</element>
+						<element>Compilez&#160;;</element>
+						<element>C'est prêt&#160;!</element>
+					</liste>
+				</section>
+				<section id="I-C-7">
+					<title>Comment publier sa bibliothèque faite-maison&#160;?</title>
+					<paragraph>Les procédures étant très bien expliquées sur le site de <link href="http://crates.io/">crates.io</link>, nous vous invitons à vous rendre dans la <link href="http://doc.crates.io/crates-io.html">section dédiée</link>.</paragraph>
+					<paragraph>Si vous souhaitez malgré tout lire les procédures sur la FAQ, en voici une traduction&#160;:</paragraph>
+					<paragraph>Une fois que vous avez une bibliothèque que vous souhaiteriez partager avec le reste du monde, il est temps de la publier sur <link href="http://crates.io/">crates.io</link>&#160;!</paragraph>
+					<paragraph>La publication d'un paquet est effective lorsqu'il est uploadé pour être hébergé par <link href="http://crates.io/">crates.io</link>.</paragraph>
+					<rich-imgtext type="warning">
+						<paragraph>Réfléchissez avant de publier votre paquet, car sa publication est <b>permanente</b>.</paragraph>
+						<paragraph>La version publiée ne pourra <b>jamais</b> être écrasée par une autre, et le code ne pourra être supprimé.</paragraph>
+						<paragraph>En revanche, le nombre de versions publiées n'est pas limité.</paragraph>
+					</rich-imgtext>
+					<paragraph>
+						<b>Avant votre première publication</b>
+					</paragraph>
+					<paragraph>Premièrement, vous allez avoir besoin d'un compte sur crates.io pour recevoir un «&#160;token&#160;» (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte Github. Ensuite, rendez-vous dans vos options de compte, et lancez la commande $ cargo login suivi de votre token.</paragraph>
+					<code dissimulable="1" langage="bash" showLines="1" startLine="1">$ cargo login abcdefghijklmnopqrstuvwxyz012345</code>
+					<paragraph>Cette commande va informer Cargo que vous détenez un token provenant de l'API du site. (il est enregistré dans le chemin suivant&#160;: ~/.cargo/config.)</paragraph>
+					<paragraph>Ce token doit rester secret et ne devrait être partagé avec personne. Si vous le perdez d'une quelconque manière, régénérez-le immédiatement.</paragraph>
+					<paragraph>
+						<b>Avant la publication du paquet</b>
+					</paragraph>
+					<paragraph>Gardez en tête que le nom de chaque paquet est alloué en respectant la règle du «&#160;premier arrivé, premier servi&#160;». Une fois que vous avez choisi un nom, il ne pourra plus être utilisé pour un autre paquet.</paragraph>
+					<paragraph>
+						<b>Empaqueter le projet</b>
+					</paragraph>
+					<paragraph>La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande cargo package. Votre projet sera donc empaqueter sous la format *.crate et se trouvera dans le répertoire target/package/.</paragraph>
+					<code langage="bash" showLines="1" startLine="1">$ cargo package</code>
+					<paragraph>En plus de cela, la commande package est capable de vérifier l'intégrité de votre projet en dépaquetant votre *.crate et le recompiler. Si la phase de vérification se passe sans problème, rien ne devrait être affiché dans votre terminal. </paragraph>
+					<paragraph>Toutefois, si vous souhaitez désactiver cette vérification avant l'envoi, il vous suffit d'ajouter le flag --no-verify.</paragraph>
+					<paragraph>Cargo va ignorer automatiquement tous les fichiers ignorés par votre système de versionning, mais si vous voulez spécifier un type de fichiers en particulier, vous pouvez utiliser le mot-clé exclude dans votre manifest&#160;:</paragraph>
+					<paragraph>[Exemple tiré de la <link href="http://doc.crates.io/crates-io.html">documentation officielle</link> de l'outil]</paragraph>
+					<code langage="text" showLines="1" startLine="1">[package]
+# ...
+exclude = [
+    "public/assets/*",
+    "videos/*",
+]</code>
+					<paragraph>La syntaxe de chaque élément dans ce tableau est ce que glob accepte. Si vous souhaitez créer une whitelist au lieu d'une blacklist, vous pouvez utiliser le mot-clé include.</paragraph>
+					<paragraph>[Exemple tiré de la <link href="http://doc.crates.io/crates-io.html">documentation officielle</link> de l'outil]</paragraph>
+					<code langage="text" showLines="1" startLine="1">[package]
+# ...
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+]</code>
+					<paragraph>Maintenant que nous avons un fichier *.crate prêt à y aller, il peut être uploadé sur crates.io grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet&#160;!</paragraph>
+					<code langage="bash" showLines="1" startLine="1">$ cargo publish</code>
+					<paragraph>Si vous venez à oublier de lancer la commande cargo package, cargo publish le fera à votre place et vérifiera l'intégrité de votre projet avant de lancer l'étape de publication.</paragraph>
+					<rich-imgtext type="info">
+						<paragraph>Il se pourrait que la commande publish vous refuse votre première publication. Pas de panique, ce n'est pas très grave.</paragraph>
+						<paragraph>Votre paquet, pour être différencié des autres, doit compter un certain nombre de métadonnées pour renseigner vos futurs utilisateurs sur les tenants et aboutissants de votre projet, comme la licence par exemple.</paragraph>
+						<paragraph>Pour ceci, vous pouvez vous rendre <link href="http://doc.crates.io/manifest.html#package-metadata">ici</link>, et ainsi visionner un exemple simple des métadonnées à renseigner.</paragraph>
+						<paragraph>Relancez votre procédure cargo publish, vous ne devriez plus avoir de problème.</paragraph>
+					</rich-imgtext>
+				</section>
+				<section id="I-C-8">
+					<title>Comment lancer des tests avec Cargo&#160;?</title>
+					<paragraph>Pour lancer un test avec cargo, il vous faudra utiliser l'attribut <inline langage="rust">#[test]</inline> et, évidemment, la commande <inline langage="rust">$ cargo test</inline>.</paragraph>
+					<paragraph>Voici un exemple simple de tests&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">#[cfg(test)]
+mod oo_tests
+{
+    struct Alice;
+    use loggers_pack::oop::Logger;
+    impl Logger for Alice{/*...*/}
+
+    #[test]
+    fn pack_logger_oop_info()
+    {
+        Alice::info("@Alice", "Hello, I'm Alice ", "Peterson !");
+    }
+
+    #[test]
+    fn pack_logger_oop_wan()
+    {
+        Alice::warn("@Alice", "Hello, I'm Alice ", "Peterson !");
+    }
+
+    #[test]
+    fn pack_logger_oop_error()
+    {
+        Alice::error("@Alice", "Hello, I'm Alice ", "Peterson !");
+    }
+
+    #[test]
+    fn pack_logger_oop_success()
+    {
+        Alice::success("@Alice", "Hello, I'm Alice ", "Peterson !");
+    }
+}</code>
+					<paragraph>Chaque fonction annotée par l'attribut <inline langage="rust">#[test]</inline> sera compilée durant la phase de test.</paragraph>
+					<rich-imgtext type="error">
+						<paragraph>La version 1.9.0 de Rust comporte un bogue au niveau des tests. Dans cette version, toutes les fonctions annotées doivent être encapsulées dans un module. Ce n'est bien entendu plus le cas en 1.10.0.<br/>
+		Si vous rencontrez ce problème, nous vous conseillons de mettre à jour votre SDK.</paragraph>
+					</rich-imgtext>
+				</section>
+				<section id="I-C-9">
+					<title>Comment mettre à jour mes bibliothèques&#160;?</title>
+					<paragraph>Pour mettre à jour vos dépendences, il vous suffit d'utiliser la commande&#160;: <inline langage="rust">$ cargo update</inline>.</paragraph>
+					<paragraph>Vous pouvez également préciser quelle bibliothèque mettre à jour séparément en utilisation l'option <inline langage="rust">$ cargo update --precise nom_dep</inline></paragraph>
+					<rich-imgtext type="warning">
+						<paragraph>Faites tout de même attention avant de mettre à jour vos dépendences. Il se pourrait que les nouvelles versions cassent la compatibilité ascendante.</paragraph>
+					</rich-imgtext>
+				</section>
+				<section id="I-C-10">
+					<title>Comment créer ses benchmarks avec Cargo&#160;?</title>
+					<rich-imgtext type="info">
+						<paragraph>WIP</paragraph>
+					</rich-imgtext>
+				</section>
+			</section>
+			<section id="I-D">
+				<title>Gestion des erreurs</title>
+				<section id="I-D-1">
+					<title>Comment s'effectue la gestion des erreurs avec Rust&#160;?</title>
+					<paragraph>Tout comme les langages impératifs classiques (e.g. C), Rust ne gère pas les erreurs grâce à un système «&#160;d'exceptions&#160;» comme nous pourrions retrouver dans des langages plus orientés objets, mais grâce au contenu renvoyé en sortie de fonction.</paragraph>
+					<paragraph>Plusieurs fonctions (et macros) sont d'ailleurs dédiées à cette gestion (e.g. panic!, unwrap (et ses dérivés), and_then) permettant ainsi de rattraper (d'une manière plus ou moins fine) la situation lorsque les conditions imposées par vos soins ne sont pas respectées.</paragraph>
+					<paragraph>Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à mieux cerner ce système de gestion&#160;:</paragraph>
+					<liste>
+						<element>
+							<link href="#LI-D-4" title="A quoi sert la macro panic&#160;!&#160;?">A quoi sert la macro panic!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-5" title="A quoi sert la fonction unwrap&#160;?">A quoi sert la fonction unwrap&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-6" title="A quoi sert la fonction unwrap_or&#160;?">A quoi sert la fonction unwrap_or&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-7" title="A quoi sert la fonction unwrap_or_else&#160;?">A quoi sert la fonction unwrap_or_else&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-8" title="A quoi sert la fonction map&#160;?">A quoi sert la fonction map&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-9" title="A quoi sert la fonction and_then&#160;?">A quoi sert la fonction and_then&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-10" title="A quoi sert la macro try!&#160;?">A quoi sert la macro try!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-11" title="Comment utiliser la macro assert!&#160;?">Comment utiliser la macro assert!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-12" title="Comment utiliser la macro assert_eq!&#160;?">Comment utiliser la macro assert_eq!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-13" title="Comment utiliser la macro debug_assert!&#160;?">Comment utiliser la macro debug_assert!&#160;?</link>
+						</element>
+					</liste>
+				</section>
+				<section id="I-D-2">
+					<title>Comment créer un type spécifique d'exceptions&#160;?</title>
+					<paragraph>Il n'est pas possible de créer de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java&#160;; Rust ne gère pas les potentielles de cette manière.</paragraph>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<paragraph>Comment s'effectue la gestion des erreurs avec Rust&#160;?</paragraph>
+				</section>
+				<section id="I-D-3">
+					<title>Est-il possible de créer des assertions&#160;?</title>
+					<paragraph>Oui, bien entendu.</paragraph>
+					<paragraph>Il existe trois assertions différentes en Rust (toutes encapsulées par une macro)&#160;:</paragraph>
+					<liste type="1">
+						<element><link href="https://doc.rust-lang.org/std/macro.assert!.html" target="_blank" title="Ouvrir un nouvel onglet">assert</link>!;</element>
+						<element><link href="https://doc.rust-lang.org/std/macro.assert_eq!.html" target="_blank" title="Ouvrir un nouvel onglet">assert_eq</link>!;</element>
+						<element><link href="https://doc.rust-lang.org/std/macro.debug_assert!.html" target="_blank" title="Ouvrir un nouvel onglet">debug_assert</link>!.</element>
+					</liste>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element>
+							<link href="#LI-D-11" title="Comment utiliser la macro assert!&#160;?">Comment utiliser la macro assert!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-12" title="Comment utiliser la macro assert_eq!&#160;?">Comment utiliser la macro assert_eq!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-13" title="Comment utiliser la macro debug_assert!&#160;?">Comment utiliser la macro debug_assert!&#160;?</link>
+						</element>
+					</liste>
+				</section>
+				<section id="I-D-4">
+					<title>A quoi sert la macro panic&#160;!&#160;?</title>
+				</section>
+				<section id="I-D-5">
+					<title>A quoi sert la fonction unwrap&#160;?</title>
+				</section>
+				<section id="I-D-6">
+					<title>A quoi sert la fonction unwrap_or&#160;?</title>
+				</section>
+				<section id="I-D-7">
+					<title>A quoi sert la fonction unwrap_or_else&#160;?</title>
+				</section>
+				<section id="I-D-8">
+					<title>A quoi sert la fonction map&#160;?</title>
+				</section>
+				<section id="I-D-9">
+					<title>A quoi sert la fonction and_then&#160;?</title>
+				</section>
+				<section id="I-D-10">
+					<title>A quoi sert la macro try!&#160;?</title>
+				</section>
+				<section id="I-D-11">
+					<title>Comment utiliser la macro assert!&#160;?</title>
+					<paragraph>La macro assert! capture deux types «&#160;d'expressions&#160;» différents&#160;:</paragraph>
+					<paragraph>Les expressions à proprement parler, qui pourraient être illustrées par les exemples suivants&#160;: </paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1">2 * 2, if &#8230; else &#8230;, foo()&#160;;</code>
+					<paragraph>Les «&#160;tokens tree&#160;» qui pourraient être illustrés par n'importe quoi d'autres figurant dans la syntaxe du langage. (puisque, dans l'absolu, le compilateur représente tout ce qui est rédigé dans les fichiers sources grâce à une nomenclature bien à lui)</paragraph>
+					<paragraph>Donc si nous récupérons le code source raccourci de la documentation, cela donne ceci&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Source de la macro assert!">macro_rules! assert {
+    ( $ cond : expr ) => { ... };
+    (
+$ cond : expr , $ ( $ arg : tt ) + ) => { ... };
+}</code>
+					<paragraph>Si certaines choses vous échappent, n'hésitez pas à vous rendre sur les liens proposés en bas de cette Q/R.</paragraph>
+					<paragraph>
+						<b>A quoi sert le second paramètre&#160;?</b>
+					</paragraph>
+					<paragraph>Le second peut, par exemple, accueillir un message personnalisé pour la macro panic! facilitant ainsi le débogage.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utiliser la macro assert!">fn foo(arg: Option&lt;String>) -> ()
+{
+    let bar : String = String::from("Hello world!");
+    let mut some : Option&lt;String> = None;
+    assert!(!arg.is_none(), "Arg is None");
+    assert!(arg.unwrap().eq(&amp;bar), "arg n'est pas égal à bar");
+}
+
+fn main() -> ()
+{
+    foo(Some("Ok".to_string()));
+    foo(None);
+}</code>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element><link href="https://is.gd/wsqrbp" target="_blank" title="Ouvrir un nouvel onglet">Visionner le résultat de l'exemple</link> (requiert une connexion internet)</element>
+						<element>Comment utiliser une macro&#160;?</element>
+						<element>[macro]Antisèche des sous-types</element>
+					</liste>
+				</section>
+				<section id="I-D-12">
+					<title>Comment utiliser la macro assert_eq!&#160;?</title>
+					<paragraph>«&#160;assert_eq!&#160;» est un dérivé de la macro «&#160;assert!&#160;» et permet de tester directement l'égalité de deux objets<noteBasPage>Le terme «&#160;objet&#160;» est ici utilisé pour désigner toutes les entités pouvant être comparées à d'autres. (cela ne concerne donc pas que les instances des structures)</noteBasPage>.</paragraph>
+					<paragraph>Bien entendu, elle hérite également du message personnalisé pour la macro «&#160;panic!&#160;».</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utiliser la macro assert_eq!">fn foo(arg: Option&lt;String>) -> ()
+{
+    let bar : String = String::from("Hello world!");
+    let mut some : Option&lt;String> = None;
+    assert!(!arg.is_none(), "Arg is None");
+    assert_eq!(arg.unwrap(), bar, "arg n'est pas égal à bar");
+}
+
+fn main() -> ()
+{
+    foo(Some("Ok".to_string()));
+    foo(None);
+}</code>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element>
+							<link href="https://is.gd/en8FRZ" target="_blank" title="Ouvrir un nouvel onglet">Visionner le résultat de l'exemple (requiert une connexion internet)</link>
+						</element>
+						<element>
+							<link href="#LI-A-33" title="Comment utiliser une macro&#160;?">Comment utiliser une macro&#160;?</link>
+						</element>
+						<element>[macro]Antisèche des sous-types</element>
+					</liste>
+				</section>
+				<section id="I-D-13">
+					<title>Comment utiliser la macro debug_assert!&#160;?</title>
+					<paragraph>
+						<b>Où puis-je l'utiliser&#160;?</b>
+					</paragraph>
+					<paragraph>«&#160;debug_assert!&#160;» ainsi que ses dérivés («&#160;debug_assert_eq!&#160;») ne sont compilées que lorsque le code source est compilé en mode débug. (mode par défaut de rustc)</paragraph>
+					<paragraph>Vous ne devez pas compter sur ces assertions pour contrôler le flux de votre programme en production, assurez-vous toujours d'avoir une assertion compilée en mode release.</paragraph>
+					<rich-imgtext type="info">
+						<paragraph>Si vous souhaitez toutefois les utiliser dans une binaire optimisé, vous devez passer l'argument -C debug-assertions au compilateur.</paragraph>
+					</rich-imgtext>
+					<paragraph>
+						<b>Comment l'utiliser&#160;?</b>
+					</paragraph>
+					<paragraph>En dehors du contexte dans lequel ces assertions doivent être déclarées, la manière dont elles sont utilisées ne changent pas.</paragraph>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element>
+							<link href="#LI-D-11" title="Comment utiliser la macro assert!&#160;?">Comment utiliser la macro assert!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-D-12" title="Comment utiliser la macro assert_eq!&#160;?">Comment utiliser la macro assert_eq!&#160;?</link>
+						</element>
+						<element>
+							<link href="#LI-A-33" title="Comment utiliser une macro&#160;?">Comment utiliser une macro&#160;?</link>
+						</element>
+					</liste>
+				</section>
+			</section>
+			<section id="I-E">
+				<title>Meta-données</title>
+				<rich-imgtext type="info">
+					<paragraph>WIP</paragraph>
+				</rich-imgtext>
+			</section>
+			<section id="I-F">
+				<title>I/O</title>
+				<rich-imgtext type="info">
+					<paragraph>WIP</paragraph>
+				</rich-imgtext>
+			</section>
+			<section id="I-G">
+				<title>Antisèches Rust</title>
+				<rich-imgtext type="info">
+					<paragraph>WIP</paragraph>
+				</rich-imgtext>
+			</section>
+		</section>
+	</summary>
+</document>
