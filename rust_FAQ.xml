@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.7 du KitOOoDVP le 09/10/2016 12:16:48-->
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 09/10/2016 13:10:53-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -385,9 +385,11 @@ fn main()
 				</section>
 				<section id="I-A-18">
 					<title>A quoi sert le mot-clé mod&#160;?</title>
-					<paragraph>Le mot-clé mod vous permet de créer un module.</paragraph>
+					<paragraph>Le mot-clé <inline langage="rust">mod</inline> vous permet de créer un module.</paragraph>
 					<paragraph>Voir aussi&#160;:</paragraph>
-					<paragraph>A quoi sert un module et comment en créer un&#160;? (lien)</paragraph>
+					<paragraph>
+						<link href="#LI-A-19" title="A quoi sert un module&#160;?">A quoi sert un module&#160;?</link>
+					</paragraph>
 				</section>
 				<section id="I-A-19">
 					<title>A quoi sert un module&#160;?</title>
