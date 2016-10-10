@@ -32,9 +32,9 @@ Vous souhaiteriez contribuer ? Super, nous vous remercions pour votre intérêt 
 
 Il existe actuellement plusieurs moyens de contribuer à la maintenance (ou à l'enrichissement) de ce repo:
 
-- La façon la plus simple et directe de contribuer est la relecture orthographique du document. Pour ceci, récupérez le [fichier xml](https://github.com/Songbird0/Rust_FAQ/blob/master/rust_FAQ.xml) et ne vous préoccupez que des paragraphres. (les méta-données ne sont pas importantes pour cette tâche.)
+- La façon la plus simple et directe de contribuer est la relecture orthographique du document. Pour ceci, récupérez le [fichier xml](https://github.com/Songbird0/Rust_FAQ/blob/master/rust_FAQ.xml) et ne vous préoccupez que des paragraphes. (les méta-données ne sont pas importantes pour cette tâche.)
 - Il est également possible pour vous de corriger le document xml en utilisant les outils proposés par [developpez.com](developpez.com), vous évitant ainsi de modifier directement le document si sa lecture vous incommode; Si cette méthode vous intéresse, n'hésitez pas à me contacter [ici](https://twitter.com/_Spyglass_) ou [ici](http://www.developpez.net/forums/u897329/songbird_/).
-  - Aucun de ces liens ne vous convient pour me contacter ? Envoyez moi un mail à cet adresse: chaacygg[at]gmail[dot]com.
+  - Aucun de ces liens ne vous convient pour me contacter ? Envoyez moi un mail à cette adresse: chaacygg[at]gmail[dot]com.
 - Enfin, il vous est possible d'enrichir ce document en proposant de nouvelles Questions/Réponses ou tout simplement en créant de nouvelles sections accueillant d'autres types de ressources. Contrairement à la relecture et l'édition mineure, il serait plus sage d'opter pour utiliser le kit d'exportation que propose [developpez.com](developpez.com) pour vous évitez des tâches d'éditions fastidieuses.
   - Cette solution ne vous convient pas ? Aucun problème, une version markdown de la FAQ va bientôt être publiée !
 
