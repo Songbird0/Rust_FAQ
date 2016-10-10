@@ -4,6 +4,51 @@ Cette FAQ est très certainement destinée à être modifée. Si vous parvenez �
 
 **Note **: Il se pourrait qu'il y ait quelques confusions dans les Q/R - un deuxième passage sera fait quand une grande majorité des Q/R auront été écrites.
 
+# Introduction
+
+## Informations générales
+
+### Stade de rédaction
+
+WIP (il n'existe aucune publication "propre" de cette FAQ pour le moment)
+
+### Présentation
+
+Cette FAQ a été conçue pour répondre, certes, aux questions les plus courantes, mais également pour paraphraser certaines explications fournies par la documentation officielle qui auraient pu être mal comprises.
+
+Elle n'a en revanche pas pour but de traduire, mais bien de réexpliquer les passages qui pourraient s'avérer compliqués à comprendre de prime abord. Vous pourrez donc y trouver des explications complètes, mais aussi des liens vers la documentation officielle si, à l'inverse, vous venez de découvrir Rust et ne vous êtes pas encore rendu(e) vers cette dernière.
+
+### Affiliation
+
+Les ressources proposées par ce dépôt ne sont pas officielles ou affiliées à l'équipe en charge du projet Rust et/ou la fondation Mozilla. Ce document peut toujours contenir des erreurs et/ou confusions pouvant être invalidés; Bien que cette FAQ soit rédigée avec le plus grand soin, référez-vous toujours à la documentation officielle si vous avez un doute quant à la véracité des propos entretenus par cette ressource.
+
+### Contribution
+
+Vous souhaiteriez contribuer ? Super, nous vous remercions pour votre intérêt à l'égard de cette ressource. :)
+
+Il existe actuellement plusieurs moyens de contribuer à la maintenance (ou à l'enrichissement) de ce repo:
+
+
+* La façon la plus simple et directe de contribuer est la relecture orthographique du document. Pour ceci, récupérez le [fichier xml](https://github.com/Songbird0/Rust_FAQ/blob/master/rust_FAQ.xml) et ne vous préoccupez que des paragraphres. (les méta-données ne sont pas importantes pour cette tâche.)
+*  Il est également possible pour vous de corriger le document xml en utilisant les outils proposés par [developpez.com](https://github.com/Songbird0/Rust_FAQ/blob/master/developpez.com), vous évitant ainsi de modifier directement le document si sa lecture vous incommode; Si cette méthode vous intéresse, n'hésitez pas à me contacter [ici](https://twitter.com/_Spyglass_) ou [ici](http://www.developpez.net/forums/u897329/songbird_/).
+
+  
+  * Aucun de ces liens ne vous convient pour me contacter ? Envoyez moi un mail à cet adresse: chaacygg[at]gmail[dot]com.
+*  Enfin, il vous est possible d'enrichir ce document en proposant de nouvelles Questions/Réponses ou tout simplement en créant de nouvelles sections accueillant d'autres types de ressources. Contrairement à la relecture et l'édition mineure, il serait plus sage d'opter pour utiliser le kit d'exportation que propose [developpez.com](https://github.com/Songbird0/Rust_FAQ/blob/master/developpez.com) pour vous évitez des tâches d'éditions fastidieuses.
+
+  
+  * Cette solution ne vous convient pas ? Aucun problème, une version markdown de la FAQ va bientôt être publiée !
+
+### Licence et condition d'utilisation
+
+Des questions concernant l'utilisation de cette ressource ? Je vous invite à consulter le fichier LICENCE.md pour plus d'informations.
+
+Les informations contenues dans le fichier ne vous suffisent pas ? Contactez-moi:
+
+
+*  [Twitter](https://twitter.com/_Spyglass_) 
+*  [Profil developpez](http://www.developpez.net/forums/u897329/songbird_/) 
+
 # Langage
 
 ## Questions générales
@@ -23,7 +68,20 @@ fn main()
 }
 ```
 
-Voir aussi : [Rust possède-t-il un typage dynamique ?](#LI-A-3 "Rust possède-t-il un typage dynamique ?")
+Ou effectuer une déclaration multiligne :
+
+
+
+```rust
+fn main()
+{
+    let foo = 117;
+    let bar = 42;
+    let baz = "Hello world!";
+}
+```
+
+Voir aussi : [Rust possède-t-il un typage dynamique ?](#LII-A-3 "Rust possède-t-il un typage dynamique ?")
 
 ### Comment assigner un objet par référence ?
 
@@ -64,7 +122,7 @@ fn main()
 
 Le type ayant été fixé par la première donnée, il n'est plus possible de changer en cours de route.
 
-Voir aussi : [Comment typer ses données/variables](#LI-A-4 "Comment typer ses données/variables ?") ?
+Voir aussi : [Comment typer ses données/variables](#LII-A-4 "Comment typer ses données/variables ?") ?
 
 ### Comment typer ses données/variables ?
 
@@ -165,7 +223,7 @@ Il dispose d'un aspect de la POO, de prime abord, assez primitif ; Rust permet 
 
 Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures : comme il serait possible de le faire avec des classes.
 
-Voir aussi : [Qu'est-ce qu'un « trait » ?](#LI-A-9 "Qu'est-ce qu'un « trait » ?")
+Voir aussi : [Qu'est-ce qu'un « trait » ?](#LII-A-9 "Qu'est-ce qu'un « trait » ?")
 
 ### Qu'est-ce qu'un « trait » ?
 
@@ -206,15 +264,19 @@ Le langage repose sur le « Builder Pattern » qui consiste à concevoir des �
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception)#Exemple "Ouvrir un nouvel onglet").
 
-Voir aussi : [Comment déclarer des paramètres optionnels](#LI-A-11 "Comment déclarer des paramètres optionnels ?") ?
+Voir aussi : [Comment déclarer des paramètres optionnels](#LII-A-11 "Comment déclarer des paramètres optionnels ?") ?
 
 ### Comment déclarer des paramètres optionnels ?
 
 Il n'est pas possible de déclarer des paramètres optionnels avec Rust dans sa version actuelle.
 
+Toutefois, il est toujours possible d'user de macros pour capturer différentes expressions et ainsi adapter votre code en fonction de la situation.
+
 Le langage repose sur le « Builder Pattern » qui consiste à concevoir des « fabriques/factories » chargées de générer l'objet désiré.
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception) "Ouvrir un nouvel onglet").
+
+Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?")
 
 ### Comment créer un tableau ?
 
@@ -354,11 +416,9 @@ Dans un premier temps, qu'il soit utilisé sur des modules, traits, ou structure
 
 Exemple :
 
-.
 
 
-
-```inform
+```text
 ├── Cargo.lock
 ├── Cargo.toml
 ├── src
@@ -369,25 +429,21 @@ Exemple :
         ├── build
         ├── deps
         ├── examples
-        ├── foo
-        ├── libfoo.rlib
+        ├── libmon_projet.rlib
+        ├── mon_projet
         └── native
 ```
 
 
 
 ```rust
-pub mod foo //le module est publique, donc on peut accéder à ses fonctions, mais pas celles de bar, car le module est privé
+pub mod ma_lib //la module représentant ma bibliothèque
 {
-    pub fn foo_foo()
+    pub mod mon_module //un module lambda
     {
-        println!("in foo_foo function");
-    }
-    mod bar
-    {
-        fn bar_bar()
+        pub fn ma_fonction() //ma fonction
         {
-            println!("in bar_bar function");
+            println!("Hi there !");
         }
     }
 }
@@ -396,11 +452,11 @@ pub mod foo //le module est publique, donc on peut accéder à ses fonctions, ma
 
 
 ```rust
-extern crate foo;
-
-fn main()
+extern crate mon_projet;
+use mon_projet::ma_lib::mon_module::ma_fonction;
+fn main() 
 {
-    foo::foo::foo_foo(); //scope_principal::module_racine::fonction()
+    ma_fonction();
 }
 ```
 
@@ -408,8 +464,23 @@ Renvoie :
 
 
 
-```inform
-in foo_foo function
+```text
+Hi there !
+```
+
+« mon_projet » est le nom porté par votre projet dans le manifest Cargo.toml.
+
+Pour cet exemple, voici le manifest rédigé :
+
+
+
+```toml
+[package]
+name = "mon_projet"
+version = "0.1.0"
+authors = ["Songbird0 <chaacygg@gmail.com>"]
+
+[dependencies]
 ```
 
 **Quid lorsque pub est utilisé au sein de ces structures ?**
@@ -456,19 +527,33 @@ Les mot-clés *extern crate* permettent d'importer un paquet entier de modules d
 
 Le principe est simple, il vous suffit seulement de créer en premier lieu un projet en mode « bibliothèque » pour réunir tous les modules que vous créerez, de créer un fichier qui accueillera le point d'entrée de votre programme, puis d'importer votre paquet.
 
-Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « A quoi sert le mot-clé pub ? » (lien)
-
-### A quoi sert le mot-clé mod ?
-
-Le mot-clé mod vous permet de créer un module.
+Bien entendu, si vous souhaitez importer un paquet qui n'est pas de vous, il vous faudra l'inscrire dans votre manifest.
 
 Voir aussi :
 
-A quoi sert un module et comment en créer un ? (lien)
+Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") »
 
-### A quoi sert un module et comment en créer un ?
+[Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?")
+
+### A quoi sert le mot-clé mod ?
+
+Le mot-clé `mod` vous permet de créer un module.
+
+Voir aussi :
+
+[A quoi sert un module ?](#LII-A-19 "A quoi sert un module ?")
+
+### A quoi sert un module ?
 
 Il vous permet de réunir plusieurs objets (structures, traits, fonctions, d'autres modules…) dans un même fichier puis de les réutiliser à plusieurs endroits dans votre programme.
+
+Voir aussi :
+
+
+*  [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") 
+*  [A quoi servent les mot-clés extern crate ?](#LII-A-17 "A quoi servent les mot-clés extern crate ?") 
+
+### Comment créer un module ?
 
 Voici comment créer un module :
 
@@ -486,12 +571,6 @@ mod A
     }
 }
 ```
-
-Voir aussi :
-
-
-* A quoi sert le mot-clé pub ?
-* A quoi servent les mot-clés extern crate ?
 
 ### A quoi sert le mot-clé type ?
 
@@ -627,9 +706,9 @@ En pratique, le mot-clé `unsafe` permet une manipulation de la mémoire plus ap
 
 Voir aussi :
 
-Quelles sont les règles non-appliquées dans ces contextes ?
+[Quelles sont les règles non-appliquées dans ces contextes ?](#LII-A-25 "Quelles sont les règles non-appliquées dans ces contextes ?")
 
-Quels comportements sont considérés « non-sûrs » par Rust ?
+[Quels comportements sont considérés « non-sûrs » par Rust ?](#LII-A-26 "Quels comportements sont considérés « non-sûrs » par Rust ?")
 
 ### Quelles sont les règles non-appliquées dans ces contextes ?
 
@@ -748,7 +827,7 @@ Il se peut que vous ayez omis la particularité de Rust : tout est immuable par
 
 Pour permettre à une variable de modifier son contenu, il vous faudra utiliser le mot-clé `mut`.
 
-Voir aussi : [A quoi sert le mot-clé mut ?](#LI-A-29 "A quoi sert le mot-clé mut ?")
+Voir aussi : [A quoi sert le mot-clé mut ?](#LII-A-30 "A quoi sert le mot-clé mut ?")
 
 ### Qu'est-ce qu'une macro ?
 
@@ -758,7 +837,7 @@ Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et 
 
 En Rust, c'est ce qui se rapproche le plus de la *surcharge de méthodes* en Java.
 
-Voir aussi : [Comment utiliser une macro ?](#LI-A-32 "Comment utiliser une macro ?")
+Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?")
 
 ### Comment utiliser une macro ?
 
@@ -825,7 +904,7 @@ Liens :
 
 [Visionner le résultat de cet exemple.](https://is.gd/nHfcEQ "Exemple d'utilisation d'une macro")
 
-Que sont les spécificateurs ?
+[Que sont les spécificateurs ?](#LII-A-34 "Que sont les spécificateurs ?")
 
 ### Que sont les spécificateurs ?
 
@@ -833,13 +912,13 @@ Que sont les spécificateurs ?
 
 Le mot-clé **usize** permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé*. (selon l'architecture de la machine sur laquelle le programme sera exécuté)
 
-Voir aussi : A quoi sert le mot-clé isize ?
+Voir aussi : [A quoi sert le mot-clé isize ?](#LII-A-36 "A quoi sert le mot-clé isize ? ")
 
 ### A quoi sert le mot-clé isize ? 
 
 Le mot-clé **isize** permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé*. (selon l'architecture de la machine sur laquelle le programme sera exécuté)
 
-Voir aussi : A quoi sert le mot-clé usize ?
+Voir aussi : [A quoi sert le mot-clé usize ?](#LII-A-35 "A quoi sert le mot-clé usize ?")
 
 ### Existe-t-il des outils de build pour le langage Rust ?
 
@@ -850,16 +929,16 @@ Cargo est en premier lieu un gestionnaire de paquets (qui vous permet donc de t�
 Un groupe de Q/R a été créé sur cette FAQ présentant une liste non-exhaustive de commandes supportées par Cargo suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil(`$ man cargo`)) :
 
 
-*  [Comment créer un projet avec Cargo ?](#LI-C-1 "Comment créer un projet avec Cargo ?") 
-*  [Quel type de projet puis-je créer avec Cargo ?](#LI-C-2 "Quel type de projet puis-je créer avec Cargo ?") 
-*  [Comment compiler son projet ?](#LI-C-3 "Comment compiler son projet ?") 
-*  [Peut-on générer de la documentation avec Cargo ?](#LI-C-4 "Peut-on générer de la documentation avec Cargo ?") 
-*  [Où trouver de nouvelles bibliothèques ?](#LI-C-5 "Où trouver de nouvelles bibliothèques ?") 
-*  [Comment installer de nouvelles bibliothèques ?](#LI-C-6 "Comment installer de nouvelles bibliothèques ?") 
-*  [Comment publier sa bibliothèque faite-maison ?](#LI-C-7 "Comment publier sa bibliothèque faite-maison ?") 
-*  [Comment lancer des tests avec Cargo ?](#LI-C-8 "Comment lancer des tests avec Cargo ?") 
-*  [Comment créer ses benchmarks avec Cargo ?](#LI-C-10 "Comment créer ses benchmarks avec Cargo ?") 
-*  [Comment mettre à jour mes bibliothèques ?](#LI-C-9 "Comment mettre à jour mes bibliothèques ?") 
+*  [Comment créer un projet avec Cargo ?](#LII-C-1 "Comment créer un projet avec Cargo ?") 
+*  [Quel type de projet puis-je créer avec Cargo ?](#LII-C-2 "Quel type de projet puis-je créer avec Cargo ?") 
+*  [Comment compiler son projet ?](#LII-C-3 "Comment compiler son projet ?") 
+*  [Peut-on générer de la documentation avec Cargo ?](#LII-C-4 "Peut-on générer de la documentation avec Cargo ?") 
+*  [Où trouver de nouvelles bibliothèques ?](#LII-C-5 "Où trouver de nouvelles bibliothèques ?") 
+*  [Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?") 
+*  [Comment publier sa bibliothèque faite-maison ?](#LII-C-7 "Comment publier sa bibliothèque faite-maison ?") 
+*  [Comment lancer des tests avec Cargo ?](#LII-C-8 "Comment lancer des tests avec Cargo ?") 
+*  [Comment créer ses benchmarks avec Cargo ?](#LII-C-10 "Comment créer ses benchmarks avec Cargo ?") 
+*  [Comment mettre à jour mes bibliothèques ?](#LII-C-9 "Comment mettre à jour mes bibliothèques ?") 
 
 ### Comment utiliser mes fonctions en dehors de mon module ?
 
@@ -867,9 +946,9 @@ Pour utiliser vos fonctions en dehors de votre module, il vous faudra utiliser l
 
 Voir aussi :
 
-[A quoi sert le mot-clé pub ?](#LI-A-16 "A quoi sert le mot-clé pub ?")
+[A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?")
 
-[A quoi servent les mot-clés extern crate ?](#LI-A-17 "A quoi servent les mot-clés extern crate ?")
+[A quoi servent les mot-clés extern crate ?](#LII-A-17 "A quoi servent les mot-clés extern crate ?")
 
 ### Comment comparer deux objets avec Rust ?
 
@@ -891,7 +970,7 @@ fn main()
 }
 ```
 
-Voir aussi : Comment comparer deux objets d'une structure personnalisée avec Rust ?
+Voir aussi : [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#LII-A-45 "Comment comparer deux objets d'une structure personnalisée avec Rust ?")
 
 ### Qu'est-ce que le shadowing ?
 
@@ -925,6 +1004,184 @@ Hello
 ```
 
 ### Qu'est-ce que la destructuration ?
+
+Avec Rust, il est possible d'effectuer une « destructuration » sur certains types de données, mais qu'est-ce que cela signifie exactement ?
+
+Grâce au pattern matching, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.
+
+Une destrucuration peut se faire sur :
+
+Les listes, les tuples ;
+
+Les énumérations ;
+
+Les structures.
+
+Voir aussi :
+
+
+*  [Comment effectuer une destructuration sur une liste ?](#LII-A-42 "Comment effectuer une destructuration sur une liste ?") 
+*  [Comment effectuer une destructuration sur une énumération ?](#LII-A-43 "Comment effectuer une destructuration sur une énumération ?") 
+*  [Comment effectuer une destructuration sur une structure ?](#LII-A-44 "Comment effectuer une destructuration sur une structure ?") 
+
+### Comment effectuer une destructuration sur une liste ?
+
+Pour isoler une valeur contenu dans un tuple, il faut d'abord écrire son modèle pour savoir où le chercher.
+
+Par exemple, en assumant que nous cherchons une suite de chiffres dans un ordre croissant, il est simple de déterminer si cette suite est dans le bon ordre ou non.
+
+
+
+```rust
+    let foo = ("one", "two", "three");
+    let bar = ("two", "one", "three"); 
+    
+    match bar
+    {
+        ("one", x, "three") =>
+        {
+            if x == "two"
+            {
+                println!("tout est en ordre !");
+            }
+        },
+        _ => println!("on dirait qu'il y a un problème dans votre tuple..."),
+    }
+```
+
+Lorsque vous construisez un modèle de ce type, gardez bien en tête que la valeur la plus à gauche représentera toujours la première valeur du tuple, et celle plus à droite représentera toujours la dernière valeur du tuple.
+
+Rien ne vous empêche donc de faire ceci :
+
+
+
+```rust
+    let foo = ("one", "two", "three");
+    let bar = ("two", "one", "three"); 
+    
+    match foo
+    {
+        ("one", x, y) =>
+        {
+            if (x, y) == ("two", "three") //on surveille plusieurs valeurs
+            {
+                println!("tout est en ordre !");
+            }
+        },
+        _ => println!("on dirait qu'il y a un problème dans votre tuple..."),
+    }
+```
+
+### Comment effectuer une destructuration sur une énumération ?
+
+Le pattern matching vous donne la possibilité de « décortiquer » une énumération, vous permettant ainsi d'effectuer des tests complets.
+
+Voici un exemple :
+
+
+
+```rust
+pub enum Enum
+{
+    One,
+    Two,
+    Three,
+    Four,
+}
+
+fn foo(arg: Enum) -> ()
+{
+    match arg
+    {
+        Enum::One => 
+        {
+            println!("One");
+        },
+        Enum::Two =>
+        {
+            println!("Two");
+        },
+        Enum::Three =>
+        {
+            println!("Three");
+        },
+        Enum::Four =>
+        {
+            println!("Four");
+        },
+    }
+}
+
+fn main()
+{
+    let (bar, baz, bazz, bazzz) = (Enum::One, Enum::Two, Enum::Three, Enum::Four);
+    
+    foo(bar);
+    foo(baz);
+    foo(bazz);
+    foo(bazzz);
+}
+```
+
+### Comment effectuer une destructuration sur une structure ?
+
+Tout d'abord, la question que nous pourrions nous poser est : en quoi consiste la destructuration sur une structure ?
+
+L'idée est d'isoler, encore une fois, les propriétés qui nous intéressent.
+
+
+
+```rust
+struct A
+{
+    x: String,
+    y: String,
+    z: String,
+}
+
+fn main() -> ()
+{
+    let foo = A {
+                    x: "Hello".to_string(),
+                    y: " ".to_string(),
+                    z: "world!".to_string(),
+                };
+    let A {x: a, y: b, z: c} = foo; //on décortique les attributs de notre structure
+    println!("{}{}{}", a, b, c); //puis on les utilise dans de nouvelles variables
+}
+```
+
+Vous souhaiteriez omettre un attribut ? Pas de problèmes !
+
+
+
+```rust
+    let foo = A {
+                    x: "Hello".to_string(),
+                    y: " ".to_string(),
+                    z: "world!".to_string(),
+                };
+    let A {x: a, y: b, ..} = foo; //on décortique les attributs de notre structure
+    println!("{}{}", a, b); //puis on les utilise dans de nouvelles variables
+```
+
+Vous pouvez également isoler ce style d'opération dans un scope plus petit (empêchant l'utilisation des variables temporaires en dehors de ce dernier) comme ceci :
+
+
+
+```rust
+    let foo = A {
+                    x: "Hello".to_string(),
+                    y: " ".to_string(),
+                    z: "world!".to_string(),
+                };
+    {
+        let A {x: a, y: b, z: c} = foo; //on décortique les attributs de notre structure
+        println!("{}{}{}", a, b, c); //puis on les utilise dans de nouvelles variables
+    }
+    
+    //a,b et c ne pourront plus être utilisés à partir d'ici
+```
 
 ### Comment comparer deux objets d'une structure personnalisée avec Rust ?
 
@@ -984,6 +1241,91 @@ fn main()
 
 ### Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?
 
+Il se pourrait que vous ayez omis d'utiliser une annotation : `#[macro_use]`
+
+Cette dernière permet d'exporter toutes les macros qui doivent être publiques pour être utilisées à l'exterieur de la bibliothèque.
+
+
+
+```rust
+#[macro_use]
+extern crate votre_lib;
+
+fn main() -> ()
+{
+ votre_macro!();
+}
+```
+
+Si vous ne parvenez toujours pas à les utiliser, il est possible que vous ayez omis l'annotation `#[macro_export]` dans les modules comportant vos macros.
+
+
+
+```rust
+// dans le fichier lib.rs
+#[macro_use]//bien préciser que ce module utilise des macros
+pub mod votre_conteneur
+{
+    #[macro_export]
+    macro_rules! foo
+    {
+        () => ();
+    }
+    #[macro_export]
+    macro_rules! bar
+    {
+        () => ();
+    }
+    #[macro_export]
+    macro_rules! baz
+    {
+        () => ();
+    }
+}
+```
+
+Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez clairement l'erreur que le compilateur vous renvoi dans votre post.
+
+### A quoi servent les mot-clés if let ?
+
+La combinaison des deux mot-clés permet d'assigner, de manière concise, du contenu à une variable.
+
+
+
+```rust
+fn main() -> ()
+{
+    let foo : Option<String> = Some("Hello world!".to_string());
+    let mut bar : bool = false;
+    
+    if let Some(content) = foo // si la variable foo contient quelque chose...
+    {
+        bar = true;
+    }
+    else
+    {
+        println!("foo's content is None");
+    }
+}
+```
+
+C'est un moyen simple et efficace d'assigner du contenu sans passer par le pattern matching.
+
+### A quoi servent les mot-clés while let ?
+
+La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (while let peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
+
+[Exemple de la documentation officielle]
+
+
+
+```rust
+let mut v = vec![1, 3, 5, 7, 11];
+while let Some(x) = v.pop() {
+    println!("{}", x);
+}
+```
+
 ## Mécaniques et philosophies
 
 ### Gestion de la mémoire
@@ -992,12 +1334,12 @@ fn main()
 
 Cette FAQ dispose de trois Q/R abordant trois concepts distincts (mais se complétant) gravitant autour de la gestion de la mémoire avec le langage Rust.
 
-Par souci de concision, les Q/R ci-dessous ne retiennent que l'essentiel que chaque concepts :
+Par souci de concision, les Q/R ci-dessous ne retiennent que l'essentiel de chaque concepts :
 
 
-1.  [Qu'est-ce que « l'ownership » ?](#LI-B-1-b "Qu'est-ce que « l'ownership » ?") 
-2.  [Qu'est-ce que le concept de « borrowing » ?](#LI-B-1-c "Qu'est-ce que le concept de « borrowing » ?") 
-3.  [Qu'est-ce que le concept de « lifetime » ?](#LI-B-1-d "Qu'est-ce que le concept de « lifetime » ?") 
+1.  [Qu'est-ce que « l'ownership » ?](#LII-B-1-b "Qu'est-ce que « l'ownership » ?") 
+2.  [Qu'est-ce que le concept de « borrowing » ?](#LII-B-1-c "Qu'est-ce que le concept de « borrowing » ?") 
+3.  [Qu'est-ce que le concept de « lifetime » ?](#LII-B-1-d "Qu'est-ce que le concept de « lifetime » ?") 
 
 #### Qu'est-ce que « l'ownership » ?
 
@@ -1103,13 +1445,13 @@ fn main()
 
 Vous remarquerez donc ici que le pointeur **foo** a été détruit, la copie de la chaîne de caractères appartient désormais à la fonction.
 
-Voir aussi : [Qu'est-ce que le concept de « borrowing » ?](#LI-B-1-c "Qu'est-ce que le concept de « borrowing » ?")
+Voir aussi : [Qu'est-ce que le concept de « borrowing » ?](#LII-B-1-c "Qu'est-ce que le concept de « borrowing » ?")
 
 #### Qu'est-ce que le concept de « borrowing » ?
 
 Il est courant de devoir partager une ressource entre plusieurs pointeurs pour effectuer diverses tâches.
 
-Toutefois, plus une ressource est sollicitée, plus il y a de chance qu'elle soit *désynchronisée* à un moment ou un autre. (c'est encore plus fréquent lorsque cette dernière est sollicitée par plusieurs fils d'exécution)
+Toutefois, plus une ressource est sollicitée, plus il y a de chance qu'elle soit *désynchronisée/invalidée* à un moment ou un autre. (c'est encore plus fréquent lorsque cette dernière est sollicitée par plusieurs fils d'exécution)
 
 Rust remédie à ce problème grâce au « borrow checking », un système d'emprunts créant en quelque sorte des *mutex* chargés de limiter l'accès à une ressource et ainsi éviter les risques d'écritures simultanées.
 
@@ -1117,7 +1459,7 @@ Le borrow checker fera respecter ces trois règles (que vous pouvez retrouver da
 
 
 1. Une (ou plusieurs) variable peut emprunter la ressource en lecture. (référence immuable)
-2. Un seul, et **seulement un**, pointeur peut disposer d'un accès en écriture sur la ressource.
+2. Un, et **seulement un**, pointeur peut disposer d'un accès en écriture sur la ressource.
 3. Vous ne pouvez pas accéder à la ressource en lecture et en écriture en même temps, exemple :
 
 
@@ -1219,6 +1561,8 @@ Voir aussi :
 
 [La section dédiée du livre](https://doc.rust-lang.org/book/lifetimes.html)
 
+#### Comment étendre un trait sur un autre trait ?
+
 ## Outils de build
 
 ### Comment créer un projet avec Cargo ?
@@ -1253,7 +1597,7 @@ Pour compiler votre projet, vous devez vous trouver à la racine de ce dernier.
 
 Une fois que c'est fait, il vous suffit de lancer la commande suivante :
 
-`$ cargo build `
+`$ cargo build`
 
 ### Peut-on générer de la documentation avec Cargo ?
 
@@ -1271,7 +1615,7 @@ Il se trouve dans le répertoire portant le nom de votre projet.
 
 Vous pouvez trouver d'autres bibliothèques sur le [site officiel](https://crates.io/crates) de Cargo.
 
-Voir aussi : [Comment installer de nouvelles bibliothèques ?](#LI-C-6 "Comment installer de nouvelles bibliothèques ?")
+Voir aussi : [Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?")
 
 ### Comment installer de nouvelles bibliothèques ?
 
@@ -1434,5 +1778,178 @@ Vous pouvez également préciser quelle bibliothèque mettre à jour séparémen
 
 ### Comment créer ses benchmarks avec Cargo ?
 
-WIP
+## Gestion des erreurs
+
+### Comment s'effectue la gestion des erreurs avec Rust ?
+
+Tout comme les langages impératifs classiques (e.g. C), Rust ne gère pas les erreurs grâce à un système « d'exceptions » comme nous pourrions retrouver dans des langages plus orientés objets, mais grâce au contenu renvoyé en sortie de fonction.
+
+Plusieurs fonctions (et macros) sont d'ailleurs dédiées à cette gestion (e.g. panic!, unwrap (et ses dérivés), and_then) permettant ainsi de rattraper (d'une manière plus ou moins fine) la situation lorsque les conditions imposées par vos soins ne sont pas respectées.
+
+Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à mieux cerner ce système de gestion :
+
+
+*  [A quoi sert la macro panic! ?](#LII-D-4 "A quoi sert la macro panic ! ?") 
+*  [A quoi sert la fonction unwrap ?](#LII-D-5 "A quoi sert la fonction unwrap ?") 
+*  [A quoi sert la fonction unwrap_or ?](#LII-D-6 "A quoi sert la fonction unwrap_or ?") 
+*  [A quoi sert la fonction unwrap_or_else ?](#LII-D-7 "A quoi sert la fonction unwrap_or_else ?") 
+*  [A quoi sert la fonction map ?](#LII-D-8 "A quoi sert la fonction map ?") 
+*  [A quoi sert la fonction and_then ?](#LII-D-9 "A quoi sert la fonction and_then ?") 
+*  [A quoi sert la macro try! ?](#LII-D-10 "A quoi sert la macro try! ?") 
+*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
+*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
+*  [Comment utiliser la macro debug_assert! ?](#LII-D-13 "Comment utiliser la macro debug_assert! ?") 
+
+### Comment créer un type spécifique d'exceptions ?
+
+Il n'est pas possible de créer de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java ; Rust ne gère pas les potentielles de cette manière.
+
+Voir aussi :
+
+Comment s'effectue la gestion des erreurs avec Rust ?
+
+### Est-il possible de créer des assertions ?
+
+Oui, bien entendu.
+
+Il existe trois assertions différentes en Rust (toutes encapsulées par une macro) :
+
+
+1. [assert](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
+2. [assert_eq](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
+3. [debug_assert](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
+
+Voir aussi :
+
+
+*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
+*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
+*  [Comment utiliser la macro debug_assert! ?](#LII-D-13 "Comment utiliser la macro debug_assert! ?") 
+
+### A quoi sert la macro panic ! ?
+
+### A quoi sert la fonction unwrap ?
+
+### A quoi sert la fonction unwrap_or ?
+
+### A quoi sert la fonction unwrap_or_else ?
+
+### A quoi sert la fonction map ?
+
+### A quoi sert la fonction and_then ?
+
+### A quoi sert la macro try! ?
+
+### Comment utiliser la macro assert! ?
+
+La macro assert! capture deux types « d'expressions » différents :
+
+Les expressions à proprement parler, qui pourraient être illustrées par les exemples suivants :
+
+
+
+```rust
+2 * 2, if … else …, foo() ;
+```
+
+Les « tokens tree » qui pourraient être illustrés par n'importe quoi d'autres figurant dans la syntaxe du langage. (puisque, dans l'absolu, le compilateur représente tout ce qui est rédigé dans les fichiers sources grâce à une nomenclature bien à lui)
+
+Donc si nous récupérons le code source raccourci de la documentation, cela donne ceci :
+
+
+
+```rust
+macro_rules! assert {
+    ( $ cond : expr ) => { ... };
+    (
+$ cond : expr , $ ( $ arg : tt ) + ) => { ... };
+}
+```
+
+Si certaines choses vous échappent, n'hésitez pas à vous rendre sur les liens proposés en bas de cette Q/R.
+
+**A quoi sert le second paramètre ?**
+
+Le second peut, par exemple, accueillir un message personnalisé pour la macro panic! facilitant ainsi le débogage.
+
+
+
+```rust
+fn foo(arg: Option<String>) -> ()
+{
+    let bar : String = String::from("Hello world!");
+    let mut some : Option<String> = None;
+    assert!(!arg.is_none(), "Arg is None");
+    assert!(arg.unwrap().eq(&bar), "arg n'est pas égal à bar");
+}
+
+fn main() -> ()
+{
+    foo(Some("Ok".to_string()));
+    foo(None);
+}
+```
+
+Voir aussi :
+
+
+* [Visionner le résultat de l'exemple](https://is.gd/wsqrbp "Ouvrir un nouvel onglet") (requiert une connexion internet)
+* Comment utiliser une macro ?
+* [macro]Antisèche des sous-types
+
+### Comment utiliser la macro assert_eq! ?
+
+« assert_eq! » est un dérivé de la macro « assert! » et permet de tester directement l'égalité de deux objetsLe terme « objet » est ici utilisé pour désigner toutes les entités pouvant être comparées à d'autres. (cela ne concerne donc pas que les instances des structures).
+
+Bien entendu, elle hérite également du message personnalisé pour la macro « panic! ».
+
+
+
+```rust
+fn foo(arg: Option<String>) -> ()
+{
+    let bar : String = String::from("Hello world!");
+    let mut some : Option<String> = None;
+    assert!(!arg.is_none(), "Arg is None");
+    assert_eq!(arg.unwrap(), bar, "arg n'est pas égal à bar");
+}
+
+fn main() -> ()
+{
+    foo(Some("Ok".to_string()));
+    foo(None);
+}
+```
+
+Voir aussi :
+
+
+*  [Visionner le résultat de l'exemple (requiert une connexion internet)](https://is.gd/en8FRZ "Ouvrir un nouvel onglet") 
+*  [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?") 
+* [macro]Antisèche des sous-types
+
+### Comment utiliser la macro debug_assert! ?
+
+**Où puis-je l'utiliser ?**
+
+« debug_assert! » ainsi que ses dérivés (« debug_assert_eq! ») ne sont compilées que lorsque le code source est compilé en mode débug. (mode par défaut de rustc)
+
+Vous ne devez pas compter sur ces assertions pour contrôler le flux de votre programme en production, assurez-vous toujours d'avoir une assertion compilée en mode release.
+
+**Comment l'utiliser ?**
+
+En dehors du contexte dans lequel ces assertions doivent être déclarées, la manière dont elles sont utilisées ne changent pas.
+
+Voir aussi :
+
+
+*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
+*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
+*  [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?") 
+
+## Meta-données
+
+## I/O
+
+## Antisèches Rust
 
