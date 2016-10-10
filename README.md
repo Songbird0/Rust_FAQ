@@ -2,6 +2,16 @@
 
 WIP (il n'existe aucune publication "propre" de cette FAQ pour le moment)
 
+## Utilisation
+
+> Comment utiliser cette FAQ ?
+
+Il vous suffit de cliquer, en haut à droite du repo, sur `clone or download`, puis:
+
+- Cliquez sur `download ZIP`
+- Extraire le contenu de l'archive dans le répertoire de votre choix
+- Cliquez sur index.html
+  - Bonne lecture ! :)
 
 ## Présentation
 
