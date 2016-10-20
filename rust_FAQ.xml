@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.7 du KitOOoDVP le 20/10/2016 22:21:59-->
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 01:19:10-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1146,12 +1146,13 @@ while let Some(x) = v.pop() {
 {
     let foo : String = String::from("Hello world!");
     let bar : String = foo;
-    let baz : String = bar;
+    let baz : &amp;String = &amp;bar; //on récupère une référence
 }</code>
 						<paragraph>Tout est en règle, le compilateur ne râle plus, et si vous souhaitez afficher votre chaîne de caractères sur la sortie standard, rien ne vous en empêche&#160;!</paragraph>
 						<rich-imgtext type="warning">
 							<paragraph><b>Attention</b> cependant&#160;:</paragraph>
 							<paragraph>Cette règle ne s'applique qu'aux ressources dynamiques&#160;; Etant prompt à être référencé à plusieurs endroits en même temps, <i>Rust s'assure de toujours fournir la référence la plus récente de la ressource</i>.</paragraph>
+							<paragraph>Pour les ressources statiques, leurs places dans la mémoire sont déjà "prévues" donc pas de problèmes.</paragraph>
 						</rich-imgtext>
 						<paragraph>Vous pouvez très bien écrire ceci&#160;:</paragraph>
 						<code langage="rust" showLines="1" startLine="1" titre="contre-exemple">fn main()
@@ -1160,14 +1161,13 @@ while let Some(x) = v.pop() {
     let bar = foo;
     let baz = foo;
 }</code>
-						<paragraph>La ressource (<i>foo</i>) étant statique, le problème de pointeur/référence périmés ne se pose pas.</paragraph>
 						<paragraph>
 							<b>Quid des fonctions&#160;?</b>
 						</paragraph>
 						<paragraph>Les fonctions obéissent aux mêmes règles que les pointeurs&#160;:</paragraph>
 						<paragraph>Lorsqu'une ressource est passée en paramètre par copie, la fonction «&#160;possède&#160;» la ressource, même lorsqu'elle a terminé de s'exécuter.</paragraph>
 						<rich-imgtext type="info">
-							<paragraph>Si la ressource en question a été créée dynamiquement, elle sera systématiquement détruite lorsque la fonction aura terminé de s'exécuter&#160;; Sinon, elle devient simplement inaccessible pour le restant du programme.</paragraph>
+							<paragraph>Si la ressource en question a été créée dynamiquement, elle sera systématiquement détruite lorsque la fonction aura terminé de s'exécuter&#160;; Sinon, elle devient simplement inaccessible pour le restant de l'exécution.</paragraph>
 						</rich-imgtext>
 						<paragraph>Exemple&#160;:</paragraph>
 						<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn my_func(my_string: String)
@@ -1263,7 +1263,7 @@ fn main()
 {
   let mut baz  : String = "Hello ".to_string();
   let word : &amp;str   = "world!";
-  let bazz = bar(&amp;mut baz, word); //ce que contient la varialbe bazz est intouchable
+  let bazz = bar(&amp;mut baz, word); //ce que contient la varialbe bazz ne peut être accédé qu'en lecture
   println!("{}", &amp;bazz); //nous affichons nos caractères sur la sortie standard
 }</code>
 						<paragraph>En revanche, ce n'est pas un cas commun, nous vous invitons donc à vous tourner vers la documentation officielle ou à expérimenter par vous-même.</paragraph>
