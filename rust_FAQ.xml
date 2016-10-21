@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 01:19:10-->
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 02:28:17-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1502,9 +1502,65 @@ mod oo_tests
 				</section>
 				<section id="II-C-10">
 					<title>Comment créer ses benchmarks avec Cargo&#160;?</title>
-					<rich-imgtext type="info">
-						<paragraph>WIP</paragraph>
+					<rich-imgtext type="warning">
+						<paragraph>Avant toute chose, il est bon de savoir que la stabilité du module supportant les benchmarks est encore discutée au sein même de l'équipe chargée du développement de Rust.</paragraph>
+						<paragraph>N'étant pas disposé à fonctionner en production, vous devrez avoir recours à un paquet qui ne se trouve pas dans la bibliothèque standard, mais sur <link href="./fichiers/crates.io" target="_blank" title="Ouvrir un nouvel onglet">crates.io</link>.</paragraph>
 					</rich-imgtext>
+					<paragraph>Pour créer nos benchmark, donc, nous allons utiliser le paquet <link href="https://crates.io/crates/bencher">bencher</link>.</paragraph>
+					<paragraph>Ce module était premièrement connu sous le nom test puis bencher qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.</paragraph>
+					<code dissimulable="1" langage="toml" showLines="1" startLine="1" titre="Fichier Cargo.toml">[package]
+name = "awesome_tests"
+version = "0.1.0"
+authors = ["Songbird0 &lt;chaacygg@gmail.com>"]
+
+[dependencies]
+
+bencher = "0.1.1"
+
+[[bench]]
+name = "my_bench"
+harness = false</code>
+					<paragraph>Voici un exemple basique de benchmark pour une fonction qui recherche le mot le plus court d'une phrase&#160;:</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="find_short function benchmark">#[macro_use]
+extern crate bencher;
+use bencher::Bencher;
+
+fn find_short(s: &amp;str) -> usize {
+  let splitting : Vec&lt;&amp;str> = s.split_whitespace().collect();
+  let mut shortest_len : usize = 0;
+  let mut i : usize = 0;
+  while(i &lt; splitting.len())
+  {
+      if(i == 0)
+      {
+          shortest_len = splitting[0].len();
+      }
+      else
+      {
+          if(splitting[i].len() &lt; shortest_len)
+          {
+              shortest_len = splitting[i].len();
+          }
+      }
+      i += 1;
+  }
+  return shortest_len;
+}
+
+fn bench_find_short(b: &amp;mut Bencher) {
+  b.iter(|| find_short("Hello darkness my old friend"));
+}
+
+benchmark_group!(my_bench, bench_find_short);
+benchmark_main!(my_bench);</code>
+				</section>
+				<section id="II-C-11">
+					<title>A quoi sert benchmark_group!&#160;?</title>
+					<paragraph>La macro bencmark_group! sert a créer des «&#160;groupes&#160;» de fonctions à mesurer lors de l'exécution de la commande cargo bench. </paragraph>
+				</section>
+				<section id="II-C-12">
+					<title>A quoi sert benchmark_main!&#160;?</title>
+					<paragraph>La macro benchmark_main! permet de créer une fonction main contenant toutes les fonctions à «&#160;benmarker&#160;».</paragraph>
 				</section>
 			</section>
 			<section id="II-D">
