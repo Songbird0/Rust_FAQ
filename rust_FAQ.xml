@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 02:35:49-->
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 02:41:00-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1691,8 +1691,8 @@ fn main() -> ()
 				</section>
 				<section id="II-D-12">
 					<title>Comment utiliser la macro assert_eq!&#160;?</title>
-					<paragraph>«&#160;assert_eq!&#160;» est un dérivé de la macro «&#160;assert!&#160;» et permet de tester directement l'égalité de deux objets<noteBasPage>Le terme «&#160;objet&#160;» est ici utilisé pour désigner toutes les entités pouvant être comparées à d'autres. (cela ne concerne donc pas que les instances des structures)</noteBasPage>.</paragraph>
-					<paragraph>Bien entendu, elle hérite également du message personnalisé pour la macro «&#160;panic!&#160;».</paragraph>
+					<paragraph>&#160;<inline langage="rust">assert_eq!</inline> est un dérivé de la macro <inline langage="rust">assert!</inline> et permet de tester directement l'égalité de deux objets<noteBasPage>Le terme «&#160;objet&#160;» est ici utilisé pour désigner toutes les entités pouvant être comparées à d'autres. (cela ne concerne donc pas que les instances des structures)</noteBasPage>.</paragraph>
+					<paragraph>Bien entendu, elle hérite également du message personnalisé pour la macro <inline langage="rust">panic!</inline>.</paragraph>
 					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utiliser la macro assert_eq!">fn foo(arg: Option&lt;String>) -> ()
 {
     let bar : String = String::from("Hello world!");
@@ -1722,7 +1722,7 @@ fn main() -> ()
 					<paragraph>
 						<b>Où puis-je l'utiliser&#160;?</b>
 					</paragraph>
-					<paragraph>«&#160;debug_assert!&#160;» ainsi que ses dérivés («&#160;debug_assert_eq!&#160;») ne sont compilées que lorsque le code source est compilé en mode débug. (mode par défaut de rustc)</paragraph>
+					<paragraph><inline langage="rust">debug_assert!</inline> ainsi que ses dérivés (<inline langage="rust">debug_assert_eq!</inline>) ne sont compilées que lorsque le code source est compilé en mode débug. (mode par défaut de <b>rustc</b>)</paragraph>
 					<paragraph>Vous ne devez pas compter sur ces assertions pour contrôler le flux de votre programme en production, assurez-vous toujours d'avoir une assertion compilée en mode release.</paragraph>
 					<rich-imgtext type="info">
 						<paragraph>Si vous souhaitez toutefois les utiliser dans une binaire optimisé, vous devez passer l'argument -C debug-assertions au compilateur.</paragraph>
@@ -1746,13 +1746,13 @@ fn main() -> ()
 				</section>
 				<section id="II-D-14">
 					<title>Qu'est-ce que la structure Result&lt;T, E>&#160;?</title>
-					<paragraph>Result&lt;T, E> est une énumération contenant deux constructeurs&#160;:</paragraph>
+					<paragraph><inline langage="rust">Result&lt;T, E></inline> est une énumération contenant deux constructeurs&#160;:</paragraph>
 					<liste type="1">
-						<element>Ok(T),</element>
-						<element>Err(E).</element>
+						<element><inline langage="rust">Ok(T)</inline>,</element>
+						<element><inline langage="rust">Err(E)</inline>.</element>
 					</liste>
-					<paragraph>Elle permet de gérer convenablement les cas où l'entrée T ne correspond pas à nos attentes et ainsi le communiquer au reste du programme pour que l'incident soit rattrapé plus loin si besoin.</paragraph>
-					<paragraph>Voir aussi&#160;: Comment utiliser la structure Result&lt;T, E>&#160;?</paragraph>
+					<paragraph>Elle permet de gérer convenablement les cas où l'entrée <inline langage="rust">T</inline> ne correspond pas à nos attentes et ainsi le communiquer au reste du programme pour que l'incident soit rattrapé plus loin si besoin.</paragraph>
+					<paragraph>Voir aussi&#160;: Comment utiliser la structure <inline langage="rust">Result&lt;T, E></inline>&#160;?</paragraph>
 				</section>
 				<section id="II-D-15">
 					<title>Comment utiliser la structure Result&lt;T, E>&#160;?</title>
@@ -1819,7 +1819,7 @@ fn main()
 				</section>
 				<section id="II-H-2">
 					<title>Comment récupérer le vecteur d'une instance de la structure Chars&#160;?</title>
-					<paragraph>Il est parfois nécessaire d'éclater une chaîne pour traiter ses caractères au cas par cas&#160;; Jusqu'ici, Rust vous propose une méthode plutôt intuitive nommée chars().</paragraph>
+					<paragraph>Il est parfois nécessaire d'éclater une chaîne pour traiter ses caractères au cas par cas&#160;; Jusqu'ici, Rust vous propose une méthode plutôt intuitive nommée <inline langage="rust">chars()</inline>.</paragraph>
 					<paragraph>Après avoir éclatée la chaîne, vous souhaiteriez peut-être itérer plusieurs fois sur celle-ci, sans succès.</paragraph>
 					<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn main()
 {
@@ -1853,11 +1853,11 @@ fn main()
   = note: `&amp;std::str::Chars&lt;'_>` is not an iterator; maybe try calling `.iter()` or a similar method
   = note: required by `std::iter::IntoIterator::into_iter`</code>
 					<paragraph>Mais récoltez encore une erreur&#8230;</paragraph>
-					<paragraph>Le compilateur vous invite alors à essayer d'appeler la méthode .iter() qui est censée être implémentée par toutes les structures implémentant l'interface Iterator&#160;; Ce n'est malheureusement pas le cas pour la structure Chars.</paragraph>
+					<paragraph>Le compilateur vous invite alors à essayer d'appeler la méthode <inline langage="rust">.iter()</inline> qui est censée être implémentée par toutes les structures implémentant l'interface <inline langage="rust">Iterator</inline>; Ce n'est malheureusement pas le cas pour la structure <inline langage="rust">Chars</inline>.</paragraph>
 					<paragraph>
 						<b>Que faire alors&#160;?</b>
 					</paragraph>
-					<paragraph>La méthode remplaçant .iter() est .collect()&#160;; Cette dernière vous permet de récupérer un vecteur contenant toutes les entités<noteBasPage>En l'occurrence, ici, les caractères.</noteBasPage> de l'ancien itérateur.</paragraph>
+					<paragraph>La méthode remplaçant <inline langage="rust">.iter()</inline> est <inline langage="rust">.collect()</inline>; Cette dernière vous permet de récupérer un vecteur contenant toutes les entités<noteBasPage>En l'occurrence, ici, les caractères.</noteBasPage> de l'ancien itérateur.</paragraph>
 					<paragraph>Vous pouvez désormais accéder à votre ressource par référence et ainsi la parcourir autant de fois que vous le souhaitez.</paragraph>
 					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode .collect()">fn main()
 {
