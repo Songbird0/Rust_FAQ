@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 02:28:17-->
+	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 02:35:49-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1556,11 +1556,11 @@ benchmark_main!(my_bench);</code>
 				</section>
 				<section id="II-C-11">
 					<title>A quoi sert benchmark_group!&#160;?</title>
-					<paragraph>La macro bencmark_group! sert a créer des «&#160;groupes&#160;» de fonctions à mesurer lors de l'exécution de la commande cargo bench. </paragraph>
+					<paragraph>La macro <inline langage="rust">bencmark_group!</inline> sert a créer des «&#160;groupes&#160;» de fonctions à mesurer lors de l'exécution de la commande <inline langage="bash">cargo bench</inline>. </paragraph>
 				</section>
 				<section id="II-C-12">
 					<title>A quoi sert benchmark_main!&#160;?</title>
-					<paragraph>La macro benchmark_main! permet de créer une fonction main contenant toutes les fonctions à «&#160;benmarker&#160;».</paragraph>
+					<paragraph>La macro <inline langage="rust">benchmark_main!</inline> permet de créer une fonction main contenant toutes les fonctions à «&#160;benmarker&#160;».</paragraph>
 				</section>
 			</section>
 			<section id="II-D">
@@ -1568,7 +1568,7 @@ benchmark_main!(my_bench);</code>
 				<section id="II-D-1">
 					<title>Comment s'effectue la gestion des erreurs avec Rust&#160;?</title>
 					<paragraph>Tout comme les langages impératifs classiques (e.g. C), Rust ne gère pas les erreurs grâce à un système «&#160;d'exceptions&#160;» comme nous pourrions retrouver dans des langages plus orientés objets, mais grâce au contenu renvoyé en sortie de fonction.</paragraph>
-					<paragraph>Plusieurs fonctions (et macros) sont d'ailleurs dédiées à cette gestion (e.g. panic!, unwrap (et ses dérivés), and_then) permettant ainsi de rattraper (d'une manière plus ou moins fine) la situation lorsque les conditions imposées par vos soins ne sont pas respectées.</paragraph>
+					<paragraph>Plusieurs fonctions (et macros) sont d'ailleurs dédiées à cette gestion (e.g. <inline langage="rust">panic!</inline>, <inline langage="rust">unwrap()</inline> (et ses dérivés), <inline langage="rust">and_then()</inline>) permettant ainsi de rattraper (d'une manière plus ou moins fine) la situation lorsque les conditions imposées par vos soins ne sont pas respectées.</paragraph>
 					<paragraph>Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à mieux cerner ce système de gestion&#160;:</paragraph>
 					<liste>
 						<element>
