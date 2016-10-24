@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.8 du KitOOoDVP le 24/10/2016 03:31:44-->
+	<!--XML créé avec la version 16.8 du KitOOoDVP le 25/10/2016 00:09:38-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1570,6 +1570,9 @@ benchmark_main!(my_bench);</code>
 					<paragraph>Tout comme les langages impératifs classiques (e.g. C), Rust ne gère pas les erreurs grâce à un système «&#160;d'exceptions&#160;» comme nous pourrions retrouver dans des langages plus orientés objets, mais grâce au contenu renvoyé en sortie de fonction.</paragraph>
 					<paragraph>Plusieurs fonctions (et macros) sont d'ailleurs dédiées à cette gestion (e.g. <inline langage="rust">panic!</inline>, <inline langage="rust">unwrap()</inline> (et ses dérivés), <inline langage="rust">and_then()</inline>) permettant ainsi de rattraper (d'une manière plus ou moins fine) la situation lorsque les conditions imposées par vos soins ne sont pas respectées.</paragraph>
 					<paragraph>Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à mieux cerner ce système de gestion&#160;:</paragraph>
+					<rich-imgtext type="info">
+						<paragraph>Toutes les Q/R taggées avec l'icône <image src="./images/WIP.gif"/> sont considérées comme «&#160;en cours de rédaction&#160;». Si vous rencontrez un problème de lecture avec ces Q/R inachevées, ne remontez pas le problème tant qu'elles disposent de ce tag. Merci.</paragraph>
+					</rich-imgtext>
 					<liste>
 						<element>
 							<link href="#LII-D-4" title="A quoi sert la macro panic&#160;!&#160;?">A quoi sert la macro panic!&#160;?</link>
@@ -1583,15 +1586,11 @@ benchmark_main!(my_bench);</code>
 						<element>
 							<link href="#LII-D-7" title="A quoi sert la méthode unwrap_or_else&#160;?">A quoi sert la méthode unwrap_or_else&#160;?</link>
 						</element>
-						<element>
-							<link href="#LII-D-8" title="A quoi sert la méthode map&#160;?">A quoi sert la méthode map&#160;?</link>
-						</element>
+						<element><link href="#LII-D-8" title="A quoi sert la méthode map&#160;?">A quoi sert la méthode map&#160;?</link> <image src="./images/WIP.gif"/></element>
 						<element>
 							<link href="#LII-D-9" title="A quoi sert la méthode and_then&#160;?">A quoi sert la méthode and_then&#160;?</link>
 						</element>
-						<element>
-							<link href="#LII-D-10" title="A quoi sert la macro try!&#160;?">A quoi sert la macro try!&#160;?</link>
-						</element>
+						<element><link href="#LII-D-10" title="A quoi sert la macro try!&#160;?">A quoi sert la macro try!&#160;?</link> <image src="./images/WIP.gif"/></element>
 						<element>
 							<link href="#LII-D-11" title="Comment utiliser la macro assert!&#160;?">Comment utiliser la macro assert!&#160;?</link>
 						</element>
@@ -1601,6 +1600,10 @@ benchmark_main!(my_bench);</code>
 						<element>
 							<link href="#LII-D-13" title="Comment utiliser la macro debug_assert!&#160;?">Comment utiliser la macro debug_assert!&#160;?</link>
 						</element>
+						<element>Qu'est-ce que la structure Option&lt;T>&#160;? <image src="./images/WIP.gif"/></element>
+						<element>Comment utiliser la structure Option&lt;T>&#160;? <image src="./images/WIP.gif"/></element>
+						<element>Qu'est-ce que la structure Result&lt;T, E>&#160;? <image src="./images/WIP.gif"/></element>
+						<element>Comment utiliser la structure Result&lt;T, E>&#160;? <image src="./images/WIP.gif"/></element>
 					</liste>
 				</section>
 				<section id="II-D-2">
@@ -1633,7 +1636,7 @@ benchmark_main!(my_bench);</code>
 				</section>
 				<section id="II-D-4">
 					<title>A quoi sert la macro panic&#160;!&#160;?</title>
-					<paragraph>La macro panic! pourrait être comparée aux exceptions  RuntimeException en Java qui sont, à coup sûr, des erreurs bloquantes.</paragraph>
+					<paragraph>La macro <inline langage="rust">panic!</inline> pourrait être comparée aux exceptions <link href="http://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html" langue="En" target="_blank" title="Ouvrir un nouvel onglet">RuntimeException</link> en Java qui sont, à coup sûr, des erreurs bloquantes.</paragraph>
 					<code dissimulable="1" langage="java" showLines="1" startLine="1" titre="Exemple de dead code">public class MyClass 
 {
         public static void main(String[] args) 
@@ -1657,8 +1660,8 @@ benchmark_main!(my_bench);</code>
 				</section>
 				<section id="II-D-5">
 					<title>A quoi sert la méthode unwrap&#160;?</title>
-					<paragraph>La méthode unwrap() permet de récupérer la donnée contenue par son wrapper et de faire abstraction des «&#160;cas d'analyse&#160;» avant de la (la donnée) délivrer.</paragraph>
-					<paragraph>Autrement dit, la méthode unwrap() délivre la donnée enveloppée si l'instance vaut Some() ou Ok(), sinon plante le programme si elle vaut None ou Err().</paragraph>
+					<paragraph>La méthode <inline langage="rust">unwrap()</inline> permet de récupérer la donnée contenue par son wrapper et de faire abstraction des «&#160;cas d'analyse&#160;» avant de la délivrer.</paragraph>
+					<paragraph>Autrement dit, la méthode <inline langage="rust">unwrap()</inline> délivre la donnée enveloppée si l'instance vaut <inline langage="rust">Some</inline>() ou <inline langage="rust">Ok</inline>(), sinon plante le programme si elle vaut <inline langage="rust">None</inline> ou <inline langage="rust">Err</inline>().</paragraph>
 					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode unwrap()">fn main()
 {
     let foo : Option&lt;String> = Some("ça passe!".to_string());
@@ -1677,7 +1680,7 @@ benchmark_main!(my_bench);</code>
 				</section>
 				<section id="II-D-6">
 					<title>A quoi sert la méthode unwrap_or&#160;?</title>
-					<paragraph>La méthode unwrap_or() fonctionne exactement comme la méthode originelle mais permet d'éviter de faire «&#160;paniquer&#160;» le programme, et donc l'arrêt de l'exécution, en nous permettant de passer une valeur par défaut à renvoyer si le wrapper visé ne contient rien initialement.</paragraph>
+					<paragraph>La méthode <inline langage="rust">unwrap_or()</inline> fonctionne exactement comme la méthode originelle<noteBasPage>unwrap</noteBasPage> mais permet d'éviter de faire «&#160;paniquer&#160;» le programme, et donc l'arrêt de l'exécution, en nous permettant de passer une valeur par défaut à renvoyer si le wrapper visé ne contient rien initialement.</paragraph>
 					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode unwrap_or()">fn main()
 {
     let foo : Option&lt;String> = Some("ça passe!".to_string());
@@ -1690,12 +1693,16 @@ benchmark_main!(my_bench);</code>
         Pensez à isoler les appels de la méthode si vous ne souhaitez pas faire planter votre programme.
     */
 }</code>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<paragraph>
+						<link href="https://is.gd/gwInIj" target="_blank" title="Ouvrir un nouvel onglet">Tester l'exemple</link>
+					</paragraph>
 				</section>
 				<section id="II-D-7">
 					<title>A quoi sert la méthode unwrap_or_else&#160;?</title>
-					<paragraph>La méthode unwrap_or_else fonctionne exactement comme unwrap_or, mais proposera de passer en paramètre une fonction à la place d'une simple donnée.</paragraph>
+					<paragraph>La méthode <inline langage="rust">unwrap_or_else</inline> fonctionne exactement comme <inline langage="rust">unwrap_or</inline>, mais proposera de passer en paramètre une fonction à la place d'une simple donnée.</paragraph>
 					<rich-imgtext type="warning">
-						<paragraph>Attention, Option&lt;T> et Result&lt;T, E> l'implémentent toutes les deux, mais pas de la même manière.</paragraph>
+						<paragraph>Attention, <inline langage="rust">Option&lt;T></inline> et <inline langage="rust">Result&lt;T, E></inline> l'implémentent toutes les deux, mais pas de la même manière.</paragraph>
 						<paragraph>L'une l'implémente de manière à passer en paramètre une closure, l'autre à passer une fonction déclarée et identifiée dans un premier temps.</paragraph>
 					</rich-imgtext>
 					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode unwrap_or_else">fn bang(arg: String) -> String
@@ -1712,7 +1719,7 @@ fn main()
     bar.unwrap_or_else(|| { return "On évite la casse !".to_string(); });
     println!("{}", bing.unwrap_or_else(bang));
 }</code>
-					<paragraph><b>Note&#160;</b>: le paramètre que reçoit la fonction bang n'est ni plus ni moins ce que vous avez renseigné dans le contructeur de l'instance Err() bing. Gardez ceci en tête lorsque vous souhaiterez effectuer des opérations sur ce paramètre dans le corps de votre fonction.</paragraph>
+					<paragraph><b>Note&#160;</b>: le paramètre que reçoit la fonction <inline langage="rust">bang</inline> n'est ni plus ni moins ce que vous avez renseigné dans le contructeur de l'instance <inline langage="rust">Err</inline>() <inline langage="rust">bing</inline>. Gardez ceci en tête lorsque vous souhaiterez effectuer des opérations sur ce paramètre dans le corps de votre fonction.</paragraph>
 				</section>
 				<section id="II-D-8">
 					<title>A quoi sert la méthode map&#160;?</title>
@@ -1817,7 +1824,7 @@ fn main() -> ()
 					<paragraph><inline langage="rust">debug_assert!</inline> ainsi que ses dérivés (<inline langage="rust">debug_assert_eq!</inline>) ne sont compilées que lorsque le code source est compilé en mode débug. (mode par défaut de <b>rustc</b>)</paragraph>
 					<paragraph>Vous ne devez pas compter sur ces assertions pour contrôler le flux de votre programme en production, assurez-vous toujours d'avoir une assertion compilée en mode release.</paragraph>
 					<rich-imgtext type="info">
-						<paragraph>Si vous souhaitez toutefois les utiliser dans une binaire optimisé, vous devez passer l'argument -C debug-assertions au compilateur.</paragraph>
+						<paragraph>Si vous souhaitez toutefois les utiliser dans un binaire optimisé, vous devez passer l'argument -C debug-assertions au compilateur.</paragraph>
 					</rich-imgtext>
 					<paragraph>
 						<b>Comment l'utiliser&#160;?</b>
@@ -1879,6 +1886,8 @@ fn main()
 					<paragraph>
 						<link href="https://is.gd/kof5ew" langue="Src" target="_blank" title="Ouvrir un nouvel onglet">Le résultat de cet exemple</link>
 					</paragraph>
+					<paragraph>Qu'est-ce que la structure Option&lt;T>&#160;?</paragraph>
+					<paragraph>Comment utiliser la structure Option&lt;T>&#160;?</paragraph>
 				</section>
 			</section>
 			<section id="II-E">
@@ -1900,7 +1909,7 @@ fn main()
 				</rich-imgtext>
 			</section>
 			<section id="II-H">
-				<title>Erreurs, difficultés</title>
+				<title>Trucs &amp; astuces</title>
 				<section id="II-H-1">
 					<title>Que puis-je trouver dans cette section&#160;?</title>
 					<paragraph>Vous pourrez retrouver des «&#160;trucs et astuces&#160;» pour résoudre un problème plus ou moins commun et complexe.</paragraph>
