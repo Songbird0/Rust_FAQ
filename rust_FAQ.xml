@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.8 du KitOOoDVP le 24/10/2016 02:13:31-->
+	<!--XML créé avec la version 16.8 du KitOOoDVP le 24/10/2016 02:23:25-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1649,9 +1649,11 @@ benchmark_main!(my_bench);</code>
     println!("Dead code");
 }</code>
 					<paragraph>Voir aussi&#160;:</paragraph>
-					<paragraph>A quoi sert la méthode unwrap&#160;?</paragraph>
-					<paragraph>A quoi sert la méthode and_then&#160;?</paragraph>
-					<paragraph>A quoi sert la macro try!&#160;?</paragraph>
+					<liste>
+						<element>A quoi sert la méthode unwrap&#160;?</element>
+						<element>A quoi sert la méthode and_then&#160;?</element>
+						<element>A quoi sert la macro try!&#160;?</element>
+					</liste>
 				</section>
 				<section id="II-D-5">
 					<title>A quoi sert la méthode unwrap&#160;?</title>
@@ -1678,12 +1680,16 @@ fn main()
     println!("{}", foo.and_then(concat).unwrap());
 }</code>
 					<paragraph>Actuellement, les structures qui implémentent la méthode and_then() sont&#160;:</paragraph>
-					<paragraph>Option&lt;T>;</paragraph>
-					<paragraph>Result&lt;T, E>;</paragraph>
+					<liste>
+						<element>Option&lt;T>;</element>
+						<element>Result&lt;T, E>;</element>
+					</liste>
 					<paragraph>Voir aussi&#160;:</paragraph>
-					<paragraph>A quoi sert la méthode unwrap()&#160;?</paragraph>
-					<paragraph>Qu'est-ce que la structure Result&lt;T, E>&#160;?</paragraph>
-					<paragraph>Qu'est-ce que la structure Option&lt;T>&#160;?</paragraph>
+					<liste>
+						<element>A quoi sert la méthode unwrap()&#160;?</element>
+						<element>Qu'est-ce que la structure Result&lt;T, E>&#160;?</element>
+						<element>Qu'est-ce que la structure Option&lt;T>&#160;?</element>
+					</liste>
 				</section>
 				<section id="II-D-10">
 					<title>A quoi sert la macro try!&#160;?</title>
