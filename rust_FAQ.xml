@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.7 du KitOOoDVP le 21/10/2016 02:41:00-->
+	<!--XML créé avec la version 16.8 du KitOOoDVP le 24/10/2016 03:31:44-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1575,19 +1575,19 @@ benchmark_main!(my_bench);</code>
 							<link href="#LII-D-4" title="A quoi sert la macro panic&#160;!&#160;?">A quoi sert la macro panic!&#160;?</link>
 						</element>
 						<element>
-							<link href="#LII-D-5" title="A quoi sert la fonction unwrap&#160;?">A quoi sert la fonction unwrap&#160;?</link>
+							<link href="#LII-D-5" title="A quoi sert la méthode unwrap&#160;?">A quoi sert la méthode unwrap ?</link>
 						</element>
 						<element>
-							<link href="#LII-D-6" title="A quoi sert la fonction unwrap_or&#160;?">A quoi sert la fonction unwrap_or&#160;?</link>
+							<link href="#LII-D-6" title="A quoi sert la méthode unwrap_or&#160;?">A quoi sert la méthode unwrap_or&#160;?</link>
 						</element>
 						<element>
-							<link href="#LII-D-7" title="A quoi sert la fonction unwrap_or_else&#160;?">A quoi sert la fonction unwrap_or_else&#160;?</link>
+							<link href="#LII-D-7" title="A quoi sert la méthode unwrap_or_else&#160;?">A quoi sert la méthode unwrap_or_else&#160;?</link>
 						</element>
 						<element>
-							<link href="#LII-D-8" title="A quoi sert la fonction map&#160;?">A quoi sert la fonction map&#160;?</link>
+							<link href="#LII-D-8" title="A quoi sert la méthode map&#160;?">A quoi sert la méthode map&#160;?</link>
 						</element>
 						<element>
-							<link href="#LII-D-9" title="A quoi sert la fonction and_then&#160;?">A quoi sert la fonction and_then&#160;?</link>
+							<link href="#LII-D-9" title="A quoi sert la méthode and_then&#160;?">A quoi sert la méthode and_then&#160;?</link>
 						</element>
 						<element>
 							<link href="#LII-D-10" title="A quoi sert la macro try!&#160;?">A quoi sert la macro try!&#160;?</link>
@@ -1633,21 +1633,113 @@ benchmark_main!(my_bench);</code>
 				</section>
 				<section id="II-D-4">
 					<title>A quoi sert la macro panic&#160;!&#160;?</title>
+					<paragraph>La macro panic! pourrait être comparée aux exceptions  RuntimeException en Java qui sont, à coup sûr, des erreurs bloquantes.</paragraph>
+					<code dissimulable="1" langage="java" showLines="1" startLine="1" titre="Exemple de dead code">public class MyClass 
+{
+        public static void main(String[] args) 
+        {
+            throw new RuntimeException("Error !");
+            System.out.println("Dead code.");
+        }
+}</code>
+					<paragraph>Elle est donc la macro la plus bas niveau que l'on peut retrouver parmi les macros et/ou fonctions proposées par la bibliothèque standard; Elle ne prend rien en compte mis à part l'arrêt du programme et l'affichage de la trace de la pile.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Exemple de dead code en Rust">fn main()
+{
+    panic!("Error !");
+    println!("Dead code");
+}</code>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element>A quoi sert la méthode unwrap&#160;?</element>
+						<element>A quoi sert la méthode and_then&#160;?</element>
+						<element>A quoi sert la macro try!&#160;?</element>
+					</liste>
 				</section>
 				<section id="II-D-5">
-					<title>A quoi sert la fonction unwrap&#160;?</title>
+					<title>A quoi sert la méthode unwrap&#160;?</title>
+					<paragraph>La méthode unwrap() permet de récupérer la donnée contenue par son wrapper et de faire abstraction des «&#160;cas d'analyse&#160;» avant de la (la donnée) délivrer.</paragraph>
+					<paragraph>Autrement dit, la méthode unwrap() délivre la donnée enveloppée si l'instance vaut Some() ou Ok(), sinon plante le programme si elle vaut None ou Err().</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode unwrap()">fn main()
+{
+    let foo : Option&lt;String> = Some("ça passe!".to_string());
+    let bar : Option&lt;String> = None;
+    let baz : Result&lt;String, String> = Ok("ça passe!".to_string());
+    let bing : Result&lt;String, String> = Err("ça casse!".to_string());
+    
+    println!("{} {} {} {}", foo.unwrap(), bar.unwrap(), baz.unwrap(), bing.unwrap());
+}</code>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element><link href="https://is.gd/GTSlPy" target="_blank" title="Ouvrir un nouvel onglet">Tester l'exemple</link> (Pensez à isoler les appels de la méthode si vous ne souhaitez pas faire planter votre programme.)</element>
+						<element>Qu'est-ce que la structure Option&lt;T>&#160;?</element>
+						<element>Qu'est-ce que la structure Result&lt;T, E>&#160;?</element>
+					</liste>
 				</section>
 				<section id="II-D-6">
-					<title>A quoi sert la fonction unwrap_or&#160;?</title>
+					<title>A quoi sert la méthode unwrap_or&#160;?</title>
+					<paragraph>La méthode unwrap_or() fonctionne exactement comme la méthode originelle mais permet d'éviter de faire «&#160;paniquer&#160;» le programme, et donc l'arrêt de l'exécution, en nous permettant de passer une valeur par défaut à renvoyer si le wrapper visé ne contient rien initialement.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode unwrap_or()">fn main()
+{
+    let foo : Option&lt;String> = Some("ça passe!".to_string());
+    let bar : Option&lt;String> = None;
+    let baz : Result&lt;String, String> = Ok("ça passe!".to_string());
+    let bing : Result&lt;String, String> = Err("ça casse!".to_string());
+    
+    println!("{} {} {} {}", foo.unwrap(), bar.unwrap_or(String::from("ça passe, mais de justesse !")), baz.unwrap(), bing.unwrap_or(String::from("On évite de faire planter le programme.")));
+    /* 
+        Pensez à isoler les appels de la méthode si vous ne souhaitez pas faire planter votre programme.
+    */
+}</code>
 				</section>
 				<section id="II-D-7">
-					<title>A quoi sert la fonction unwrap_or_else&#160;?</title>
+					<title>A quoi sert la méthode unwrap_or_else&#160;?</title>
+					<paragraph>La méthode unwrap_or_else fonctionne exactement comme unwrap_or, mais proposera de passer en paramètre une fonction à la place d'une simple donnée.</paragraph>
+					<rich-imgtext type="warning">
+						<paragraph>Attention, Option&lt;T> et Result&lt;T, E> l'implémentent toutes les deux, mais pas de la même manière.</paragraph>
+						<paragraph>L'une l'implémente de manière à passer en paramètre une closure, l'autre à passer une fonction déclarée et identifiée dans un premier temps.</paragraph>
+					</rich-imgtext>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode unwrap_or_else">fn bang(arg: String) -> String
+{
+    return "Chef, on a eu une erreur: ".to_string() + arg.as_str();
+}
+fn main()
+{
+    let foo : Option&lt;String> = Some("ça passe!".to_string());
+    let bar : Option&lt;String> = None;
+    let baz : Result&lt;String, String> = Ok("ça passe!".to_string());
+    let bing : Result&lt;String, String> = Err("ça casse!".to_string());
+    
+    bar.unwrap_or_else(|| { return "On évite la casse !".to_string(); });
+    println!("{}", bing.unwrap_or_else(bang));
+}</code>
+					<paragraph><b>Note&#160;</b>: le paramètre que reçoit la fonction bang n'est ni plus ni moins ce que vous avez renseigné dans le contructeur de l'instance Err() bing. Gardez ceci en tête lorsque vous souhaiterez effectuer des opérations sur ce paramètre dans le corps de votre fonction.</paragraph>
 				</section>
 				<section id="II-D-8">
-					<title>A quoi sert la fonction map&#160;?</title>
+					<title>A quoi sert la méthode map&#160;?</title>
 				</section>
 				<section id="II-D-9">
-					<title>A quoi sert la fonction and_then&#160;?</title>
+					<title>A quoi sert la méthode and_then&#160;?</title>
+					<paragraph>La méthode and_then() permet d'effectuer des opérations sur la structure qui l'implémente, puis renvoie une nouvelle instance de cette dernière.</paragraph>
+					<code dissimulable="1" langage="rust" showLines="1" startLine="1" titre="Utilisation de la méthode and_then()">fn concat(arg: &amp;str) -> Option&lt;String>
+{
+    Some(arg.to_string() + "world!")
+}
+fn main()
+{
+    let foo = Some("Hello ");
+    println!("{}", foo.and_then(concat).unwrap());
+}</code>
+					<paragraph>Actuellement, les structures qui implémentent la méthode and_then() sont&#160;:</paragraph>
+					<liste>
+						<element>Option&lt;T>;</element>
+						<element>Result&lt;T, E>;</element>
+					</liste>
+					<paragraph>Voir aussi&#160;:</paragraph>
+					<liste>
+						<element>A quoi sert la méthode unwrap()&#160;?</element>
+						<element>Qu'est-ce que la structure Result&lt;T, E>&#160;?</element>
+						<element>Qu'est-ce que la structure Option&lt;T>&#160;?</element>
+					</liste>
 				</section>
 				<section id="II-D-10">
 					<title>A quoi sert la macro try!&#160;?</title>
