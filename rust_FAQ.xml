@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <document>
-	<!--XML créé avec la version 16.8 du KitOOoDVP le 30/10/2016 02:57:26-->
+	<!--XML créé avec la version 16.8 du KitOOoDVP le 30/10/2016 02:23:28-->
 	<!--En-tête d'article-->
 	<entete>
 		<rubrique>89</rubrique>
@@ -1617,9 +1617,9 @@ benchmark_main!(my_bench);</code>
 					<paragraph>Oui, bien entendu.</paragraph>
 					<paragraph>Il existe trois assertions différentes en Rust (toutes encapsulées par une macro)&#160;:</paragraph>
 					<liste type="1">
-						<element><link href="https://doc.rust-lang.org/std/macro.assert!.html" target="_blank" title="Ouvrir un nouvel onglet">assert</link>!;</element>
-						<element><link href="https://doc.rust-lang.org/std/macro.assert_eq!.html" target="_blank" title="Ouvrir un nouvel onglet">assert_eq</link>!;</element>
-						<element><link href="https://doc.rust-lang.org/std/macro.debug_assert!.html" target="_blank" title="Ouvrir un nouvel onglet">debug_assert</link>!.</element>
+						<element><inline langage="rust">assert!</inline>;</element>
+						<element><inline langage="rust">assert_eq!</inline>;</element>
+						<element><inline langage="rust">debug_assert!</inline>.</element>
 					</liste>
 					<paragraph>Voir aussi&#160;:</paragraph>
 					<liste>
@@ -1738,8 +1738,8 @@ fn main()
 }</code>
 					<paragraph>Actuellement, les structures qui implémentent la méthode and_then() sont&#160;:</paragraph>
 					<liste>
-						<element>Option&lt;T>;</element>
-						<element>Result&lt;T, E>;</element>
+						<element><inline langage="rust">Option&lt;T></inline>;</element>
+						<element><inline langage="rust">Result&lt;T, E></inline>;</element>
 					</liste>
 					<paragraph>Voir aussi&#160;:</paragraph>
 					<liste>
@@ -1785,7 +1785,6 @@ fn main() -> ()
 					<liste>
 						<element><link href="https://is.gd/wsqrbp" target="_blank" title="Ouvrir un nouvel onglet">Visionner le résultat de l'exemple</link> (requiert une connexion internet)</element>
 						<element>Comment utiliser une macro&#160;?</element>
-						<element>[macro]Antisèche des sous-types</element>
 					</liste>
 				</section>
 				<section id="II-D-12">
@@ -1888,15 +1887,15 @@ fn main()
 				</section>
 				<section id="II-D-16">
 					<title>Qu'est-ce que l'énumération Option&lt;T>&#160;?</title>
-					<paragraph>Option est une énumération contenant deux constructeurs différents&#160;: Some(T) et None.</paragraph>
+					<paragraph>Option est une énumération contenant deux constructeurs différents&#160;: <inline langage="rust">Some(T)</inline> et <inline langage="rust">None</inline>.</paragraph>
 					<paragraph>Option est en quelque sorte un wrapper, conteneur permettant de vérifier l'intégrité des données contenues.</paragraph>
 				</section>
 				<section id="II-D-17">
 					<title>Comment utiliser l'énumération Option&lt;T>&#160;?</title>
 					<paragraph>Pour utiliser les variantes de l'énumération, il faut savoir à quoi elles correspondent.</paragraph>
 					<liste>
-						<element>Some(T) représente un binding valide&#160;;</element>
-						<element>None représente un binding invalide.</element>
+						<element><inline langage="rust">Some(T)</inline> représente un binding valide&#160;;</element>
+						<element><inline langage="rust">None</inline> représente un binding invalide.</element>
 					</liste>
 					<code dissimulable="1" langage="rust" showLines="1" startLine="1">fn main()
 {
