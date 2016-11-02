@@ -1,6 +1,6 @@
 # Synopsis
 
-Cette FAQ est très certainement destinée à être modifée. Si vous parvenez à débusquer une erreur dans les Q/R proposées, reportez-la au responsable de la rubrique ou à un mainteneur de la FAQ, s'il vous plaît.
+Cette FAQ est très certainement destinée à être modifiée. Si vous parvenez à débusquer une erreur dans les Q/R proposées, reportez-la au responsable de la rubrique ou à un mainteneur de la FAQ, s'il vous plaît.
 
 **Note **: Il se pourrait qu'il y ait quelques confusions dans les Q/R - un deuxième passage sera fait quand une grande majorité des Q/R auront été écrites.
 
@@ -28,7 +28,6 @@ Vous souhaiteriez contribuer ? Super, nous vous remercions pour votre intérêt 
 
 Il existe actuellement plusieurs moyens de contribuer à la maintenance (ou à l'enrichissement) de ce repo:
 
-
 * La façon la plus simple et directe de contribuer est la relecture orthographique du document. Pour ceci, récupérez le [fichier xml](https://github.com/Songbird0/Rust_FAQ/blob/master/rust_FAQ.xml) et ne vous préoccupez que des paragraphres. (les méta-données ne sont pas importantes pour cette tâche.)
 *  Il est également possible pour vous de corriger le document xml en utilisant les outils proposés par [developpez.com](https://github.com/Songbird0/Rust_FAQ/blob/master/developpez.com), vous évitant ainsi de modifier directement le document si sa lecture vous incommode; Si cette méthode vous intéresse, n'hésitez pas à me contacter [ici](https://twitter.com/_Spyglass_) ou [ici](http://www.developpez.net/forums/u897329/songbird_/).
 
@@ -43,7 +42,7 @@ Il existe actuellement plusieurs moyens de contribuer à la maintenance (ou à l
 
 Des questions concernant l'utilisation de cette ressource ? Je vous invite à consulter le fichier LICENCE.md pour plus d'informations.
 
-Les informations contenues dans le fichier ne vous suffisent pas ? Contactez-moi:
+Les informations contenues dans le fichier ne vous suffisent pas ? Contactez-moi :
 
 
 *  [Twitter](https://twitter.com/_Spyglass_) 
@@ -60,10 +59,8 @@ La déclaration d'une variable en Rust se fait par le biais du mot-clé `let`, p
 Vous pouvez bien entendu déclarer et initialiser plusieurs variables en même temps de cette manière :
 
 
-
 ```rust
-fn main() 
-{
+fn main() {
     let (foo, bar, baz) = (117, 42, "Hello world!");
 }
 ```
@@ -71,10 +68,8 @@ fn main()
 Ou effectuer une déclaration multiligne :
 
 
-
 ```rust
-fn main()
-{
+fn main() {
     let foo = 117;
     let bar = 42;
     let baz = "Hello world!";
@@ -92,10 +87,8 @@ Il existe deux façons de faire :
 2. En utilisant le mot-clé `ref` comme ceci :
 
 
-
 ```rust
-fn main() 
-{
+fn main() {
     let foo = 117i32;
     let ref bar = foo;
     let baz = &foo; //idem
@@ -111,10 +104,8 @@ Bien qu'il en donne l'air grâce à une syntaxe très aérée, Rust dispose d'un
 Vous ne pouvez, par exemple, pas faire ceci :
 
 
-
 ```rust
-fn main() 
-{
+fn main() {
     let mut foo = 1;
     foo = " Hello world !";
 }
@@ -128,40 +119,31 @@ Voir aussi : [Comment typer ses données/variables](#LII-A-4 "Comment typer ses
 
 Pour les types primitifs, il existe deux manières de typer une variable :
 
-
-
 ```rust
-fn main() 
-{
-    let foo : i32 = 117;
+fn main() {
+    let foo: i32 = 117;
 }
 ```
 
 Ou :
 
-
-
 ```rust
-fn main() 
-{
+fn main() {
     let bar = 117i32;
 }
 ```
 
 ### Quelle est la différence entre &str et String ?
 
-Du point de vue des packages, `String` se trouve dans le package `std::string` et `&str` dans le package `std`.
-
-Du point de vue des types, `String` est un wrapper de `&str` et ce dernier est tout simplement l'alias représentant le type primitif des chaînes de caractères.
-
+`&str` est un type non mutable représentant une chaîne de caractères tandis que `String` est un wrapper mutable au-dessus de ce dernier.
 
 
 ```rust
-fn main() 
-{
-    let foo : &str = "Hello world!"; //ça fonctionne
-    let bar : String = foo; //erreur
-    let baz : String = String::from(foo); //Ok !
+fn main() {
+    let foo: &str = "Hello world!"; // ça fonctionne
+    let bar: String = foo; // erreur
+    let baz: String = foo.to_string(); // Ok !
+    let baz: String = foo.to_owned(); // Ok ! (équivalent avec la ligne du dessus)
 }
 ```
 
@@ -169,45 +151,48 @@ fn main()
 
 La question pourrait paraître évidente dans d'autres langages, toutefois, après avoir écrit quelque chose de ce style :
 
-
-
 ```rust
-fn main() 
-{
-    let foo : String = "Hello world!";
+fn main() {
+    let foo: String = "Hello world!";
 }
 ```
 
 Le compilateur vous a renvoyé cette erreur :
 
-
-
 ```texinfo
   |>
-4 |>    let foo : String = "Hello world!";
-  |>                       ^^^^^^^^^^^^^^ expected struct `std::string::String`, found &-ptr
+4 |>    let foo: String = "Hello world!";
+  |>                      ^^^^^^^^^^^^^^ expected struct `std::string::String`, found &-ptr
 ```
 
 Il se trouve que la structure `String` est un wrapper.
 
-Vous vous retrouvez donc à typer votre variable pour accueillir une instance de la structure *String* alors que vous créez une chaîne de caractères primitive.
+Vous vous retrouvez donc à typer votre variable pour accueillir une instance de la structure `String` alors que vous créez une chaîne de caractères primitive.
 
 Pour remédier au problème (si vous souhaitez malgré tout utiliser le wrapper), vous pouvez convertir une chaîne de caractères de type `&str` grâce à la fonction `String::from()` :
 
 
+```rust
+fn main() {
+    let foo: String = String::from("Hello world!");
+    // ou
+    let foo: &str = "Hello world!";
+}
+```
+
+Ou encore avec les méthodes `to_owned` et `to_string` (à préférer à la méthode `from` qui est un peu plus générale) :
+
 
 ```rust
-fn main()
-{
-    let foo : String = String::from("Hello world!");
-    //ou
-    let foo : &str = "Hello world!";
+fn main() {
+    let foo = "Hello world!".to_owned();
+    let foo = "Hello world!".to_string();
 }
 ```
 
 ### Quelle version de Rust est recommandée ?
 
-Actuellement***25 septembre 2016***, la version stable la plus récente est la **1.12.0**.
+Actuellement***2 novembre 2016***, la version stable la plus récente est la **1.12.1**.
 
 Mais vous pouvez toutefois utiliser une version un peu plus vieille.
 
@@ -221,40 +206,38 @@ Rust hérite des structures du *C*, elles n'incluent donc pas l'encapsulation de
 
 Il dispose d'un aspect de la POO, de prime abord, assez primitif ; Rust permet toutefois de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
 
-Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures : comme il serait possible de le faire avec des classes.
+Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures : comme il serait possible de le faire avec des classes, bien qu'il soit possible de le faire avec des traits.
+
+Par conséquent, Rust est donc orienté objet puisqu'il possède plusieurs parties de ce paradigme mais n'est pas un langage objet.
 
 Voir aussi : [Qu'est-ce qu'un « trait » ?](#LII-A-9 "Qu'est-ce qu'un « trait » ?")
 
 ### Qu'est-ce qu'un « trait » ?
 
-Un trait pourrait être comparé aux interfaces que l'on peut retrouver dans la plupart des langages orientés objet. (e.g. Java, C#)
+Un trait pourrait être comparé aux interfaces que l'on peut retrouver dans la plupart des langages orientés objet. (e.g. Java, C#).
 
 Les traits vous permettent de déclarer des fonctions abstraites/virtuelles pour ensuite les implémenter au sein d'une structure grâce au mot-clé `impl` comme ceci :
 
-
-
 ```rust
-trait Greeter
-{
+trait Greeter {
     fn greetings(&self);
 }
 
 struct Person;
 
-impl Greeter for Person
-{
-    fn greetings(&self)
-    {
+impl Greeter for Person {
+    fn greetings(&self) {
         println!("Hello, my friends!");
     }
 }
 
-fn main()
-{
+fn main() {
     let person = Person;
     person.greetings();
 }
 ```
+
+Pour aller au plus simple, un trait vous permet d'écrire un ensemble de fonctions qu'un objet est obligé d'implémenter lorsqu'il hérite de ce trait.
 
 ### Rust supporte-t-il la surchage des fonctions ?
 
@@ -282,47 +265,38 @@ Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une ma
 
 Un tableau dans sa forme la plus primitive se déclare comme ceci :
 
-
-
 ```rust
-let foo : [i32; 10] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+let foo: [i32; 10] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 ```
 
 **Note **: la taille du tableau doit être explicite, sous peine de recevoir une erreur de la part du compilateur.
 
-### A quoi sert le mot-clé super ?
+### À quoi sert le mot-clé super ?
 
-Contrairement à ce que l'on pourrait croire, le mot-clé `super` ne représente pas une référence vers l'instance courante d'une classe mère, mais représente seulement le « scope » supérieur. (dans un module)
+Contrairement à ce que l'on pourrait croire, le mot-clé `super` ne représente pas une référence vers l'instance courante d'une classe mère, mais représente seulement le « scope » supérieur (dans un module).
 
 Exemple :
 
-
-
 ```rust
-mod mon_module
-{
-    pub fn ma_fonction()
-    {
+mod mon_module {
+    pub fn ma_fonction() {
         println!("Scope supérieur");
     }
-    pub mod fils
-    {
-        pub fn fonction_enfant()
-        {
+
+    pub mod fils {
+        pub fn fonction_enfant() {
             super::ma_fonction();
         }
     }
-    pub mod fille
-    {
-        pub fn fonction_enfant()
-        {
+
+    pub mod fille {
+        pub fn fonction_enfant() {
             super::ma_fonction();
         }
     }
 }
 
-fn main()
-{
+fn main() {
     mon_module::fils::fonction_enfant();
     mon_module::fille::fonction_enfant();
 }
@@ -330,10 +304,9 @@ fn main()
 
 ### A quoi sert le mot-clé self ?
 
-Le mot-clé `self` renvoie à une copie (ou la référence(`&self`)) de l'instance courante.
+Le mot-clé `self` renvoie à une copie (ou la référence (`&self`)) de l'instance courante.
 
 Il est souvent rencontré :
-
 
 * lorsqu'une fonction virtuelle/abstraite est implémentée au sein d'une structure,
 * lorsque le développeur doit utiliser une fonction dans le module courant, 
@@ -341,26 +314,27 @@ Il est souvent rencontré :
 
 Exemple :
 
-
-
 ```rust
-trait My_Trait
-{
+trait My_Trait {
     fn my_func(&self);
 }
 
-mod My_Mod
-{
-    fn foo()
-    {
+mod My_Mod {
+    fn foo() {
         self::bar();
     }
     
-    fn bar()
-    {
-    
+    fn bar() {
     }
 }
+```
+
+Il sert aussi à désigner le module courant lors d'un import. Par exemple :
+
+```rust
+use std::io::{self, File};
+
+// maintenant on peut utiliser File mais aussi io !
 ```
 
 ### A quoi sert le mot-clé use ?
@@ -369,15 +343,12 @@ Le mot-clé `use` permet de raccourcir le « chemin » des dépendences du pro
 
 Exemple :
 
-
-
 ```rust
 extern crate mon_package ;
 
 use mon_package::mon_module::ma_fonction ;
 
-fn main()
-{
+fn main() {
     ma_fonction() ;
 }
 ```
@@ -386,37 +357,65 @@ Autrement dit, toute structure composée de différentes ressources peut être e
 
 Exemple :
 
-
-
 ```rust
-enum MonEnum
-{
+enum MonEnum {
     Arg1,
     Arg2,
 }
 
-fn main()
-{
+fn main() {
     use MonEnum::{Arg1};
     let instance = Arg1; //plus la peine d'expliciter d'où provient l'instance Arg1 comme ceci:
     // let instance = MonEnum::Arg1;
 }
 ```
 
+Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par un exemple un project possédant cette hiérarchie :
+
+```text
+src
+ ├─── fichier.rs
+ ├─── video
+ |      ├──── video.rs
+ |      ├──── mod.rs
+ |
+ ├─── audio
+        ├──── audio.rs
+        ├──── mod.rs
+```
+
+Pour pouvoir accéder aux items présents dans `audio.rs` et `video.rs`, vous allez devoir les rendre visibles dans les niveaux supérieurs en les réexportant comme ceci :
+
+```rust
+// dans video/mod.rs
+pub use self::video::{Video, une_fonction};
+
+mod video;
+
+// dans audio/mod.rs
+pub use self::audio::{Audio, une_autre_fonction};
+
+mod audio;
+```
+
+Dans `fichier.rs`, vous pourrez désormais faire :
+
+```rust
+use Audio;
+use Video;
+```
+
 ### A quoi sert le mot-clé pub ?
 
 Le mot-clé `pub` peut être utilisé dans *trois* contextes différents :
-
 
 1. Au sein [et sur] des modules ;
 2. Au sein [et sur] des traits ;
 3. Au sein [et sur] des structures.
 
-Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre publique l'objet concerné.
+Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre public l'objet concerné.
 
 Exemple :
-
-
 
 ```text
 ├── Cargo.lock
@@ -434,35 +433,27 @@ Exemple :
         └── native
 ```
 
-
-
 ```rust
-pub mod ma_lib //la module représentant ma bibliothèque
-{
-    pub mod mon_module //un module lambda
-    {
-        pub fn ma_fonction() //ma fonction
-        {
+pub mod ma_lib { //la module représentant ma bibliothèque
+    pub mod mon_module { // un module lambda
+        pub fn ma_fonction() { //ma fonction
             println!("Hi there !");
         }
     }
 }
 ```
 
-
-
 ```rust
 extern crate mon_projet;
+
 use mon_projet::ma_lib::mon_module::ma_fonction;
-fn main() 
-{
+
+fn main() {
     ma_fonction();
 }
 ```
 
 Renvoie :
-
-
 
 ```text
 Hi there !
@@ -471,8 +462,6 @@ Hi there !
 « mon_projet » est le nom porté par votre projet dans le manifest Cargo.toml.
 
 Pour cet exemple, voici le manifest rédigé :
-
-
 
 ```toml
 [package]
@@ -483,47 +472,34 @@ authors = ["Songbird0 <chaacygg@gmail.com>"]
 [dependencies]
 ```
 
-**Quid lorsque pub est utilisé au sein de ces structures ?**
+**Comment faire une méthode statique ?**
 
-Lorsque le mot-clé `pub` est utilisé au sein d'un `trait` ou d'une `struct`ure sur une fonction, cela rend cette dernière indépendante de l'instance d'un objet. (mais peut toujours être appelée par l'une d'elles)
-
-Autrement dit, la fonction est statique.
-
-
+Tout dépend de la présence de `self`/`&self`/`&mut self` en premier argument. Exemple :
 
 ```rust
 struct A;
 
-impl A
-{
-    pub fn foo()
-    {
-        println!("Je suis statique !");
+impl A {
+    fn foo() { // ceci est une méthode statique
     }
-    
-    pub fn new() -> A
-    {
-        return A;
-    }
-    
-    fn bar(&self)
-    {
-        println!("Fonction non-statique");
-    }
-}
 
-fn main()
-{
-    let instance : A = A::new();
-    A::foo();
-    instance.bar();
-    //instance::bar() -> erreur
+    fn foo1(arg: i32) { // ceci est une méthode statique
+    }
+    
+    fn foo2(&self) { // ceci n'est pas une méthode statique
+    }
+    
+    fn foo3(self) { // ceci n'est pas une méthode statique non plus
+    }
+    
+    fn foo4(&self, arg: i32) { // ceci n'est pas non plus une méthode statique
+    }
 }
 ```
 
 ### A quoi servent les mot-clés extern crate ?
 
-Les mot-clés `extern crate` permettent d'importer un paquet entier de modules dans le fichier courant.
+Les mot-clés `extern crate` permettent d'importer un paquet entier de modules dans le fichier courant, aussi appelé crate.
 
 Le principe est simple, il vous suffit seulement de créer en premier lieu un projet en mode « bibliothèque » pour réunir tous les modules que vous créerez, de créer un fichier qui accueillera le point d'entrée de votre programme, puis d'importer votre paquet.
 
@@ -537,7 +513,15 @@ Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R 
 
 ### A quoi sert le mot-clé mod ?
 
-Le mot-clé `mod` vous permet de créer un module.
+Le mot-clé `mod` vous permet d'importer ou de déclarer un module. Il est important de noter que les fichiers sont considérés comme des modules. Exemple :
+
+```rust
+mod a {
+    fn foo() {}
+}
+
+mod nom_du_fichier; // importera le fichier "nom_du_fichier.rs"
+```
 
 Voir aussi :
 
@@ -557,17 +541,14 @@ Voir aussi :
 
 Voici comment créer un `mod`ule :
 
-
-
 ```rust
-mod A
-{
-    fn votre_fonction(){}
-    fn une_autre_fonction(){}
-    mod B
-    {
-        struct C{}
-        trait D{}
+mod A {
+    fn votre_fonction() {}
+    fn une_autre_fonction() {}
+
+    mod B {
+        struct C;
+        trait D {}
     }
 }
 ```
@@ -578,15 +559,11 @@ Le mot-clé `type` permet de créer des *alias* et ainsi réduire la taille des 
 
 Voici un exemple :
 
-
-
 ```rust
 struct VeryLongTypeName;
 
-impl VeryLongTypeName
-{
-    pub fn new() -> VeryLongTypeName
-    {
+impl VeryLongTypeName {
+    pub fn new() -> VeryLongTypeName {
         println!("In new function");
         return VeryLongTypeName;
     }
@@ -594,8 +571,7 @@ impl VeryLongTypeName
 
 type ShortName = VeryLongTypeName;
 
-fn main()
-{
+fn main() {
     let foo = ShortName::new();
 }
 ```
@@ -612,29 +588,22 @@ Retrouvez des explications [ici](http://stackoverflow.com/questions/29447920/wha
 
 Le mot-clé `loop` est un sucre syntaxique qui permet de remplacer le fameux :
 
-
-
 ```rust
-while(true)
-{
+while(true) {
 
 }
 
 // ou
 
-for(;;)
-{
+for(;;) {
 
 }
 ```
 
 Préférez donc cette syntaxe :
 
-
-
 ```rust
-loop
-{
+loop {
 
 }
 ```
@@ -647,22 +616,23 @@ Liens :
 
 Le mot-clé `where` permet de filtrer les objets passés en paramètres dans une fonction génériques, par exemple :
 
-
-
 ```rust
 trait Soldier{}
 trait Citizen{}
+
 struct A;
 struct B;
-impl Soldier for A{}
-fn foo<T>(test: T) -> T where T: Soldier
-{
+
+impl Soldier for A {}
+
+fn foo<T>(test: T) -> T
+where T: Soldier {
     return test;
 }
-fn main()
-{
-    let soldier : A = A;
-    let citizen : B = B;
+
+fn main() {
+    let soldier: A = A;
+    let citizen: B = B;
     foo(soldier);
     foo(citizen); //error: the trait bound `B: Soldier` is not satisfied
 }
@@ -672,44 +642,17 @@ fn main()
 
 Le mot-clé `unsafe` permet, comme son nom l'indique, de casser certaines règles natives de Rust pour effectuer des opérations « à risque ».
 
-`unsafe` peut être utilisé dans quatre contextes différents :
-
-La déclaration d'une fonction :
-
-
-
-```rust
-unsafe fn dangerous_function() {}
-```
-
-La création d'un nouveau scope :
-
-
-
-```rust
-fn main() → ()
-{
-    unsafe {/*dangerous scope*/}
-}
-```
-
-La déclaration d'un trait :
-
-
-
-```rust
-unsafe trait Dangerous_trait{}
-```
-
-L'implémentation d'un trait :
-
-
-
-```rust
-unsafe impl A for B {}
-```
-
 En pratique, le mot-clé `unsafe` permet une manipulation de la mémoire plus approfondie, plus directe, mais aussi plus compliquée, puisque le langage n'applique pas certaines règes.
+
+Pour faire simple : utilisez `unsafe` aussi peu que possible.
+
+Exemple d'utilisation d'`unsafe` :
+
+```rust
+let x: i32 = &0;
+let ptr = x as *const i32;
+unsafe { *ptr; } // on tente d'accéder à l'élément pointé par le pointeur, ce qui est hautement "unsafe"
+```
 
 Voir aussi :
 
@@ -721,8 +664,7 @@ Voir aussi :
 
 Trois règles, et seulement trois, sont brisées dans les blocs (et fonctions) `unsafe`:
 
-
-1. L'accès et la modification d'une variable globale (statique) muable sont autorisés ;
+1. L'accès et la modification d'une variable globale (statique) mutable sont autorisés ;
 2. Il est possible de déréférencer un pointeur (non-nul, donc) ;
 3. Il est possible de faire à une fonction non-sûre.
 
@@ -732,13 +674,10 @@ Pour en retrouver une liste exhaustive, rendez-vous à la [section dédiée](htt
 
 ### A quoi sert le mot-clé fn ?
 
-En rust, pour déclarer une fonction, il faut utiliser le mot-clé `fn `:
-
-
+En rust, pour déclarer une fonction, il faut utiliser le mot-clé `fn` :
 
 ```rust
-fn ma_fonction()
-{
+fn ma_fonction() {
 
 }
 ```
@@ -751,45 +690,27 @@ Ainsi, il est possible de comparer une entrée à plusieurs tokens constants et 
 
 Exemple :
 
-
-
 ```rust
-    let foo : i32 = 117;
-    match foo
-    {
-        117 => println!("foo's value equals 117 !"),
-        _ => println!("You know nothing, John."), //s'éfforcera de trouver une réponse
-    }
-```
+let foo: i32 = 117;
 
-Jusqu'ici, il semblerait que le mot-clé `match` ne soit pas capable de faire preuve de plus de souplesse qu'un `switch`, ce qui est bien entendu le contraire !
-
-Vous pouvez assigner le résultat de vos tests directement dans une variable sans avoir à l'écrire dans votre `switch`/`match`.
-
-Exemple :
-
-
-
-```rust
-fn main()
-{
-    let foo : i32 = 117;
-    let mut bar : String;
-    match foo
-    {
-        117 => println!("foo's value equals 117 !"),
-        _ => println!("You know nothing, John."),
-    }
-    
-    bar = match foo
-    {
-        117 => "It's ok !".to_string(),
-        _ => "foo isn't equals to 117".to_string(),
-    };
-    
-    println!("{}", &bar);
+match foo {
+    117 => println!("foo's value equals 117 !"),
+    _ => println!("You know nothing, John."), // s'efforcera de trouver une réponse
 }
 ```
+
+Jusqu'ici, il semblerait que le mot-clé `match` ne soit pas capable de faire preuve de plus de souplesse qu'un `switch`, ce qui est bien entendu le contraire ! Vous pouvez par-exemple matcher sur un ensemble de valeur :
+
+```rust
+let foo: i32 = 117;
+
+match foo {
+    100...120 => println!("foo's value equals est entre 100 et 120 !"),
+    _ => println!("You know nothing, John."), // s'efforcera de trouver une réponse
+}
+```
+
+Le pattern matching est très puissant, n'hésitez pas à en user et en abuser !
 
 Voir aussi :
 
@@ -803,14 +724,12 @@ Vous pouvez retrouver [une source](https://en.wikipedia.org/wiki/Pattern_matchin
 
 Le mot-clé `ref` est une alternative au caractère spécial `&` pour expliciter le renvoie d'une référence d'un objet :
 
-
-
 ```rust
-struct A ;
-fn main()
-{
-    let foo : A = A ;
-    let bar : &A = &foo ; // ou let ref bar = foo ;
+struct A;
+
+fn main() {
+    let foo: A = A ;
+    let bar: &A = &foo ; // ou let ref bar = foo ;
 }
 ```
 
@@ -818,11 +737,9 @@ fn main()
 
 Le mot-clé `mut` permet de rendre l'une de vos variable muables lors de sa déclaration.
 
-
-
 ```rust
-let mut foo : i32 = 0 ;
-let bar : i32 = 1 ;
+let mut foo: i32 = 0 ;
+let bar: i32 = 1 ;
 foo = 1 ;
 bar = 2 ; //erreur
 ```
@@ -841,15 +758,13 @@ Une macro est ce que l'on peut appeler vulgairement : une fonction très puissa
 
 Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et ainsi écrire les instructions désirées selon *chaque* cas.
 
-En Rust, c'est ce qui se rapproche le plus de la *surcharge de méthodes* en Java.
+Pour grossir un peu le trait : les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme.
 
 Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?")
 
 ### Comment utiliser une macro ?
 
 Pour utiliser une macro, il faut d'abord la déclarer en utilisant le mot-clé `macro_rules!`.
-
-
 
 ```rust
 macro_rules! foo
@@ -858,7 +773,7 @@ macro_rules! foo
 }
 ```
 
-Toutes les macros (y compris celle présentée ici) respestent une règle très importante : elles doivent toutes capturer au moins une expression pour être valide et compilées. (en l'occurrence, la regex `() => () ;`)
+Toutes les macros (y compris celle présentée ici) respectent une règle très importante : elles doivent toutes capturer au moins une expression pour être valide et compilées. (en l'occurrence, la regex `() => () ;`)
 
 C'est donc cela, l'une des différences majeures entre une fonction/procédure et une macro : cette dernière est capable de capturer des expressions rationnelles, conserver en mémoire ce que désire le développeur, puis de les ré-utiliser dans le corps de l'une d'entre-elles.
 
@@ -866,12 +781,10 @@ Ces « super » fonctions demandent donc quelques notions liées aux expressio
 
 Voici un exemple très basique de macro :
 
-
-
 ```rust
 /// **Attention**:
 /// 
-///Cette macro n'utilise qu'un seul type de spécificateur, mais il en existe beaucoup d'autres.
+/// Cette macro n'utilise qu'un seul type de spécificateur, mais il en existe beaucoup d'autres.
 macro_rules! foo
 {
     ($your_name:expr, $your_last_name:expr, $carriage_return: expr) =>
@@ -894,11 +807,10 @@ macro_rules! foo
     };
 }
 
-fn main() -> ()
-{
+fn main() {
     foo!("Song", "Bird", true);
-    foo!("Song", "Bird"); //pas de retour à la ligne
-    foo!("Song"); //là non plus
+    foo!("Song", "Bird"); // pas de retour à la ligne
+    foo!("Song"); // là non plus
 }
 ```
 
@@ -914,15 +826,15 @@ Liens :
 
 ### Que sont les spécificateurs ?
 
-### A quoi sert le mot-clé  usize ?
+### À quoi sert le mot-clé usize ?
 
-Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé*. (selon l'architecture de la machine sur laquelle le programme sera exécuté)
+Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
 
 Voir aussi : [A quoi sert le mot-clé isize ?](#LII-A-36 "A quoi sert le mot-clé isize ? ")
 
 ### A quoi sert le mot-clé isize ? 
 
-Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé*. (selon l'architecture de la machine sur laquelle le programme sera exécuté)
+Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
 
 Voir aussi : [A quoi sert le mot-clé usize ?](#LII-A-35 "A quoi sert le mot-clé usize ?")
 
@@ -930,9 +842,9 @@ Voir aussi : [A quoi sert le mot-clé usize ?](#LII-A-35 "A quoi sert le mot-c
 
 Rust dispose d'un outil de développement multifonction nommé Cargo.
 
-Cargo est en premier lieu un gestionnaire de paquets (qui vous permet donc de télécharger des modules Rust développés par d'autres programmeurs) mais vous épaule également dans la gestion, la construction de vos projets, la création de vos manifest, etc.
+Cargo est en premier lieu un gestionnaire de paquets (qui vous permet donc de télécharger des modules Rust développés par d'autres programmeurs) mais vous épaule également dans la gestion, la construction de vos projets, la création de vos manifest, etc...
 
-Un groupe de Q/R a été créé sur cette FAQ présentant une liste non-exhaustive de commandes supportées par Cargo suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil(`$ man cargo`)) :
+Un groupe de Q/R a été créé sur cette FAQ présentant une liste non-exhaustive de commandes supportées par Cargo suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil (`$ man cargo`)) :
 
 
 *  [Comment créer un projet avec Cargo ?](#LII-C-1 "Comment créer un projet avec Cargo ?") 
@@ -958,21 +870,20 @@ Voir aussi :
 
 ### Comment comparer deux objets avec Rust ?
 
-Pour comparer deux objets avec Rust, vous pouvez utiliser la fonction `eq()`  implémentée grâce au `trait` `PartialEq`.
+Pour comparer deux objets avec Rust, vous pouvez implémenter le `trait` `PartialEq` que vous pourrez ensuite utiliser avec `==` ou la méthode `eq`.
 
 Exemple :
 
-
-
 ```rust
-fn main()
-{
+fn main() {
     let foo = 0;
     let bar = 0;
-    let baz = foo.eq(&bar); //true
-    let bazz = 'Hello world !';
-    let bazzz = 'Hello world !'.to_string();
-    let bazzzz = bazz.eq(&bazzz); //true
+    let baz = foo == bar; //true
+
+    let bazz = "Hello world !";
+    let bazzz = "Hello world !".to_string();
+    let bazzzz = bazz == &bazzz; // true
+    let bazzzz = bazz.eq(&bazzz); // équivalent de la ligne du dessus
 }
 ```
 
@@ -987,22 +898,19 @@ Exemple :
 
 
 ```rust
-fn main() -> ()
-{
-    let foo : &str = "Hello";
+fn main() {
+    let foo: &str = "Hello";
     {
-        let foo : &str = "world!";
+        let foo: &str = "world!";
         println!("{}", &foo);
     }
     println!("{}", &foo);
 }
 ```
 
-La première déclaration de foo a été « éclipsée » par celle se trouvant dans le deuxième scope. Lorsque cette dernière a été détruite (ou simplement mise hors d'accès, dans ce cas), la première déclaration de foo a été de nouveau opérationnelle.
+La première déclaration de foo a été « éclipsée » par celle se trouvant dans le deuxième scope. Lorsque cette dernière a été détruite, la première déclaration de `foo` a été de nouveau opérationnelle.
 
 Résultat :
-
-
 
 ```rust
 world!
@@ -1017,11 +925,10 @@ Grâce au pattern matching, il est possible de créer, donc, des « modèles �
 
 Une destrucuration peut se faire sur :
 
-Les listes, les tuples ;
-
-Les énumérations ;
-
-Les structures.
+* Les listes
+* Les tuples
+* Les énumérations
+* Les structures
 
 Voir aussi :
 
@@ -1037,20 +944,16 @@ Pour isoler une valeur contenu dans un tuple, il faut d'abord écrire son modèl
 Par exemple, en assumant que nous cherchons une suite de chiffres dans un ordre croissant, il est simple de déterminer si cette suite est dans le bon ordre ou non.
 
 
-
 ```rust
     let foo = ("one", "two", "three");
     let bar = ("two", "one", "three"); 
     
-    match bar
-    {
-        ("one", x, "three") =>
-        {
-            if x == "two"
-            {
+    match bar {
+        ("one", x, "three") => {
+            if x == "two" {
                 println!("tout est en ordre !");
             }
-        },
+        }
         _ => println!("on dirait qu'il y a un problème dans votre tuple..."),
     }
 ```
@@ -1059,18 +962,13 @@ Lorsque vous construisez un modèle de ce type, gardez bien en tête que la vale
 
 Rien ne vous empêche donc de faire ceci :
 
-
-
 ```rust
     let foo = ("one", "two", "three");
     let bar = ("two", "one", "three"); 
     
-    match foo
-    {
-        ("one", x, y) =>
-        {
-            if (x, y) == ("two", "three") //on surveille plusieurs valeurs
-            {
+    match foo {
+        ("one", x, y) => {
+            if (x, y) == ("two", "three") { // on surveille plusieurs valeurs
                 println!("tout est en ordre !");
             }
         },
@@ -1085,41 +983,24 @@ Le pattern matching vous donne la possibilité de « décortiquer » une énum
 Voici un exemple :
 
 
-
 ```rust
-pub enum Enum
-{
+pub enum Enum {
     One,
     Two,
     Three,
     Four,
 }
 
-fn foo(arg: Enum) -> ()
-{
-    match arg
-    {
-        Enum::One => 
-        {
-            println!("One");
-        },
-        Enum::Two =>
-        {
-            println!("Two");
-        },
-        Enum::Three =>
-        {
-            println!("Three");
-        },
-        Enum::Four =>
-        {
-            println!("Four");
-        },
+fn foo(arg: Enum) {
+    match arg {
+        Enum::One =>  println!("One"),
+        Enum::Two => println!("Two"),
+        Enum::Three => println!("Three"),
+        Enum::Four => println!("Four"),
     }
 }
 
-fn main()
-{
+fn main() {
     let (bar, baz, bazz, bazzz) = (Enum::One, Enum::Two, Enum::Three, Enum::Four);
     
     foo(bar);
@@ -1136,57 +1017,52 @@ Tout d'abord, la question que nous pourrions nous poser est : en quoi consiste 
 L'idée est d'isoler, encore une fois, les propriétés qui nous intéressent.
 
 
-
 ```rust
-struct A
-{
+struct A {
     x: String,
     y: String,
     z: String,
 }
 
-fn main() -> ()
-{
+fn main() {
     let foo = A {
-                    x: "Hello".to_string(),
-                    y: " ".to_string(),
-                    z: "world!".to_string(),
-                };
-    let A {x: a, y: b, z: c} = foo; //on décortique les attributs de notre structure
-    println!("{}{}{}", a, b, c); //puis on les utilise dans de nouvelles variables
+        x: "Hello".to_string(),
+        y: " ".to_string(),
+        z: "world!".to_string(),
+    };
+    let A { x: a, y: b, z: c } = foo; // on décortique les attributs de notre structure
+    println!("{}{}{}", a, b, c); // puis on les utilise dans de nouvelles variables
 }
 ```
 
 Vous souhaiteriez omettre un attribut ? Pas de problèmes !
 
 
-
 ```rust
     let foo = A {
-                    x: "Hello".to_string(),
-                    y: " ".to_string(),
-                    z: "world!".to_string(),
-                };
-    let A {x: a, y: b, ..} = foo; //on décortique les attributs de notre structure
-    println!("{}{}", a, b); //puis on les utilise dans de nouvelles variables
+        x: "Hello".to_string(),
+        y: " ".to_string(),
+        z: "world!".to_string(),
+    };
+    let A { x: a, y: b, .. } = foo; // on décortique les attributs de notre structure
+    println!("{}{}", a, b); // puis on les utilise dans de nouvelles variables
 ```
 
 Vous pouvez également isoler ce style d'opération dans un scope plus petit (empêchant l'utilisation des variables temporaires en dehors de ce dernier) comme ceci :
 
 
-
 ```rust
     let foo = A {
-                    x: "Hello".to_string(),
-                    y: " ".to_string(),
-                    z: "world!".to_string(),
-                };
+        x: "Hello".to_string(),
+        y: " ".to_string(),
+        z: "world!".to_string(),
+    };
     {
-        let A {x: a, y: b, z: c} = foo; //on décortique les attributs de notre structure
+        let A { x: a, y: b, z: c } = foo; //on décortique les attributs de notre structure
         println!("{}{}{}", a, b, c); //puis on les utilise dans de nouvelles variables
     }
     
-    //a,b et c ne pourront plus être utilisés à partir d'ici
+    // a,b et c ne pourront plus être utilisés à partir d'ici
 ```
 
 ### Comment comparer deux objets d'une structure personnalisée avec Rust ?
@@ -1200,46 +1076,33 @@ La bibliothèque standard de Rust propose un(e) `trait`/ interface nommé(e) `Pa
 Ci-dessous figure un exemple complet d'implémentation :
 
 
-
 ```rust
-struct Spartan<'a>
-{
-
+struct Spartan<'a> {
     sid: i32, 
-    name: &'a str
-
+    name: &'a str,
 }
 
-impl<'a> PartialEq for Spartan<'a>
-{
-    fn eq(&self, other: &Spartan) -> bool
-    {
+impl<'a> PartialEq for Spartan<'a> {
+    fn eq(&self, other: &Spartan) -> bool {
         self.sid == other.sid
     }
 }
 
-impl<'a> Spartan<'a>
-{
-    
-    pub fn new(sid: i32, name: &str) -> Spartan
-    {
-        Spartan
-        {
+impl<'a> Spartan<'a> {
+    pub fn new(sid: i32, name: &str) -> Spartan {
+        Spartan {
             sid: sid,
             name: name,
         }
     }
 }
-fn main()
-{
+
+fn main() {
     let (foo , bar) = (Spartan::new(117, "John"), Spartan::new(062, "Jorge"));
     
-    if foo == bar 
-    { 
+    if foo == bar { 
         println!("foo equals bar"); 
-    } 
-    else 
-    { 
+    } else { 
         println!("foo not equals bar"); 
     }
 }
@@ -1252,26 +1115,22 @@ Il se pourrait que vous ayez omis d'utiliser une annotation : `#[macro_use]`
 Cette dernière permet d'exporter toutes les macros qui doivent être publiques pour être utilisées à l'exterieur de la bibliothèque.
 
 
-
 ```rust
 #[macro_use]
 extern crate votre_lib;
 
-fn main() -> ()
-{
- votre_macro!();
+fn main() {
+    votre_macro!();
 }
 ```
 
 Si vous ne parvenez toujours pas à les utiliser, il est possible que vous ayez omis l'annotation `#[macro_export]` dans les modules comportant vos macros.
 
 
-
 ```rust
 // dans le fichier lib.rs
-#[macro_use]//bien préciser que ce module utilise des macros
-pub mod votre_conteneur
-{
+#[macro_use] // bien préciser que ce module utilise des macros
+pub mod votre_conteneur {
     #[macro_export]
     macro_rules! foo
     {
@@ -1297,19 +1156,14 @@ Si votre problème persiste, je vous invite à vous rendre sur les forums figura
 La combinaison des deux mot-clés permet d'assigner, de manière concise, du contenu à une variable.
 
 
-
 ```rust
-fn main() -> ()
-{
+fn main() {
     let foo : Option<String> = Some("Hello world!".to_string());
     let mut bar : bool = false;
     
-    if let Some(content) = foo // si la variable foo contient quelque chose...
-    {
+    if let Some(content) = foo { // si la variable foo contient quelque chose...
         bar = true;
-    }
-    else
-    {
+    } else {
         println!("foo's content is None");
     }
 }
@@ -1323,10 +1177,9 @@ La combinaison des deux mot-clés permet d'effectuer des tests de manière conci
 
 [Exemple de la documentation officielle]
 
-
-
 ```rust
 let mut v = vec![1, 3, 5, 7, 11];
+
 while let Some(x) = v.pop() {
     println!("{}", x);
 }
@@ -1362,18 +1215,15 @@ Bien que ce dernier soit très pratique, il demande d'avoir une certaine rigueur
 Pour cela, voici un exemple d'erreur typique lorsque l'on débute sans réellement connaître les tâches effectuées par le « ramasse-miette » :
 
 
-
 ```rust
-fn main()
-{
-    let foo : String = String::from("Hello world!");
-    let bar : String = foo;
-    let baz : String = foo; //erreur la ressource a été « déplacée »
+fn main() {
+    let foo: String = String::from("Hello world!");
+    let bar: String = foo;
+    let baz: String = foo; //erreur la ressource a été « déplacée »
 }
 ```
 
 Renvoyant une erreur de ce style :
-
 
 
 ```rust
@@ -1390,16 +1240,14 @@ C'est en copiant les informations relatives à l'objet String (en « déplacant
 
 C'est lorsque la variable *baz* essaie de copier les informations de *foo* que l'erreur survient : *foo* a déjà été détruit par le *garbage* *collector*.
 
-Pour remédier au problème, il aurait simplement suffit de copier *bar* de cette manière :
-
+Pour remédier au problème, il aurait simplement suffit de "copier" *bar* de cette manière :
 
 
 ```rust
-fn main()
-{
-    let foo : String = String::from("Hello world!");
-    let bar : String = foo;
-    let baz : &String = &bar; //on récupère une référence
+fn main() {
+    let foo: String = "Hello world!".to_owned();
+    let bar: String = foo;
+    let baz: &String = &bar; // on récupère une référence
 }
 ```
 
@@ -1408,15 +1256,15 @@ Tout est en règle, le compilateur ne râle plus, et si vous souhaitez afficher 
 Vous pouvez très bien écrire ceci :
 
 
-
 ```rust
-fn main()
-{
+fn main() {
     let foo = 42;
     let bar = foo;
     let baz = foo;
 }
 ```
+
+Car les types primitifs tels que les `i8`, `i16`, `i32`, `i64`, `u8`, ... implémentent le trait `Copy`.
 
 **Quid des fonctions ?**
 
@@ -1427,23 +1275,18 @@ Lorsqu'une ressource est passée en paramètre par copie, la fonction « possè
 Exemple :
 
 
-
 ```rust
-fn my_func(my_string: String)
-{
-    let chars = my_string.chars();
-    for letter in chars 
-    {
+fn my_func(my_string: String) {
+    for letter in my_string.chars() {
         println!("{}", &letter);
     }
 }
-fn main()
-{
-    let foo : String = String::from("The cake is a lie!");
+
+fn main() {
+    let foo: String = String::from("The cake is a lie!");
+
     my_func(foo);
-    
     let chars = foo.chars(); //error
-    
 }
 ```
 
@@ -1467,24 +1310,19 @@ Le borrow checker fera respecter ces trois règles (que vous pouvez retrouver da
 3. Vous ne pouvez pas accéder à la ressource en lecture et en écriture en même temps, exemple :
 
 
-
 ```rust
-fn main() 
-{
+fn main()  {
     let mut foo = 117;
     let bar = &mut foo;
-    let baz = &foo; //erreur
-
+    let baz = &foo; // erreur
 }
 ```
 
 Ou :
 
 
-
 ```rust
-fn main() 
-{
+fn main() {
     let mut foo = 117;
     let bar = &mut foo;
     let baz = &mut foo; //erreur
@@ -1495,20 +1333,18 @@ fn main()
 
 **Introduction**
 
-Comme tous langages (sauf exception que nous pourrions ignorer), Rust dispose d'un système de durée de vie.
+Comme tout langages (sauf exception que nous pourrions ignorer), Rust dispose d'un système de durée de vie.
 
 Toutefois, il fait preuve d'une grande rigourosité quant à la destruction des ressources dynamiques et à « l'isolement » des ressources statiques après utilisation.
 
 Voici un exemple :
 
 
-
 ```rust
-fn main()
-{
-    let mut foo : String = "Hello world!".to_string(); //Le scope A commence ici
-    let bar : String = "Goodbye, friend !".to_string();//Le scope B commence ici
-    foo = bar;// bar détruit, le scope B s'arrête là
+fn main() {
+    let mut foo: String = "Hello world!".to_string(); // Le scope A commence ici
+    let bar: String = "Goodbye, friend !".to_string(); // Le scope B commence ici
+    foo = bar; // bar détruit, le scope B s'arrête là
     println!("{}", &bar);
 } // Le Scope A s'arrête ici
 ```
@@ -1526,25 +1362,21 @@ Cependant, lorsque l'une d'elles est passée en paramètre à une fonction, il p
 Voici un exemple qui pourrait vous épauler : (attention à bien lire les commentaires)
 
 
-
 ```rust
-fn foo(phrase: &str) -> () //aucune référence ne survi, donc pas la peine de l'annoter
-{
+fn foo(phrase: &str) { //aucune référence ne survit, donc pas la peine de l'annoter
     println!("{}", &phrase);
 }
 
-fn bar<'a>(phrase: &'a mut String, word: &str) -> &'a String //une référence va survivre il faut maintenant savoir laquelle
-{
+fn bar<'a>(phrase: &'a mut String, word: &str) -> &'a String { // une référence va survivre il faut maintenant savoir laquelle
     phrase.push_str(word);
-    return phrase;
-}//La référence qui survivra sera donc « phrase », elle dispose donc de la durée de vie 'a.
+    phrase
+} // La référence qui survivra sera donc « phrase », elle dispose donc de la durée de vie 'a.
 
-fn main()
-{
-  let mut baz  : String = "Hello ".to_string();
-  let word : &str   = "world!";
-  let bazz = bar(&mut baz, word); //ce que contient la varialbe bazz ne peut être accédé qu'en lecture
-  println!("{}", &bazz); //nous affichons nos caractères sur la sortie standard
+fn main() {
+    let mut baz: String = "Hello ".to_string();
+    let word: &str   = "world!";
+    let bazz = bar(&mut baz, word); //ce que contient la varialbe bazz ne peut être accédé qu'en lecture
+    println!("{}", &bazz); //nous affichons nos caractères sur la sortie standard
 }
 ```
 
@@ -1663,7 +1495,6 @@ La publication d'un paquet est effective lorsqu'il est uploadé pour être hébe
 Premièrement, vous allez avoir besoin d'un compte sur crates.io pour recevoir un « token » (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte Github. Ensuite, rendez-vous dans vos options de compte, et lancez la commande $ cargo login suivi de votre token.
 
 
-
 ```bash
 $ cargo login abcdefghijklmnopqrstuvwxyz012345
 ```
@@ -1681,7 +1512,6 @@ Gardez en tête que le nom de chaque paquet est alloué en respectant la règle 
 La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande cargo package. Votre projet sera donc empaqueter sous la format *.crate et se trouvera dans le répertoire target/package/.
 
 
-
 ```bash
 $ cargo package
 ```
@@ -1693,7 +1523,6 @@ Toutefois, si vous souhaitez désactiver cette vérification avant l'envoi, il v
 Cargo va ignorer automatiquement tous les fichiers ignorés par votre système de versionning, mais si vous voulez spécifier un type de fichiers en particulier, vous pouvez utiliser le mot-clé exclude dans votre manifest :
 
 [Exemple tiré de la [documentation officielle](http://doc.crates.io/crates-io.html) de l'outil]
-
 
 
 ```text
@@ -1710,7 +1539,6 @@ La syntaxe de chaque élément dans ce tableau est ce que glob accepte. Si vous 
 [Exemple tiré de la [documentation officielle](http://doc.crates.io/crates-io.html) de l'outil]
 
 
-
 ```text
 [package]
 # ...
@@ -1723,7 +1551,6 @@ include = [
 Maintenant que nous avons un fichier *.crate prêt à y aller, il peut être uploadé sur crates.io grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet !
 
 
-
 ```bash
 $ cargo publish
 ```
@@ -1731,7 +1558,6 @@ $ cargo publish
 Si vous venez à oublier de lancer la commande `cargo package`, `cargo publish` le fera à votre place et vérifiera l'intégrité de votre projet avant de lancer l'étape de publication.
 
 Un problème pour accéder à l'exemple ? En voici un autre :
-
 
 
 ```toml
@@ -1762,36 +1588,30 @@ Pour lancer un test avec cargo, il vous faudra utiliser l'attribut `#[test]` et,
 Voici un exemple simple de tests :
 
 
-
 ```rust
 #[cfg(test)]
-mod oo_tests
-{
+mod oo_tests {
     struct Alice;
     use loggers_pack::oop::Logger;
     impl Logger for Alice{/*...*/}
 
     #[test]
-    fn pack_logger_oop_info()
-    {
+    fn pack_logger_oop_info() {
         Alice::info("@Alice", "Hello, I'm Alice ", "Peterson !");
     }
 
     #[test]
-    fn pack_logger_oop_wan()
-    {
+    fn pack_logger_oop_wan() {
         Alice::warn("@Alice", "Hello, I'm Alice ", "Peterson !");
     }
 
     #[test]
-    fn pack_logger_oop_error()
-    {
+    fn pack_logger_oop_error() {
         Alice::error("@Alice", "Hello, I'm Alice ", "Peterson !");
     }
 
     #[test]
-    fn pack_logger_oop_success()
-    {
+    fn pack_logger_oop_success() {
         Alice::success("@Alice", "Hello, I'm Alice ", "Peterson !");
     }
 }
@@ -1812,7 +1632,6 @@ Pour créer nos benchmark, donc, nous allons utiliser le paquet [bencher](https:
 Ce module était premièrement connu sous le nom test puis bencher qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
 
 
-
 ```toml
 [package]
 name = "awesome_tests"
@@ -1831,36 +1650,31 @@ harness = false
 Voici un exemple basique de benchmark pour une fonction qui recherche le mot le plus court d'une phrase :
 
 
-
 ```rust
 #[macro_use]
 extern crate bencher;
 use bencher::Bencher;
 
 fn find_short(s: &str) -> usize {
-  let splitting : Vec<&str> = s.split_whitespace().collect();
-  let mut shortest_len : usize = 0;
-  let mut i : usize = 0;
-  while(i < splitting.len())
-  {
-      if(i == 0)
-      {
-          shortest_len = splitting[0].len();
-      }
-      else
-      {
-          if(splitting[i].len() < shortest_len)
-          {
-              shortest_len = splitting[i].len();
-          }
-      }
-      i += 1;
-  }
-  return shortest_len;
+    let splitting: Vec<&str> = s.split_whitespace().collect();
+    let mut shortest_len: usize = 0;
+    let mut i: usize = 0;
+
+    while i < splitting.len() {
+        if i == 0 {
+            shortest_len = splitting[0].len();
+        } else {
+            if splitting[i].len() < shortest_len {
+                shortest_len = splitting[i].len();
+            }
+        }
+        i += 1;
+    }
+    shortest_len
 }
 
 fn bench_find_short(b: &mut Bencher) {
-  b.iter(|| find_short("Hello darkness my old friend"));
+    b.iter(|| find_short("Hello darkness my old friend"));
 }
 
 benchmark_group!(my_bench, bench_find_short);
@@ -1932,7 +1746,6 @@ Voir aussi :
 La macro `panic!` pourrait être comparée aux exceptions [RuntimeException](http://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html "Ouvrir un nouvel onglet") en Java qui sont, à coup sûr, des erreurs bloquantes.
 
 
-
 ```java
 public class MyClass 
 {
@@ -1947,10 +1760,8 @@ public class MyClass
 Elle est donc la macro la plus bas niveau que l'on peut retrouver parmi les macros et/ou fonctions proposées par la bibliothèque standard; Elle ne prend rien en compte mis à part l'arrêt du programme et l'affichage de la trace de la pile.
 
 
-
 ```rust
-fn main()
-{
+fn main() {
     panic!("Error !");
     println!("Dead code");
 }
@@ -1970,14 +1781,12 @@ La méthode `unwrap()` permet de récupérer la donnée contenue par son wrapper
 Autrement dit, la méthode `unwrap()` délivre la donnée enveloppée si l'instance vaut `Some`() ou `Ok`(), sinon plante le programme si elle vaut `None` ou `Err`().
 
 
-
 ```rust
-fn main()
-{
-    let foo : Option<String> = Some("ça passe!".to_string());
-    let bar : Option<String> = None;
-    let baz : Result<String, String> = Ok("ça passe!".to_string());
-    let bing : Result<String, String> = Err("ça casse!".to_string());
+fn main() {
+    let foo: Option<String> = Some("ça passe!".to_string());
+    let bar: Option<String> = None;
+    let baz: Result<String, String> = Ok("ça passe!".to_string());
+    let bing: Result<String, String> = Err("ça casse!".to_string());
     
     println!("{} {} {} {}", foo.unwrap(), bar.unwrap(), baz.unwrap(), bing.unwrap());
 }
@@ -1997,12 +1806,11 @@ La méthode `unwrap_or()` fonctionne exactement comme la méthode originelleunwr
 
 
 ```rust
-fn main()
-{
-    let foo : Option<String> = Some("ça passe!".to_string());
-    let bar : Option<String> = None;
-    let baz : Result<String, String> = Ok("ça passe!".to_string());
-    let bing : Result<String, String> = Err("ça casse!".to_string());
+fn main() {
+    let foo: Option<String> = Some("ça passe!".to_string());
+    let bar: Option<String> = None;
+    let baz: Result<String, String> = Ok("ça passe!".to_string());
+    let bing: Result<String, String> = Err("ça casse!".to_string());
     
     println!("{} {} {} {}", foo.unwrap(), bar.unwrap_or(String::from("ça passe, mais de justesse !")), baz.unwrap(), bing.unwrap_or(String::from("On évite de faire planter le programme.")));
     /* 
@@ -2020,18 +1828,16 @@ Voir aussi :
 La méthode `unwrap_or_else` fonctionne exactement comme `unwrap_or`, mais proposera de passer en paramètre une fonction à la place d'une simple donnée.
 
 
-
 ```rust
-fn bang(arg: String) -> String
-{
+fn bang(arg: String) -> String {
     return "Chef, on a eu une erreur: ".to_string() + arg.as_str();
 }
-fn main()
-{
-    let foo : Option<String> = Some("ça passe!".to_string());
-    let bar : Option<String> = None;
-    let baz : Result<String, String> = Ok("ça passe!".to_string());
-    let bing : Result<String, String> = Err("ça casse!".to_string());
+
+fn main() {
+    let foo: Option<String> = Some("ça passe!".to_string());
+    let bar: Option<String> = None;
+    let baz: Result<String, String> = Ok("ça passe!".to_string());
+    let bing: Result<String, String> = Err("ça casse!".to_string());
     
     bar.unwrap_or_else(|| { return "On évite la casse !".to_string(); });
     println!("{}", bing.unwrap_or_else(bang));
@@ -2047,14 +1853,12 @@ fn main()
 La méthode and_then() permet d'effectuer des opérations sur la structure qui l'implémente, puis renvoie une nouvelle instance de cette dernière.
 
 
-
 ```rust
-fn concat(arg: &str) -> Option<String>
-{
+fn concat(arg: &str) -> Option<String> {
     Some(arg.to_string() + "world!")
 }
-fn main()
-{
+
+fn main() {
     let foo = Some("Hello ");
     println!("{}", foo.and_then(concat).unwrap());
 }
@@ -2082,7 +1886,6 @@ La macro assert! capture deux types « d'expressions » différents :
 Les expressions à proprement parler, qui pourraient être illustrées par les exemples suivants :
 
 
-
 ```rust
 2 * 2, if … else …, foo() ;
 ```
@@ -2090,7 +1893,6 @@ Les expressions à proprement parler, qui pourraient être illustrées par les e
 Les « tokens tree » qui pourraient être illustrés par n'importe quoi d'autres figurant dans la syntaxe du langage. (puisque, dans l'absolu, le compilateur représente tout ce qui est rédigé dans les fichiers sources grâce à une nomenclature bien à lui)
 
 Donc si nous récupérons le code source raccourci de la documentation, cela donne ceci :
-
 
 
 ```rust
@@ -2108,18 +1910,15 @@ Si certaines choses vous échappent, n'hésitez pas à vous rendre sur les liens
 Le second peut, par exemple, accueillir un message personnalisé pour la macro panic! facilitant ainsi le débogage.
 
 
-
 ```rust
-fn foo(arg: Option<String>) -> ()
-{
-    let bar : String = String::from("Hello world!");
-    let mut some : Option<String> = None;
+fn foo(arg: Option<String>) {
+    let bar: String = String::from("Hello world!");
+    let mut some: Option<String> = None;
     assert!(!arg.is_none(), "Arg is None");
     assert!(arg.unwrap().eq(&bar), "arg n'est pas égal à bar");
 }
 
-fn main() -> ()
-{
+fn main() {
     foo(Some("Ok".to_string()));
     foo(None);
 }
@@ -2139,18 +1938,15 @@ Voir aussi :
 Bien entendu, elle hérite également du message personnalisé pour la macro `panic!`.
 
 
-
 ```rust
-fn foo(arg: Option<String>) -> ()
-{
-    let bar : String = String::from("Hello world!");
-    let mut some : Option<String> = None;
+fn foo(arg: Option<String>) {
+    let bar: String = String::from("Hello world!");
+    let mut some: Option<String> = None;
     assert!(!arg.is_none(), "Arg is None");
     assert_eq!(arg.unwrap(), bar, "arg n'est pas égal à bar");
 }
 
-fn main() -> ()
-{
+fn main() {
     foo(Some("Ok".to_string()));
     foo(None);
 }
@@ -2202,21 +1998,17 @@ Voici un exemple simple de gestion d'erreur :
 
 
 ```rust
-fn foo<'a, 'b>(arg: Option<&'a str>) -> Result<String, &'b str>
-{
-    if let Some(content) = arg
-    {
+fn foo<'a, 'b>(arg: Option<&'a str>) -> Result<String, &'b str> {
+    if let Some(content) = arg {
         let unwrapping = arg.unwrap();
         return Ok(unwrapping.to_string());
     }
 
-    return Err("L'argument ne contient rien.");
+    Err("L'argument ne contient rien.")
 }
 
-fn main()
-{
-    match foo(None)
-    {
+fn main() {
+    match foo(None) {
         Ok(content) => println!("Ok: {}", content),
         Err(err) => println!("Error: {}", err.to_string()),
     }
@@ -2246,12 +2038,10 @@ Pour utiliser les variantes de l'énumération, il faut savoir à quoi elles cor
 * None représente un binding invalide.
 
 
-
 ```rust
-fn main()
-{
-    let foo : Option<String> = Some(String::from("Binding valide"));
-    let bar : Option<String> = None; //binding invalide, ne contient rien
+fn main() {
+    let foo: Option<String> = Some(String::from("Binding valide"));
+    let bar: Option<String> = None; //binding invalide, ne contient rien
 }
 ```
 
@@ -2276,10 +2066,8 @@ Il est parfois nécessaire d'éclater une chaîne pour traiter ses caractères a
 Après avoir éclatée la chaîne, vous souhaiteriez peut-être itérer plusieurs fois sur celle-ci, sans succès.
 
 
-
 ```rust
-fn main()
-{
+fn main() {
     let foo = String::from("Hello");
     let bar = foo.chars();
     
@@ -2289,7 +2077,6 @@ fn main()
 ```
 
 Erreur :
-
 
 
 ```text
@@ -2341,13 +2128,11 @@ Vous pouvez désormais accéder à votre ressource par référence et ainsi la p
 
 
 ```rust
-fn main()
-{
+fn main() {
     let foo = String::from("Hello");
     let bar = foo.chars();
-    let baz : Vec<char> = bar.collect();
+    let baz: Vec<char> = bar.collect();
     for letter in &baz {}
     for letter in &baz {}    
 }
 ```
-
