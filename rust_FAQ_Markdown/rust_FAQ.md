@@ -847,16 +847,16 @@ Cargo est en premier lieu un gestionnaire de paquets (qui vous permet donc de t�
 Un groupe de Q/R a été créé sur cette FAQ présentant une liste non-exhaustive de commandes supportées par Cargo suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil (`$ man cargo`)) :
 
 
-*  [Comment créer un projet avec Cargo ?](#LII-C-1 "Comment créer un projet avec Cargo ?") 
-*  [Quel type de projet puis-je créer avec Cargo ?](#LII-C-2 "Quel type de projet puis-je créer avec Cargo ?") 
-*  [Comment compiler son projet ?](#LII-C-3 "Comment compiler son projet ?") 
-*  [Peut-on générer de la documentation avec Cargo ?](#LII-C-4 "Peut-on générer de la documentation avec Cargo ?") 
-*  [Où trouver de nouvelles bibliothèques ?](#LII-C-5 "Où trouver de nouvelles bibliothèques ?") 
-*  [Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?") 
-*  [Comment publier sa bibliothèque faite-maison ?](#LII-C-7 "Comment publier sa bibliothèque faite-maison ?") 
-*  [Comment lancer des tests avec Cargo ?](#LII-C-8 "Comment lancer des tests avec Cargo ?") 
-*  [Comment créer ses benchmarks avec Cargo ?](#LII-C-10 "Comment créer ses benchmarks avec Cargo ?") 
-*  [Comment mettre à jour mes bibliothèques ?](#LII-C-9 "Comment mettre à jour mes bibliothèques ?") 
+*  [Comment créer un projet avec Cargo ?](#comment-créer-un-projet-avec-cargo) 
+*  [Quel type de projet puis-je créer avec Cargo ?](#quel-type-de-projet-puis-je-créer-avec-cargo) 
+*  [Comment compiler son projet ?](#comment-compiler-son-projet) 
+*  [Peut-on générer de la documentation avec Cargo ?](#peut-on-générer-de-la-documentation-avec-cargo) 
+*  [Où trouver de nouvelles bibliothèques ?](#où-trouver-de-nouvelles-bibliothèques) 
+*  [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques) 
+*  [Comment publier sa bibliothèque faite-maison ?](#comment-publier-sa-bibliothèque-faite-maison) 
+*  [Comment lancer des tests avec Cargo ?](#comment-lancer-des-tests-avec-cargo) 
+*  [Comment créer ses benchmarks avec Cargo ?](#comment-créer-ses-benchmarks-avec-cargo) 
+*  [Comment mettre à jour mes bibliothèques ?](#comment-mettre-à-jour-mes-bibliothèques) 
 
 ### Comment utiliser mes fonctions en dehors de mon module ?
 
