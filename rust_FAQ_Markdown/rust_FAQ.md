@@ -76,7 +76,7 @@ fn main() {
 }
 ```
 
-Voir aussi : [Rust possède-t-il un typage dynamique ?]("#rust-possède-t-il-un-typage-dynamique")
+Voir aussi : [Rust possède-t-il un typage dynamique ?]("rust_FAQ.md#rust-possède-t-il-un-typage-dynamique")
 
 ### Comment assigner un objet par référence ?
 
