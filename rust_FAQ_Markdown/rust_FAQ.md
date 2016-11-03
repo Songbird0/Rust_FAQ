@@ -1730,18 +1730,18 @@ Oui, bien entendu.
 Il existe trois assertions différentes en Rust (toutes encapsulées par une macro) :
 
 
-1. [assert](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
-2. [assert_eq](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
-3. [debug_assert](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
+1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
+2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
+3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
 
 Voir aussi :
 
 
-*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
-*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
-*  [Comment utiliser la macro debug_assert! ?](#LII-D-13 "Comment utiliser la macro debug_assert! ?") 
+*  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
+*  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
+*  [Comment utiliser la macro debug_assert! ?](#comment-utiliser-la-macro-debug_assert) 
 
-### A quoi sert la macro panic ! ?
+### A quoi sert la macro panic! ?
 
 La macro `panic!` pourrait être comparée aux exceptions [RuntimeException](http://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html "Ouvrir un nouvel onglet") en Java qui sont, à coup sûr, des erreurs bloquantes.
 
@@ -1770,9 +1770,9 @@ fn main() {
 Voir aussi :
 
 
-* A quoi sert la méthode unwrap ?
-* A quoi sert la méthode and_then ?
-* A quoi sert la macro try! ?
+* [A quoi sert la méthode unwrap() ?](#a-quoi-sert-la-méthode-unwrap)
+* [A quoi sert la méthode and_then ?](#a-quoi-sert-la-méthode-and_then)
+* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try)
 
 ### A quoi sert la méthode unwrap ?
 
@@ -1796,8 +1796,8 @@ Voir aussi :
 
 
 * [Tester l'exemple](https://is.gd/GTSlPy "Ouvrir un nouvel onglet") (Pensez à isoler les appels de la méthode si vous ne souhaitez pas faire planter votre programme.)
-* Qu'est-ce que la structure Option<T> ?
-* Qu'est-ce que la structure Result<T, E> ?
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
 
 ### A quoi sert la méthode unwrap_or ?
 
