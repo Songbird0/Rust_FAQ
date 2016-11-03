@@ -864,9 +864,9 @@ Pour utiliser vos fonctions en dehors de votre `mod`ule, il vous faudra utiliser
 
 Voir aussi :
 
-[A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?")
+[A quoi sert le mot-clé pub ?](#a-quoi-sert-le-mot-clé-pub)
 
-[A quoi servent les mot-clés extern crate ?](#LII-A-17 "A quoi servent les mot-clés extern crate ?")
+[A quoi servent les mot-clés extern crate ?](#a-quoi-servent-les-mot-clés-extern-crate)
 
 ### Comment comparer deux objets avec Rust ?
 
@@ -887,7 +887,7 @@ fn main() {
 }
 ```
 
-Voir aussi : [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#LII-A-45 "Comment comparer deux objets d'une structure personnalisée avec Rust ?")
+Voir aussi : [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#comment-comparer-deux-objets-dune-structure-personnalisée-avec-rust)
 
 ### Qu'est-ce que le shadowing ?
 
@@ -933,9 +933,9 @@ Une destrucuration peut se faire sur :
 Voir aussi :
 
 
-*  [Comment effectuer une destructuration sur une liste ?](#LII-A-42 "Comment effectuer une destructuration sur une liste ?") 
-*  [Comment effectuer une destructuration sur une énumération ?](#LII-A-43 "Comment effectuer une destructuration sur une énumération ?") 
-*  [Comment effectuer une destructuration sur une structure ?](#LII-A-44 "Comment effectuer une destructuration sur une structure ?") 
+*  [Comment effectuer une destructuration sur une liste ?](#comment-effectuer-une-destructuration-sur-une-liste) 
+*  [Comment effectuer une destructuration sur une énumération ?](#comment-effectuer-une-destructuration-sur-une-énumération) 
+*  [Comment effectuer une destructuration sur une structure ?](#comment-effectuer-une-destructuration-sur-une-structure) 
 
 ### Comment effectuer une destructuration sur une liste ?
 
