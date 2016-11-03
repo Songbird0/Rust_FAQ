@@ -1700,20 +1700,20 @@ Plusieurs fonctions (et macros) sont d'ailleurs dédiées à cette gestion (e.g.
 Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à mieux cerner ce système de gestion :
 
 
-*  [A quoi sert la macro panic! ?](#LII-D-4 "A quoi sert la macro panic ! ?") 
-*  [A quoi sert la méthode unwrap ?](#LII-D-5 "A quoi sert la méthode unwrap ?") 
-*  [A quoi sert la méthode unwrap_or ?](#LII-D-6 "A quoi sert la méthode unwrap_or ?") 
-*  [A quoi sert la méthode unwrap_or_else ?](#LII-D-7 "A quoi sert la méthode unwrap_or_else ?") 
-* [A quoi sert la méthode map ?](#LII-D-8 "A quoi sert la méthode map ?") ![](./images/WIP.gif)
-*  [A quoi sert la méthode and_then ?](#LII-D-9 "A quoi sert la méthode and_then ?") 
-* [A quoi sert la macro try! ?](#LII-D-10 "A quoi sert la macro try! ?") ![](./images/WIP.gif)
-*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
-*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
-*  [Comment utiliser la macro debug_assert! ?](#LII-D-13 "Comment utiliser la macro debug_assert! ?") 
-* Qu'est-ce que la structure Option<T> ? ![](./images/WIP.gif)
-* Comment utiliser la structure Option<T> ? ![](./images/WIP.gif)
-* Qu'est-ce que la structure Result<T, E> ? ![](./images/WIP.gif)
-* Comment utiliser la structure Result<T, E> ? ![](./images/WIP.gif)
+*  [A quoi sert la macro panic! ?](#a-quoi-sert-la-macro-panic) 
+*  [A quoi sert la méthode unwrap ?](#a-quoi-sert-la-méthode-unwrap) 
+*  [A quoi sert la méthode unwrap_or ?](#a-quoi-sert-la-méthode-unwrap_or) 
+*  [A quoi sert la méthode unwrap_or_else ?](#a-quoi-sert-la-méthode-unwrap_or_else) 
+* [A quoi sert la méthode map ?](#a-quoi-sert-la-méthode-map) ![](./images/WIP.gif)
+*  [A quoi sert la méthode and_then ?](#a-quoi-sert-la-méthode-and_then) 
+* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try) ![](./images/WIP.gif)
+*  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
+*  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
+*  [Comment utiliser la macro debug_assert! ?](#comment-utiliser-la-macro-debug_assert) 
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option) ![](./images/WIP.gif)
+* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option) ![](./images/WIP.gif)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result) ![](./images/WIP.gif)
+* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result) ![](./images/WIP.gif)
 
 ### Comment créer un type spécifique d'exceptions ?
 
@@ -1721,7 +1721,7 @@ Il n'est pas possible de créer de créer une structure censée représenter un 
 
 Voir aussi :
 
-Comment s'effectue la gestion des erreurs avec Rust ?
+[Comment s'effectue la gestion des erreurs avec Rust ?](#comment-seffectue-la-gestion-des-erreurs-avec-rust)
 
 ### Est-il possible de créer des assertions ?
 
