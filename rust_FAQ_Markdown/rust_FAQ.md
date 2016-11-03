@@ -1959,13 +1959,13 @@ Voir aussi :
 
 ### Comment utiliser la macro debug_assert! ?
 
-**Où puis-je l'utiliser ?**
+#### Où puis-je l'utiliser ?
 
 `debug_assert!` ainsi que ses dérivés (`debug_assert_eq!`) ne sont compilées que lorsque le code source est compilé en mode débug. (mode par défaut de **rustc**)
 
 Vous ne devez pas compter sur ces assertions pour contrôler le flux de votre programme en production, assurez-vous toujours d'avoir une assertion compilée en mode release.
 
-**Comment l'utiliser ?**
+#### Comment l'utiliser ?
 
 En dehors du contexte dans lequel ces assertions doivent être déclarées, la manière dont elles sont utilisées ne changent pas.
 
@@ -1986,11 +1986,11 @@ Voir aussi :
 
 Elle permet de gérer convenablement les cas où l'entrée `T` ne correspond pas à nos attentes et ainsi le communiquer au reste du programme pour que l'incident soit rattrapé plus loin si besoin.
 
-Voir aussi : Comment utiliser la structure `Result<T, E>` ?
+Voir aussi : [Comment utiliser l'énumération `Result<T, E>` ?](#comment-utiliser-lénumération-result)
 
 ### Comment utiliser l'énumération Result<T, E> ?
 
-L'utilisation de cette énumération requiert quelques notions quant à la gestion des erreurs avec Rust ; Ce dernier ne permettant pas l'utilisation des exceptions, cette structure vous permettra de conserver l'entrée si elle correspond à vos attentes, ou le message d'erreur si quelque chose ne s'est pas passé correctement.
+L'utilisation de cette énumération requiert quelques notions quant à la gestion des erreurs avec Rust; Ce dernier ne permettant pas l'utilisation des exceptions, cette structure vous permettra de conserver l'entrée si elle correspond à vos attentes, ou le message d'erreur si quelque chose ne s'est pas passé correctement.
 
 Voici un exemple simple de gestion d'erreur :
 
