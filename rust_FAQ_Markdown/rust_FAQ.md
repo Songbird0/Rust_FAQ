@@ -76,7 +76,7 @@ fn main() {
 }
 ```
 
-Voir aussi : [Rust possède-t-il un typage dynamique ?](#LII-A-3 "Rust possède-t-il un typage dynamique ?")
+Voir aussi : [Rust possède-t-il un typage dynamique ?]("#rust-possède-t-il-un-typage-dynamique")
 
 ### Comment assigner un objet par référence ?
 
@@ -113,7 +113,7 @@ fn main() {
 
 Le type ayant été fixé par la première donnée, il n'est plus possible de changer en cours de route.
 
-Voir aussi : [Comment typer ses données/variables](#LII-A-4 "Comment typer ses données/variables ?") ?
+Voir aussi : [Comment typer ses données/variables]("#comment-typer-ses-donnéesvariables") ?
 
 ### Comment typer ses données/variables ?
 
@@ -210,7 +210,7 @@ Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simpl
 
 Par conséquent, Rust est donc orienté objet puisqu'il possède plusieurs parties de ce paradigme mais n'est pas un langage *pur* objet.
 
-Voir aussi : [Qu'est-ce qu'un « trait » ?](#LII-A-9 "Qu'est-ce qu'un « trait » ?")
+Voir aussi : [Qu'est-ce qu'un « trait » ?]("#quest-ce-quun-trait")
 
 ### Qu'est-ce qu'un « trait » ?
 
