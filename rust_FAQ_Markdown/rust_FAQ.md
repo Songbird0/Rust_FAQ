@@ -1196,9 +1196,9 @@ Cette FAQ dispose de trois Q/R abordant trois concepts distincts (mais se compl�
 Par souci de concision, les Q/R ci-dessous ne retiennent que l'essentiel de chaque concepts :
 
 
-1.  [Qu'est-ce que « l'ownership » ?](#LII-B-1-b "Qu'est-ce que « l'ownership » ?") 
-2.  [Qu'est-ce que le concept de « borrowing » ?](#LII-B-1-c "Qu'est-ce que le concept de « borrowing » ?") 
-3.  [Qu'est-ce que le concept de « lifetime » ?](#LII-B-1-d "Qu'est-ce que le concept de « lifetime » ?") 
+1.  [Qu'est-ce que « l'ownership » ?](#quest-ce-que-lownership) 
+2.  [Qu'est-ce que le concept de « borrowing » ?](#quest-ce-que-le-concept-de-borrowing) 
+3.  [Qu'est-ce que le concept de « lifetime » ?](#quest-ce-que-le-concept-de-lifetime) 
 
 #### Qu'est-ce que « l'ownership » ?
 
@@ -1292,7 +1292,7 @@ fn main() {
 
 Vous remarquerez donc ici que le pointeur **foo** a été détruit, la copie de la chaîne de caractères appartient désormais à la fonction.
 
-Voir aussi : [Qu'est-ce que le concept de « borrowing » ?](#LII-B-1-c "Qu'est-ce que le concept de « borrowing » ?")
+Voir aussi : [Qu'est-ce que le concept de « borrowing » ?](#quest-ce-que-le-concept-de-borrowing)
 
 #### Qu'est-ce que le concept de « borrowing » ?
 
@@ -1451,7 +1451,7 @@ Il se trouve dans le répertoire portant le nom de votre projet.
 
 Vous pouvez trouver d'autres bibliothèques sur le [site officiel](https://crates.io/crates) de Cargo.
 
-Voir aussi : [Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?")
+Voir aussi : [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
 
 ### Comment installer de nouvelles bibliothèques ?
 
