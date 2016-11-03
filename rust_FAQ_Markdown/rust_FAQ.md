@@ -1864,24 +1864,24 @@ fn main() {
 }
 ```
 
-Actuellement, les structures qui implémentent la méthode and_then() sont :
+Actuellement, les structures qui implémentent la méthode `and_then()` sont :
 
 
-* Option<T>;
-* Result<T, E>;
+* `Option<T>`;
+* `Result<T, E>`;
 
 Voir aussi :
 
 
-* A quoi sert la méthode unwrap() ?
-* Qu'est-ce que la structure Result<T, E> ?
-* Qu'est-ce que la structure Option<T> ?
+* [A quoi sert la méthode unwrap() ?](#a-quoi-sert-la-méthode-unwrap)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
 
 ### A quoi sert la macro try! ?
 
 ### Comment utiliser la macro assert! ?
 
-La macro assert! capture deux types « d'expressions » différents :
+La macro `assert!` capture deux types « d'expressions » différents :
 
 Les expressions à proprement parler, qui pourraient être illustrées par les exemples suivants :
 
@@ -1928,8 +1928,7 @@ Voir aussi :
 
 
 * [Visionner le résultat de l'exemple](https://is.gd/wsqrbp "Ouvrir un nouvel onglet") (requiert une connexion internet)
-* Comment utiliser une macro ?
-* [macro]Antisèche des sous-types
+* [Comment utiliser une macro ?](#comment-utiliser-une-macro)
 
 ### Comment utiliser la macro assert_eq! ?
 
@@ -1956,7 +1955,7 @@ Voir aussi :
 
 
 *  [Visionner le résultat de l'exemple (requiert une connexion internet)](https://is.gd/en8FRZ "Ouvrir un nouvel onglet") 
-*  [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?") 
+*  [Comment utiliser une macro ?](#comment-utiliser-une-macro) 
 
 ### Comment utiliser la macro debug_assert! ?
 
@@ -1973,9 +1972,9 @@ En dehors du contexte dans lequel ces assertions doivent être déclarées, la m
 Voir aussi :
 
 
-*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
-*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
-*  [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?") 
+*  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
+*  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
+*  [Comment utiliser une macro ?](#comment-utiliser-une-macro) 
 
 ### Qu'est-ce que l'énumération Result<T, E> ?
 
@@ -2017,15 +2016,15 @@ fn main() {
 
 Voir aussi :
 
-A quoi sert la macro « try! » ?
+[A quoi sert la macro `try!` ?](#a-quoi-sert-la-macro-try)
 
-A quoi sert la macro « panic! » ?
+[A quoi sert la macro `panic!` ?](#a-quoi-sert-la-macro-panic)
 
 [Le résultat de cet exemple](https://is.gd/kof5ew "Ouvrir un nouvel onglet")
 
 ### Qu'est-ce que l'énumération Option<T> ?
 
-Option est une énumération contenant deux constructeurs différents : Some(T) et None.
+Option est une énumération contenant deux constructeurs différents : `Some(T)` et `None`.
 
 Option est en quelque sorte un wrapper, conteneur permettant de vérifier l'intégrité des données contenues.
 
@@ -2034,8 +2033,8 @@ Option est en quelque sorte un wrapper, conteneur permettant de vérifier l'int�
 Pour utiliser les variantes de l'énumération, il faut savoir à quoi elles correspondent.
 
 
-* Some(T) représente un binding valide ;
-* None représente un binding invalide.
+* `Some(T)` représente un binding valide;
+* `None` représente un binding invalide.
 
 
 ```rust
