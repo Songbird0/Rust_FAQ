@@ -76,7 +76,7 @@ fn main() {
 }
 ```
 
-Voir aussi : [Rust possède-t-il un typage dynamique ?](#LII-A-3 "Rust possède-t-il un typage dynamique ?")
+Voir aussi : [Rust possède-t-il un typage dynamique ?](#rust-possède-t-il-un-typage-dynamique)
 
 ### Comment assigner un objet par référence ?
 
@@ -113,7 +113,7 @@ fn main() {
 
 Le type ayant été fixé par la première donnée, il n'est plus possible de changer en cours de route.
 
-Voir aussi : [Comment typer ses données/variables](#LII-A-4 "Comment typer ses données/variables ?") ?
+Voir aussi : [Comment typer ses données/variables](#comment-typer-ses-donnéesvariables) ?
 
 ### Comment typer ses données/variables ?
 
@@ -208,9 +208,9 @@ Il dispose d'un aspect de la POO, de prime abord, assez primitif ; Rust permet 
 
 Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures : comme il serait possible de le faire avec des classes, bien qu'il soit possible de le faire avec des traits.
 
-Par conséquent, Rust est donc orienté objet puisqu'il possède plusieurs parties de ce paradigme mais n'est pas un langage objet.
+Par conséquent, Rust est donc orienté objet puisqu'il possède plusieurs parties de ce paradigme mais n'est pas un langage *pur* objet.
 
-Voir aussi : [Qu'est-ce qu'un « trait » ?](#LII-A-9 "Qu'est-ce qu'un « trait » ?")
+Voir aussi : [Qu'est-ce qu'un « trait » ?](#quest-ce-quun-trait)
 
 ### Qu'est-ce qu'un « trait » ?
 
@@ -247,7 +247,7 @@ Le langage repose sur le « Builder Pattern » qui consiste à concevoir des �
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception)#Exemple "Ouvrir un nouvel onglet").
 
-Voir aussi : [Comment déclarer des paramètres optionnels](#LII-A-11 "Comment déclarer des paramètres optionnels ?") ?
+Voir aussi : [Comment déclarer des paramètres optionnels](#comment-déclarer-des-paramètres-optionnels) ?
 
 ### Comment déclarer des paramètres optionnels ?
 
@@ -259,7 +259,7 @@ Le langage repose sur le « Builder Pattern » qui consiste à concevoir des �
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception) "Ouvrir un nouvel onglet").
 
-Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?")
+Voir aussi : [Comment utiliser une macro ?](#comment-utiliser-une-macro)
 
 ### Comment créer un tableau ?
 
@@ -509,7 +509,7 @@ Voir aussi :
 
 Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") »
 
-[Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?")
+[Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
 
 ### A quoi sert le mot-clé mod ?
 
@@ -525,7 +525,7 @@ mod nom_du_fichier; // importera le fichier "nom_du_fichier.rs"
 
 Voir aussi :
 
-[A quoi sert un module ?](#LII-A-19 "A quoi sert un module ?")
+[A quoi sert un module ?](#a-quoi-sert-un-module)
 
 ### A quoi sert un module ?
 
@@ -534,8 +534,8 @@ Il vous permet de réunir plusieurs objets (`struct`ures, `trait`s, fonctions, d
 Voir aussi :
 
 
-*  [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") 
-*  [A quoi servent les mot-clés extern crate ?](#LII-A-17 "A quoi servent les mot-clés extern crate ?") 
+*  [A quoi sert le mot-clé pub ?](#a-quoi-sert-le-mot-clé-pub) 
+*  [A quoi servent les mot-clés extern crate ?](#a-quoi-servent-les-mot-clés-extern-crate) 
 
 ### Comment créer un module ?
 
@@ -656,9 +656,9 @@ unsafe { *ptr; } // on tente d'accéder à l'élément pointé par le pointeur, 
 
 Voir aussi :
 
-[Quelles sont les règles non-appliquées dans ces contextes ?](#LII-A-25 "Quelles sont les règles non-appliquées dans ces contextes ?")
+[Quelles sont les règles non-appliquées dans ces contextes ?](#quelles-sont-les-règles-non-appliquées-dans-ces-contextes)
 
-[Quels comportements sont considérés « non-sûrs » par Rust ?](#LII-A-26 "Quels comportements sont considérés « non-sûrs » par Rust ?")
+[Quels comportements sont considérés « non-sûrs » par Rust ?](#quels-comportements-sont-considérés-non-sûrs-par-rust)
 
 ### Quelles sont les règles non-appliquées dans ces contextes ?
 
@@ -750,7 +750,7 @@ Il se peut que vous ayez omis la particularité de Rust : tout est immuable par
 
 Pour permettre à une variable de modifier son contenu, il vous faudra utiliser le mot-clé `mut`.
 
-Voir aussi : [A quoi sert le mot-clé mut ?](#LII-A-30 "A quoi sert le mot-clé mut ?")
+Voir aussi : [A quoi sert le mot-clé mut ?](#a-quoi-sert-le-mot-clé-mut)
 
 ### Qu'est-ce qu'une macro ?
 
@@ -760,7 +760,7 @@ Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et 
 
 Pour grossir un peu le trait : les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme.
 
-Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?")
+Voir aussi : [Comment utiliser une macro ?](#comment-utiliser-une-macro)
 
 ### Comment utiliser une macro ?
 
@@ -822,7 +822,7 @@ Liens :
 
 [Visionner le résultat de cet exemple.](https://is.gd/nHfcEQ "Exemple d'utilisation d'une macro")
 
-[Que sont les spécificateurs ?](#LII-A-34 "Que sont les spécificateurs ?")
+[Que sont les spécificateurs ?]()
 
 ### Que sont les spécificateurs ?
 
@@ -830,13 +830,13 @@ Liens :
 
 Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
 
-Voir aussi : [A quoi sert le mot-clé isize ?](#LII-A-36 "A quoi sert le mot-clé isize ? ")
+Voir aussi : [A quoi sert le mot-clé isize ?](#a-quoi-sert-le-mot-clé-isize)
 
 ### A quoi sert le mot-clé isize ? 
 
 Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
 
-Voir aussi : [A quoi sert le mot-clé usize ?](#LII-A-35 "A quoi sert le mot-clé usize ?")
+Voir aussi : [A quoi sert le mot-clé usize ?](#À-quoi-sert-le-mot-clé-usize)
 
 ### Existe-t-il des outils de build pour le langage Rust ?
 
@@ -847,16 +847,16 @@ Cargo est en premier lieu un gestionnaire de paquets (qui vous permet donc de t�
 Un groupe de Q/R a été créé sur cette FAQ présentant une liste non-exhaustive de commandes supportées par Cargo suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil (`$ man cargo`)) :
 
 
-*  [Comment créer un projet avec Cargo ?](#LII-C-1 "Comment créer un projet avec Cargo ?") 
-*  [Quel type de projet puis-je créer avec Cargo ?](#LII-C-2 "Quel type de projet puis-je créer avec Cargo ?") 
-*  [Comment compiler son projet ?](#LII-C-3 "Comment compiler son projet ?") 
-*  [Peut-on générer de la documentation avec Cargo ?](#LII-C-4 "Peut-on générer de la documentation avec Cargo ?") 
-*  [Où trouver de nouvelles bibliothèques ?](#LII-C-5 "Où trouver de nouvelles bibliothèques ?") 
-*  [Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?") 
-*  [Comment publier sa bibliothèque faite-maison ?](#LII-C-7 "Comment publier sa bibliothèque faite-maison ?") 
-*  [Comment lancer des tests avec Cargo ?](#LII-C-8 "Comment lancer des tests avec Cargo ?") 
-*  [Comment créer ses benchmarks avec Cargo ?](#LII-C-10 "Comment créer ses benchmarks avec Cargo ?") 
-*  [Comment mettre à jour mes bibliothèques ?](#LII-C-9 "Comment mettre à jour mes bibliothèques ?") 
+*  [Comment créer un projet avec Cargo ?](#comment-créer-un-projet-avec-cargo) 
+*  [Quel type de projet puis-je créer avec Cargo ?](#quel-type-de-projet-puis-je-créer-avec-cargo) 
+*  [Comment compiler son projet ?](#comment-compiler-son-projet) 
+*  [Peut-on générer de la documentation avec Cargo ?](#peut-on-générer-de-la-documentation-avec-cargo) 
+*  [Où trouver de nouvelles bibliothèques ?](#où-trouver-de-nouvelles-bibliothèques) 
+*  [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques) 
+*  [Comment publier sa bibliothèque faite-maison ?](#comment-publier-sa-bibliothèque-faite-maison) 
+*  [Comment lancer des tests avec Cargo ?](#comment-lancer-des-tests-avec-cargo) 
+*  [Comment créer ses benchmarks avec Cargo ?](#comment-créer-ses-benchmarks-avec-cargo) 
+*  [Comment mettre à jour mes bibliothèques ?](#comment-mettre-à-jour-mes-bibliothèques) 
 
 ### Comment utiliser mes fonctions en dehors de mon module ?
 
@@ -864,9 +864,9 @@ Pour utiliser vos fonctions en dehors de votre `mod`ule, il vous faudra utiliser
 
 Voir aussi :
 
-[A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?")
+[A quoi sert le mot-clé pub ?](#a-quoi-sert-le-mot-clé-pub)
 
-[A quoi servent les mot-clés extern crate ?](#LII-A-17 "A quoi servent les mot-clés extern crate ?")
+[A quoi servent les mot-clés extern crate ?](#a-quoi-servent-les-mot-clés-extern-crate)
 
 ### Comment comparer deux objets avec Rust ?
 
@@ -887,7 +887,7 @@ fn main() {
 }
 ```
 
-Voir aussi : [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#LII-A-45 "Comment comparer deux objets d'une structure personnalisée avec Rust ?")
+Voir aussi : [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#comment-comparer-deux-objets-dune-structure-personnalisée-avec-rust)
 
 ### Qu'est-ce que le shadowing ?
 
@@ -933,9 +933,9 @@ Une destrucuration peut se faire sur :
 Voir aussi :
 
 
-*  [Comment effectuer une destructuration sur une liste ?](#LII-A-42 "Comment effectuer une destructuration sur une liste ?") 
-*  [Comment effectuer une destructuration sur une énumération ?](#LII-A-43 "Comment effectuer une destructuration sur une énumération ?") 
-*  [Comment effectuer une destructuration sur une structure ?](#LII-A-44 "Comment effectuer une destructuration sur une structure ?") 
+*  [Comment effectuer une destructuration sur une liste ?](#comment-effectuer-une-destructuration-sur-une-liste) 
+*  [Comment effectuer une destructuration sur une énumération ?](#comment-effectuer-une-destructuration-sur-une-énumération) 
+*  [Comment effectuer une destructuration sur une structure ?](#comment-effectuer-une-destructuration-sur-une-structure) 
 
 ### Comment effectuer une destructuration sur une liste ?
 
@@ -1175,7 +1175,7 @@ C'est un moyen simple et efficace d'assigner du contenu sans passer par le patte
 
 La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
 
-[Exemple de la documentation officielle]
+**[Exemple de la documentation officielle]**
 
 ```rust
 let mut v = vec![1, 3, 5, 7, 11];
@@ -1196,9 +1196,9 @@ Cette FAQ dispose de trois Q/R abordant trois concepts distincts (mais se compl�
 Par souci de concision, les Q/R ci-dessous ne retiennent que l'essentiel de chaque concepts :
 
 
-1.  [Qu'est-ce que « l'ownership » ?](#LII-B-1-b "Qu'est-ce que « l'ownership » ?") 
-2.  [Qu'est-ce que le concept de « borrowing » ?](#LII-B-1-c "Qu'est-ce que le concept de « borrowing » ?") 
-3.  [Qu'est-ce que le concept de « lifetime » ?](#LII-B-1-d "Qu'est-ce que le concept de « lifetime » ?") 
+1.  [Qu'est-ce que « l'ownership » ?](#quest-ce-que-lownership) 
+2.  [Qu'est-ce que le concept de « borrowing » ?](#quest-ce-que-le-concept-de-borrowing) 
+3.  [Qu'est-ce que le concept de « lifetime » ?](#quest-ce-que-le-concept-de-lifetime) 
 
 #### Qu'est-ce que « l'ownership » ?
 
@@ -1292,7 +1292,7 @@ fn main() {
 
 Vous remarquerez donc ici que le pointeur **foo** a été détruit, la copie de la chaîne de caractères appartient désormais à la fonction.
 
-Voir aussi : [Qu'est-ce que le concept de « borrowing » ?](#LII-B-1-c "Qu'est-ce que le concept de « borrowing » ?")
+Voir aussi : [Qu'est-ce que le concept de « borrowing » ?](#quest-ce-que-le-concept-de-borrowing)
 
 #### Qu'est-ce que le concept de « borrowing » ?
 
@@ -1451,7 +1451,7 @@ Il se trouve dans le répertoire portant le nom de votre projet.
 
 Vous pouvez trouver d'autres bibliothèques sur le [site officiel](https://crates.io/crates) de Cargo.
 
-Voir aussi : [Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?")
+Voir aussi : [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
 
 ### Comment installer de nouvelles bibliothèques ?
 
@@ -1700,20 +1700,20 @@ Plusieurs fonctions (et macros) sont d'ailleurs dédiées à cette gestion (e.g.
 Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à mieux cerner ce système de gestion :
 
 
-*  [A quoi sert la macro panic! ?](#LII-D-4 "A quoi sert la macro panic ! ?") 
-*  [A quoi sert la méthode unwrap ?](#LII-D-5 "A quoi sert la méthode unwrap ?") 
-*  [A quoi sert la méthode unwrap_or ?](#LII-D-6 "A quoi sert la méthode unwrap_or ?") 
-*  [A quoi sert la méthode unwrap_or_else ?](#LII-D-7 "A quoi sert la méthode unwrap_or_else ?") 
-* [A quoi sert la méthode map ?](#LII-D-8 "A quoi sert la méthode map ?") ![](./images/WIP.gif)
-*  [A quoi sert la méthode and_then ?](#LII-D-9 "A quoi sert la méthode and_then ?") 
-* [A quoi sert la macro try! ?](#LII-D-10 "A quoi sert la macro try! ?") ![](./images/WIP.gif)
-*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
-*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
-*  [Comment utiliser la macro debug_assert! ?](#LII-D-13 "Comment utiliser la macro debug_assert! ?") 
-* Qu'est-ce que la structure Option<T> ? ![](./images/WIP.gif)
-* Comment utiliser la structure Option<T> ? ![](./images/WIP.gif)
-* Qu'est-ce que la structure Result<T, E> ? ![](./images/WIP.gif)
-* Comment utiliser la structure Result<T, E> ? ![](./images/WIP.gif)
+*  [A quoi sert la macro panic! ?](#a-quoi-sert-la-macro-panic) 
+*  [A quoi sert la méthode unwrap ?](#a-quoi-sert-la-méthode-unwrap) 
+*  [A quoi sert la méthode unwrap_or ?](#a-quoi-sert-la-méthode-unwrap_or) 
+*  [A quoi sert la méthode unwrap_or_else ?](#a-quoi-sert-la-méthode-unwrap_or_else) 
+* [A quoi sert la méthode map ?](#a-quoi-sert-la-méthode-map) ![](./images/WIP.gif)
+*  [A quoi sert la méthode and_then ?](#a-quoi-sert-la-méthode-and_then) 
+* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try) ![](./images/WIP.gif)
+*  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
+*  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
+*  [Comment utiliser la macro debug_assert! ?](#comment-utiliser-la-macro-debug_assert) 
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option) ![](./images/WIP.gif)
+* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option) ![](./images/WIP.gif)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result) ![](./images/WIP.gif)
+* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result) ![](./images/WIP.gif)
 
 ### Comment créer un type spécifique d'exceptions ?
 
@@ -1721,7 +1721,7 @@ Il n'est pas possible de créer de créer une structure censée représenter un 
 
 Voir aussi :
 
-Comment s'effectue la gestion des erreurs avec Rust ?
+[Comment s'effectue la gestion des erreurs avec Rust ?](#comment-seffectue-la-gestion-des-erreurs-avec-rust)
 
 ### Est-il possible de créer des assertions ?
 
@@ -1730,18 +1730,18 @@ Oui, bien entendu.
 Il existe trois assertions différentes en Rust (toutes encapsulées par une macro) :
 
 
-1. [assert](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
-2. [assert_eq](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
-3. [debug_assert](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
+1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
+2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
+3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
 
 Voir aussi :
 
 
-*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
-*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
-*  [Comment utiliser la macro debug_assert! ?](#LII-D-13 "Comment utiliser la macro debug_assert! ?") 
+*  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
+*  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
+*  [Comment utiliser la macro debug_assert! ?](#comment-utiliser-la-macro-debug_assert) 
 
-### A quoi sert la macro panic ! ?
+### A quoi sert la macro panic! ?
 
 La macro `panic!` pourrait être comparée aux exceptions [RuntimeException](http://docs.oracle.com/javase/7/docs/api/java/lang/RuntimeException.html "Ouvrir un nouvel onglet") en Java qui sont, à coup sûr, des erreurs bloquantes.
 
@@ -1770,9 +1770,9 @@ fn main() {
 Voir aussi :
 
 
-* A quoi sert la méthode unwrap ?
-* A quoi sert la méthode and_then ?
-* A quoi sert la macro try! ?
+* [A quoi sert la méthode unwrap() ?](#a-quoi-sert-la-méthode-unwrap)
+* [A quoi sert la méthode and_then ?](#a-quoi-sert-la-méthode-and_then)
+* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try)
 
 ### A quoi sert la méthode unwrap ?
 
@@ -1796,8 +1796,8 @@ Voir aussi :
 
 
 * [Tester l'exemple](https://is.gd/GTSlPy "Ouvrir un nouvel onglet") (Pensez à isoler les appels de la méthode si vous ne souhaitez pas faire planter votre programme.)
-* Qu'est-ce que la structure Option<T> ?
-* Qu'est-ce que la structure Result<T, E> ?
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
 
 ### A quoi sert la méthode unwrap_or ?
 
@@ -1864,24 +1864,24 @@ fn main() {
 }
 ```
 
-Actuellement, les structures qui implémentent la méthode and_then() sont :
+Actuellement, les structures qui implémentent la méthode `and_then()` sont :
 
 
-* Option<T>;
-* Result<T, E>;
+* `Option<T>`;
+* `Result<T, E>`;
 
 Voir aussi :
 
 
-* A quoi sert la méthode unwrap() ?
-* Qu'est-ce que la structure Result<T, E> ?
-* Qu'est-ce que la structure Option<T> ?
+* [A quoi sert la méthode unwrap() ?](#a-quoi-sert-la-méthode-unwrap)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
 
 ### A quoi sert la macro try! ?
 
 ### Comment utiliser la macro assert! ?
 
-La macro assert! capture deux types « d'expressions » différents :
+La macro `assert!` capture deux types « d'expressions » différents :
 
 Les expressions à proprement parler, qui pourraient être illustrées par les exemples suivants :
 
@@ -1928,8 +1928,7 @@ Voir aussi :
 
 
 * [Visionner le résultat de l'exemple](https://is.gd/wsqrbp "Ouvrir un nouvel onglet") (requiert une connexion internet)
-* Comment utiliser une macro ?
-* [macro]Antisèche des sous-types
+* [Comment utiliser une macro ?](#comment-utiliser-une-macro)
 
 ### Comment utiliser la macro assert_eq! ?
 
@@ -1956,7 +1955,7 @@ Voir aussi :
 
 
 *  [Visionner le résultat de l'exemple (requiert une connexion internet)](https://is.gd/en8FRZ "Ouvrir un nouvel onglet") 
-*  [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?") 
+*  [Comment utiliser une macro ?](#comment-utiliser-une-macro) 
 
 ### Comment utiliser la macro debug_assert! ?
 
@@ -1973,9 +1972,9 @@ En dehors du contexte dans lequel ces assertions doivent être déclarées, la m
 Voir aussi :
 
 
-*  [Comment utiliser la macro assert! ?](#LII-D-11 "Comment utiliser la macro assert! ?") 
-*  [Comment utiliser la macro assert_eq! ?](#LII-D-12 "Comment utiliser la macro assert_eq! ?") 
-*  [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?") 
+*  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
+*  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
+*  [Comment utiliser une macro ?](#comment-utiliser-une-macro) 
 
 ### Qu'est-ce que l'énumération Result<T, E> ?
 
@@ -2017,15 +2016,15 @@ fn main() {
 
 Voir aussi :
 
-A quoi sert la macro « try! » ?
+[A quoi sert la macro `try!` ?](#a-quoi-sert-la-macro-try)
 
-A quoi sert la macro « panic! » ?
+[A quoi sert la macro `panic!` ?](#a-quoi-sert-la-macro-panic)
 
 [Le résultat de cet exemple](https://is.gd/kof5ew "Ouvrir un nouvel onglet")
 
 ### Qu'est-ce que l'énumération Option<T> ?
 
-Option est une énumération contenant deux constructeurs différents : Some(T) et None.
+Option est une énumération contenant deux constructeurs différents : `Some(T)` et `None`.
 
 Option est en quelque sorte un wrapper, conteneur permettant de vérifier l'intégrité des données contenues.
 
@@ -2034,8 +2033,8 @@ Option est en quelque sorte un wrapper, conteneur permettant de vérifier l'int�
 Pour utiliser les variantes de l'énumération, il faut savoir à quoi elles correspondent.
 
 
-* Some(T) représente un binding valide ;
-* None représente un binding invalide.
+* `Some(T)` représente un binding valide;
+* `None` représente un binding invalide.
 
 
 ```rust
