@@ -1490,6 +1490,12 @@ Une fois que vous avez une bibliothèque que vous souhaiteriez partager avec le 
 
 La publication d'un paquet est effective lorsqu'il est uploadé pour être hébergé par [crates.io](http://crates.io/).
 
+**Attention**:
+
+>Réfléchissez avant de publier votre paquet, car sa publication est permanente.
+>La version publiée ne pourra jamais être écrasée par une autre, et le code ne pourra être supprimé.
+>En revanche, le nombre de versions publiées n'est pas limité.
+
 **Avant votre première publication**
 
 Premièrement, vous allez avoir besoin d'un compte sur crates.io pour recevoir un « token » (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte Github. Ensuite, rendez-vous dans vos options de compte, et lancez la commande $ cargo login suivi de votre token.
@@ -1557,6 +1563,12 @@ $ cargo publish
 
 Si vous venez à oublier de lancer la commande `cargo package`, `cargo publish` le fera à votre place et vérifiera l'intégrité de votre projet avant de lancer l'étape de publication.
 
+>Il se pourrait que la commande publish vous refuse votre première publication. Pas de panique, ce n'est pas très grave.
+>Votre paquet, pour être différencié des autres, doit compter un certain nombre de métadonnées pour renseigner vos futurs utilisateurs sur les tenants et aboutissants de votre projet, comme la licence par exemple.
+>Pour ceci, vous pouvez vous rendre [ici](http://doc.crates.io/manifest.html#package-metadata), et ainsi visionner un exemple simple des métadonnées à renseigner.
+>Relancez votre procédure `cargo publish`, vous ne devriez plus avoir de problème.
+
+
 Un problème pour accéder à l'exemple ? En voici un autre :
 
 
@@ -1580,6 +1592,12 @@ license-file = "LICENSE.md"
 
 [dependencies]
 ```
+
+**Attention**:
+
+>Il se peut que vous rencontriez également des problèmes avec l'entrée « license = ... » vous informant que le nom de licence entré n'est pas valide.
+>Pour régler le souci rendez-vous sur [opensource.org](https://opensource.org/licenses/alphabetical) et visionner les noms raccourcis entre parenthèses de chaque licence.
+
 
 ### Comment lancer des tests avec Cargo ?
 
@@ -1618,6 +1636,11 @@ mod oo_tests {
 ```
 
 Chaque fonction annotée par l'attribut `#[test]` sera compilée durant la phase de test.
+
+**Attention**:
+
+>La version **1.9.0** de Rust comporte un bogue au niveau des tests. Dans cette version, toutes les fonctions annotées `#[test]` doivent être encapsulées dans un module. Ce n'est bien entendu plus le cas en **1.12.1**.
+>Si vous rencontrez ce problème, nous vous conseillons de mettre à jour votre SDK.
 
 ### Comment mettre à jour mes bibliothèques ?
 
