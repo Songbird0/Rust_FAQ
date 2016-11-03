@@ -113,7 +113,7 @@ fn main() {
 
 Le type ayant été fixé par la première donnée, il n'est plus possible de changer en cours de route.
 
-Voir aussi : [Comment typer ses données/variables]("#comment-typer-ses-donnéesvariables") ?
+Voir aussi : [Comment typer ses données/variables](#comment-typer-ses-donnéesvariables) ?
 
 ### Comment typer ses données/variables ?
 
@@ -210,7 +210,7 @@ Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simpl
 
 Par conséquent, Rust est donc orienté objet puisqu'il possède plusieurs parties de ce paradigme mais n'est pas un langage *pur* objet.
 
-Voir aussi : [Qu'est-ce qu'un « trait » ?]("#quest-ce-quun-trait")
+Voir aussi : [Qu'est-ce qu'un « trait » ?](#quest-ce-quun-trait)
 
 ### Qu'est-ce qu'un « trait » ?
 
@@ -247,7 +247,7 @@ Le langage repose sur le « Builder Pattern » qui consiste à concevoir des �
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception)#Exemple "Ouvrir un nouvel onglet").
 
-Voir aussi : [Comment déclarer des paramètres optionnels](#LII-A-11 "Comment déclarer des paramètres optionnels ?") ?
+Voir aussi : [Comment déclarer des paramètres optionnels](#comment-déclarer-des-paramètres-optionnels) ?
 
 ### Comment déclarer des paramètres optionnels ?
 
@@ -259,7 +259,7 @@ Le langage repose sur le « Builder Pattern » qui consiste à concevoir des �
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception) "Ouvrir un nouvel onglet").
 
-Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?")
+Voir aussi : [Comment utiliser une macro ?](#comment-utiliser-une-macro)
 
 ### Comment créer un tableau ?
 
@@ -509,7 +509,7 @@ Voir aussi :
 
 Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") »
 
-[Comment installer de nouvelles bibliothèques ?](#LII-C-6 "Comment installer de nouvelles bibliothèques ?")
+[Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
 
 ### A quoi sert le mot-clé mod ?
 
@@ -525,7 +525,7 @@ mod nom_du_fichier; // importera le fichier "nom_du_fichier.rs"
 
 Voir aussi :
 
-[A quoi sert un module ?](#LII-A-19 "A quoi sert un module ?")
+[A quoi sert un module ?](#a-quoi-sert-un-module)
 
 ### A quoi sert un module ?
 
@@ -534,8 +534,8 @@ Il vous permet de réunir plusieurs objets (`struct`ures, `trait`s, fonctions, d
 Voir aussi :
 
 
-*  [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") 
-*  [A quoi servent les mot-clés extern crate ?](#LII-A-17 "A quoi servent les mot-clés extern crate ?") 
+*  [A quoi sert le mot-clé pub ?](#a-quoi-sert-le-mot-clé-pub) 
+*  [A quoi servent les mot-clés extern crate ?](#a-quoi-servent-les-mot-clés-extern-crate) 
 
 ### Comment créer un module ?
 
@@ -656,9 +656,9 @@ unsafe { *ptr; } // on tente d'accéder à l'élément pointé par le pointeur, 
 
 Voir aussi :
 
-[Quelles sont les règles non-appliquées dans ces contextes ?](#LII-A-25 "Quelles sont les règles non-appliquées dans ces contextes ?")
+[Quelles sont les règles non-appliquées dans ces contextes ?](#quelles-sont-les-règles-non-appliquées-dans-ces-contextes)
 
-[Quels comportements sont considérés « non-sûrs » par Rust ?](#LII-A-26 "Quels comportements sont considérés « non-sûrs » par Rust ?")
+[Quels comportements sont considérés « non-sûrs » par Rust ?](#quels-comportements-sont-considérés-non-sûrs-par-rust)
 
 ### Quelles sont les règles non-appliquées dans ces contextes ?
 
@@ -750,7 +750,7 @@ Il se peut que vous ayez omis la particularité de Rust : tout est immuable par
 
 Pour permettre à une variable de modifier son contenu, il vous faudra utiliser le mot-clé `mut`.
 
-Voir aussi : [A quoi sert le mot-clé mut ?](#LII-A-30 "A quoi sert le mot-clé mut ?")
+Voir aussi : [A quoi sert le mot-clé mut ?](#a-quoi-sert-le-mot-clé-mut)
 
 ### Qu'est-ce qu'une macro ?
 
@@ -760,7 +760,7 @@ Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et 
 
 Pour grossir un peu le trait : les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme.
 
-Voir aussi : [Comment utiliser une macro ?](#LII-A-33 "Comment utiliser une macro ?")
+Voir aussi : [Comment utiliser une macro ?](#comment-utiliser-une-macro)
 
 ### Comment utiliser une macro ?
 
@@ -822,7 +822,7 @@ Liens :
 
 [Visionner le résultat de cet exemple.](https://is.gd/nHfcEQ "Exemple d'utilisation d'une macro")
 
-[Que sont les spécificateurs ?](#LII-A-34 "Que sont les spécificateurs ?")
+[Que sont les spécificateurs ?]()
 
 ### Que sont les spécificateurs ?
 
@@ -830,13 +830,13 @@ Liens :
 
 Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
 
-Voir aussi : [A quoi sert le mot-clé isize ?](#LII-A-36 "A quoi sert le mot-clé isize ? ")
+Voir aussi : [A quoi sert le mot-clé isize ?](#a-quoi-sert-le-mot-clé-isize)
 
 ### A quoi sert le mot-clé isize ? 
 
 Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
 
-Voir aussi : [A quoi sert le mot-clé usize ?](#LII-A-35 "A quoi sert le mot-clé usize ?")
+Voir aussi : [A quoi sert le mot-clé usize ?](#À-quoi-sert-le-mot-clé-usize)
 
 ### Existe-t-il des outils de build pour le langage Rust ?
 
