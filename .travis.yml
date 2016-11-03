@@ -1,0 +1,8 @@
+language: markdown
+sudo: false
+notifications:
+  email:
+    recipients:
+      - chaacygg@gmail.com
+    on_success: always
+    on_failure: always
