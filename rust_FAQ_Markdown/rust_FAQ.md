@@ -1928,7 +1928,7 @@ $ cond : expr , $ ( $ arg : tt ) + ) => { ... };
 
 Si certaines choses vous échappent, n'hésitez pas à vous rendre sur les liens proposés en bas de cette Q/R.
 
-**A quoi sert le second paramètre ?**
+#### A quoi sert le second paramètre ?
 
 Le second peut, par exemple, accueillir un message personnalisé pour la macro panic! facilitant ainsi le débogage.
 
@@ -2141,7 +2141,7 @@ Mais récoltez encore une erreur…
 
 Le compilateur vous invite alors à essayer d'appeler la méthode `.iter()` qui est censée être implémentée par toutes les structures implémentant l'interface `Iterator`; Ce n'est malheureusement pas le cas pour la structure `Chars`.
 
-**Que faire alors ?**
+#### Que faire alors ?
 
 La méthode remplaçant `.iter()` est `.collect()`; Cette dernière vous permet de récupérer un vecteur contenant toutes les entitésEn l'occurrence, ici, les caractères. de l'ancien itérateur.
 
