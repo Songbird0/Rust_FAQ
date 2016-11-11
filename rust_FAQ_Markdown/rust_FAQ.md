@@ -2060,6 +2060,20 @@ fn main() {
 
 ## I/O
 
+### Que puis-je trouver dans cette section ?
+
+Dans cette section, vous retrouverez toutes les questions couramment posées concernant l'utilisation des outils dédiés à la gestion des flux.
+
+### Comment créer un fichier ?
+
+### Comment lire le contenu d'un fichier ?
+
+### Comment écrire à l'intérieur d'un fichier ?
+
+### Comment différencier un fichier d'un répertoire ?
+
+### Comment lister les objets d'un répertoire ?
+
 ## Antisèches Rust
 
 ## Trucs & astuces
