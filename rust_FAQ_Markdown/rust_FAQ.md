@@ -398,8 +398,8 @@ use Video;
 
 Le mot-clé `pub` peut être utilisé dans *trois* contextes différents :
 
-1. Au sein [et sur] des modules ;
-2. Au sein [et sur] des traits ;
+1. Au sein [et sur] des modules;
+2. Au sein [et sur] des traits;
 3. Au sein [et sur] des structures.
 
 Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre public l'objet concerné.
@@ -448,7 +448,7 @@ Renvoie :
 Hi there !
 ```
 
-« mon_projet » est le nom porté par votre projet dans le manifest Cargo.toml.
+`mon_projet` est le nom porté par votre projet dans le manifest `Cargo.toml`.
 
 Pour cet exemple, voici le manifest rédigé :
 
@@ -488,7 +488,7 @@ impl A {
 
 ### A quoi servent les mot-clés extern crate ?
 
-Les mot-clés `extern crate` permettent d'importer un paquet entier de modules dans le fichier courant, aussi appelé crate.
+Les mot-clés `extern crate` permettent d'importer un paquet entier de modules dans le fichier courant, aussi appelé *crate*.
 
 Le principe est simple, il vous suffit seulement de créer en premier lieu un projet en mode « bibliothèque » pour réunir tous les modules que vous créerez, de créer un fichier qui accueillera le point d'entrée de votre programme, puis d'importer votre paquet.
 
@@ -762,7 +762,7 @@ macro_rules! foo
 }
 ```
 
-Toutes les macros (y compris celle présentée ici) respectent une règle très importante : elles doivent toutes capturer au moins une expression pour être valide et compilées. (en l'occurrence, la regex `() => () ;`)
+Toutes les macros (y compris celle présentée ici) respectent une règle très importante : elles doivent toutes capturer au moins une expression pour être valides et compilées. (en l'occurrence, la regex `() => () ;`)
 
 C'est donc cela, l'une des différences majeures entre une fonction/procédure et une macro : cette dernière est capable de capturer des expressions rationnelles, conserver en mémoire ce que désire le développeur, puis de les ré-utiliser dans le corps de l'une d'entre-elles.
 
@@ -1140,7 +1140,7 @@ pub mod votre_conteneur {
 
 Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez clairement l'erreur que le compilateur vous renvoi dans votre post.
 
-### A quoi servent les mot-clés if let ?
+### A quoi servent les mot-clés `if let` ?
 
 La combinaison des deux mot-clés permet d'assigner, de manière concise, du contenu à une variable.
 
@@ -1160,7 +1160,7 @@ fn main() {
 
 C'est un moyen simple et efficace d'assigner du contenu sans passer par le pattern matching.
 
-### A quoi servent les mot-clés while let ?
+### A quoi servent les mot-clés `while let` ?
 
 La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
 
@@ -1891,6 +1891,29 @@ Voir aussi :
 
 ### A quoi sert la macro try! ?
 
+La macro `try!` permet de s'assurer de l'intégrité de la ressource.
+Si la ressource *enveloppée* par la macro `try!` est intègre, elle sera *bindée* à l'identificateur qui lui est assigné.
+Sinon, `try!` effectue un retour, renvoi prématuré.
+
+#### Note
+
+Attention toutefois à ne pas oublier qu'une fonction usant de cette macro doit forcément renvoyer une instance de `Result<(), io::Error>`. (le type de la valeur renvoyée en cas de succès est arbitaire)
+
+```rust
+fn foo(string: &String) -> Result<(), io::Error>
+{
+    try!(std::fs::File::create("my_file.txt"));
+    println!("Une chance sur deux pour que je sois du code mort !");
+    Ok(())
+}
+fn bar(string: &String) -> std::fmt::Result<()> //fonctionne également avec l'alias de Result<T, E>
+{
+    try!(std::fs::File::create("my_file.txt"));
+    println!("Une chance sur deux pour que je sois du code mort !");
+    Ok(())
+}
+```
+
 ### Comment utiliser la macro assert! ?
 
 La macro `assert!` capture deux types « d'expressions » différents :
@@ -2059,6 +2082,20 @@ fn main() {
 ## Meta-données
 
 ## I/O
+
+### Que puis-je trouver dans cette section ?
+
+Dans cette section, vous retrouverez toutes les questions couramment posées concernant l'utilisation des outils dédiés à la gestion des flux.
+
+### Comment créer un fichier ?
+
+### Comment lire le contenu d'un fichier ?
+
+### Comment écrire à l'intérieur d'un fichier ?
+
+### Comment différencier un fichier d'un répertoire ?
+
+### Comment lister les objets d'un répertoire ?
 
 ## Antisèches Rust
 
