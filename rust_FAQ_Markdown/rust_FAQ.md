@@ -1812,7 +1812,7 @@ Ce qui affichera :
 -> "> 3"
 ```
 
-### À quoi sert la méthode and_then ?
+### À quoi sert la méthode `and_then` ?
 
 La méthode `and_then()` permet d'effectuer des opérations sur la structure qui l'implémente, puis renvoie une nouvelle instance de cette dernière.
 
@@ -1839,7 +1839,7 @@ Voir aussi :
 * [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
 * [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
 
-### À quoi sert la macro try! ?
+### À quoi sert la macro `try!` ?
 
 La macro `try!` permet de s'assurer de l'intégrité de la ressource.
 Si la ressource *enveloppée* par la macro `try!` est intègre, elle sera *bindée* à l'identificateur qui lui est assigné.
