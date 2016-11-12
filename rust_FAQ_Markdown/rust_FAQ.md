@@ -1850,18 +1850,48 @@ Sinon, `try!` effectue un retour, renvoi prématuré.
 Attention toutefois à ne pas oublier qu'une fonction usant de cette macro doit forcément renvoyer une instance de `Result<(), io::Error>` (le type de la valeur renvoyée en cas de succès est arbitaire).
 
 ```rust
-fn foo(string: &String) -> Result<(), io::Error> {
+fn foo(string: &String) -> Result<(), std::io::Error> 
+{
     try!(std::fs::File::create("my_file.txt"));
     println!("Une chance sur deux pour que je sois du code mort !");
     Ok(())
 }
 
-fn bar(string: &String) -> std::fmt::Result<()> { // fonctionne également avec l'alias de Result<T, E>
+fn bar(string: &String) -> std::io::Result<()> 
+{ // fonctionne également avec l'alias de Result<T, E>
     try!(std::fs::File::create("my_file.txt"));
     println!("Une chance sur deux pour que je sois du code mort !");
     Ok(())
 }
 ```
+
+#### Note(bis)
+
+Depuis la version `1.13`, la macro `try!` a été plus ou moins remplacée par l'opérateur `?`.
+Elle peut toujours être utilisée, toutefois, prévilégiez cet opérateur autant que possible.
+
+L'exemple ci-dessus peut donc être transposé de cette manière:
+
+```rust
+use std::io::Error;
+fn foo(string: &String) -> Result<(), Error> 
+{
+    std::fs::File::create("my_file.txt")?;
+    println!("Une chance sur deux pour que je sois du code mort !");
+    Ok(())
+}
+
+fn bar(string: &String) -> std::io::Result<()> 
+{ // fonctionne également avec l'alias de Result<T, E>
+    std::fs::File::create("my_file.txt")?;
+    println!("Une chance sur deux pour que je sois du code mort !");
+    Ok(())
+}
+```
+
+Voir aussi:
+
+- Le document abordant [la gestion d'erreur](https://github.com/rust-lang/rfcs/blob/master/text/0243-trait-based-exception-handling.md) avec les nouvelles fonctionnalités du langage.
 
 ### Comment utiliser la macro assert! ?
 
