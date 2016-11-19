@@ -18,7 +18,7 @@ Elle n'a en revanche pas pour but de traduire, mais bien de réexpliquer les pas
 ## Affiliation
 
 Les ressources proposées par ce dépôt ne sont pas officielles ou affiliées à l'équipe en charge du projet Rust et/ou la fondation Mozilla.
-Ce document peut toujours contenir des erreurs et/ou confusions pouvant être invalidés; Bien que cette FAQ soit rédigée avec le plus grand soin, référez-vous toujours à la documentation officielle si vous avez un doute quant à la véracité des propos entretenus par cette ressource.
+Ce document peut toujours contenir des erreurs et/ou confusions pouvant être invalidées; Bien que cette FAQ soit rédigée avec le plus grand soin, référez-vous toujours à la documentation officielle si vous avez un doute quant à la véracité des propos tenus par cette ressource.
 
 ## Contribution
 
@@ -71,9 +71,9 @@ fn main() {
 
 Non.
 
-Bien qu'il en donne l'air grâce à une syntaxe très aérée, Rust dispose d'un typage statique mais « optionnel » pour le développeur si il désire faire abstraction des types, mais il perdra, en toute logique, l'avantage de choisir la quantité de mémoire que sa ressource consommera.
+Bien qu'il en donne l'air grâce à une syntaxe très aérée, Rust dispose d'un typage statique mais « optionnel » pour le développeur si ce dernier désire faire abstraction des types. Cependant il perdra, en toute logique, l'avantage de choisir la quantité de mémoire que sa ressource consommera.
 
-Vous ne pouvez, par exemple, pas faire ceci :
+Par exemple, vous ne pouvez pas faire ceci :
 
 ```rust
 fn main() {
@@ -162,7 +162,7 @@ fn main() {
 
 Actuellement***11 novembre 2016***, la version stable la plus récente est la **1.13.0**.
 
-Mais vous pouvez toutefois utiliser une version un peu plus vieille.
+Mais vous pouvez toutefois utiliser une version un peu plus ancienne.
 
 Pour cette Q/R, la version de Rust sur mon poste était la **1.9.0**.
 
@@ -174,9 +174,9 @@ Rust propose l'encapsulation qui est un concept objet. On peut donc dire que Rus
 
 Il dispose d'un aspect de la POO, de prime abord, assez primitif; Rust permet toutefois de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
 
-Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures : comme il serait possible de le faire avec des classes, bien qu'il soit possible de le faire avec des traits.
+Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures, comme il serait possible de le faire avec des classes, bien qu'il soit possible de le faire avec des traits.
 
-Par conséquent, Rust est donc orienté objet puisqu'il possède plusieurs parties de ce paradigme mais n'est pas un langage *pur* objet.
+Par conséquent, Rust est donc orienté objet, puisqu'il possède plusieurs parties de ce paradigme, mais n'est pas un langage objet *pur*.
 
 Voir aussi : [Qu'est-ce qu'un « trait » ?](#quest-ce-quun-trait)
 
@@ -340,7 +340,7 @@ fn main() {
 }
 ```
 
-Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par un exemple un project possédant cette hiérarchie :
+Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par exemple un project possédant cette hiérarchie :
 
 ```text
 src
@@ -604,7 +604,7 @@ fn main() {
 
 Le mot-clé `unsafe` permet, comme son nom l'indique, de casser certaines règles natives de Rust pour effectuer des opérations « à risque ».
 
-En pratique, le mot-clé `unsafe` permet une manipulation de la mémoire plus approfondie, plus directe, mais aussi plus compliquée, puisque le langage n'applique pas certaines règes.
+En pratique, le mot-clé `unsafe` permet une manipulation de la mémoire plus approfondie, plus directe, mais aussi plus compliquée, puisque le langage n'applique pas certaines règles.
 
 Pour faire simple : utilisez `unsafe` aussi peu que possible.
 
@@ -695,7 +695,7 @@ fn main() {
 }
 ```
 
-Il permet aussi de dire explicitement qu'une valeur de doit pas être "bouger"/move dans certains contextes.
+Il permet aussi de dire explicitement qu'une valeur de doit pas être "bougé"/move dans certains contextes.
 
 ### À quoi sert le mot-clé mut ?
 
@@ -718,7 +718,7 @@ Voir aussi : [A quoi sert le mot-clé mut ?](#a-quoi-sert-le-mot-clé-mut)
 
 ### Qu'est-ce qu'une macro ?
 
-Une macro est ce que l'on peut appeler vulgairement : une fonction très puissante.
+Une macro est ce que l'on peut appeler vulgairement une fonction très puissante.
 
 Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et ainsi écrire les instructions désirées selon *chaque* cas.
 
@@ -808,7 +808,7 @@ Rust dispose d'un outil de développement multifonction nommé Cargo.
 
 Cargo est en premier lieu un gestionnaire de paquets (qui vous permet donc de télécharger des modules Rust développés par d'autres programmeurs) mais vous épaule également dans la gestion, la construction de vos projets, la création de vos manifest, etc...
 
-Un groupe de Q/R a été créé sur cette FAQ présentant une liste non-exhaustive de commandes supportées par Cargo suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil (`$ man cargo`)) :
+Un groupe de Q/R a été créé sur cette FAQ, présentant une liste non-exhaustive de commandes supportées par Cargo, suivie d'un exemple d'utilisation (vous pourrez également retrouver des exemples dans le manuel officiel de l'outil (`$ man cargo`)) :
 
 
 *  [Comment créer un projet avec Cargo ?](#comment-créer-un-projet-avec-cargo) 
@@ -900,7 +900,7 @@ Voir aussi :
 
 ### Comment effectuer une destructuration sur une liste ?
 
-Pour isoler une valeur contenu dans un tuple, il faut d'abord écrire son modèle pour savoir où le chercher.
+Pour isoler une valeur contenue dans un tuple, il faut d'abord écrire son modèle pour savoir où le chercher.
 
 Par exemple, en assumant que nous cherchons une suite de chiffres dans un ordre croissant, il est simple de déterminer si cette suite est dans le bon ordre ou non.
 
@@ -1068,7 +1068,7 @@ fn main() {
 
 Il se pourrait que vous ayez omis d'utiliser une annotation : `#[macro_use]`
 
-Cette dernière permet d'exporter toutes les macros qui doivent être publiques pour être utilisées à l'exterieur de la bibliothèque.
+Cette dernière permet d'exporter toutes les macros qui doivent être publiques pour être utilisées à l'extérieur de la bibliothèque.
 
 ```rust
 #[macro_use]
@@ -1283,7 +1283,7 @@ fn main() {
 
 Comme tout langages (sauf exception que nous pourrions ignorer), Rust dispose d'un système de durée de vie.
 
-Toutefois, il fait preuve d'une grande rigourosité quant à la destruction des ressources dynamiques et à « l'isolement » des ressources statiques après utilisation.
+Toutefois, il fait preuve d'une grande rigueur quant à la destruction des ressources dynamiques et à « l'isolement » des ressources statiques après utilisation.
 
 Voici un exemple :
 
@@ -1366,7 +1366,7 @@ Si vous souhaitez générer un projet en mode « exécutable », il suffit de 
 
 `$ cargo new folder_name  --bin`
 
-Par défaut, le nom du répertoire racine sera également le nom de votre bibliothèque si elle devait être identifiée par d'autres utilisateurs dans le but de la télécharger. Si vous souhaitez lui attribuer un autre nom, vous pouvez également le spécifier dans la commande :
+Par défaut, le nom du répertoire racine sera également le nom de votre bibliothèque, si elle devait être identifiée par d'autres utilisateurs, dans le but de la télécharger. Si vous souhaitez lui attribuer un autre nom, vous pouvez également le spécifier dans la commande :
 
 `$ cargo new folder_name --name another_name  --bin`
 
@@ -1418,7 +1418,7 @@ Pour la seconde :
 
 * Cherchez le dépôt github de la bibliothèque désirée ;
 * Notez le nom que porte cette bibliothèque dans son manifest ;
-* Puis ajoutez cette ligne dans vos dépendences : `lib_name = {git = "url du dépôt" }` ;
+* Puis ajoutez cette ligne dans vos dépendances : `lib_name = {git = "url du dépôt" }` ;
 * Compilez ;
 * C'est prêt !
 
@@ -1456,7 +1456,7 @@ Gardez en tête que le nom de chaque paquet est alloué en respectant la règle 
 
 **Empaqueter le projet**
 
-La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande cargo package. Votre projet sera donc empaqueter sous la format *.crate et se trouvera dans le répertoire target/package/.
+La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande cargo package. Votre projet sera donc empaqueté sous le format *.crate* et se trouvera dans le répertoire target/package/.
 
 ```bash
 $ cargo package
@@ -1492,7 +1492,7 @@ include = [
 ]
 ```
 
-Maintenant que nous avons un fichier *.crate prêt à y aller, il peut être uploadé sur crates.io grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet !
+Maintenant que nous avons un fichier *.crate* prêt à y aller, il peut être uploadé sur crates.io grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet !
 
 ```bash
 $ cargo publish
@@ -1531,7 +1531,7 @@ license-file = "LICENSE.md"
 **Attention**:
 
 >Il se peut que vous rencontriez également des problèmes avec l'entrée « license = ... » vous informant que le nom de licence entré n'est pas valide.
->Pour régler le souci rendez-vous sur [opensource.org](https://opensource.org/licenses/alphabetical) et visionner les noms raccourcis entre parenthèses de chaque licence.
+>Pour régler le souci rendez-vous sur [opensource.org](https://opensource.org/licenses/alphabetical) et visionnez les noms raccourcis entre parenthèses de chaque licence.
 
 ### Comment lancer des tests avec Cargo ?
 
@@ -1577,15 +1577,15 @@ Chaque fonction annotée par l'attribut `#[test]` sera compilée durant la phase
 
 ### Comment mettre à jour mes bibliothèques ?
 
-Pour mettre à jour vos dépendences, il vous suffit d'utiliser la commande : `$ cargo update`.
+Pour mettre à jour vos dépendances, il vous suffit d'utiliser la commande : `$ cargo update`.
 
-Vous pouvez également préciser quelle bibliothèque mettre à jour séparément en utilisation l'option `$ cargo update --precise nom_dep`
+Vous pouvez également préciser quelle bibliothèque mettre à jour séparément en utilisant l'option `$ cargo update --precise nom_dep`
 
 ### Comment créer ses benchmarks avec Cargo ?
 
 Pour créer nos benchmark, donc, nous allons utiliser le paquet [bencher](https://crates.io/crates/bencher).
 
-Ce module était premièrement connu sous le nom test puis bencher qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
+Ce module était premièrement connu sous le nom de "tester puis bencher", qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
 
 ```toml
 [package]
@@ -1641,7 +1641,7 @@ La macro `bencmark_group!` sert a créer des « groupes » de fonctions à mes
 
 ### À quoi sert benchmark_main! ?
 
-La macro `benchmark_main!` permet de créer une fonction main contenant toutes les fonctions à « benmarker ».
+La macro `benchmark_main!` permet de créer une fonction main contenant toutes les fonctions à « benchmarker ».
 
 ## Gestion des erreurs
 
@@ -1670,7 +1670,7 @@ Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à 
 
 ### Comment créer un type spécifique d'exceptions ?
 
-Il n'est pas possible de créer de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java ; Rust ne gère pas les potentielles de cette manière.
+Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java ; Rust ne gère pas les potentielles de cette manière.
 
 Voir aussi :
 
@@ -1747,7 +1747,7 @@ Voir aussi :
 
 ### À quoi sert la méthode unwrap_or ?
 
-La méthode `unwrap_or()` fonctionne exactement comme la méthode originelleunwrap mais permet d'éviter de faire « paniquer » le programme, et donc l'arrêt de l'exécution, en nous permettant de passer une valeur par défaut à renvoyer si le wrapper visé ne contient rien initialement.
+La méthode `unwrap_or()` fonctionne exactement comme la méthode originelle unwrap, mais permet d'éviter de faire « paniquer » le programme, et donc l'arrêt de l'exécution, en nous permettant de passer une valeur par défaut à renvoyer si le wrapper visé ne contient rien initialement.
 
 ```rust
 fn main() {
@@ -1868,7 +1868,7 @@ fn bar(string: &String) -> std::io::Result<()>
 #### Note(bis)
 
 Depuis la version `1.13`, la macro `try!` a été plus ou moins remplacée par l'opérateur `?`.
-Elle peut toujours être utilisée, toutefois, prévilégiez cet opérateur autant que possible.
+Elle peut toujours être utilisée, toutefois, privilégiez cet opérateur autant que possible.
 
 L'exemple ci-dessus peut donc être transposé de cette manière:
 
@@ -1985,7 +1985,7 @@ Voir aussi :
 
 ### Qu'est-ce que l'énumération Result<T, E> ?
 
-`Result<T, E>` est une énumération contenant deux variants :
+`Result<T, E>` est une énumération contenant deux variantes :
 
 1. `Ok(T)`,
 2. `Err(E)`.
@@ -2080,7 +2080,7 @@ Ce qui signifie que si vous souhaitez ne serait-ce que conserver des notes quant
 
 Il est parfois nécessaire d'éclater une chaîne pour traiter ses caractères au cas par cas ; Jusqu'ici, Rust vous propose une méthode plutôt intuitive nommée `chars()`.
 
-Après avoir éclatée la chaîne, vous souhaiteriez peut-être itérer plusieurs fois sur celle-ci, sans succès.
+Après avoir éclaté la chaîne, vous souhaiteriez peut-être itérer plusieurs fois sur celle-ci, sans succès.
 
 ```rust
 fn main() {
