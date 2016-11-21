@@ -182,7 +182,7 @@ Le langage repose sur le « Builder Pattern » qui consiste à concevoir des �
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception)#Exemple "Ouvrir un nouvel onglet").
 
-Voir aussi : [Comment déclarer des paramètres optionnels](#comment-déclarer-des-paramètres-optionnels) ?
+Voir aussi : [Comment déclarer des paramètres optionnels ?](#comment-déclarer-des-paramètres-optionnels)
 
 ### Comment déclarer des paramètres optionnels ?
 
@@ -194,7 +194,7 @@ Le langage repose sur le « Builder Pattern » qui consiste à concevoir des �
 
 Vous pouvez retrouver quelques explications à propos de ce design pattern [ici](https://doc.rust-lang.org/book/method-syntax.html#builder-pattern) ou encore [ici](https://fr.wikipedia.org/wiki/Monteur_(patron_de_conception) "Ouvrir un nouvel onglet").
 
-Voir aussi : [Comment utiliser une macro ?](#comment-utiliser-une-macro)
+Voir aussi : [Comment créer une macro ?](#comment-créer-une-macro)
 
 ### Comment créer un tableau ?
 
@@ -691,7 +691,7 @@ Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et 
 
 Pour grossir un peu le trait : les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme.
 
-Voir aussi : [Comment utiliser une macro ?](#comment-utiliser-une-macro)
+Voir aussi : [Comment créer une macro ?](#comment-créer-une-macro)
 
 ### Comment créer une macro ?
 
@@ -1905,7 +1905,7 @@ fn main() {
 Voir aussi :
 
 * [Visionner le résultat de l'exemple](https://is.gd/wsqrbp "Ouvrir un nouvel onglet") (requiert une connexion internet)
-* [Comment utiliser une macro ?](#comment-utiliser-une-macro)
+* [Comment créer une macro ?](#comment-créer-une-macro)
 
 ### Comment utiliser la macro assert_eq! ?
 
@@ -1930,7 +1930,7 @@ fn main() {
 Voir aussi :
 
 *  [Visionner le résultat de l'exemple (requiert une connexion internet)](https://is.gd/en8FRZ "Ouvrir un nouvel onglet") 
-*  [Comment utiliser une macro ?](#comment-utiliser-une-macro) 
+*  [Comment créer une macro ?](#comment-créer-une-macro) 
 
 ### Comment utiliser la macro debug_assert! ?
 
@@ -1948,7 +1948,7 @@ Voir aussi :
 
 *  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
 *  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
-*  [Comment utiliser une macro ?](#comment-utiliser-une-macro) 
+*  [Comment créer une macro ?](#comment-créer-une-macro) 
 
 ### Qu'est-ce que l'énumération Result<T, E> ?
 
