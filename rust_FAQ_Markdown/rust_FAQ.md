@@ -129,11 +129,9 @@ fn main() {
 
 ### Quelle version de Rust est recommandée ?
 
-Actuellement***11 novembre 2016***, la version stable la plus récente est la **1.13.0**.
+Actuellement(***11 novembre 2016***), la version stable la plus récente est la **1.13.0**.
 
-Mais vous pouvez toutefois utiliser une version un peu plus ancienne.
-
-Pour cette Q/R, la version de Rust sur mon poste était la **1.9.0**.
+Les versions antérieures à la 1.13.0 contenant des régressions, je vous conseille d'utiliser la version la plus récente proposée.
 
 Voir aussi : [Page officielle du langage Rust](https://www.rust-lang.org/en-US/ "Ouvrir un nouvel onglet")
 
