@@ -44,4 +44,3 @@ Consultez le fichier [`LICENCE.md`](LICENCE.md) pour plus d'informations, s'il v
 
 - [Twitter](https://twitter.com/_Spyglass_)
 - [Profil developpez](http://www.developpez.net/forums/u897329/songbird_/)
-
