@@ -1552,7 +1552,7 @@ Vous pouvez également préciser quelle bibliothèque mettre à jour séparémen
 
 Pour créer nos benchmark, donc, nous allons utiliser le paquet [bencher](https://crates.io/crates/bencher).
 
-Ce module était premièrement connu sous le nom de "tester puis bencher", qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
+Ce module était premièrement connu sous le nom de "test" puis sera rebaptisé "bencher", qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
 
 ```toml
 [package]
