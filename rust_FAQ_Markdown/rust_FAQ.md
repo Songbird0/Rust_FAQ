@@ -307,7 +307,7 @@ fn main() {
 }
 ```
 
-Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par exemple un project possédant cette hiérarchie :
+Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par exemple un projet possédant cette hiérarchie :
 
 ```text
 src
