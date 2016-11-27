@@ -350,7 +350,7 @@ Le mot-clé `pub` peut être utilisé dans *trois* contextes différents :
 2. Au sein [et sur] des traits;
 3. Au sein [et sur] des structures.
 
-Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre public l'objet concerné.
+Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre publique l'objet concerné.
 
 Exemple :
 
