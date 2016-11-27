@@ -279,12 +279,12 @@ Le mot-clé `use` permet de gérer les imports d'autres modules.
 Exemple :
 
 ```rust
-extern crate mon_package ;
+extern crate mon_package;
 
-use mon_package::mon_module::ma_fonction ;
+use mon_package::mon_module::ma_fonction;
 
 fn main() {
-    ma_fonction() ;
+    ma_fonction();
 }
 ```
 
