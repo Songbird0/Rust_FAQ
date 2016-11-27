@@ -444,7 +444,7 @@ Bien entendu, si vous souhaitez importer un paquet qui n'est pas de vous, il vou
 
 Voir aussi :
 
-Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") »
+Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#a-quoi-sert-le-mot-clé-pub) »
 
 [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
 
