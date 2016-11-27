@@ -139,11 +139,11 @@ Voir aussi : [Page officielle du langage Rust](https://www.rust-lang.org/en-US/
 
 Rust propose l'encapsulation qui est un concept objet. On peut donc dire que Rust est orienté objet. Toutefois, l'encapsulation s'effectue à l'échelle d'un **module** et non d'une **classe/structure** comme on pourrait le remarquer en Java/C#.
 
-Il dispose d'un aspect de la POO, de prime abord, assez primitif; Rust permet toutefois de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
+Il dispose d'un aspect de la POO, de prime abord, assez primitif; Rust permet de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
 
 Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures, comme il serait possible de le faire avec des classes, bien qu'il soit possible de le faire avec des traits.
 
-Par conséquent, Rust est donc orienté objet, puisqu'il possède plusieurs parties de ce paradigme, mais n'est pas un langage objet *pur*.
+Par conséquent, Rust est orienté objet, puisqu'il possède plusieurs parties de ce paradigme, mais n'est pas un langage objet *pur*.
 
 Voir aussi : [Qu'est-ce qu'un « trait » ?](#quest-ce-quun-trait)
 
