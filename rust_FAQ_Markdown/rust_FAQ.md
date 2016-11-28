@@ -1,6 +1,6 @@
 # Introduction
 
-cf. [README.md](README.md), s'il vous plaît.
+cf. [../README.md](README.md), s'il vous plaît.
 
 # Langage
 
