@@ -1,6 +1,6 @@
 # Introduction
 
-cf. [README.md](README.md), s'il vous plaît.
+cf. [README.md](../README.md), s'il vous plaît.
 
 # Langage
 
@@ -139,11 +139,11 @@ Voir aussi : [Page officielle du langage Rust](https://www.rust-lang.org/en-US/
 
 Rust propose l'encapsulation qui est un concept objet. On peut donc dire que Rust est orienté objet. Toutefois, l'encapsulation s'effectue à l'échelle d'un **module** et non d'une **classe/structure** comme on pourrait le remarquer en Java/C#.
 
-Il dispose d'un aspect de la POO, de prime abord, assez primitif; Rust permet toutefois de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
+Il dispose d'un aspect de la POO, de prime abord, assez primitif; Rust permet de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
 
 Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures, comme il serait possible de le faire avec des classes, bien qu'il soit possible de le faire avec des traits.
 
-Par conséquent, Rust est donc orienté objet, puisqu'il possède plusieurs parties de ce paradigme, mais n'est pas un langage objet *pur*.
+Par conséquent, Rust est orienté objet, puisqu'il possède plusieurs parties de ce paradigme, mais n'est pas un langage objet *pur*.
 
 Voir aussi : [Qu'est-ce qu'un « trait » ?](#quest-ce-quun-trait)
 
@@ -279,12 +279,12 @@ Le mot-clé `use` permet de gérer les imports d'autres modules.
 Exemple :
 
 ```rust
-extern crate mon_package ;
+extern crate mon_package;
 
-use mon_package::mon_module::ma_fonction ;
+use mon_package::mon_module::ma_fonction;
 
 fn main() {
-    ma_fonction() ;
+    ma_fonction();
 }
 ```
 
@@ -307,7 +307,7 @@ fn main() {
 }
 ```
 
-Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par exemple un project possédant cette hiérarchie :
+Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par exemple un projet possédant cette hiérarchie :
 
 ```text
 src
@@ -350,7 +350,7 @@ Le mot-clé `pub` peut être utilisé dans *trois* contextes différents :
 2. Au sein [et sur] des traits;
 3. Au sein [et sur] des structures.
 
-Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre public l'objet concerné.
+Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre publique l'objet concerné.
 
 Exemple :
 
@@ -444,7 +444,7 @@ Bien entendu, si vous souhaitez importer un paquet qui n'est pas de vous, il vou
 
 Voir aussi :
 
-Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") »
+Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#a-quoi-sert-le-mot-clé-pub) »
 
 [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
 
@@ -593,9 +593,9 @@ Voir aussi :
 
 Trois règles, et seulement trois, sont brisées dans les blocs (et fonctions) `unsafe`:
 
-1. L'accès et la modification d'une variable globale (statique) mutable sont autorisés ;
-2. Il est possible de déréférencer un pointeur (non-nul, donc) ;
-3. Il est possible de faire à une fonction non-sûre.
+1. L'accès et la modification d'une variable globale (statique) mutable sont autorisés;
+2. Il est possible de déréférencer un pointeur (non-nul, donc);
+3. Il est possible de créer une fonction non-sûre.
 
 ### Quels comportements sont considérés « non-sûrs » par Rust ?
 
@@ -613,9 +613,9 @@ fn ma_fonction() {
 
 ### À quoi sert le mot-clé match ?
 
-Le mot-clé `match` nous permet d'implémenter le *pattern* *matching*.
+Le mot-clé `match` nous permet d'implémenter le *pattern matching*.
 
-Ainsi, il est possible de comparer une entrée à plusieurs tokens constants et agir en conséquence. Le pattern matching est considéré comme un test *exhaustif*, car, quoi qu'il arrive, il fera en sorte de couvrir tous les cas de figure qu'on lui propose.
+Ainsi, il est possible de comparer une entrée à plusieurs **tokens** constants et agir en conséquence. Le pattern matching est considéré comme un test *exhaustif*, car, quoi qu'il arrive, il fera en sorte de couvrir tous les cas de figure qu'on lui propose.
 
 Exemple :
 
@@ -624,11 +624,11 @@ let foo: i32 = 117;
 
 match foo {
     117 => println!("foo vaut 117 !"),
-    _ => println!("You know nothing, Jon."), // s'efforcera de trouver une réponse
+    _ => println!("You know nothing, John."), // s'efforcera de trouver une réponse
 }
 ```
 
-Jusqu'ici, il semblerait que le mot-clé `match` ne soit pas capable de faire preuve de plus de souplesse qu'un `switch`, ce qui est bien entendu le contraire ! Vous pouvez par-exemple matcher sur un ensemble de valeur :
+Jusqu'ici, il semblerait que le mot-clé `match` ne soit pas capable de faire preuve de plus de souplesse qu'un `switch`, ce qui est bien entendu le contraire ! Vous pouvez par-exemple matcher sur un ensemble de valeurs :
 
 ```rust
 let foo: i32 = 117;
@@ -639,7 +639,7 @@ match foo {
 }
 ```
 
-Le pattern matching est très puissant, n'hésitez pas à en user et en abuser !
+*Le pattern matching est très puissant, n'hésitez pas à en user et en abuser !*
 
 Voir aussi :
 
@@ -662,7 +662,7 @@ fn main() {
 }
 ```
 
-Il permet aussi de dire explicitement qu'une valeur de doit pas être "bougé"/move dans certains contextes.
+Il permet aussi de dire explicitement qu'une valeur ne doit pas être "bougée"/move dans certains contextes.
 
 ### À quoi sert le mot-clé mut ?
 
@@ -689,7 +689,7 @@ Une macro est ce que l'on peut appeler vulgairement une fonction très puissante
 
 Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et ainsi écrire les instructions désirées selon *chaque* cas.
 
-Pour grossir un peu le trait : les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme.
+Pour grossir un peu le trait : *les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme*.
 
 Voir aussi : [Comment créer une macro ?](#comment-créer-une-macro)
 
@@ -745,7 +745,7 @@ fn main() {
 }
 ```
 
-Vous aurez certainement remarqué que les paramètres passés sont assez spéciaux ; au lieu d'avoir le nom de leur type après les deux points (« : »), il est écrit `expr`.
+Vous aurez certainement remarqué que les paramètres passés sont assez spéciaux; au lieu d'avoir le nom de leur type après les deux points (« : »), il est écrit `expr`.
 
 C'est ce que l'on appelle un « spécificateur » .
 
@@ -850,14 +850,14 @@ Hello
 
 Avec Rust, il est possible d'effectuer une « destructuration » sur certains types de données, mais qu'est-ce que cela signifie exactement ?
 
-Grâce au pattern matching, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.
+Grâce au *pattern matching*, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.
 
 Une destructuration peut se faire sur :
 
-* Les listes
-* Les tuples
-* Les énumérations
-* Les structures
+* Les listes;
+* Les tuples;
+* Les énumérations;
+* Les structures.
 
 Voir aussi :
 
@@ -994,8 +994,10 @@ let foo = A {
 
 La bibliothèque standard de Rust propose un(e) `trait`/ interface nommé(e) `PartialEq` composée de deux fonctions :
 
-1.  `fn eq(&self, other : &instance_de_la_meme_structure)` * ;* 
-2.  `fn ne(&self, other : &instance_de_la_meme_structure) ` *;* 
+1.  `fn eq(&self, other : &instance_de_la_meme_structure)`; 
+2.  `fn ne(&self, other : &instance_de_la_meme_structure) `.
+
+**Note**: Comment il est stipulé dans la documentation officielle, vous n'êtes pas forcé d'implémenter les deux fonctions : `ne()` étant simplement le contraire de `eq()` et vice versa, il serait redondant de les implémenter dans la même structure.
 
 Ci-dessous figure un exemple complet d'implémentation :
 
@@ -1070,7 +1072,7 @@ pub mod votre_conteneur {
 }
 ```
 
-Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez clairement l'erreur que le compilateur vous renvoi dans votre post.
+Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique [programmation](http://programmation.developpez.com/) pour obtenir de l'aide. Présentez **clairement** l'erreur que le compilateur vous renvoi dans votre post.
 
 ### À quoi servent les mot-clés `if let` ?
 
@@ -1093,7 +1095,7 @@ C'est un moyen simple et efficace d'assigner du contenu sans passer par le patte
 
 ### À quoi servent les mot-clés `while let` ?
 
-La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
+La combinaison des deux mot-clés permet d'effectuer des tests concis et ainsi nous éviter de passer par le pattern matching lorsque cela n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
 
 **[Exemple de la documentation officielle]**
 
@@ -1552,7 +1554,7 @@ Vous pouvez également préciser quelle bibliothèque mettre à jour séparémen
 
 Pour créer nos benchmark, donc, nous allons utiliser le paquet [bencher](https://crates.io/crates/bencher).
 
-Ce module était premièrement connu sous le nom de "tester puis bencher", qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
+Ce module était premièrement connu sous le nom de "test" puis sera rebaptisé "bencher", qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
 
 ```toml
 [package]

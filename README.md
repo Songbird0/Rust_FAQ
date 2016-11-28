@@ -1,7 +1,12 @@
 # Stade de rédaction
 
 La FAQ est encore régulièrement mise à jour, rédigée, mais il est possible de la lire.
-Actuellement(20 novembre 2016), la FAQ a subi 4 relectures.
+Actuellement(28 novembre 2016), la FAQ a subi 4 relectures.
+
+# Remerciements
+
+Je remercie tout particulièrement [@chaosedge278](https://github.com/Chaosedge278), [@f-leb](http://www.developpez.net/forums/u283256/f-leb/), [@Malick SECK](http://www.developpez.net/forums/u526667/malick-seck/) et [@imperio](https://github.com/GuillaumeGomez) pour leurs relectures orthographiques et techniques, ainsi que l'équipe de [developpez.com](developpez.com) en général pour avoir gentiment accepté d'héberger cette ressource.
+Merci également à [@Siguillaume](http://www.developpez.net/forums/u181612/siguillaume/) pour sa disponibilité ! :)
 
 ## Utilisation
 
