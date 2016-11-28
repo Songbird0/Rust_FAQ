@@ -1072,7 +1072,7 @@ pub mod votre_conteneur {
 }
 ```
 
-Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez **clairement** l'erreur que le compilateur vous renvoi dans votre post.
+Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique [programmation](http://programmation.developpez.com/) pour obtenir de l'aide. Présentez **clairement** l'erreur que le compilateur vous renvoi dans votre post.
 
 ### À quoi servent les mot-clés `if let` ?
 
