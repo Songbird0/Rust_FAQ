@@ -997,6 +997,8 @@ La bibliothèque standard de Rust propose un(e) `trait`/ interface nommé(e) `Pa
 1.  `fn eq(&self, other : &instance_de_la_meme_structure)`; 
 2.  `fn ne(&self, other : &instance_de_la_meme_structure) `.
 
+**Note**: Comment il est stipulé dans la documentation officielle, vous n'êtes pas forcé d'implémenter les deux fonctions : `ne()` étant simplement le contraire de `eq()` et vice versa, il serait redondant de les implémenter dans la même structure.
+
 Ci-dessous figure un exemple complet d'implémentation :
 
 ```rust
