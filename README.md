@@ -1,7 +1,7 @@
 # Stade de rédaction
 
 La FAQ est encore régulièrement mise à jour, rédigée, mais il est possible de la lire.
-Actuellement(20 novembre 2016), la FAQ a subi 4 relectures.
+Actuellement(28 novembre 2016), la FAQ a subi 4 relectures.
 
 ## Utilisation
 
