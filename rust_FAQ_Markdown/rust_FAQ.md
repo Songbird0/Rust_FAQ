@@ -639,7 +639,7 @@ match foo {
 }
 ```
 
-Le pattern matching est très puissant, n'hésitez pas à en user et en abuser !
+*Le pattern matching est très puissant, n'hésitez pas à en user et en abuser !*
 
 Voir aussi :
 
