@@ -595,7 +595,7 @@ Trois règles, et seulement trois, sont brisées dans les blocs (et fonctions) `
 
 1. L'accès et la modification d'une variable globale (statique) mutable sont autorisés;
 2. Il est possible de déréférencer un pointeur (non-nul, donc);
-3. Il est possible de faire à une fonction non-sûre.
+3. Il est possible de créer une fonction non-sûre.
 
 ### Quels comportements sont considérés « non-sûrs » par Rust ?
 
