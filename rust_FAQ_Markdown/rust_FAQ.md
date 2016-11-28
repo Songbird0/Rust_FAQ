@@ -662,7 +662,7 @@ fn main() {
 }
 ```
 
-Il permet aussi de dire explicitement qu'une valeur ne doit pas être "bougé"/move dans certains contextes.
+Il permet aussi de dire explicitement qu'une valeur ne doit pas être "bougée"/move dans certains contextes.
 
 ### À quoi sert le mot-clé mut ?
 
