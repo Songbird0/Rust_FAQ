@@ -689,7 +689,7 @@ Une macro est ce que l'on peut appeler vulgairement une fonction très puissante
 
 Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et ainsi écrire les instructions désirées selon *chaque* cas.
 
-Pour grossir un peu le trait : les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme.
+Pour grossir un peu le trait : *les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme*.
 
 Voir aussi : [Comment créer une macro ?](#comment-créer-une-macro)
 
@@ -745,7 +745,7 @@ fn main() {
 }
 ```
 
-Vous aurez certainement remarqué que les paramètres passés sont assez spéciaux ; au lieu d'avoir le nom de leur type après les deux points (« : »), il est écrit `expr`.
+Vous aurez certainement remarqué que les paramètres passés sont assez spéciaux; au lieu d'avoir le nom de leur type après les deux points (« : »), il est écrit `expr`.
 
 C'est ce que l'on appelle un « spécificateur » .
 
