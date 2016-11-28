@@ -615,7 +615,7 @@ fn ma_fonction() {
 
 Le mot-clé `match` nous permet d'implémenter le *pattern matching*.
 
-Ainsi, il est possible de comparer une entrée à plusieurs tokens constants et agir en conséquence. Le pattern matching est considéré comme un test *exhaustif*, car, quoi qu'il arrive, il fera en sorte de couvrir tous les cas de figure qu'on lui propose.
+Ainsi, il est possible de comparer une entrée à plusieurs **tokens** constants et agir en conséquence. Le pattern matching est considéré comme un test *exhaustif*, car, quoi qu'il arrive, il fera en sorte de couvrir tous les cas de figure qu'on lui propose.
 
 Exemple :
 
