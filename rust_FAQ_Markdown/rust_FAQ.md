@@ -624,7 +624,7 @@ let foo: i32 = 117;
 
 match foo {
     117 => println!("foo vaut 117 !"),
-    _ => println!("You know nothing, Jon."), // s'efforcera de trouver une réponse
+    _ => println!("You know nothing, John."), // s'efforcera de trouver une réponse
 }
 ```
 
