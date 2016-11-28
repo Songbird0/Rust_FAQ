@@ -850,14 +850,14 @@ Hello
 
 Avec Rust, il est possible d'effectuer une « destructuration » sur certains types de données, mais qu'est-ce que cela signifie exactement ?
 
-Grâce au pattern matching, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.
+Grâce au *pattern matching*, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.
 
 Une destructuration peut se faire sur :
 
-* Les listes
-* Les tuples
-* Les énumérations
-* Les structures
+* Les listes;
+* Les tuples;
+* Les énumérations;
+* Les structures.
 
 Voir aussi :
 
