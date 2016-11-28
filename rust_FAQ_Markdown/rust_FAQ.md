@@ -994,8 +994,8 @@ let foo = A {
 
 La bibliothèque standard de Rust propose un(e) `trait`/ interface nommé(e) `PartialEq` composée de deux fonctions :
 
-1.  `fn eq(&self, other : &instance_de_la_meme_structure)` * ;* 
-2.  `fn ne(&self, other : &instance_de_la_meme_structure) ` *;* 
+1.  `fn eq(&self, other : &instance_de_la_meme_structure)`; 
+2.  `fn ne(&self, other : &instance_de_la_meme_structure) `.
 
 Ci-dessous figure un exemple complet d'implémentation :
 
