@@ -1095,7 +1095,7 @@ C'est un moyen simple et efficace d'assigner du contenu sans passer par le patte
 
 ### À quoi servent les mot-clés `while let` ?
 
-La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
+La combinaison des deux mot-clés permet d'effectuer des tests concis et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
 
 **[Exemple de la documentation officielle]**
 
