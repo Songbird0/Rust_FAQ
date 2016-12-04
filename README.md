@@ -38,7 +38,7 @@ Forkez, rendez-vous dans le répertoire [`rust_FAQ_Markdown`](rust_FAQ_Markdown/
 
 Vous lisez ce README ailleurs que sur le dépôt ? Dans ce cas, suivez ce [lien](https://github.com/Songbird0/Rust_FAQ/tree/master/rust_FAQ_Markdown), s'il vous plaît.
 
-Il est également possible de contribuer à la relecture/progression de la FAQ directement sur [developpez.com](developpez.com), [soumettez-votre Q/R](http://rust.developpez.com/faq/?page=Langage#addForm).
+Il est également possible de contribuer à la relecture/progression de la FAQ directement sur [developpez.com](developpez.com), [soumettez votre Q/R](http://rust.developpez.com/faq/?page=Langage#addForm).
 
 
 ## Licence et condition d'utilisation
