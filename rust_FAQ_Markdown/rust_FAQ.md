@@ -54,12 +54,12 @@ cf. [README.md](../README.md), s'il vous plaît.
     - [Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?](#je-narrive-pas-à-utiliser-les-macros-importées-par-ma-bibliothèque-pourquoi)
     - [A quoi servent les mot-clés `if let` ?](#À-quoi-servent-les-mot-clés-if-let)
     - [A quoi servent les mot-clés `while let` ?](#À-quoi-servent-les-mot-clés-while-let)
-  - Mécaniques et philosophies
-    - Gestion de la mémoire
-      - Le développeur doit-il gérer la mémoire seul ?
-      - Qu'est-ce que "l'ownership" ?
-      - Qu'est-ce que le concept de "borrowing" ?
-      - Qu'est-ce que le concept de "lifetime" ?
+  - [Mécaniques et philosophies](#mécaniques-et-philosophies)
+    - [Gestion de la mémoire](#gestion-de-la-mémoire)
+      - [Le développeur doit-il gérer la mémoire seul ?](#le-développeur-doit-il-gérer-la-mémoire-seul)
+      - [Qu'est-ce que "l'ownership" ?](#quest-ce-que-lownership)
+      - [Qu'est-ce que le concept de "borrowing" ?](#quest-ce-que-le-concept-de-borrowing)
+      - [Qu'est-ce que le concept de "lifetime" ?](#quest-ce-que-le-concept-de-lifetime)
   - Outils de build
     - Comment créer un projet avec Cargo ?
     - Quel type de projet puis-je créer avec Cargo ?
@@ -1203,6 +1203,8 @@ while let Some(x) = v.pop() {
 }
 ```
 
+### Comment étendre un trait sur un autre trait ?
+
 ## Mécaniques et philosophies
 
 ### Gestion de la mémoire
@@ -1407,7 +1409,6 @@ Voir aussi :
 
 [La section dédiée du livre](https://doc.rust-lang.org/book/lifetimes.html)
 
-#### Comment étendre un trait sur un autre trait ?
 
 ## Outils de build
 
