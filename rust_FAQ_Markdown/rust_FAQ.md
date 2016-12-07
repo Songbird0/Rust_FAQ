@@ -89,17 +89,17 @@ cf. [README.md](../README.md), s'il vous plaît.
     - [Comment utiliser l'énumération `Result<T>` ?](#comment-utiliser-lénumération-result)
     - [Qu'est-ce que l'énumération `Option<T, E>` ?](#quest-ce-que-lénumération-option)
     - [Comment utiliser l'énumération `Option<T, E>` ?](#comment-utiliser-lénumération-option)
-  - Metadonnées/Annotations
-  - I/O
-    - Que puis-je trouver dans cette section ?
-    - Comment créer un fichier ?
-    - Comment lire le contenu d'un fichier ?
-    - Comment écrire à l'intérieur d'un fichier ?
-    - Comment différencier un fichier d'un répertoire ?
-    - Comment lister les objets d'un répertoire ?
-- Tricks
-  - Que puis-je trouver dans cette section ?
-  - Comment récupérer le vecteur d'une instance de la structure `Chars` ?
+  - [Metadonnées/Annotations](#meta-données)
+  - [I/O](#io)
+    - [Que puis-je trouver dans cette section ?](#que-puis-je-trouver-dans-cette-section-)
+    - [Comment créer un fichier ?](#comment-créer-un-fichier-)
+    - [Comment lire le contenu d'un fichier ?](#comment-lire-le-contenu-dun-fichier-)
+    - [Comment écrire à l'intérieur d'un fichier ?](#comment-écrire-à-lintérieur-dun-fichier-)
+    - [Comment différencier un fichier d'un répertoire ?](#comment-différencier-un-fichier-dun-répertoire-)
+    - [Comment lister les objets d'un répertoire ?](#comment-lister-les-objets-dun-répertoire-)
+- [Trucs & astuces](trucs--astuces)
+  - [Que puis-je trouver dans cette section ?](#que-puis-je-trouver-dans-cette-section)
+  - [Comment récupérer le vecteur d'une instance de la structure `Chars` ?](#comment-récupérer-le-vecteur-dune-instance-de-la-structure-chars)
 
 # Langage
 
