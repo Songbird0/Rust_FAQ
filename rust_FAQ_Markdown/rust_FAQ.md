@@ -1739,7 +1739,7 @@ Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à 
 
 ### Comment créer un type spécifique d'exceptions ?
 
-Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java ; Rust ne gère pas les potentielles de cette manière.
+Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java; Rust ne gère pas les potentielles de cette manière.
 
 Voir aussi :
 
