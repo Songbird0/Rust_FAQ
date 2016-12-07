@@ -2,6 +2,93 @@
 
 cf. [README.md](../README.md), s'il vous plaît.
 
+#Aborescence de la FAQ
+
+- Introduction
+- Langage
+  - Questions générales
+    - Comment déclarer une variable ?
+    - Comment assigner un objet par référence ?
+    - Rust possède-t-il un typage dynamique ?
+    - Comment typer ses données/variables ?
+    - Quelle est la différence entre `&str` et `String` ?
+    - Comment créer une chaîne de caractères ?
+    - Quelle version de Rust est recommandée ?
+    - Rust est-il orienté objet ?
+    - Qu'est-ce qu'un `trait` ?
+    - A quoi sert le mot-clé `super` ?
+    - A quoi sert le mot-clé `self` ?
+    - A quoi sert le mot-clé `use` ?
+    - A quoi sert le mot-clé `pub` ?
+    - A quoi servent les mot-clés `extern crate` ?
+    - A quoi sert le mot-clé `mod` ?
+    - A quoi sert un module ?
+    - A quoi sert le mot-clé `type` ?
+    - A quoi sert le mot-clé `loop` ?
+    - A quoi sert le mot-clé `where` ?
+    - A quoi sert le mot-clé `unsafe` ?
+    - Quelles sont les règles non appliquées dans ces contextes ?
+    - Quels comportements sont considérés "non sûrs" par Rust ?
+    - A quoi sert le mot-clé `fn` ?
+    - A quoi sert le mot-clé `match` ?
+    - A quoi sert le mot-clé `ref` ?
+    - A quoi sert le mot-clé `mut` ?
+    - Une erreur survient lorsque je modifie le contenu de ma variable ! Que faire ?
+    - Qu'est-ce qu'une macro ?
+    - Comment créer une macro ?
+    - A quoi sert le mot-clé `usize` ?
+    - A quoi sert le mot-clé `isize` ?
+    - Existe-t-il des outils de build pour le langage Rust ?
+    - Comment utiliser mes fonctions en dehors de mon module ?
+    - Comment comparer deux objets avec Rust ?
+    - Qu'est-ce que le shadowing ?
+    - Qu'est-ce que la destructuration ?
+    - Comment effectuer une déstructuration sur une liste ?
+    - Comment effectuer une déstructuration sur une énumération ?
+    - Comment effectuer une déstructuration sur une structure ?
+    - Comment comparer deux objets d'une structure personnalisée avec Rust ?
+    - Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?
+    - A quoi servent les mot-clés `if let` ?
+    - A quoi servent les mot-clés `while let` ?
+    - Que sont les spécificateurs ?
+    - Rust supporte-t-il la surcharge des fonctions ?
+    - Comment déclarer des paramètres optionnels ?
+  - Mécaniques et philosophies
+    - Gestion de la mémoire
+      - Le développeur doit-il gérer la mémoire seul ?
+      - Qu'est-ce que "l'ownership" ?
+      - Qu'est-ce que le concept de "borrowing" ?
+      - Qu'est-ce que le concept de "lifetime" ?
+  - Outils de build
+    - Comment créer un projet avec Cargo ?
+    - Quel type de projet puis-je créer avec Cargo ?
+    - Comment compiler mon projet ?
+    - Peut-on générer de la documentation avec Cargo ?
+    - Où trouver de nouvelles bibliothèques ?
+    - Comment installer de nouvelles bibliothèques ?
+    - Comment publier sa bibliothèque faite maison ?
+    - Comment lancer des tests avec Cargo ?
+    - Comment mettre à jour mes bibliothèques ?
+  - Gestion des erreurs
+    - Comment s'effectue la gestion des erreurs avec Rust ?
+    - A quoi sert la macro `panic!` ?
+    - A quoi sert la méthode `unwrap` ?
+    - A quoi sert la méthode `unwrap_or` ?
+    - A quoi sert la méthode `unwrap_or_else` ?
+    - A quoi sert la méthode `map` ?
+    - A quoi sert la méthode `and_then` ?
+    - A quoi sert la macro `try!` ?
+    - Comment utiliser la macro `assert!` ?
+    - Comment utiliser la macro `assert_eq!` ?
+    - Comment utiliser la macro `debug_assert!` ?
+    - Qu'est-ce que l'énumération `Option<T>` ?
+    - Comment utiliser l'énumération `Option<T>` ?
+    - Qu'est-ce que la structure `Result<T, E>` ?
+    - Comment utiliser la structure `Result<T, E>` ?
+  - Metadonnées/Annotations
+  - I/O
+- Tricks
+
 # Langage
 
 ## Questions générales
