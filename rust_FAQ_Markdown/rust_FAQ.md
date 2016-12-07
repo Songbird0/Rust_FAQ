@@ -4,52 +4,56 @@ cf. [README.md](../README.md), s'il vous plaît.
 
 #Aborescence de la FAQ
 
-- Langage
-  - Questions générales
-    - Comment déclarer une variable ?
-    - Comment assigner un objet par référence ?
-    - Rust possède-t-il un typage dynamique ?
-    - Comment typer ses données/variables ?
-    - Quelle est la différence entre `&str` et `String` ?
-    - Comment créer une chaîne de caractères ?
-    - Quelle version de Rust est recommandée ?
-    - Rust est-il orienté objet ?
-    - Qu'est-ce qu'un `trait` ?
-    - A quoi sert le mot-clé `super` ?
-    - A quoi sert le mot-clé `self` ?
-    - A quoi sert le mot-clé `use` ?
-    - A quoi sert le mot-clé `pub` ?
-    - A quoi servent les mot-clés `extern crate` ?
-    - A quoi sert le mot-clé `mod` ?
-    - A quoi sert un module ?
-    - A quoi sert le mot-clé `type` ?
-    - A quoi sert le mot-clé `loop` ?
-    - A quoi sert le mot-clé `where` ?
-    - A quoi sert le mot-clé `unsafe` ?
-    - Quelles sont les règles non appliquées dans ces contextes ?
-    - Quels comportements sont considérés "non sûrs" par Rust ?
-    - A quoi sert le mot-clé `fn` ?
-    - A quoi sert le mot-clé `match` ?
-    - A quoi sert le mot-clé `ref` ?
-    - A quoi sert le mot-clé `mut` ?
-    - Une erreur survient lorsque je modifie le contenu de ma variable ! Que faire ?
-    - Qu'est-ce qu'une macro ?
-    - Comment créer une macro ?
-    - A quoi sert le mot-clé `usize` ?
-    - A quoi sert le mot-clé `isize` ?
-    - Existe-t-il des outils de build pour le langage Rust ?
-    - Comment utiliser mes fonctions en dehors de mon module ?
-    - Comment comparer deux objets avec Rust ?
-    - Qu'est-ce que le shadowing ?
-    - Qu'est-ce que la destructuration ?
-    - Comment effectuer une déstructuration sur une liste ?
-    - Comment effectuer une déstructuration sur une énumération ?
+- [Langage](#langage)
+  - [Questions générales](#questions-générales)
+    - [Comment déclarer une variable ?](#comment-déclarer-une-variable)
+    - [Comment assigner un objet par référence ?](#comment-assigner-un-objet-par-référence)
+    - [Rust possède-t-il un typage dynamique ?](#rust-possède-t-il-un-typage-dynamique)
+    - [Comment typer ses données/variables ?](#comment-typer-ses-donnéesvariables)
+    - [Quelle est la différence entre `&str` et `String` ?](#quelle-est-la-différence-entre-str-et-string)
+    - [Comment créer une chaîne de caractères ?](#comment-créer-une-chaîne-de-caractères)
+    - [Quelle version de Rust est recommandée ?](#quelle-version-de-rust-est-recommandée)
+    - [Rust est-il orienté objet ?](#rust-est-il-orienté-objet)
+    - [Qu'est-ce qu'un `trait` ?](#quest-ce-quun-trait)
+    - [Rust supporte-t-il la surcharge des fonctions ?](#rust-supporte-t-il-la-surchage-des-fonctions)
+    - [Comment déclarer des paramètres optionnels ?](#comment-déclarer-des-paramètres-optionnels)
+    - [Comment créer un tableau ?](#comment-créer-un-tableau)
+    - [A quoi sert le mot-clé `super` ?](#À-quoi-sert-le-mot-clé-super)
+    - [A quoi sert le mot-clé `self` ?](#a-quoi-sert-le-mot-clé-self)
+    - [A quoi sert le mot-clé `use` ?](#a-quoi-sert-le-mot-clé-use)
+    - [A quoi sert le mot-clé `pub` ?](#a-quoi-sert-le-mot-clé-pub)
+    - [A quoi servent les mot-clés `extern crate` ?](#À-quoi-servent-les-mot-clés-extern-crate)
+    - [A quoi sert le mot-clé `mod` ?](#À-quoi-sert-le-mot-clé-mod)
+    - [A quoi sert un module ?](#À-quoi-sert-un-module)
+    - [Comment créer un module ?](#comment-créer-un-module)
+    - [A quoi sert le mot-clé `type` ?](#À-quoi-sert-le-mot-clé-type)
+    - [A quoi sert le mot-clé `loop` ?](#À-quoi-sert-le-mot-clé-loop)
+    - [A quoi sert le mot-clé `where` ?](#À-quoi-sert-le-mot-clé-where)
+    - [A quoi sert le mot-clé `unsafe` ?](#À-quoi-sert-le-mot-clé-unsafe)
+    - [Quelles sont les règles non appliquées dans ces contextes ?](#quelles-sont-les-règles-non-appliquées-dans-ces-contextes)
+    - [Quels comportements sont considérés "non sûrs" par Rust ?](#quels-comportements-sont-considérés-non-sûrs-par-rust)
+    - [A quoi sert le mot-clé `fn` ?](#À-quoi-sert-le-mot-clé-fn)
+    - [A quoi sert le mot-clé `match` ?](#À-quoi-sert-le-mot-clé-match)
+    - [A quoi sert le mot-clé `ref` ?](#À-quoi-sert-le-mot-clé-ref)
+    - [A quoi sert le mot-clé `mut` ?](#À-quoi-sert-le-mot-clé-mut)
+    - [Une erreur survient lorsque je modifie le contenu de ma variable ! Que faire ?](#une-erreur-survient-lorsque-que-je-modifie-le-contenu-de-ma-variable-que-faire)
+    - [Qu'est-ce qu'une macro ?](#quest-ce-quune-macro)
+    - [Comment créer une macro ?](#comment-créer-une-macro)
+    - [Que sont les spécificateurs ?](#que-sont-les-spécificateurs)
+    - [A quoi sert le mot-clé `usize` ?](#À-quoi-sert-le-mot-clé-usize)
+    - [A quoi sert le mot-clé `isize` ?](#À-quoi-sert-le-mot-clé-isize)
+    - [Existe-t-il des outils de build pour le langage Rust ?](#existe-t-il-des-outils-de-build-pour-le-langage-rust)
+    - [Comment utiliser mes fonctions en dehors de mon module ?](#comment-utiliser-mes-fonctions-en-dehors-de-mon-module)
+    - [Comment comparer deux objets avec Rust ?](#comment-comparer-deux-objets-avec-rust)
+    - [Qu'est-ce que le shadowing ?](#quest-ce-que-le-shadowing)
+    - [Qu'est-ce que la destructuration ?](#quest-ce-que-la-destructuration)
+    - [Comment effectuer une déstructuration sur une liste ?](#comment-effectuer-une-destructuration-sur-une-liste)
+    - [Comment effectuer une déstructuration sur une énumération ?](#comment-effectuer-une-destructuration-sur-une-énumération-)
     - Comment effectuer une déstructuration sur une structure ?
     - Comment comparer deux objets d'une structure personnalisée avec Rust ?
     - Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?
     - A quoi servent les mot-clés `if let` ?
     - A quoi servent les mot-clés `while let` ?
-    - Que sont les spécificateurs ?
     - Rust supporte-t-il la surcharge des fonctions ?
     - Comment déclarer des paramètres optionnels ?
   - Mécaniques et philosophies
