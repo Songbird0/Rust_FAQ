@@ -73,9 +73,9 @@ cf. [README.md](../README.md), s'il vous plaît.
     - [Comment créer ses benchmarks avec Cargo ?](#comment-créer-ses-benchmarks-avec-cargo)
     - [A quoi sert benchmark_group!](#À-quoi-sert-benchmark_group)
     - [A quoi sert benchmak_main!](#À-quoi-sert-benchmark_main)
-  - Gestion des erreurs
-    - Comment s'effectue la gestion des erreurs avec Rust ?
-    - A quoi sert la macro `panic!` ?
+  - [Gestion des erreurs](#gestion-des-erreurs)
+    - [Comment s'effectue la gestion des erreurs avec Rust ?](#comment-seffectue-la-gestion-des-erreurs-avec-rust)
+    - [A quoi sert la macro `panic!` ?](#À-quoi-sert-la-macro-panic)
     - A quoi sert la méthode `unwrap` ?
     - A quoi sert la méthode `unwrap_or` ?
     - A quoi sert la méthode `unwrap_or_else` ?
@@ -1751,9 +1751,9 @@ Oui, bien entendu.
 
 Il existe trois assertions différentes en Rust (toutes encapsulées par une macro) :
 
-1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
-2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
-3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
+1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet");
+2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet");
+3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet").
 
 Voir aussi :
 
