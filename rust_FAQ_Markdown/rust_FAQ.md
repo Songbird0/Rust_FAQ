@@ -852,9 +852,19 @@ Liens :
 
 [Visionner le résultat de cet exemple.](https://is.gd/nHfcEQ "Exemple d'utilisation d'une macro")
 
-[Que sont les spécificateurs ?]()
+[Que sont les spécificateurs ?](#que-sont-les-spécificateurs)
 
 ### Que sont les spécificateurs ?
+
+Les spécificateurs sont des types d'entrées supportés par les macros; Il faut noter toutefois que ces fameux types font abstraction de la nature de l'entrée. (e.g. que l'entrée soit une châine de caractères ou un entier importe peu)
+
+Vous pouvez retrouver, ci-dessous, une traduction de chaque description des spécificateurs proposés par le langage:
+
+- `ident`: un identifiant. e.g. `x`; `foo`.
+- `path`: une représentation d'un chemin à travers les ressources d'un package. e.g. `T::SpecialA`. (à revoir pour la trad)
+- `expr`: une expression. e.g. `2 + 2`; `if true { 1 } else { 2 }`; `f(42)`.
+- `ty`: Un type. e.g. `i32`, `&T`, `Vec<(char, String)>`.
+- `pat`: Un modèle/pattern. e.g. `Some(t)`; `(17, 'a')`; `_`.
 
 ### À quoi sert le mot-clé usize ?
 
@@ -1740,6 +1750,8 @@ Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à 
 ### Comment créer un type spécifique d'exceptions ?
 
 Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java; Rust ne gère pas les potentielles de cette manière.
+
+
 
 Voir aussi :
 
