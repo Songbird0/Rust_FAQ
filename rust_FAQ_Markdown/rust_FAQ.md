@@ -49,9 +49,9 @@ cf. [README.md](../README.md), s'il vous plaît.
     - [Qu'est-ce que la destructuration ?](#quest-ce-que-la-destructuration)
     - [Comment effectuer une déstructuration sur une liste ?](#comment-effectuer-une-destructuration-sur-une-liste)
     - [Comment effectuer une déstructuration sur une énumération ?](#comment-effectuer-une-destructuration-sur-une-énumération-)
-    - Comment effectuer une déstructuration sur une structure ?
-    - Comment comparer deux objets d'une structure personnalisée avec Rust ?
-    - Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?
+    - [Comment effectuer une déstructuration sur une structure ?](#comment-effectuer-une-destructuration-sur-une-structure-)
+    - [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#comment-comparer-deux-objets-dune-structure-personnalisée-avec-rust)
+    - [Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?](#je-narrive-pas-à-utiliser-les-macros-importées-par-ma-bibliothèque-pourquoi)
     - A quoi servent les mot-clés `if let` ?
     - A quoi servent les mot-clés `while let` ?
     - Rust supporte-t-il la surcharge des fonctions ?
