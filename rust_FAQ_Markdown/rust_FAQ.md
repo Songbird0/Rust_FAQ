@@ -63,13 +63,16 @@ cf. [README.md](../README.md), s'il vous plaît.
   - [Outils de build](#outils-de-build)
     - [Comment créer un projet avec Cargo ?](#comment-créer-un-projet-avec-cargo)
     - [Quel type de projet puis-je créer avec Cargo ?](#quel-type-de-projet-puis-je-créer-avec-cargo)
-    - Comment compiler son projet ?
-    - Peut-on générer de la documentation avec Cargo ?
-    - Où trouver de nouvelles bibliothèques ?
-    - Comment installer de nouvelles bibliothèques ?
-    - Comment publier sa bibliothèque faite maison ?
-    - Comment lancer des tests avec Cargo ?
-    - Comment mettre à jour mes bibliothèques ?
+    - [Comment compiler son projet ?](#comment-compiler-son-projet)
+    - [Peut-on générer de la documentation avec Cargo ?](#peut-on-générer-de-la-documentation-avec-cargo)
+    - [Où trouver de nouvelles bibliothèques ?](#où-trouver-de-nouvelles-bibliothèques)
+    - [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
+    - [Comment publier sa bibliothèque faite maison ?](#comment-publier-sa-bibliothèque-faite-maison)
+    - [Comment lancer des tests avec Cargo ?](#comment-lancer-des-tests-avec-cargo)
+    - [Comment mettre à jour mes bibliothèques ?](#comment-mettre-à-jour-mes-bibliothèques)
+    - [Comment créer ses benchmarks avec Cargo ?](#comment-créer-ses-benchmarks-avec-cargo)
+    - [A quoi sert benchmark_group!](#À-quoi-sert-benchmark_group)
+    - [A quoi sert benchmak_main!](#À-quoi-sert-benchmark_main)
   - Gestion des erreurs
     - Comment s'effectue la gestion des erreurs avec Rust ?
     - A quoi sert la macro `panic!` ?
