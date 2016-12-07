@@ -2146,7 +2146,36 @@ Dans cette section, vous retrouverez toutes les questions couramment posées con
 
 ### Comment créer un fichier ?
 
+Pour créer un fichier, rien de plus simple, il vous faudra utiliser la structure `File`.
+
+```rust
+use std::io;
+use std::fs::File;
+
+fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diamant pour que ça compile.
+{
+    let mut file = File::create("thecakeisalie.txt")?;
+    Ok(())
+}
+```
+
 ### Comment lire le contenu d'un fichier ?
+
+Pour lire un fichier, il vous faudra utiliser la structure `File` et le trait `Read`.
+La procédure est presque identique à celle qui vous permet de créer votre fichier.
+
+```rust
+use std::io;
+use std::fs::File;
+
+fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diamant pour que ça compile.
+{
+    let mut file = File::open("thecakeisalie.txt")?;
+    let mut string = String::new();
+    file.read_to_string(&mut string)?;
+    Ok(())
+}
+```
 
 ### Comment écrire à l'intérieur d'un fichier ?
 
