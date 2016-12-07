@@ -60,10 +60,10 @@ cf. [README.md](../README.md), s'il vous plaît.
       - [Qu'est-ce que "l'ownership" ?](#quest-ce-que-lownership)
       - [Qu'est-ce que le concept de "borrowing" ?](#quest-ce-que-le-concept-de-borrowing)
       - [Qu'est-ce que le concept de "lifetime" ?](#quest-ce-que-le-concept-de-lifetime)
-  - Outils de build
-    - Comment créer un projet avec Cargo ?
-    - Quel type de projet puis-je créer avec Cargo ?
-    - Comment compiler mon projet ?
+  - [Outils de build](#outils-de-build)
+    - [Comment créer un projet avec Cargo ?](#comment-créer-un-projet-avec-cargo)
+    - [Quel type de projet puis-je créer avec Cargo ?](#quel-type-de-projet-puis-je-créer-avec-cargo)
+    - Comment compiler son projet ?
     - Peut-on générer de la documentation avec Cargo ?
     - Où trouver de nouvelles bibliothèques ?
     - Comment installer de nouvelles bibliothèques ?
