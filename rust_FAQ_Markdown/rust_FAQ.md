@@ -100,6 +100,8 @@ cf. [README.md](../README.md), s'il vous plaît.
     - Comment différencier un fichier d'un répertoire ?
     - Comment lister les objets d'un répertoire ?
 - Tricks
+  - Que puis-je trouver dans cette section ?
+  - Comment récupérer le vecteur d'une instance de la structure `Chars` ?
 
 # Langage
 
