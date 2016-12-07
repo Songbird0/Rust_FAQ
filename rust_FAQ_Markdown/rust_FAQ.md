@@ -76,19 +76,19 @@ cf. [README.md](../README.md), s'il vous plaît.
   - [Gestion des erreurs](#gestion-des-erreurs)
     - [Comment s'effectue la gestion des erreurs avec Rust ?](#comment-seffectue-la-gestion-des-erreurs-avec-rust)
     - [A quoi sert la macro `panic!` ?](#À-quoi-sert-la-macro-panic)
-    - A quoi sert la méthode `unwrap` ?
-    - A quoi sert la méthode `unwrap_or` ?
-    - A quoi sert la méthode `unwrap_or_else` ?
-    - A quoi sert la méthode `map` ?
-    - A quoi sert la méthode `and_then` ?
-    - A quoi sert la macro `try!` ?
-    - Comment utiliser la macro `assert!` ?
-    - Comment utiliser la macro `assert_eq!` ?
-    - Comment utiliser la macro `debug_assert!` ?
-    - Qu'est-ce que l'énumération `Option<T>` ?
-    - Comment utiliser l'énumération `Option<T>` ?
-    - Qu'est-ce que la structure `Result<T, E>` ?
-    - Comment utiliser la structure `Result<T, E>` ?
+    - [A quoi sert la méthode `unwrap` ?](#À-quoi-sert-la-méthode-unwrap)
+    - [A quoi sert la méthode `unwrap_or` ?](#À-quoi-sert-la-méthode-unwrap_or)
+    - [A quoi sert la méthode `unwrap_or_else` ?](#À-quoi-sert-la-méthode-unwrap_or_else)
+    - [A quoi sert la méthode `map` ?](#À-quoi-sert-la-méthode-map)
+    - [A quoi sert la méthode `and_then` ?](#À-quoi-sert-la-méthode-and_then)
+    - [A quoi sert la macro `try!` ?](#À-quoi-sert-la-macro-try)
+    - [Comment utiliser la macro `assert!` ?](#comment-utiliser-la-macro-assert)
+    - [Comment utiliser la macro `assert_eq!` ?](#comment-utiliser-la-macro-assert_eq)
+    - [Comment utiliser la macro `debug_assert!` ?](#comment-utiliser-la-macro-debug_assert)
+    - [Qu'est-ce que l'énumération `Result<T>` ?](#quest-ce-que-lénumération-result)
+    - [Comment utiliser l'énumération `Result<T>` ?](#comment-utiliser-lénumération-result)
+    - [Qu'est-ce que l'énumération `Option<T, E>` ?](#quest-ce-que-lénumération-option)
+    - [Comment utiliser l'énumération `Option<T, E>` ?](#comment-utiliser-lénumération-option)
   - Metadonnées/Annotations
   - I/O
     - Que puis-je trouver dans cette section ?
