@@ -1732,10 +1732,10 @@ Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à 
 *  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
 *  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
 *  [Comment utiliser la macro debug_assert! ?](#comment-utiliser-la-macro-debug_assert) 
-* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option) ![](./images/WIP.gif)
-* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option) ![](./images/WIP.gif)
-* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result) ![](./images/WIP.gif)
-* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result) ![](./images/WIP.gif)
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
+* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
+* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result)
 
 ### Comment créer un type spécifique d'exceptions ?
 
