@@ -2198,3 +2198,19 @@ error[E0277]: the trait bound `&std::str::Chars<'_>: std::iter::Iterator` is not
 Mais vous récolterez encore une erreur…
 
 Le compilateur vous invite alors à essayer d'appeler la méthode `.iter()` qui est censée être implémentée par toutes les structures implémentant l'interface `Iterator`.
+
+#### Que faire alors ?
+
+La méthode remplaçant `.iter()` est `.collect()`; Cette dernière vous permet de récupérer un vecteur contenant toutes les entités de l'ancien itérateur.
+Vous pouvez désormais accéder à votre ressource par référence et ainsi la parcourir autant de fois que vous le souhaitez.
+
+```Rust
+fn main() 
+{ 
+    let foo = String::from("Hello"); 
+    let bar = foo.chars(); 
+    let baz : Vec<char> = bar.collect(); 
+    for letter in &baz {} 
+    for letter in &baz {}     
+}
+```
