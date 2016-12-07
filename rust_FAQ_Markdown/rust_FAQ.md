@@ -5,6 +5,12 @@ cf. [README.md](../README.md), s'il vous plaît.
 #Aborescence de la FAQ
 
 - Introduction
+  - Informations générales
+    - Présentation
+    - Comment utiliser cette FAQ ?
+    - Affiliation
+    - Contribution
+    - Remerciements
 - Langage
   - Questions générales
     - Comment déclarer une variable ?
