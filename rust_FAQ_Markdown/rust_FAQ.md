@@ -93,6 +93,12 @@ cf. [README.md](../README.md), s'il vous plaît.
     - Comment utiliser la structure `Result<T, E>` ?
   - Metadonnées/Annotations
   - I/O
+    - Que puis-je trouver dans cette section ?
+    - Comment créer un fichier ?
+    - Comment lire le contenu d'un fichier ?
+    - Comment écrire à l'intérieur d'un fichier ?
+    - Comment différencier un fichier d'un répertoire ?
+    - Comment lister les objets d'un répertoire ?
 - Tricks
 
 # Langage
