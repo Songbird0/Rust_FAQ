@@ -52,10 +52,8 @@ cf. [README.md](../README.md), s'il vous plaît.
     - [Comment effectuer une déstructuration sur une structure ?](#comment-effectuer-une-destructuration-sur-une-structure-)
     - [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#comment-comparer-deux-objets-dune-structure-personnalisée-avec-rust)
     - [Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?](#je-narrive-pas-à-utiliser-les-macros-importées-par-ma-bibliothèque-pourquoi)
-    - A quoi servent les mot-clés `if let` ?
-    - A quoi servent les mot-clés `while let` ?
-    - Rust supporte-t-il la surcharge des fonctions ?
-    - Comment déclarer des paramètres optionnels ?
+    - [A quoi servent les mot-clés `if let` ?](#À-quoi-servent-les-mot-clés-if-let)
+    - [A quoi servent les mot-clés `while let` ?](#À-quoi-servent-les-mot-clés-while-let)
   - Mécaniques et philosophies
     - Gestion de la mémoire
       - Le développeur doit-il gérer la mémoire seul ?
