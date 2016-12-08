@@ -2,6 +2,105 @@
 
 cf. [README.md](../README.md), s'il vous plaît.
 
+#Aborescence de la FAQ
+
+- [Langage](#langage)
+  - [Questions générales](#questions-générales)
+    - [Comment déclarer une variable ?](#comment-déclarer-une-variable)
+    - [Comment assigner un objet par référence ?](#comment-assigner-un-objet-par-référence)
+    - [Rust possède-t-il un typage dynamique ?](#rust-possède-t-il-un-typage-dynamique)
+    - [Comment typer ses données/variables ?](#comment-typer-ses-donnéesvariables)
+    - [Quelle est la différence entre `&str` et `String` ?](#quelle-est-la-différence-entre-str-et-string)
+    - [Comment créer une chaîne de caractères ?](#comment-créer-une-chaîne-de-caractères)
+    - [Quelle version de Rust est recommandée ?](#quelle-version-de-rust-est-recommandée)
+    - [Rust est-il orienté objet ?](#rust-est-il-orienté-objet)
+    - [Qu'est-ce qu'un `trait` ?](#quest-ce-quun-trait)
+    - [Rust supporte-t-il la surcharge des fonctions ?](#rust-supporte-t-il-la-surchage-des-fonctions)
+    - [Comment déclarer des paramètres optionnels ?](#comment-déclarer-des-paramètres-optionnels)
+    - [Comment créer un tableau ?](#comment-créer-un-tableau)
+    - [A quoi sert le mot-clé `super` ?](#À-quoi-sert-le-mot-clé-super)
+    - [A quoi sert le mot-clé `self` ?](#a-quoi-sert-le-mot-clé-self)
+    - [A quoi sert le mot-clé `use` ?](#a-quoi-sert-le-mot-clé-use)
+    - [A quoi sert le mot-clé `pub` ?](#a-quoi-sert-le-mot-clé-pub)
+    - [A quoi servent les mot-clés `extern crate` ?](#À-quoi-servent-les-mot-clés-extern-crate)
+    - [A quoi sert le mot-clé `mod` ?](#À-quoi-sert-le-mot-clé-mod)
+    - [A quoi sert un module ?](#À-quoi-sert-un-module)
+    - [Comment créer un module ?](#comment-créer-un-module)
+    - [A quoi sert le mot-clé `type` ?](#À-quoi-sert-le-mot-clé-type)
+    - [A quoi sert le mot-clé `loop` ?](#À-quoi-sert-le-mot-clé-loop)
+    - [A quoi sert le mot-clé `where` ?](#À-quoi-sert-le-mot-clé-where)
+    - [A quoi sert le mot-clé `unsafe` ?](#À-quoi-sert-le-mot-clé-unsafe)
+    - [Quelles sont les règles non appliquées dans ces contextes ?](#quelles-sont-les-règles-non-appliquées-dans-ces-contextes)
+    - [Quels comportements sont considérés "non sûrs" par Rust ?](#quels-comportements-sont-considérés-non-sûrs-par-rust)
+    - [A quoi sert le mot-clé `fn` ?](#À-quoi-sert-le-mot-clé-fn)
+    - [A quoi sert le mot-clé `match` ?](#À-quoi-sert-le-mot-clé-match)
+    - [A quoi sert le mot-clé `ref` ?](#À-quoi-sert-le-mot-clé-ref)
+    - [A quoi sert le mot-clé `mut` ?](#À-quoi-sert-le-mot-clé-mut)
+    - [Une erreur survient lorsque je modifie le contenu de ma variable ! Que faire ?](#une-erreur-survient-lorsque-que-je-modifie-le-contenu-de-ma-variable-que-faire)
+    - [Qu'est-ce qu'une macro ?](#quest-ce-quune-macro)
+    - [Comment créer une macro ?](#comment-créer-une-macro)
+    - [Que sont les spécificateurs ?](#que-sont-les-spécificateurs)
+    - [A quoi sert le mot-clé `usize` ?](#À-quoi-sert-le-mot-clé-usize)
+    - [A quoi sert le mot-clé `isize` ?](#À-quoi-sert-le-mot-clé-isize)
+    - [Existe-t-il des outils de build pour le langage Rust ?](#existe-t-il-des-outils-de-build-pour-le-langage-rust)
+    - [Comment utiliser mes fonctions en dehors de mon module ?](#comment-utiliser-mes-fonctions-en-dehors-de-mon-module)
+    - [Comment comparer deux objets avec Rust ?](#comment-comparer-deux-objets-avec-rust)
+    - [Qu'est-ce que le shadowing ?](#quest-ce-que-le-shadowing)
+    - [Qu'est-ce que la destructuration ?](#quest-ce-que-la-destructuration)
+    - [Comment effectuer une déstructuration sur une liste ?](#comment-effectuer-une-destructuration-sur-une-liste)
+    - [Comment effectuer une déstructuration sur une énumération ?](#comment-effectuer-une-destructuration-sur-une-énumération-)
+    - [Comment effectuer une déstructuration sur une structure ?](#comment-effectuer-une-destructuration-sur-une-structure-)
+    - [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#comment-comparer-deux-objets-dune-structure-personnalisée-avec-rust)
+    - [Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?](#je-narrive-pas-à-utiliser-les-macros-importées-par-ma-bibliothèque-pourquoi)
+    - [A quoi servent les mot-clés `if let` ?](#À-quoi-servent-les-mot-clés-if-let)
+    - [A quoi servent les mot-clés `while let` ?](#À-quoi-servent-les-mot-clés-while-let)
+  - [Mécaniques et philosophies](#mécaniques-et-philosophies)
+    - [Gestion de la mémoire](#gestion-de-la-mémoire)
+      - [Le développeur doit-il gérer la mémoire seul ?](#le-développeur-doit-il-gérer-la-mémoire-seul)
+      - [Qu'est-ce que "l'ownership" ?](#quest-ce-que-lownership)
+      - [Qu'est-ce que le concept de "borrowing" ?](#quest-ce-que-le-concept-de-borrowing)
+      - [Qu'est-ce que le concept de "lifetime" ?](#quest-ce-que-le-concept-de-lifetime)
+  - [Outils de build](#outils-de-build)
+    - [Comment créer un projet avec Cargo ?](#comment-créer-un-projet-avec-cargo)
+    - [Quel type de projet puis-je créer avec Cargo ?](#quel-type-de-projet-puis-je-créer-avec-cargo)
+    - [Comment compiler son projet ?](#comment-compiler-son-projet)
+    - [Peut-on générer de la documentation avec Cargo ?](#peut-on-générer-de-la-documentation-avec-cargo)
+    - [Où trouver de nouvelles bibliothèques ?](#où-trouver-de-nouvelles-bibliothèques)
+    - [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
+    - [Comment publier sa bibliothèque faite maison ?](#comment-publier-sa-bibliothèque-faite-maison)
+    - [Comment lancer des tests avec Cargo ?](#comment-lancer-des-tests-avec-cargo)
+    - [Comment mettre à jour mes bibliothèques ?](#comment-mettre-à-jour-mes-bibliothèques)
+    - [Comment créer ses benchmarks avec Cargo ?](#comment-créer-ses-benchmarks-avec-cargo)
+    - [A quoi sert benchmark_group!](#À-quoi-sert-benchmark_group)
+    - [A quoi sert benchmak_main!](#À-quoi-sert-benchmark_main)
+  - [Gestion des erreurs](#gestion-des-erreurs)
+    - [Comment s'effectue la gestion des erreurs avec Rust ?](#comment-seffectue-la-gestion-des-erreurs-avec-rust)
+    - [A quoi sert la macro `panic!` ?](#À-quoi-sert-la-macro-panic)
+    - [A quoi sert la méthode `unwrap` ?](#À-quoi-sert-la-méthode-unwrap)
+    - [A quoi sert la méthode `unwrap_or` ?](#À-quoi-sert-la-méthode-unwrap_or)
+    - [A quoi sert la méthode `unwrap_or_else` ?](#À-quoi-sert-la-méthode-unwrap_or_else)
+    - [A quoi sert la méthode `map` ?](#À-quoi-sert-la-méthode-map)
+    - [A quoi sert la méthode `and_then` ?](#À-quoi-sert-la-méthode-and_then)
+    - [A quoi sert la macro `try!` ?](#À-quoi-sert-la-macro-try)
+    - [Comment utiliser la macro `assert!` ?](#comment-utiliser-la-macro-assert)
+    - [Comment utiliser la macro `assert_eq!` ?](#comment-utiliser-la-macro-assert_eq)
+    - [Comment utiliser la macro `debug_assert!` ?](#comment-utiliser-la-macro-debug_assert)
+    - [Qu'est-ce que l'énumération `Result<T>` ?](#quest-ce-que-lénumération-result)
+    - [Comment utiliser l'énumération `Result<T>` ?](#comment-utiliser-lénumération-result)
+    - [Qu'est-ce que l'énumération `Option<T, E>` ?](#quest-ce-que-lénumération-option)
+    - [Comment utiliser l'énumération `Option<T, E>` ?](#comment-utiliser-lénumération-option)
+  - [Metadonnées/Annotations](#meta-données)
+  - [I/O](#io)
+    - [Que puis-je trouver dans cette section ?](#que-puis-je-trouver-dans-cette-section-)
+    - [Comment créer un fichier ?](#comment-créer-un-fichier-)
+    - [Comment lire le contenu d'un fichier ?](#comment-lire-le-contenu-dun-fichier-)
+    - [Comment écrire à l'intérieur d'un fichier ?](#comment-écrire-à-lintérieur-dun-fichier-)
+    - [Comment différencier un fichier d'un répertoire ?](#comment-différencier-un-fichier-dun-répertoire-)
+    - [Comment lister les objets d'un répertoire ?](#comment-lister-les-objets-dun-répertoire-)
+- [Trucs & astuces](trucs--astuces)
+  - [Que puis-je trouver dans cette section ?](#que-puis-je-trouver-dans-cette-section)
+  - [Comment récupérer le vecteur d'une instance de la structure `Chars` ?](#comment-récupérer-le-vecteur-dune-instance-de-la-structure-chars)
+
 # Langage
 
 ## Questions générales
@@ -753,9 +852,26 @@ Liens :
 
 [Visionner le résultat de cet exemple.](https://is.gd/nHfcEQ "Exemple d'utilisation d'une macro")
 
-[Que sont les spécificateurs ?]()
+[Que sont les spécificateurs ?](#que-sont-les-spécificateurs)
 
 ### Que sont les spécificateurs ?
+
+Les spécificateurs sont des types d'entrées supportés par les macros; Il faut noter toutefois que ces fameux types font abstraction de la nature de l'entrée. (e.g. que l'entrée soit une châine de caractères ou un entier importe peu)
+
+Vous pouvez retrouver, ci-dessous, une traduction de chaque description des spécificateurs proposés par le langage:
+
+- `ident`: un identifiant. e.g. `x`; `foo`.
+- `path`: une représentation d'un chemin à travers les ressources d'un package. e.g. `T::SpecialA`. (à revoir pour la trad)
+- `expr`: une expression. e.g. `2 + 2`; `if true { 1 } else { 2 }`; `f(42)`.
+- `ty`: Un type. e.g. `i32`, `&T`, `Vec<(char, String)>`.
+- `pat`: Un modèle/pattern. e.g. `Some(t)`; `(17, 'a')`; `_`.
+- `stmt`: Une (et une seule) déclaraction. e.g. `let some = 3`.
+- `block`: Une suite de déclarations enveloppée par des crochets et/ou une expression. e.g. `{log(error, "hi"); return 12;}`.
+- `item`: Un objet. e.g. `fn foo(){}`; `struct Bar;`.
+- `meta`: Un "meta objet", qui pourrait également être nommé "attribut". e.g. `cfg(target_os = "windows")`.
+- `tt`: Un *token tree*. Certainement le type le plus puissant de la liste, puisqu'il vous permet de soumettre tout ce qui existe dans la syntaxe du langage.
+
+### Qu'est-ce qu'un item ?
 
 ### À quoi sert le mot-clé usize ?
 
@@ -1107,6 +1223,8 @@ while let Some(x) = v.pop() {
 }
 ```
 
+### Comment étendre un trait sur un autre trait ?
+
 ## Mécaniques et philosophies
 
 ### Gestion de la mémoire
@@ -1153,7 +1271,7 @@ C'est un exemple simple, mais qui (dans nos débuts) peut être une véritable p
 
 C'est simple :
 
-La variable foo étant un pointeur contenant l'adresse mémoire d'un objet String, il est courant de dire qu'il possède « l'ownership », il est le seul à pouvoir utiliser cette ressource.
+La variable `foo` étant un pointeur contenant l'adresse mémoire d'un objet String, il est courant de dire qu'il possède « l'ownership », il est le seul à pouvoir utiliser cette ressource.
 
 C'est en copiant les informations relatives à l'objet String (en « déplacant » ces informations dans une nouvelle variable, donc) que le *garbage* *collector* va faire son travail : détruire le pointeur *foo* pour attribuer « l'ownership » au nouveau pointeur de la ressource : *bar*.
 
@@ -1311,7 +1429,6 @@ Voir aussi :
 
 [La section dédiée du livre](https://doc.rust-lang.org/book/lifetimes.html)
 
-#### Comment étendre un trait sur un autre trait ?
 
 ## Outils de build
 
@@ -1626,20 +1743,22 @@ Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à 
 *  [A quoi sert la méthode unwrap ?](#a-quoi-sert-la-méthode-unwrap) 
 *  [A quoi sert la méthode unwrap_or ?](#a-quoi-sert-la-méthode-unwrap_or) 
 *  [A quoi sert la méthode unwrap_or_else ?](#a-quoi-sert-la-méthode-unwrap_or_else) 
-* [A quoi sert la méthode map ?](#a-quoi-sert-la-méthode-map) ![](./images/WIP.gif)
+* [A quoi sert la méthode map ?](#a-quoi-sert-la-méthode-map)
 *  [A quoi sert la méthode and_then ?](#a-quoi-sert-la-méthode-and_then) 
-* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try) ![](./images/WIP.gif)
+* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try)
 *  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
 *  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
 *  [Comment utiliser la macro debug_assert! ?](#comment-utiliser-la-macro-debug_assert) 
-* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option) ![](./images/WIP.gif)
-* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option) ![](./images/WIP.gif)
-* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result) ![](./images/WIP.gif)
-* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result) ![](./images/WIP.gif)
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
+* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
+* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result)
 
 ### Comment créer un type spécifique d'exceptions ?
 
-Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java ; Rust ne gère pas les potentielles de cette manière.
+Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java; Rust ne gère pas les potentielles de cette manière.
+
+
 
 Voir aussi :
 
@@ -1651,9 +1770,9 @@ Oui, bien entendu.
 
 Il existe trois assertions différentes en Rust (toutes encapsulées par une macro) :
 
-1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
-2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
-3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
+1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet");
+2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet");
+3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet").
 
 Voir aussi :
 
@@ -2027,7 +2146,36 @@ Dans cette section, vous retrouverez toutes les questions couramment posées con
 
 ### Comment créer un fichier ?
 
+Pour créer un fichier, rien de plus simple, il vous faudra utiliser la structure `File`.
+
+```rust
+use std::io;
+use std::fs::File;
+
+fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diamant pour que ça compile.
+{
+    let mut file = File::create("thecakeisalie.txt")?;
+    Ok(())
+}
+```
+
 ### Comment lire le contenu d'un fichier ?
+
+Pour lire un fichier, il vous faudra utiliser la structure `File` et le trait `Read`.
+La procédure est presque identique à celle qui vous permet de créer votre fichier.
+
+```rust
+use std::io;
+use std::fs::File;
+
+fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diamant pour que ça compile.
+{
+    let mut file = File::open("thecakeisalie.txt")?;
+    let mut string = String::new();
+    file.read_to_string(&mut string)?;
+    Ok(())
+}
+```
 
 ### Comment écrire à l'intérieur d'un fichier ?
 
@@ -2098,3 +2246,19 @@ error[E0277]: the trait bound `&std::str::Chars<'_>: std::iter::Iterator` is not
 Mais vous récolterez encore une erreur…
 
 Le compilateur vous invite alors à essayer d'appeler la méthode `.iter()` qui est censée être implémentée par toutes les structures implémentant l'interface `Iterator`.
+
+#### Que faire alors ?
+
+La méthode remplaçant `.iter()` est `.collect()`; Cette dernière vous permet de récupérer un vecteur contenant toutes les entités de l'ancien itérateur.
+Vous pouvez désormais accéder à votre ressource par référence et ainsi la parcourir autant de fois que vous le souhaitez.
+
+```Rust
+fn main() 
+{ 
+    let foo = String::from("Hello"); 
+    let bar = foo.chars(); 
+    let baz : Vec<char> = bar.collect(); 
+    for letter in &baz {} 
+    for letter in &baz {}     
+}
+```
