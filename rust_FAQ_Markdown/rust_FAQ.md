@@ -2211,6 +2211,31 @@ La méthode `write_all()` ne traite l'information que sous forme d'octets, et po
 
 ### Comment différencier un fichier d'un répertoire ?
 
+Pour cela, vous aurez besoin d'utiliser une ressource:
+
+- std::path::Path;
+
+Vous pouvez récupérer une instance de la structure `Path` en lui soumettant un chemin hypothètique, pour enfin effectuer vos tests.
+
+```Rust
+
+use std::path::Path;
+
+fn main() -> ()
+{
+   let my_path : &Path = Path::new("/your/directory/"); /* ne fonctionnera bien évidemment pas, à vous de soumettre un répertoire qui existe sur votre disque.*/
+   if my_path.is_dir()
+   {
+       
+       println!("He's a directory !");
+       
+   }
+   else{ println!("He isn't a directory !"); }
+}
+```
+
+
+
 ### Comment lister les objets d'un répertoire ?
 
 ## Antisèches Rust
