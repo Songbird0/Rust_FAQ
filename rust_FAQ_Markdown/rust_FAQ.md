@@ -861,7 +861,7 @@ Les spécificateurs sont des types d'entrées supportés par les macros; Il faut
 Vous pouvez retrouver, ci-dessous, une traduction de chaque description des spécificateurs proposés par le langage:
 
 - `ident`: un identifiant. e.g. `x`; `foo`.
-- `path`: une représentation d'un chemin à travers les ressources d'un package. e.g. `T::SpecialA`. (à revoir pour la trad)
+- `path`: une représentation d'un chemin "package-style"(e.g. `T::SpecialA`, `std::path::Path`).
 - `expr`: une expression. e.g. `2 + 2`; `if true { 1 } else { 2 }`; `f(42)`.
 - `ty`: Un type. e.g. `i32`, `&T`, `Vec<(char, String)>`.
 - `pat`: Un modèle/pattern. e.g. `Some(t)`; `(17, 'a')`; `_`.
