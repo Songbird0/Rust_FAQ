@@ -864,7 +864,7 @@ Vous pouvez retrouver, ci-dessous, une traduction de chaque description des spé
 - `path`: une représentation d'un chemin "package-style"(e.g. `T::SpecialA`, `std::path::Path`).
 - `expr`: une expression  (e.g. `2 + 2`; `if true { 1 } else { 2 }`; `f(42)`).
 - `ty`: Un type (e.g. `i32`, `&T`, `Vec<(char, String)>`).
-- `pat`: Un modèle/pattern. e.g. `Some(t)`; `(17, 'a')`; `_`.
+- `pat`: Un modèle/pattern (e.g. `Some(t)`; `(17, 'a')`; `_`).
 - `stmt`: Une (et une seule) déclaraction. e.g. `let some = 3`.
 - `block`: Une suite de déclarations enveloppée par des crochets et/ou une expression. e.g. `{log(error, "hi"); return 12;}`.
 - `item`: Un objet. e.g. `fn foo(){}`; `struct Bar;`.
