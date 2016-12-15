@@ -868,7 +868,7 @@ Vous pouvez retrouver, ci-dessous, une traduction de chaque description des spé
 - `stmt`: Une (et une seule) déclaraction (e.g. `let some = 3`).
 - `block`: Une suite de déclarations enveloppée par des crochets et/ou une expression (e.g. `{log(error, "hi"); return 12;}`).
 - `item`: Un objet (e.g. `fn foo(){}`; `struct Bar;`).
-- `meta`: Un "meta objet", qui pourrait également être nommé "attribut" (e.g. `cfg(target_os = "windows")`).
+- `meta`: Un "meta objet", plus connu sous le nom d'attributs (e.g. `cfg(target_os = "windows")`).
 - `tt`: Un *token tree*. Certainement le type le plus puissant de la liste, puisqu'il vous permet de soumettre tout ce qui existe dans la syntaxe du langage.
 
 ### Qu'est-ce qu'un item ?
