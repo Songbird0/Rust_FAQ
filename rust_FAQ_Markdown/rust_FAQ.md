@@ -2179,6 +2179,36 @@ fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diama
 
 ### Comment écrire à l'intérieur d'un fichier ?
 
+Pour écrire dans en fichier, vous devrez importer trois ressources:
+
+- std::io::Result; (un alias de l'`enum` `std::result::Result`)
+- std::io::Write; (Le trait qui permet d'implémenter la méthode `write_all()`)
+- std::fs::File. (La structure censée représenter votre fichier)
+
+```rust
+
+use std::io::Result;
+use std::io::Write;
+use std::fs::File;
+
+fn foo() -> Result<()>
+{
+    
+    let mut f = File::create("foo.txt")?;
+    f.write_all(b"Hello, world!")?;
+    Ok(())
+}
+
+fn main() -> ()
+{
+    /*...*/
+}
+```
+
+#### A quoi sert le 'b' qui préfixe la chaîne de caractères ?
+
+La méthode `write_all()` ne traite l'information que sous forme d'octets, et pour convertir une chaîne caractères en octets, elle doit être précédée par la lettre 'b'.
+
 ### Comment différencier un fichier d'un répertoire ?
 
 ### Comment lister les objets d'un répertoire ?
