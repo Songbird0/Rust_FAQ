@@ -1392,7 +1392,7 @@ fn main() {
     let mut foo: String = "Hello world!".to_string(); // Le scope A commence ici
     let bar: String = "Goodbye, friend !".to_string(); // Le scope B commence ici
     foo = bar; // bar détruit, le scope B s'arrête là
-    println!("{}", &bar);
+    println!("{}", &bar); // erreur du compilateur
 } // Le Scope A s'arrête ici
 ```
 
