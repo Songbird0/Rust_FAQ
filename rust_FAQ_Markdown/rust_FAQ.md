@@ -115,6 +115,10 @@ Vous pouvez bien entendu déclarer et initialiser plusieurs variables en même t
 ```rust
 fn main() {
     let (foo, bar, baz) = (117, 42, "Hello world!");
+    // ou
+    let foo = 117;
+    let bar = 42;
+    let baz = "Hello world!";
 }
 ```
 
