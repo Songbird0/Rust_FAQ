@@ -714,6 +714,15 @@ fn ma_fonction() {
 }
 ```
 
+Pour spécifier le type renvoyé par la fonction, vous devez utiliser le token `->` + le type de votre choix.
+
+```rust
+fn ma_fonction() -> Foo
+{
+    Foo::new()
+}
+```
+
 ### À quoi sert le mot-clé match ?
 
 Le mot-clé `match` nous permet d'implémenter le *pattern matching*.
