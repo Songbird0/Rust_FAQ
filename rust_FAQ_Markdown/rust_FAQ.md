@@ -1290,7 +1290,7 @@ C'est en copiant les informations relatives à l'objet String (en « déplacant
 
 C'est lorsque la variable `baz` essaie de copier les informations de `foo` que l'erreur survient : `foo` a déjà été détruit par le *garbage* *collector*.
 
-Pour remédier au problème, il aurait simplement suffit de "copier" *bar* de cette manière :
+Pour remédier au problème, il aurait simplement suffit de "copier" `bar` de cette manière :
 
 ```rust
 fn main() {
