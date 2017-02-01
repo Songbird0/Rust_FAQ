@@ -888,13 +888,13 @@ Vous pouvez retrouver, ci-dessous, une traduction de chaque description des spé
 
 ### À quoi sert le mot-clé usize ?
 
-Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
+Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé* (selon l'architecture de la machine sur laquelle le programme sera compilé).
 
 Voir aussi : [À quoi sert le mot-clé isize ?](#a-quoi-sert-le-mot-clé-isize)
 
 ### À quoi sert le mot-clé isize ? 
 
-Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
+Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé* (selon l'architecture de la machine sur laquelle le programme sera compilé).
 
 Voir aussi : [À quoi sert le mot-clé usize ?](#À-quoi-sert-le-mot-clé-usize)
 
