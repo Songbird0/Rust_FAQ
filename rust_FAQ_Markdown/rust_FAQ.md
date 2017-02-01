@@ -1288,7 +1288,7 @@ La variable `foo` étant un pointeur contenant l'adresse mémoire d'un objet Str
 
 C'est en copiant les informations relatives à l'objet String (en « déplacant » ces informations dans une nouvelle variable, donc) que le *garbage* *collector* va faire son travail : détruire le pointeur `foo` pour attribuer « l'ownership » au nouveau pointeur de la ressource : `bar`.
 
-C'est lorsque la variable `baz` essaie de copier les informations de `foo` que l'erreur survient : *foo* a déjà été détruit par le *garbage* *collector*.
+C'est lorsque la variable `baz` essaie de copier les informations de `foo` que l'erreur survient : `foo` a déjà été détruit par le *garbage* *collector*.
 
 Pour remédier au problème, il aurait simplement suffit de "copier" *bar* de cette manière :
 
