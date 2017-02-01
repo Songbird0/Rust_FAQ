@@ -133,7 +133,7 @@ Il existe deux façons de faire :
 
 ```rust
 fn main() {
-    let foo = 117i32;
+    let foo: i32 = 117;
     let ref bar = foo;
     let baz = &foo; // idem
 }
