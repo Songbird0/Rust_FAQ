@@ -474,7 +474,7 @@ Exemple :
 ```
 
 ```rust
-pub mod ma_lib { //la module représentant ma bibliothèque
+pub mod ma_lib { // le module représentant ma bibliothèque
     pub mod mon_module { // un module lambda
         pub fn ma_fonction() { //ma fonction
             println!("Hi there !");
