@@ -404,7 +404,7 @@ enum MonEnum {
 fn main() {
     use MonEnum::Arg1; // On importe le variant Arg1 de l'enum MonEnum ici.
 
-    let instance = Arg1; // Et on l'utiliser directement ici.
+    let instance = Arg1; // Et on l'utilise directement ici.
     // Plus la peine d'expliciter d'où provient l'instance Arg1 comme ceci :
     let instance = MonEnum::Arg1;
 }
