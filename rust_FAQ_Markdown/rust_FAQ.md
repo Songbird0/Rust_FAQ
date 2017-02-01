@@ -178,7 +178,7 @@ fn main() {
 
 ### Quelle est la différence entre &str et String ?
 
-`&str` est un type non mutable représentant une chaîne de caractères tandis que `String` est un wrapper mutable au-dessus de ce dernier.
+`&str` est un type immuable représentant une chaîne de caractères tandis que `String` est un wrapper mutable au-dessus de ce dernier.
 
 ```rust
 fn main() {
