@@ -1688,7 +1688,7 @@ Chaque fonction annotée par l'attribut `#[test]` sera compilée durant la phase
 
 Pour mettre à jour vos dépendances, il vous suffit d'utiliser la commande : `$ cargo update`.
 
-Vous pouvez également préciser quelle bibliothèque mettre à jour séparément en utilisant l'option `$ cargo update --precise nom_dep`
+Vous pouvez également préciser quelle bibliothèque mettre à jour séparément en utilisant l'option `$ cargo update --precise lib_name`
 
 ### Comment créer ses benchmarks avec Cargo ?
 
