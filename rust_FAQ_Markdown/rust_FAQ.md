@@ -1514,7 +1514,7 @@ Il y a deux manières de faire :
 1. Les télécharger à partir de [crate.io](https://crates.io/crates) ;
 2. Les télécharger directement à partir de leur dépôt github.
 
-C'est selon vos préférences. (et surtout selon la disponibilité de la ressource)
+C'est selon vos préférences (et surtout selon la disponibilité de la ressource).
 
 Donc pour la première façon, rien de plus simple :
 
