@@ -1565,7 +1565,7 @@ Gardez en tête que le nom de chaque paquet est alloué en respectant la règle 
 
 **Empaqueter le projet**
 
-La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande cargo package. Votre projet sera donc empaqueté sous le format *.crate* et se trouvera dans le répertoire target/package/.
+La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande `cargo package`. Votre projet sera donc empaqueté sous le format *.crate* et se trouvera dans le répertoire target/package/.
 
 ```bash
 $ cargo package
