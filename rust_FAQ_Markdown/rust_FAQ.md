@@ -1499,6 +1499,8 @@ La documentation se trouvera dans le dossier `./target/doc/…`
 
 Il se trouve dans le répertoire portant le nom de votre projet (donc `./doc/votre_projet/index.html`).
 
+**Note**: si vous avez ajouté des dépendances à votre projet, cargo générera également la documentation de celles-ci (assurant alors un site uniforme et complet).
+
 ### Où trouver de nouvelles bibliothèques ?
 
 Vous pouvez trouver d'autres bibliothèques sur le [site officiel](https://crates.io/crates) de Cargo.
