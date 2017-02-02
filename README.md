@@ -1,7 +1,12 @@
 # Stade de rédaction
 
 La FAQ est encore régulièrement mise à jour, rédigée, mais il est possible de la lire.
-Actuellement(20 novembre 2016), la FAQ a subi 4 relectures.
+Actuellement(28 novembre 2016), la FAQ a subi 4 relectures.
+
+# Remerciements
+
+Je remercie tout particulièrement [@chaosedge278](https://github.com/Chaosedge278), [@f-leb](http://www.developpez.net/forums/u283256/f-leb/), [@Malick SECK](http://www.developpez.net/forums/u526667/malick-seck/) et [@imperio](https://github.com/GuillaumeGomez) pour leurs relectures orthographiques et techniques, ainsi que l'équipe de [developpez.com](developpez.com) en général pour avoir gentiment accepté d'héberger cette ressource.
+Merci également à [@Siguillaume](http://www.developpez.net/forums/u181612/siguillaume/) pour sa disponibilité ! :)
 
 ## Utilisation
 
@@ -33,7 +38,7 @@ Forkez, rendez-vous dans le répertoire [`rust_FAQ_Markdown`](rust_FAQ_Markdown/
 
 Vous lisez ce README ailleurs que sur le dépôt ? Dans ce cas, suivez ce [lien](https://github.com/Songbird0/Rust_FAQ/tree/master/rust_FAQ_Markdown), s'il vous plaît.
 
-Il est également possible de contribuer à la relecture/progression de la FAQ directement sur [developpez.com](developpez.com), [soumettez-votre Q/R](http://rust.developpez.com/faq/?page=Langage#addForm).
+Il est également possible de contribuer à la relecture/progression de la FAQ directement sur [developpez.com](developpez.com), [soumettez votre Q/R](http://rust.developpez.com/faq/?page=Langage#addForm).
 
 
 ## Licence et condition d'utilisation

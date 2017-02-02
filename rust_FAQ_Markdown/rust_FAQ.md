@@ -1,6 +1,105 @@
 # Introduction
 
-cf. [README.md](README.md), s'il vous plaît.
+cf. [README.md](../README.md), s'il vous plaît.
+
+#Aborescence de la FAQ
+
+- [Langage](#langage)
+  - [Questions générales](#questions-générales)
+    - [Comment déclarer une variable ?](#comment-déclarer-une-variable)
+    - [Comment assigner un objet par référence ?](#comment-assigner-un-objet-par-référence)
+    - [Rust possède-t-il un typage dynamique ?](#rust-possède-t-il-un-typage-dynamique)
+    - [Comment typer ses données/variables ?](#comment-typer-ses-donnéesvariables)
+    - [Quelle est la différence entre `&str` et `String` ?](#quelle-est-la-différence-entre-str-et-string)
+    - [Comment créer une chaîne de caractères ?](#comment-créer-une-chaîne-de-caractères)
+    - [Quelle version de Rust est recommandée ?](#quelle-version-de-rust-est-recommandée)
+    - [Rust est-il orienté objet ?](#rust-est-il-orienté-objet)
+    - [Qu'est-ce qu'un `trait` ?](#quest-ce-quun-trait)
+    - [Rust supporte-t-il la surcharge des fonctions ?](#rust-supporte-t-il-la-surchage-des-fonctions)
+    - [Comment déclarer des paramètres optionnels ?](#comment-déclarer-des-paramètres-optionnels)
+    - [Comment créer un tableau ?](#comment-créer-un-tableau)
+    - [A quoi sert le mot-clé `super` ?](#À-quoi-sert-le-mot-clé-super)
+    - [A quoi sert le mot-clé `self` ?](#a-quoi-sert-le-mot-clé-self)
+    - [A quoi sert le mot-clé `use` ?](#a-quoi-sert-le-mot-clé-use)
+    - [A quoi sert le mot-clé `pub` ?](#a-quoi-sert-le-mot-clé-pub)
+    - [A quoi servent les mot-clés `extern crate` ?](#À-quoi-servent-les-mot-clés-extern-crate)
+    - [A quoi sert le mot-clé `mod` ?](#À-quoi-sert-le-mot-clé-mod)
+    - [A quoi sert un module ?](#À-quoi-sert-un-module)
+    - [Comment créer un module ?](#comment-créer-un-module)
+    - [A quoi sert le mot-clé `type` ?](#À-quoi-sert-le-mot-clé-type)
+    - [A quoi sert le mot-clé `loop` ?](#À-quoi-sert-le-mot-clé-loop)
+    - [A quoi sert le mot-clé `where` ?](#À-quoi-sert-le-mot-clé-where)
+    - [A quoi sert le mot-clé `unsafe` ?](#À-quoi-sert-le-mot-clé-unsafe)
+    - [Quelles sont les règles non appliquées dans ces contextes ?](#quelles-sont-les-règles-non-appliquées-dans-ces-contextes)
+    - [Quels comportements sont considérés "non sûrs" par Rust ?](#quels-comportements-sont-considérés-non-sûrs-par-rust)
+    - [A quoi sert le mot-clé `fn` ?](#À-quoi-sert-le-mot-clé-fn)
+    - [A quoi sert le mot-clé `match` ?](#À-quoi-sert-le-mot-clé-match)
+    - [A quoi sert le mot-clé `ref` ?](#À-quoi-sert-le-mot-clé-ref)
+    - [A quoi sert le mot-clé `mut` ?](#À-quoi-sert-le-mot-clé-mut)
+    - [Une erreur survient lorsque je modifie le contenu de ma variable ! Que faire ?](#une-erreur-survient-lorsque-que-je-modifie-le-contenu-de-ma-variable-que-faire)
+    - [Qu'est-ce qu'une macro ?](#quest-ce-quune-macro)
+    - [Comment créer une macro ?](#comment-créer-une-macro)
+    - [Que sont les spécificateurs ?](#que-sont-les-spécificateurs)
+    - [A quoi sert le mot-clé `usize` ?](#À-quoi-sert-le-mot-clé-usize)
+    - [A quoi sert le mot-clé `isize` ?](#À-quoi-sert-le-mot-clé-isize)
+    - [Existe-t-il des outils de build pour le langage Rust ?](#existe-t-il-des-outils-de-build-pour-le-langage-rust)
+    - [Comment utiliser mes fonctions en dehors de mon module ?](#comment-utiliser-mes-fonctions-en-dehors-de-mon-module)
+    - [Comment comparer deux objets avec Rust ?](#comment-comparer-deux-objets-avec-rust)
+    - [Qu'est-ce que le shadowing ?](#quest-ce-que-le-shadowing)
+    - [Qu'est-ce que la destructuration ?](#quest-ce-que-la-destructuration)
+    - [Comment effectuer une déstructuration sur une liste ?](#comment-effectuer-une-destructuration-sur-une-liste)
+    - [Comment effectuer une déstructuration sur une énumération ?](#comment-effectuer-une-destructuration-sur-une-énumération-)
+    - [Comment effectuer une déstructuration sur une structure ?](#comment-effectuer-une-destructuration-sur-une-structure-)
+    - [Comment comparer deux objets d'une structure personnalisée avec Rust ?](#comment-comparer-deux-objets-dune-structure-personnalisée-avec-rust)
+    - [Je n'arrive pas à utiliser les macros importées par ma bibliothèque ! Pourquoi ?](#je-narrive-pas-à-utiliser-les-macros-importées-par-ma-bibliothèque-pourquoi)
+    - [A quoi servent les mot-clés `if let` ?](#À-quoi-servent-les-mot-clés-if-let)
+    - [A quoi servent les mot-clés `while let` ?](#À-quoi-servent-les-mot-clés-while-let)
+  - [Mécaniques et philosophies](#mécaniques-et-philosophies)
+    - [Gestion de la mémoire](#gestion-de-la-mémoire)
+      - [Le développeur doit-il gérer la mémoire seul ?](#le-développeur-doit-il-gérer-la-mémoire-seul)
+      - [Qu'est-ce que "l'ownership" ?](#quest-ce-que-lownership)
+      - [Qu'est-ce que le concept de "borrowing" ?](#quest-ce-que-le-concept-de-borrowing)
+      - [Qu'est-ce que le concept de "lifetime" ?](#quest-ce-que-le-concept-de-lifetime)
+  - [Outils de build](#outils-de-build)
+    - [Comment créer un projet avec Cargo ?](#comment-créer-un-projet-avec-cargo)
+    - [Quel type de projet puis-je créer avec Cargo ?](#quel-type-de-projet-puis-je-créer-avec-cargo)
+    - [Comment compiler son projet ?](#comment-compiler-son-projet)
+    - [Peut-on générer de la documentation avec Cargo ?](#peut-on-générer-de-la-documentation-avec-cargo)
+    - [Où trouver de nouvelles bibliothèques ?](#où-trouver-de-nouvelles-bibliothèques)
+    - [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
+    - [Comment publier sa bibliothèque faite maison ?](#comment-publier-sa-bibliothèque-faite-maison)
+    - [Comment lancer des tests avec Cargo ?](#comment-lancer-des-tests-avec-cargo)
+    - [Comment mettre à jour mes bibliothèques ?](#comment-mettre-à-jour-mes-bibliothèques)
+    - [Comment créer ses benchmarks avec Cargo ?](#comment-créer-ses-benchmarks-avec-cargo)
+    - [A quoi sert benchmark_group!](#À-quoi-sert-benchmark_group)
+    - [A quoi sert benchmak_main!](#À-quoi-sert-benchmark_main)
+  - [Gestion des erreurs](#gestion-des-erreurs)
+    - [Comment s'effectue la gestion des erreurs avec Rust ?](#comment-seffectue-la-gestion-des-erreurs-avec-rust)
+    - [A quoi sert la macro `panic!` ?](#À-quoi-sert-la-macro-panic)
+    - [A quoi sert la méthode `unwrap` ?](#À-quoi-sert-la-méthode-unwrap)
+    - [A quoi sert la méthode `unwrap_or` ?](#À-quoi-sert-la-méthode-unwrap_or)
+    - [A quoi sert la méthode `unwrap_or_else` ?](#À-quoi-sert-la-méthode-unwrap_or_else)
+    - [A quoi sert la méthode `map` ?](#À-quoi-sert-la-méthode-map)
+    - [A quoi sert la méthode `and_then` ?](#À-quoi-sert-la-méthode-and_then)
+    - [A quoi sert la macro `try!` ?](#À-quoi-sert-la-macro-try)
+    - [Comment utiliser la macro `assert!` ?](#comment-utiliser-la-macro-assert)
+    - [Comment utiliser la macro `assert_eq!` ?](#comment-utiliser-la-macro-assert_eq)
+    - [Comment utiliser la macro `debug_assert!` ?](#comment-utiliser-la-macro-debug_assert)
+    - [Qu'est-ce que l'énumération `Result<T>` ?](#quest-ce-que-lénumération-result)
+    - [Comment utiliser l'énumération `Result<T>` ?](#comment-utiliser-lénumération-result)
+    - [Qu'est-ce que l'énumération `Option<T, E>` ?](#quest-ce-que-lénumération-option)
+    - [Comment utiliser l'énumération `Option<T, E>` ?](#comment-utiliser-lénumération-option)
+  - [Metadonnées/Annotations](#meta-données)
+  - [I/O](#io)
+    - [Que puis-je trouver dans cette section ?](#que-puis-je-trouver-dans-cette-section-)
+    - [Comment créer un fichier ?](#comment-créer-un-fichier-)
+    - [Comment lire le contenu d'un fichier ?](#comment-lire-le-contenu-dun-fichier-)
+    - [Comment écrire à l'intérieur d'un fichier ?](#comment-écrire-à-lintérieur-dun-fichier-)
+    - [Comment différencier un fichier d'un répertoire ?](#comment-différencier-un-fichier-dun-répertoire-)
+    - [Comment lister les objets d'un répertoire ?](#comment-lister-les-objets-dun-répertoire-)
+- [Trucs & astuces](trucs--astuces)
+  - [Que puis-je trouver dans cette section ?](#que-puis-je-trouver-dans-cette-section)
+  - [Comment récupérer le vecteur d'une instance de la structure `Chars` ?](#comment-récupérer-le-vecteur-dune-instance-de-la-structure-chars)
 
 # Langage
 
@@ -16,6 +115,10 @@ Vous pouvez bien entendu déclarer et initialiser plusieurs variables en même t
 ```rust
 fn main() {
     let (foo, bar, baz) = (117, 42, "Hello world!");
+    // ou
+    let foo = 117;
+    let bar = 42;
+    let baz = "Hello world!";
 }
 ```
 
@@ -30,7 +133,7 @@ Il existe deux façons de faire :
 
 ```rust
 fn main() {
-    let foo = 117i32;
+    let foo: i32 = 117;
     let ref bar = foo;
     let baz = &foo; // idem
 }
@@ -75,7 +178,7 @@ fn main() {
 
 ### Quelle est la différence entre &str et String ?
 
-`&str` est un type non mutable représentant une chaîne de caractères tandis que `String` est un wrapper mutable au-dessus de ce dernier.
+`&str` est un type immuable représentant une chaîne de caractères tandis que `String` est un wrapper mutable au-dessus de ce dernier.
 
 ```rust
 fn main() {
@@ -129,7 +232,7 @@ fn main() {
 
 ### Quelle version de Rust est recommandée ?
 
-Actuellement(***11 novembre 2016***), la version stable la plus récente est la **1.13.0**.
+Actuellement(**1er février 2017**), la version stable la plus récente est la **1.14.0**.
 
 Les versions antérieures à la 1.13.0 contenant des régressions, je vous conseille d'utiliser la version la plus récente proposée.
 
@@ -139,11 +242,11 @@ Voir aussi : [Page officielle du langage Rust](https://www.rust-lang.org/en-US/
 
 Rust propose l'encapsulation qui est un concept objet. On peut donc dire que Rust est orienté objet. Toutefois, l'encapsulation s'effectue à l'échelle d'un **module** et non d'une **classe/structure** comme on pourrait le remarquer en Java/C#.
 
-Il dispose d'un aspect de la POO, de prime abord, assez primitif; Rust permet toutefois de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
+Il dispose d'un aspect de la POO, de prime abord, assez primitif; Rust permet de bénéficier du polymorphisme grâce aux « traits » qui pourraient être comparées aux interfaces Java/C#.
 
 Cependant, le langage ne supporte pas l'héritage multiple (ni l'héritage simple) entre les structures, comme il serait possible de le faire avec des classes, bien qu'il soit possible de le faire avec des traits.
 
-Par conséquent, Rust est donc orienté objet, puisqu'il possède plusieurs parties de ce paradigme, mais n'est pas un langage objet *pur*.
+Par conséquent, Rust est orienté objet, puisqu'il possède plusieurs parties de ce paradigme, mais n'est pas un langage objet *pur*.
 
 Voir aussi : [Qu'est-ce qu'un « trait » ?](#quest-ce-quun-trait)
 
@@ -279,12 +382,12 @@ Le mot-clé `use` permet de gérer les imports d'autres modules.
 Exemple :
 
 ```rust
-extern crate mon_package ;
+extern crate mon_package;
 
-use mon_package::mon_module::ma_fonction ;
+use mon_package::mon_module::ma_fonction;
 
 fn main() {
-    ma_fonction() ;
+    ma_fonction();
 }
 ```
 
@@ -301,13 +404,13 @@ enum MonEnum {
 fn main() {
     use MonEnum::Arg1; // On importe le variant Arg1 de l'enum MonEnum ici.
 
-    let instance = Arg1; // Et on l'utiliser directement ici.
+    let instance = Arg1; // Et on l'utilise directement ici.
     // Plus la peine d'expliciter d'où provient l'instance Arg1 comme ceci :
     let instance = MonEnum::Arg1;
 }
 ```
 
-Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par exemple un project possédant cette hiérarchie :
+Il permet aussi de réexporter des modules vers le scope supérieur. Prenons par exemple un projet possédant cette hiérarchie :
 
 ```text
 src
@@ -350,7 +453,7 @@ Le mot-clé `pub` peut être utilisé dans *trois* contextes différents :
 2. Au sein [et sur] des traits;
 3. Au sein [et sur] des structures.
 
-Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre public l'objet concerné.
+Dans un premier temps, qu'il soit utilisé sur des `mod`ules, `trait`s, ou `struct`ures, il aura toujours la même fonction : rendre publique l'objet concerné.
 
 Exemple :
 
@@ -371,7 +474,7 @@ Exemple :
 ```
 
 ```rust
-pub mod ma_lib { //la module représentant ma bibliothèque
+pub mod ma_lib { // le module représentant ma bibliothèque
     pub mod mon_module { // un module lambda
         pub fn ma_fonction() { //ma fonction
             println!("Hi there !");
@@ -444,7 +547,7 @@ Bien entendu, si vous souhaitez importer un paquet qui n'est pas de vous, il vou
 
 Voir aussi :
 
-Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#LII-A-16 "A quoi sert le mot-clé pub ?") »
+Pour voir un exemple de création de paquet, vous pouvez vous rendre à la Q/R : « [A quoi sert le mot-clé pub ?](#a-quoi-sert-le-mot-clé-pub) »
 
 [Comment installer de nouvelles bibliothèques ?](#comment-installer-de-nouvelles-bibliothèques)
 
@@ -593,9 +696,9 @@ Voir aussi :
 
 Trois règles, et seulement trois, sont brisées dans les blocs (et fonctions) `unsafe`:
 
-1. L'accès et la modification d'une variable globale (statique) mutable sont autorisés ;
-2. Il est possible de déréférencer un pointeur (non-nul, donc) ;
-3. Il est possible de faire à une fonction non-sûre.
+1. L'accès et la modification d'une variable globale (statique) mutable sont autorisés;
+2. Il est possible de déréférencer un pointeur (non-nul, donc);
+3. Il est possible de créer une fonction non-sûre.
 
 ### Quels comportements sont considérés « non-sûrs » par Rust ?
 
@@ -611,11 +714,20 @@ fn ma_fonction() {
 }
 ```
 
+Pour spécifier le type renvoyé par la fonction, vous devez utiliser le token `->` + le type de votre choix.
+
+```rust
+fn ma_fonction() -> Foo
+{
+    Foo::new()
+}
+```
+
 ### À quoi sert le mot-clé match ?
 
-Le mot-clé `match` nous permet d'implémenter le *pattern* *matching*.
+Le mot-clé `match` nous permet d'implémenter le *pattern matching*.
 
-Ainsi, il est possible de comparer une entrée à plusieurs tokens constants et agir en conséquence. Le pattern matching est considéré comme un test *exhaustif*, car, quoi qu'il arrive, il fera en sorte de couvrir tous les cas de figure qu'on lui propose.
+Ainsi, il est possible de comparer une entrée à plusieurs **tokens** constants et agir en conséquence. Le pattern matching est considéré comme un test *exhaustif*, car, quoi qu'il arrive, il fera en sorte de couvrir tous les cas de figure qu'on lui propose.
 
 Exemple :
 
@@ -624,11 +736,11 @@ let foo: i32 = 117;
 
 match foo {
     117 => println!("foo vaut 117 !"),
-    _ => println!("You know nothing, Jon."), // s'efforcera de trouver une réponse
+    _ => println!("You know nothing, John."), // s'efforcera de trouver une réponse
 }
 ```
 
-Jusqu'ici, il semblerait que le mot-clé `match` ne soit pas capable de faire preuve de plus de souplesse qu'un `switch`, ce qui est bien entendu le contraire ! Vous pouvez par-exemple matcher sur un ensemble de valeur :
+Jusqu'ici, il semblerait que le mot-clé `match` ne soit pas capable de faire preuve de plus de souplesse qu'un `switch`, ce qui est bien entendu le contraire ! Vous pouvez par-exemple matcher sur un ensemble de valeurs :
 
 ```rust
 let foo: i32 = 117;
@@ -639,7 +751,7 @@ match foo {
 }
 ```
 
-Le pattern matching est très puissant, n'hésitez pas à en user et en abuser !
+*Le pattern matching est très puissant, n'hésitez pas à en user et en abuser !*
 
 Voir aussi :
 
@@ -662,7 +774,7 @@ fn main() {
 }
 ```
 
-Il permet aussi de dire explicitement qu'une valeur de doit pas être "bougé"/move dans certains contextes.
+Il permet aussi de dire explicitement qu'une valeur ne doit pas être "bougée"/move dans certains contextes.
 
 ### À quoi sert le mot-clé mut ?
 
@@ -689,7 +801,7 @@ Une macro est ce que l'on peut appeler vulgairement une fonction très puissante
 
 Grâce aux macros, nous pouvons capturer *plusieurs* groupes *d'expressions* et ainsi écrire les instructions désirées selon *chaque* cas.
 
-Pour grossir un peu le trait : les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme.
+Pour grossir un peu le trait : *les macros sont une extension du compilateur de Rust. Elles sont interprétées au moment de la compilation, pas pendant l'exécution de votre programme*.
 
 Voir aussi : [Comment créer une macro ?](#comment-créer-une-macro)
 
@@ -745,7 +857,7 @@ fn main() {
 }
 ```
 
-Vous aurez certainement remarqué que les paramètres passés sont assez spéciaux ; au lieu d'avoir le nom de leur type après les deux points (« : »), il est écrit `expr`.
+Vous aurez certainement remarqué que les paramètres passés sont assez spéciaux; au lieu d'avoir le nom de leur type après les deux points (« : »), il est écrit `expr`.
 
 C'est ce que l'on appelle un « spécificateur » .
 
@@ -753,19 +865,36 @@ Liens :
 
 [Visionner le résultat de cet exemple.](https://is.gd/nHfcEQ "Exemple d'utilisation d'une macro")
 
-[Que sont les spécificateurs ?]()
+[Que sont les spécificateurs ?](#que-sont-les-spécificateurs)
 
 ### Que sont les spécificateurs ?
 
+Les spécificateurs sont des types d'entrées supportés par les macros; Il faut noter toutefois que ces fameux types font abstraction de la nature de l'entrée. (e.g. que l'entrée soit une châine de caractères ou un entier importe peu)
+
+Vous pouvez retrouver, ci-dessous, une traduction de chaque description des spécificateurs proposés par le langage:
+
+- `ident`: un identifiant. e.g. `x`; `foo`.
+- `path`: une représentation d'un chemin "package-style"(e.g. `T::SpecialA`, `std::path::Path`).
+- `expr`: une expression  (e.g. `2 + 2`; `if true { 1 } else { 2 }`; `f(42)`).
+- `ty`: Un type (e.g. `i32`, `&T`, `Vec<(char, String)>`).
+- `pat`: Un modèle/pattern (e.g. `Some(t)`; `(17, 'a')`; `_`).
+- `stmt`: Une (et une seule) déclaraction (e.g. `let some = 3`).
+- `block`: Une suite de déclarations enveloppée par des crochets et/ou une expression (e.g. `{log(error, "hi"); return 12;}`).
+- `item`: Un objet (e.g. `fn foo(){}`; `struct Bar;`).
+- `meta`: Un "meta objet", plus connu sous le nom d'attributs (e.g. `cfg(target_os = "windows")`).
+- `tt`: Un *token tree*. Certainement le type le plus puissant de la liste, puisqu'il vous permet de soumettre tout ce qui existe dans la syntaxe du langage.
+
+### Qu'est-ce qu'un item ?
+
 ### À quoi sert le mot-clé usize ?
 
-Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
+Le mot-clé `usize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *non-signé* (selon l'architecture de la machine sur laquelle le programme sera compilé).
 
 Voir aussi : [À quoi sert le mot-clé isize ?](#a-quoi-sert-le-mot-clé-isize)
 
 ### À quoi sert le mot-clé isize ? 
 
-Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé* (selon l'architecture de la machine sur laquelle le programme sera exécuté).
+Le mot-clé `isize` permet de laisser le compilateur choisir la taille en mémoire d'un entier *signé* (selon l'architecture de la machine sur laquelle le programme sera compilé).
 
 Voir aussi : [À quoi sert le mot-clé usize ?](#À-quoi-sert-le-mot-clé-usize)
 
@@ -850,14 +979,14 @@ Hello
 
 Avec Rust, il est possible d'effectuer une « destructuration » sur certains types de données, mais qu'est-ce que cela signifie exactement ?
 
-Grâce au pattern matching, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.
+Grâce au *pattern matching*, il est possible de créer, donc, des « modèles » pour isoler une partie de la structure et ainsi vérifier si notre entrée correspond à nos attentes.
 
 Une destructuration peut se faire sur :
 
-* Les listes
-* Les tuples
-* Les énumérations
-* Les structures
+* Les listes;
+* Les tuples;
+* Les énumérations;
+* Les structures.
 
 Voir aussi :
 
@@ -994,8 +1123,10 @@ let foo = A {
 
 La bibliothèque standard de Rust propose un(e) `trait`/ interface nommé(e) `PartialEq` composée de deux fonctions :
 
-1.  `fn eq(&self, other : &instance_de_la_meme_structure)` * ;* 
-2.  `fn ne(&self, other : &instance_de_la_meme_structure) ` *;* 
+1.  `fn eq(&self, other : &instance_de_la_meme_structure)`; 
+2.  `fn ne(&self, other : &instance_de_la_meme_structure) `.
+
+**Note**: Comme il est stipulé dans la documentation officielle, vous n'êtes pas forcé d'implémenter les deux fonctions : `ne()` étant simplement le contraire de `eq()` et vice versa, il serait redondant de les implémenter dans la même structure.
 
 Ci-dessous figure un exemple complet d'implémentation :
 
@@ -1070,7 +1201,7 @@ pub mod votre_conteneur {
 }
 ```
 
-Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique programmation pour obtenir de l'aide. Présentez clairement l'erreur que le compilateur vous renvoi dans votre post.
+Si votre problème persiste, je vous invite à vous rendre sur les forums figurant dans la rubrique [programmation](http://programmation.developpez.com/) pour obtenir de l'aide. Présentez **clairement** l'erreur que le compilateur vous renvoi dans votre post.
 
 ### À quoi servent les mot-clés `if let` ?
 
@@ -1093,7 +1224,7 @@ C'est un moyen simple et efficace d'assigner du contenu sans passer par le patte
 
 ### À quoi servent les mot-clés `while let` ?
 
-La combinaison des deux mot-clés permet d'effectuer des tests de manière concise et ainsi nous éviter de passer par le pattern matching lorsque ça n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
+La combinaison des deux mot-clés permet d'effectuer des tests concis et ainsi nous éviter de passer par le pattern matching lorsque cela n'est pas nécessaire. (`while let` peuvent s'avérer très utiles lorsqu'il faut tester à chaque itération si le fichier contient toujours quelque chose)
 
 **[Exemple de la documentation officielle]**
 
@@ -1104,6 +1235,8 @@ while let Some(x) = v.pop() {
     println!("{}", x);
 }
 ```
+
+### Comment étendre un trait sur un autre trait ?
 
 ## Mécaniques et philosophies
 
@@ -1151,13 +1284,13 @@ C'est un exemple simple, mais qui (dans nos débuts) peut être une véritable p
 
 C'est simple :
 
-La variable foo étant un pointeur contenant l'adresse mémoire d'un objet String, il est courant de dire qu'il possède « l'ownership », il est le seul à pouvoir utiliser cette ressource.
+La variable `foo` étant un pointeur contenant l'adresse mémoire d'un objet String, il est courant de dire qu'il possède « l'ownership », il est le seul à pouvoir utiliser cette ressource.
 
-C'est en copiant les informations relatives à l'objet String (en « déplacant » ces informations dans une nouvelle variable, donc) que le *garbage* *collector* va faire son travail : détruire le pointeur *foo* pour attribuer « l'ownership » au nouveau pointeur de la ressource : *bar*.
+C'est en copiant les informations relatives à l'objet String (en « déplacant » ces informations dans une nouvelle variable, donc) que le *garbage* *collector* va faire son travail : détruire le pointeur `foo` pour attribuer « l'ownership » au nouveau pointeur de la ressource : `bar`.
 
-C'est lorsque la variable *baz* essaie de copier les informations de *foo* que l'erreur survient : *foo* a déjà été détruit par le *garbage* *collector*.
+C'est lorsque la variable `baz` essaie de copier les informations de `foo` que l'erreur survient : `foo` a déjà été détruit par le *garbage* *collector*.
 
-Pour remédier au problème, il aurait simplement suffit de "copier" *bar* de cette manière :
+Pour remédier au problème, il aurait simplement suffit de "copier" `bar` de cette manière :
 
 ```rust
 fn main() {
@@ -1259,7 +1392,7 @@ fn main() {
     let mut foo: String = "Hello world!".to_string(); // Le scope A commence ici
     let bar: String = "Goodbye, friend !".to_string(); // Le scope B commence ici
     foo = bar; // bar détruit, le scope B s'arrête là
-    println!("{}", &bar);
+    println!("{}", &bar); // erreur du compilateur
 } // Le Scope A s'arrête ici
 ```
 
@@ -1309,7 +1442,6 @@ Voir aussi :
 
 [La section dédiée du livre](https://doc.rust-lang.org/book/lifetimes.html)
 
-#### Comment étendre un trait sur un autre trait ?
 
 ## Outils de build
 
@@ -1335,7 +1467,7 @@ Si vous souhaitez générer un projet en mode « exécutable », il suffit de 
 
 Par défaut, le nom du répertoire racine sera également le nom de votre bibliothèque, si elle devait être identifiée par d'autres utilisateurs, dans le but de la télécharger. Si vous souhaitez lui attribuer un autre nom, vous pouvez également le spécifier dans la commande :
 
-`$ cargo new folder_name --name another_name  --bin`
+`$ cargo new folder_name --name project_name  --bin`
 
 Le manifest sera modifié en conséquence.
 
@@ -1345,7 +1477,15 @@ Pour compiler votre projet, vous devez vous trouver à la racine de ce dernier.
 
 Une fois que c'est fait, il vous suffit de lancer la commande suivante :
 
-`$ cargo build`
+```bash
+$ cargo build
+```
+
+Il est également possible de laisser le compilateur effectuer ses optimisations.
+
+```bash
+$ cargo build --release
+```
 
 ### Peut-on générer de la documentation avec Cargo ?
 
@@ -1358,6 +1498,8 @@ La documentation se trouvera dans le dossier `./target/doc/…`
 **Où est l'index de mon site ?**
 
 Il se trouve dans le répertoire portant le nom de votre projet (donc `./doc/votre_projet/index.html`).
+
+**Note**: si vous avez ajouté des dépendances à votre projet, cargo générera également la documentation de celles-ci (assurant alors un site uniforme et complet).
 
 ### Où trouver de nouvelles bibliothèques ?
 
@@ -1372,12 +1514,12 @@ Il y a deux manières de faire :
 1. Les télécharger à partir de [crate.io](https://crates.io/crates) ;
 2. Les télécharger directement à partir de leur dépôt github.
 
-C'est selon vos préférences. (et surtout selon la disponibilité de la ressource)
+C'est selon vos préférences (et surtout selon la disponibilité de la ressource).
 
 Donc pour la première façon, rien de plus simple :
 
 * Vous cherchez la bibliothèque que vous désirez sur le site ;
-* Vous renseignez son nom dans votre manifest ;
+* Vous renseignez son nom dans votre manifest: `lib_name = "lib.version"`;
 * Compilez ;
 * C'est prêt !
 
@@ -1407,13 +1549,13 @@ La publication d'un paquet est effective lorsqu'il est uploadé pour être hébe
 
 **Avant votre première publication**
 
-Premièrement, vous allez avoir besoin d'un compte sur crates.io pour recevoir un « token » (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte Github. Ensuite, rendez-vous dans vos options de compte, et lancez la commande $ cargo login suivi de votre token.
+Premièrement, vous allez avoir besoin d'un compte sur [crates.io](crates.io) pour recevoir un « token » (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte [Github](github.com). Ensuite, rendez-vous dans vos options de compte, et lancez la commande `$ cargo login` suivi de votre token.
 
 ```bash
 $ cargo login abcdefghijklmnopqrstuvwxyz012345
 ```
 
-Cette commande va informer Cargo que vous détenez un token provenant de l'API du site. (il est enregistré dans le chemin suivant : ~/.cargo/config.)
+Cette commande va informer Cargo que vous détenez un token provenant de l'API du site. (il est enregistré dans le chemin suivant : `~/.cargo/config`.)
 
 Ce token doit rester secret et ne devrait être partagé avec personne. Si vous le perdez d'une quelconque manière, régénérez-le immédiatement.
 
@@ -1423,7 +1565,7 @@ Gardez en tête que le nom de chaque paquet est alloué en respectant la règle 
 
 **Empaqueter le projet**
 
-La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande cargo package. Votre projet sera donc empaqueté sous le format *.crate* et se trouvera dans le répertoire target/package/.
+La prochaine étape consiste à empaqueter votre projet de manière à être intelligible pour crates.io. Pour remédier à cela, nous allons utiliser la commande `cargo package`. Votre projet sera donc empaqueté sous le format *.crate* et se trouvera dans le répertoire target/package/.
 
 ```bash
 $ cargo package
@@ -1431,7 +1573,7 @@ $ cargo package
 
 En plus de cela, la commande package est capable de vérifier l'intégrité de votre projet en dépaquetant votre *.crate et le recompiler. Si la phase de vérification se passe sans problème, rien ne devrait être affiché dans votre terminal.
 
-Toutefois, si vous souhaitez désactiver cette vérification avant l'envoi, il vous suffit d'ajouter le flag --no-verify.
+Toutefois, si vous souhaitez désactiver cette vérification avant l'envoi, il vous suffit d'ajouter le flag `--no-verify`.
 
 Cargo va ignorer automatiquement tous les fichiers ignorés par votre système de versionning, mais si vous voulez spécifier un type de fichiers en particulier, vous pouvez utiliser le mot-clé exclude dans votre manifest :
 
@@ -1459,7 +1601,7 @@ include = [
 ]
 ```
 
-Maintenant que nous avons un fichier *.crate* prêt à y aller, il peut être uploadé sur crates.io grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet !
+Maintenant que nous avons un fichier `*.crate` prêt à y aller, il peut être uploadé sur [crates.io](crates.io) grâce à la commande `cargo publish`. C'est tout, vous venez de publier votre premier paquet !
 
 ```bash
 $ cargo publish
@@ -1540,19 +1682,19 @@ Chaque fonction annotée par l'attribut `#[test]` sera compilée durant la phase
 **Attention**:
 
 >La version **1.9.0** de Rust comporte un bogue au niveau des tests. Dans cette version, toutes les fonctions annotées `#[test]` doivent être encapsulées dans un module. Ce n'est bien entendu plus le cas en **1.12.1**.
->Si vous rencontrez ce problème, nous vous conseillons de mettre à jour votre compilateur.
+>Si vous rencontrez ce problème, nous vous conseillons de mettre à jour votre compilateur jusqu'à la version stable la plus récente possible.
 
 ### Comment mettre à jour mes bibliothèques ?
 
 Pour mettre à jour vos dépendances, il vous suffit d'utiliser la commande : `$ cargo update`.
 
-Vous pouvez également préciser quelle bibliothèque mettre à jour séparément en utilisant l'option `$ cargo update --precise nom_dep`
+Vous pouvez également préciser quelle bibliothèque mettre à jour séparément en utilisant l'option `$ cargo update --precise lib_name`
 
 ### Comment créer ses benchmarks avec Cargo ?
 
 Pour créer nos benchmark, donc, nous allons utiliser le paquet [bencher](https://crates.io/crates/bencher).
 
-Ce module était premièrement connu sous le nom de "tester puis bencher", qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
+Ce module était premièrement connu sous le nom de "test" puis sera rebaptisé "bencher", qui sera porté en tant que dépendance externe pour éviter les effets de bord dans les versions stables du langage.
 
 ```toml
 [package]
@@ -1624,20 +1766,22 @@ Cette section regroupe donc un certain nombre de Q/R qui pourrait vous aider à 
 *  [A quoi sert la méthode unwrap ?](#a-quoi-sert-la-méthode-unwrap) 
 *  [A quoi sert la méthode unwrap_or ?](#a-quoi-sert-la-méthode-unwrap_or) 
 *  [A quoi sert la méthode unwrap_or_else ?](#a-quoi-sert-la-méthode-unwrap_or_else) 
-* [A quoi sert la méthode map ?](#a-quoi-sert-la-méthode-map) ![](./images/WIP.gif)
+* [A quoi sert la méthode map ?](#a-quoi-sert-la-méthode-map)
 *  [A quoi sert la méthode and_then ?](#a-quoi-sert-la-méthode-and_then) 
-* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try) ![](./images/WIP.gif)
+* [A quoi sert la macro try! ?](#a-quoi-sert-la-macro-try)
 *  [Comment utiliser la macro assert! ?](#comment-utiliser-la-macro-assert) 
 *  [Comment utiliser la macro assert_eq! ?](#comment-utiliser-la-macro-assert_eq) 
 *  [Comment utiliser la macro debug_assert! ?](#comment-utiliser-la-macro-debug_assert) 
-* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option) ![](./images/WIP.gif)
-* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option) ![](./images/WIP.gif)
-* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result) ![](./images/WIP.gif)
-* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result) ![](./images/WIP.gif)
+* [Qu'est-ce que l'énumération Option<T> ?](#quest-ce-que-lénumération-option)
+* [Comment utiliser l'énumération Option<T> ?](#comment-utiliser-lénumération-option)
+* [Qu'est-ce que l'énumération Result<T, E> ?](#quest-ce-que-lénumération-result)
+* [Comment utiliser l'énumération Result<T, E> ?](#comment-utiliser-lénumération-result)
 
 ### Comment créer un type spécifique d'exceptions ?
 
-Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java ; Rust ne gère pas les potentielles de cette manière.
+Il n'est pas possible de créer une structure censée représenter un type d'erreur, comme nous pourrions le faire en Java; Rust ne gère pas les potentielles erreurs de cette manière.
+
+
 
 Voir aussi :
 
@@ -1649,9 +1793,9 @@ Oui, bien entendu.
 
 Il existe trois assertions différentes en Rust (toutes encapsulées par une macro) :
 
-1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet")!;
-2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet")!;
-3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet")!.
+1. [assert!](https://doc.rust-lang.org/std/macro.assert!.html "Ouvrir un nouvel onglet");
+2. [assert_eq!](https://doc.rust-lang.org/std/macro.assert_eq!.html "Ouvrir un nouvel onglet");
+3. [debug_assert!](https://doc.rust-lang.org/std/macro.debug_assert!.html "Ouvrir un nouvel onglet").
 
 Voir aussi :
 
@@ -1886,7 +2030,7 @@ Si certaines choses vous échappent, n'hésitez pas à vous rendre sur les liens
 
 #### A quoi sert le second paramètre ?
 
-Le second peut, par exemple, accueillir un message personnalisé pour la macro panic! facilitant ainsi le débogage.
+Le second peut, par exemple, accueillir un message personnalisé pour la macro `panic!` facilitant ainsi le débogage.
 
 ```rust
 fn foo(arg: Option<String>) {
@@ -1939,6 +2083,8 @@ Voir aussi :
 `debug_assert!` ainsi que ses dérivés (`debug_assert_eq!`) ne sont compilées que lorsque le code source est compilé en mode débug. (mode par défaut de **rustc**)
 
 Vous ne devez pas compter sur ces assertions pour contrôler le flux de votre programme en production, assurez-vous toujours d'avoir une assertion compilée en mode release.
+
+**Note**: Si vous souhaitez toutefois les utiliser dans un binaire optimisé, vous devez passer l'argument -C debug-assertions au compilateur.
 
 #### Comment l'utiliser ?
 
@@ -2025,11 +2171,95 @@ Dans cette section, vous retrouverez toutes les questions couramment posées con
 
 ### Comment créer un fichier ?
 
+Pour créer un fichier, rien de plus simple, il vous faudra utiliser la structure `File`.
+
+```rust
+use std::io;
+use std::fs::File;
+
+fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diamant pour que ça compile.
+{
+    let mut file = File::create("thecakeisalie.txt")?;
+    Ok(())
+}
+```
+
 ### Comment lire le contenu d'un fichier ?
+
+Pour lire un fichier, il vous faudra utiliser la structure `File` et le trait `Read`.
+La procédure est presque identique à celle qui vous permet de créer votre fichier.
+
+```rust
+use std::io;
+use std::fs::File;
+
+fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diamant pour que ça compile.
+{
+    let mut file = File::open("thecakeisalie.txt")?;
+    let mut string = String::new();
+    file.read_to_string(&mut string)?;
+    Ok(())
+}
+```
 
 ### Comment écrire à l'intérieur d'un fichier ?
 
+Pour écrire dans en fichier, vous devrez importer trois ressources:
+
+- std::io::Result; (un alias de l'`enum` `std::result::Result`)
+- std::io::Write; (Le trait qui permet d'implémenter la méthode `write_all()`)
+- std::fs::File. (La structure censée représenter votre fichier)
+
+```rust
+
+use std::io::Result;
+use std::io::Write;
+use std::fs::File;
+
+fn foo() -> Result<()>
+{
+    
+    let mut f = File::create("foo.txt")?;
+    f.write_all(b"Hello, world!")?;
+    Ok(())
+}
+
+fn main() -> ()
+{
+    /*...*/
+}
+```
+
+#### A quoi sert le 'b' qui préfixe la chaîne de caractères ?
+
+La méthode `write_all()` ne traite l'information que sous forme d'octets, et pour convertir une chaîne caractères en octets, elle doit être précédée par la lettre 'b'.
+
 ### Comment différencier un fichier d'un répertoire ?
+
+Pour cela, vous aurez besoin d'utiliser une ressource:
+
+- std::path::Path;
+
+Vous pouvez récupérer une instance de la structure `Path` en lui soumettant un chemin hypothètique, pour enfin effectuer vos tests.
+
+```Rust
+
+use std::path::Path;
+
+fn main() -> ()
+{
+   let my_path : &Path = Path::new("/your/directory/"); /* ne fonctionnera bien évidemment pas, à vous de soumettre un répertoire qui existe sur votre disque.*/
+   if my_path.is_dir()
+   {
+       
+       println!("He's a directory !");
+       
+   }
+   else{ println!("He isn't a directory !"); }
+}
+```
+
+
 
 ### Comment lister les objets d'un répertoire ?
 
@@ -2096,3 +2326,19 @@ error[E0277]: the trait bound `&std::str::Chars<'_>: std::iter::Iterator` is not
 Mais vous récolterez encore une erreur…
 
 Le compilateur vous invite alors à essayer d'appeler la méthode `.iter()` qui est censée être implémentée par toutes les structures implémentant l'interface `Iterator`.
+
+#### Que faire alors ?
+
+La méthode remplaçant `.iter()` est `.collect()`; Cette dernière vous permet de récupérer un vecteur contenant toutes les entités de l'ancien itérateur.
+Vous pouvez désormais accéder à votre ressource par référence et ainsi la parcourir autant de fois que vous le souhaitez.
+
+```Rust
+fn main() 
+{ 
+    let foo = String::from("Hello"); 
+    let bar = foo.chars(); 
+    let baz : Vec<char> = bar.collect(); 
+    for letter in &baz {} 
+    for letter in &baz {}     
+}
+```
