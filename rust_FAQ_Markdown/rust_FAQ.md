@@ -1601,7 +1601,7 @@ include = [
 ]
 ```
 
-Maintenant que nous avons un fichier `*.crate` prêt à y aller, il peut être uploadé sur crates.io grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet !
+Maintenant que nous avons un fichier `*.crate` prêt à y aller, il peut être uploadé sur [crates.io](crates.io) grâce à la commande cargo publish. C'est tout, vous venez de publier votre premier paquet !
 
 ```bash
 $ cargo publish
