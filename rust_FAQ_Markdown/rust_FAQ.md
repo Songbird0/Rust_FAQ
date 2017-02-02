@@ -2084,6 +2084,8 @@ Voir aussi :
 
 Vous ne devez pas compter sur ces assertions pour contrôler le flux de votre programme en production, assurez-vous toujours d'avoir une assertion compilée en mode release.
 
+**Note**: Si vous souhaitez toutefois les utiliser dans un binaire optimisé, vous devez passer l'argument -C debug-assertions au compilateur.
+
 #### Comment l'utiliser ?
 
 En dehors du contexte dans lequel ces assertions doivent être déclarées, la manière dont elles sont utilisées ne changent pas.
