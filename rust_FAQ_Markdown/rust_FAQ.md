@@ -1467,7 +1467,7 @@ Si vous souhaitez générer un projet en mode « exécutable », il suffit de 
 
 Par défaut, le nom du répertoire racine sera également le nom de votre bibliothèque, si elle devait être identifiée par d'autres utilisateurs, dans le but de la télécharger. Si vous souhaitez lui attribuer un autre nom, vous pouvez également le spécifier dans la commande :
 
-`$ cargo new folder_name --name another_name  --bin`
+`$ cargo new folder_name --name project_name  --bin`
 
 Le manifest sera modifié en conséquence.
 
