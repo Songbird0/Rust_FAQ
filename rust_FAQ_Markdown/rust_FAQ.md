@@ -1477,7 +1477,15 @@ Pour compiler votre projet, vous devez vous trouver à la racine de ce dernier.
 
 Une fois que c'est fait, il vous suffit de lancer la commande suivante :
 
-`$ cargo build`
+```bash
+$ cargo build
+```
+
+Il est également possible de laisser le compilateur effectuer ses optimisations.
+
+```bash
+$ cargo build --release
+```
 
 ### Peut-on générer de la documentation avec Cargo ?
 
