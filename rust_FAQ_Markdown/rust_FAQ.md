@@ -1555,7 +1555,7 @@ Premièrement, vous allez avoir besoin d'un compte sur [crates.io](crates.io) po
 $ cargo login abcdefghijklmnopqrstuvwxyz012345
 ```
 
-Cette commande va informer Cargo que vous détenez un token provenant de l'API du site. (il est enregistré dans le chemin suivant : ~/.cargo/config.)
+Cette commande va informer Cargo que vous détenez un token provenant de l'API du site. (il est enregistré dans le chemin suivant : `~/.cargo/config`.)
 
 Ce token doit rester secret et ne devrait être partagé avec personne. Si vous le perdez d'une quelconque manière, régénérez-le immédiatement.
 
