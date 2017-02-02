@@ -1519,7 +1519,7 @@ C'est selon vos préférences (et surtout selon la disponibilité de la ressourc
 Donc pour la première façon, rien de plus simple :
 
 * Vous cherchez la bibliothèque que vous désirez sur le site ;
-* Vous renseignez son nom dans votre manifest ;
+* Vous renseignez son nom dans votre manifest: `lib_name = "lib.version"`;
 * Compilez ;
 * C'est prêt !
 
