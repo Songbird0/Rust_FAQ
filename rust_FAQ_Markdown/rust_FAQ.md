@@ -1682,7 +1682,7 @@ Chaque fonction annotée par l'attribut `#[test]` sera compilée durant la phase
 **Attention**:
 
 >La version **1.9.0** de Rust comporte un bogue au niveau des tests. Dans cette version, toutes les fonctions annotées `#[test]` doivent être encapsulées dans un module. Ce n'est bien entendu plus le cas en **1.12.1**.
->Si vous rencontrez ce problème, nous vous conseillons de mettre à jour votre compilateur.
+>Si vous rencontrez ce problème, nous vous conseillons de mettre à jour votre compilateur jusqu'à la version stable la plus récente possible.
 
 ### Comment mettre à jour mes bibliothèques ?
 
