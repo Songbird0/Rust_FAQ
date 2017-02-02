@@ -1549,7 +1549,7 @@ La publication d'un paquet est effective lorsqu'il est uploadé pour être hébe
 
 **Avant votre première publication**
 
-Premièrement, vous allez avoir besoin d'un compte sur crates.io pour recevoir un « token » (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte Github. Ensuite, rendez-vous dans vos options de compte, et lancez la commande $ cargo login suivi de votre token.
+Premièrement, vous allez avoir besoin d'un compte sur [crates.io](crates.io) pour recevoir un « token » (jeton) provenant de l'API. Pour faire ceci, visitez la page d'accueil et enregistrez-vous via votre compte Github. Ensuite, rendez-vous dans vos options de compte, et lancez la commande $ cargo login suivi de votre token.
 
 ```bash
 $ cargo login abcdefghijklmnopqrstuvwxyz012345
