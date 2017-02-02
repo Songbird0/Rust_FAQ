@@ -2030,7 +2030,7 @@ Si certaines choses vous échappent, n'hésitez pas à vous rendre sur les liens
 
 #### A quoi sert le second paramètre ?
 
-Le second peut, par exemple, accueillir un message personnalisé pour la macro panic! facilitant ainsi le débogage.
+Le second peut, par exemple, accueillir un message personnalisé pour la macro `panic!` facilitant ainsi le débogage.
 
 ```rust
 fn foo(arg: Option<String>) {
