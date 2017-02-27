@@ -1,7 +1,7 @@
 # Stade de rédaction
 
 La FAQ est encore régulièrement mise à jour, rédigée, mais il est possible de la lire.
-Actuellement(28 novembre 2016), la FAQ a subi 4 relectures.
+Actuellement(28 février 2017), la FAQ a subi 5 relectures.
 
 # Remerciements
 
@@ -14,6 +14,10 @@ Merci également à [@Siguillaume](http://www.developpez.net/forums/u181612/sigu
 
 Le projet ne dispose plus, pour le moment, de version HTML.
 Si vous souhaitez la consulter, je vous invite à lire directement le fichier [markdown en ligne](https://github.com/Songbird0/Rust_FAQ/blob/master/rust_FAQ_Markdown/rust_FAQ.md) ou à visiter la [version HTML](http://rust.developpez.com/faq/) publiée sur [developpez.com](developpez.com).
+
+#### Format PDF
+
+Une verison hors-ligne est désormais mise à votre disposition dans le répertoire [rust_FAQ_PDF](rust_FAQ_PDF/rust_FAQ.pdf).
 
 ## Présentation
 
