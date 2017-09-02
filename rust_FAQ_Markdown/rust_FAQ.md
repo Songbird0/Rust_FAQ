@@ -608,13 +608,36 @@ fn main() {
 }
 ```
 
-Liens :
+Il est également possible de créer des alias génériques:
 
-Pour exécuter l'exemple de la Q/R, vous pouvez vous rendre [ici](https://is.gd/qcF8iw "Rust Playground").
+```rust
+use std::collections::HashMap;
+type Set<Prenom, Age, Erreur> = Result<(Prenom, Age), Erreur>; // (1)
 
-Retrouvez des explications [ici](http://stackoverflow.com/questions/29447920/what-is-the-rust-type-keyword "Post StackOverflow").
+fn prints_identity(name: &str) -> Set<String, usize, String>{ // (2)
+    let alice = "Alice";
+    let bob = "Bob";
+    if *name == *alice {
+        return Ok((alice.to_owned(), 28));
+    }
+    else if *name == *bob {
+        return Ok((bob.to_owned(), 25));
+    }
+    Err(format!("'{}' was not found.", name))
+}
 
-[Explications de la documentation officielle](http://rustbyexample.com/cast/alias.html "Rust by Example").
+fn main() {
+    prints_identity("Alice")
+    .map(|(name, age)| println!("Name: {0}\nAge: {1}", name, age)) // (3)
+    .map_err(|e| panic!("error: {}", e));
+}
+```
+
+(1). On définit les types que `Set<A, B, C>` va recevoir;
+(2). On assigne les types concrets de `Set`, ce qui donnerait comme équivalent `Result<(String, usize), String>`;
+(3). On prépare une closure au cas où l'opération est un succès et on affiche le nom et l'âge de l'individu.
+
+[Documentation officielle](http://rustbyexample.com/cast/alias.html "Rust by Example").
 
 ### À quoi sert le mot-clé loop ?
 
