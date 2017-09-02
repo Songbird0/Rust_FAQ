@@ -2,7 +2,7 @@
 
 cf. [README.md](../README.md), s'il vous plaît.
 
-#Aborescence de la FAQ
+# Aborescence de la FAQ
 
 - [Langage](#langage)
   - [Questions générales](#questions-générales)
