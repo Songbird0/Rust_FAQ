@@ -1914,7 +1914,7 @@ $ tree -L 3 .
 9 directories, 7 files
 ```
 
-Bien qu'encore rachitique, vous souhaiteriez voir la taille de la MIR générée par votre code pour une quelconque raison. Cargo est capable d'appeler `rustc` comme l'un de ses modules installés, vous permettant d'utiliser le compilateur dans l'une de vos commandes. Si nous nous référons à la documentation de `rustc` en tapant `rustc --help`, nous remarquons qu'il existe l'option `--emit` qui permet de générer différentes représentations de vos sources celle qui nous intéresse ici est bien entendu `mir`.
+Bien qu'encore rachitique, vous souhaiteriez voir la taille de la MIR générée par votre code pour une quelconque raison. Cargo est capable d'appeler `rustc` comme l'un de ses modules installés, vous permettant d'utiliser le compilateur dans l'une de vos commandes. Si nous nous référons à la documentation de `rustc` en tapant `rustc --help`, nous remarquons qu'il existe l'option `--emit` qui permet de générer différentes représentations de vos sources. Celle qui nous intéresse ici est bien entendu `mir`.
 
 Pour afficher le code MIR de votre source:
 
