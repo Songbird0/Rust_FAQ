@@ -1775,6 +1775,111 @@ La macro `bencmark_group!` sert a créer des « groupes » de fonctions à mes
 
 La macro `benchmark_main!` permet de créer une fonction main contenant toutes les fonctions à « benchmarker ».
 
+### Comment générer du code MIR avec cargo ?
+
+Admettons que vous ayez un projet nommé `MyProject`:
+
+```bash
+$ cargo new --bin MyProject
+     Created binary (application) `MyProject` project
+```
+
+Après quelques ajouts, vous avez cette structure de projet:
+
+```bash
+$ tree -L 3 .
+.
+├── Cargo.lock
+├── Cargo.toml
+├── src
+│   ├── lib.rs
+│   ├── main.rs
+│   └── mymod
+│       └── mod.rs
+└── target
+    └── debug
+        ├── build
+        ├── deps
+        ├── examples
+        ├── incremental
+        ├── libmyproject.d
+        ├── libmyproject.rmeta
+        └── native
+
+9 directories, 7 files
+```
+
+Bien qu'encore rachitique, vous souhaiteriez voir la taille de la MIR générée par votre code pour une quelconque raison. Cargo est capable d'appeler `rustc` comme l'un de ses modules installés, vous permettant d'utiliser le compilateur dans l'une de vos commandes. Si nous nous référons à la documentation de `rustc` en tapant `rustc --help`, nous remarquons qu'il existe l'option `--emit` qui permet de générer différentes représentations de vos sources celle qui nous intéresse ici est bien entendu `mir`.
+
+Pour afficher le code MIR de votre source:
+
+```bash
+cargo rustc --lib -- --emit mir
+# ------------------- ^
+# Ne surtout pas oublier `--` sans quoi l'option `--emit` ne sera pas reconnue.
+    Finished dev [unoptimized + debuginfo] target(s) in 0.0 secs
+$ MIR_PATH="$PWD/target/debug/deps"
+$ ls $MIR_PATH
+liblmyproject-67ac3e08dd1b65f4.rlib  lmyproject-67ac3e08dd1b65f4.mir
+```
+
+**Note**: Ici vous pouvez remarquer qu'il y a un 'l' devant `myproject` alors que le nom de la crate n'en possède pas, dans votre fichier Cargo.toml. C'est tout simplement parce que, dans ma copie de locale, j'ai à la fois un fichier `lib.rs` et `main.rs`, ce qui permet de lever l'ambiguïté à la compilation (i.e. si l'on souhaite compiler le coeur du projet ou un exécutable). Voici mon manifeste `Cargo.toml`:
+
+```toml
+[package]
+name = "myproject"
+version = "0.1.0"
+authors = ["Anthony Defranceschi <chaacygg@gmail.com>"]
+
+[dependencies]
+
+[lib]
+
+name = "lmyproject" # <- Vous voyez ici que nous renseignons un nom différent au projet lorsqu'il est compilé en mode bibliothèque.
+
+path = "src/lib.rs"
+
+test = true
+
+doctest = true
+
+bench = true
+
+doc = true
+
+plugin = false
+
+proc-macro = false
+
+harness = true
+
+[[bin]]
+
+name = "myproject"
+
+path = "src/main.rs"
+```
+
+Quid si vous souhaitez uniquement visualiser la génération de la MIR de l'exécutable dans ce cas ? La procédure est différente -mais de peu- puisqu'il faut remplacer l'option `--lib` par `--bin nom_de_votre_crate` comme vous le fera gentiment remarquer le compilateur si vous omettez l'un d'entre-eux:
+
+```
+error: extra arguments to `rustc` can only be passed to one target, consider filtering
+the package by passing e.g. `--lib` or `--bin NAME` to specify a single target
+```
+
+**Note**: Cette erreur ne fera son apparition que lorsque vous exécuterez l'une de ces commandes lorsque votre projet contient à la fois un fichier `lib.rs` et `main.rs`. Sans cela, vous pouvez très bien lancer la génération sans spécifier quoi que ce soit (pour le type de cible à produire, tout du moins).
+
+```bash
+$ cargo clean && cargo rustc --bin myproject -- --emit mir
+   Compiling myproject v0.1.0 (file:///home/foo/bar/MyProject)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.1 secs
+$ ls $MIR_PATH 
+liblmyproject-0ca57a22ba238c7c.rlib  myproject-c461eb7ac40f5cd7.mir
+myproject-c461eb7ac40f5cd7
+```
+
+L'exécutable et son code MIR ont été générés, il ne vous reste plus qu'à visualiser le résultat avec votre éditeur de texte favoris !
+
 ## Gestion des erreurs
 
 ### Comment s'effectue la gestion des erreurs avec Rust ?
