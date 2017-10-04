@@ -1880,7 +1880,7 @@ myproject-e35372111538d081
 
 L'exécutable et son assembleur ont été générés, il ne vous reste plus qu'à visualiser le résultat avec votre éditeur de texte favoris !
 
-### Comment générer du code MIR avec cargo ?
+### Comment générer du code MIR avec cargo ?
 
 Admettons que vous ayez un projet nommé `MyProject`:
 
