@@ -2411,12 +2411,20 @@ Pour créer un fichier, rien de plus simple, il vous faudra utiliser la structur
 use std::io;
 use std::fs::File;
 
-fn foo() -> io::Result<()> //vous pouvez mettre ce que vous voulez dans le diamant pour que ça compile.
+/* Vous pouvez placer la ressource de votre choix dans le diamant pour que cela compile. 
+En l'occurrence, nous avons placé un tuple vide `()` pour l'exemple. */
+fn foo() -> io::Result<()>
 {
+    // On récupère la ressource ou on effectue un renvoi prématuré
+    // si une erreur est survenue.
     let mut file = File::create("thecakeisalie.txt")?;
     Ok(())
 }
 ```
+
+#### Voir aussi
+
+La documentation de la structure [`File`](https://doc.rust-lang.org/std/fs/struct.File.html).
 
 ### Comment lire le contenu d'un fichier ?
 
