@@ -2493,9 +2493,27 @@ fn main() -> ()
 }
 ```
 
-
-
 ### Comment lister les objets d'un répertoire ?
+
+Il suffit d'utiliser la méthode [`Path.read_dir()`](https://doc.rust-lang.org/std/path/struct.Path.html#method.read_dir) qui renverra un ensemble d'objets [`DirEntry`](https://doc.rust-lang.org/std/fs/struct.DirEntry.html).
+
+```rust
+use std::path::Path;
+use std::fs::ReadDir;
+
+let path = Path::new("/path/to/dir");
+let dir_entries: ReadDir = path.read_dir().expect("read_dir call failed.");
+for entry in dir_entries {
+	if let Ok(entry) = entry {
+		println!("File name: {:?}", entry.file_name());
+		println!("File path: {:?}", entry.path());
+	}
+}
+```
+
+#### Voir aussi
+
+La documentation de [`ReadDir`](https://doc.rust-lang.org/std/fs/struct.ReadDir.html).
 
 ## Antisèches Rust
 
