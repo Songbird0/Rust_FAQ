@@ -2483,6 +2483,11 @@ fn main() -> ()
 
 La méthode `write_all()` ne traite l'information que sous forme d'octets, et pour convertir une chaîne caractères en tableau d'octets, elle doit être précédée par la lettre 'b'.
 
+```rust
+let foo: &'static str = "bar";
+let bar: &'static [u8; 3] = b"bar";
+```
+
 ### Comment différencier un fichier d'un répertoire ?
 
 Pour cela, vous aurez besoin d'utiliser une ressource:
