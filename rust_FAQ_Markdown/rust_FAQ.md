@@ -2481,7 +2481,7 @@ fn main() -> ()
 
 #### A quoi sert le 'b' qui préfixe la chaîne de caractères ?
 
-La méthode `write_all()` ne traite l'information que sous forme d'octets, et pour convertir une chaîne caractères en octets, elle doit être précédée par la lettre 'b'.
+La méthode `write_all()` ne traite l'information que sous forme d'octets, et pour convertir une chaîne caractères en tableau d'octets, elle doit être précédée par la lettre 'b'.
 
 ### Comment différencier un fichier d'un répertoire ?
 
