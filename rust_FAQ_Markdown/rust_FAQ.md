@@ -2455,21 +2455,19 @@ La documentation de la structure [`Read`](https://doc.rust-lang.org/std/io/trait
 
 ### Comment écrire à l'intérieur d'un fichier ?
 
-Pour écrire dans en fichier, vous devrez importer trois ressources:
+Pour écrire dans un fichier, vous devrez importer trois ressources:
 
-- std::io::Result; (un alias de l'`enum` `std::result::Result`)
-- std::io::Write; (Le trait qui permet d'implémenter la méthode `write_all()`)
-- std::fs::File. (La structure censée représenter votre fichier)
+1. `std::io::Result` (un alias de l'enum `std::result::Result`);
+2. `std::io::Write` (Le trait qui permet d'implémenter la méthode `write_all()`);
+3. `std::fs::File` (La structure censée représenter votre fichier).
 
 ```rust
-
 use std::io::Result;
 use std::io::Write;
 use std::fs::File;
 
 fn foo() -> Result<()>
 {
-    
     let mut f = File::create("foo.txt")?;
     f.write_all(b"Hello, world!")?;
     Ok(())
