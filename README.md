@@ -1,7 +1,6 @@
 # Stade de rédaction
 
-La FAQ est encore régulièrement mise à jour, rédigée, mais il est possible de la lire.
-Actuellement(28 novembre 2016), la FAQ a subi 4 relectures.
+La FAQ n'est *plus* maintenue (28 avril 2019), il est possible que certaines Q/R soient obsolètes. Toutefois, cela ne rend pas la FAQ inexploitable ! Par ailleurs, vous êtes libre d'ouvrir une issue pour que je corrige.
 
 # Remerciements
 
