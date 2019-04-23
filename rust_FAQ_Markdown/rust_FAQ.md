@@ -2535,6 +2535,12 @@ for entry in dir_entries {
 
 La documentation de [`ReadDir`](https://doc.rust-lang.org/std/fs/struct.ReadDir.html).
 
+### `read_to_string` ne rend jamais le contrôle à mon programme ! Pourquoi ?
+
+L'erreur est assez courante, mais, comme [la documentation](https://doc.rust-lang.org/std/io/trait.Read.html#method.read_to_string) l'indique, `read_to_string` consommera
+tous les octets jusqu'à la fin du fichier. Il est possible que vous l'ayiez utilisé pour récupérer une entrée au clavier (sur l'entrée standard) et c'est ce qui a causé le souci. Dans ce cas, vous devriez utiliser la méthode [`read_line`](https://doc.rust-lang.org/std/io/trait.BufRead.html#method.read_line)
+qui cessera de consommer l'entrée au moment où une nouvelle ligne est détectée.
+
 ## Antisèches Rust
 
 ## Trucs & astuces
