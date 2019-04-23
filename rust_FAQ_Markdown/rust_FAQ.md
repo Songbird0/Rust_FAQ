@@ -97,6 +97,7 @@ cf. [README.md](../README.md), s'il vous plaît.
     - [Comment écrire à l'intérieur d'un fichier ?](#comment-écrire-à-lintérieur-dun-fichier-)
     - [Comment différencier un fichier d'un répertoire ?](#comment-différencier-un-fichier-dun-répertoire-)
     - [Comment lister les objets d'un répertoire ?](#comment-lister-les-objets-dun-répertoire-)
+    - [`read_to_string` ne rend jamais le contrôle à mon programme ! Pourquoi ?](#read_to_string-ne-rend-jamais-le-contrôle-à-mon-programme--pourquoi-)
 - [Trucs & astuces](trucs--astuces)
   - [Que puis-je trouver dans cette section ?](#que-puis-je-trouver-dans-cette-section)
   - [Comment récupérer le vecteur d'une instance de la structure `Chars` ?](#comment-récupérer-le-vecteur-dune-instance-de-la-structure-chars)
